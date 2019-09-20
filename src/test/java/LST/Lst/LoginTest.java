@@ -70,8 +70,8 @@ public void verifyLoginPageAttributes() throws InterruptedException {
 
 
 @Test(dataProvider= "getLoginData",priority=2) 
-public void doSignin(String username, String password) throws IOException, InterruptedException {
-	
+public void doSignin(String username, String password, int testCase) throws IOException, InterruptedException {
+	System.out.println("UserName : "+ username);
 	 landing= new LandingPage(driver);
 	 landing.initElement(); 
 	 landing.txt_login.click();
@@ -86,44 +86,21 @@ public void doSignin(String username, String password) throws IOException, Inter
 	 log.btn_login.click();
 	 Thread.sleep(500);
  
-	 Dashboard dash = new Dashboard(log.getDriver());
+	// Dashboard dash = new Dashboard(log.getDriver());
 		
-	 landing.initElement(dash);
-	 common = new CommonTask();
-	 try {
- 
-		 WebElement element = dash.link_projects;
-			
-			 // Actions builder = new Actions(driver);
-			//  builder.moveToElement(element).click().build().perform();
-			 
-		 
-		 common.moveMouse(element, driver);
-		
-		 AssertJUnit.assertEquals(dash.link_projects.getText(),"Projects");
-		 logger.info("Projects is displayed in Dashboard.");
-		 
-		// System.out.println("++++++++In Side Try++++++++++++"+ dash.link_projects.getText());
-		 WebElement element2 = dash.link_collections;
-		 Actions builder2 = new Actions(driver);
-		 builder2.moveToElement(element2).click().build().perform();
-		 common.moveMouse(element2, driver);
-		 Thread.sleep(500);
-		 AssertJUnit.assertEquals(dash.link_collections.getText(), "Collection");
-		 logger.info("Collection is displayed in Dashboard.");
-		 
-		 dash.btn_logout.click();
-		 }catch(Exception e) { 
-		 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Wrong email or password was provided."); 
-		 logger.info("Wrong login message in showing successfully.");
-		 
-		 //System.out.println("++++++++In Side Catch++++++++++++");
-		} 
-
+	// landing.initElement(dash);
+	 //common = new CommonTask();
+	 
+	 switch(testCase){
+		 case 1: testCase1(); break;
+		 case 2: testCase2(); break;
+		 case 3: testCase3(); break;
+	 }
+	 
+	
 Thread.sleep(500);
 
 }
-
 
 @Test(priority=3)
 public void doSigninAssertion() { 
@@ -136,17 +113,68 @@ public void doSigninAssertion() {
 @DataProvider
 public Object[][] getLoginData(){
  
- Object[][] data= new Object[2][2];
+ Object[][] data= new Object[3][3];
  data[0][0]= "niti12@livingskytech.com";
  data[0][1]= "asdF1234";
+ data[0][2]= 1;
  
  data[1][0]= "niti5@yopmail.com";
  data[1][1]= "asdF1234";
+ data[1][2]= 2;
  
- data[1][0]= "";
- data[1][1]= "";
+ data[2][0]= "niti@yopmail.com";
+ data[2][1]= "";
+ data[2][2]= 3;
  
  return data;
+}
+public void testCase1() throws InterruptedException {
+	Dashboard dash = new Dashboard(log.getDriver());
+	dash.initElement();
+	 WebElement element = dash.link_projects;
+		
+		 // Actions builder = new Actions(driver);
+		//  builder.moveToElement(element).click().build().perform();
+		 
+	 
+	 common.moveMouse(element, driver);
+	
+	 AssertJUnit.assertEquals(dash.link_projects.getText(),"Projects");
+	 logger.info("Projects is displayed in Dashboard.");
+	 
+	// System.out.println("++++++++In Side Try++++++++++++"+ dash.link_projects.getText());
+	 WebElement element2 = dash.link_collections;
+	 Actions builder2 = new Actions(driver);
+	 builder2.moveToElement(element2).build().perform();
+	 
+	
+	 /**
+	  *  I will upload it later ..
+	  */
+	 //common.moveMouse(element2, driver);
+	 //Thread.sleep(1000);
+	 //driver.navigate().back();
+	 //Thread.sleep(500);
+	 
+	 
+	 AssertJUnit.assertEquals(dash.link_collections.getText(), "Collection");
+	 logger.info("Collection is displayed in Dashboard.");
+	 
+	 dash.btn_logout.click();
+}
+
+public void testCase2() {
+	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Wrong email or password was provided."); 
+	 logger.info("Wrong login message is showing successfully.");
+	 
+	 Browser.pageRefresh();
+}
+
+public void testCase3() {
+	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password is required."); 
+	 logger.info("Wrong login message is showing successfully.");
+	 
+	 Browser.pageRefresh();
 }
 
 @AfterClass
