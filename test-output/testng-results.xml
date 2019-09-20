@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" total="9" passed="8">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="58126" started-at="2019-09-20T20:54:21Z" finished-at="2019-09-20T20:55:20Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="58126" started-at="2019-09-20T20:54:21Z" finished-at="2019-09-20T20:55:20Z">
+      <class name="LST.Lst.SignUpTest">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:LST.Lst.SignUpTest@1c1bbc4e]" name="openBrowser" is-config="true" duration-ms="3538" started-at="2019-09-20T14:54:34Z" finished-at="2019-09-20T14:54:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method status="PASS" signature="checkSignupAttributes()[pri:0, instance:LST.Lst.SignUpTest@1c1bbc4e]" name="checkSignupAttributes" duration-ms="266" started-at="2019-09-20T14:54:38Z" finished-at="2019-09-20T14:54:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkSignupAttributes -->
+        <test-method status="PASS" signature="checkSignupA()[pri:0, instance:LST.Lst.SignUpTest@1c1bbc4e]" name="checkSignupA" duration-ms="22870" started-at="2019-09-20T14:54:38Z" finished-at="2019-09-20T14:55:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkSignupA -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:LST.Lst.SignUpTest@1c1bbc4e]" name="closeBrowser" is-config="true" duration-ms="80" started-at="2019-09-20T14:55:01Z" finished-at="2019-09-20T14:55:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- LST.Lst.SignUpTest -->
+      <class name="LST.Lst.LoginTest">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:LST.Lst.LoginTest@3c9754d8]" name="openBrowser" is-config="true" duration-ms="3890" started-at="2019-09-20T14:55:01Z" finished-at="2019-09-20T14:55:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method status="PASS" signature="verifyLoginPageAttributes()[pri:0, instance:LST.Lst.LoginTest@3c9754d8]" name="verifyLoginPageAttributes" duration-ms="735" started-at="2019-09-20T14:55:05Z" finished-at="2019-09-20T14:55:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLoginPageAttributes -->
+        <test-method status="PASS" signature="doSignin(java.lang.String, java.lang.String)[pri:0, instance:LST.Lst.LoginTest@3c9754d8]" name="doSignin" duration-ms="8808" started-at="2019-09-20T14:55:06Z" data-provider="getLoginData" finished-at="2019-09-20T14:55:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[niti12@livingskytech.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[asdF1234]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doSignin -->
+        <test-method status="FAIL" signature="doSignin(java.lang.String, java.lang.String)[pri:0, instance:LST.Lst.LoginTest@3c9754d8]" name="doSignin" duration-ms="5031" started-at="2019-09-20T14:55:15Z" data-provider="getLoginData" finished-at="2019-09-20T14:55:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":"a[href*='login']"}
+  (Session info: chrome=77.0.3865.90)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'ChetankumarsMBP.lan', ip: 'fe80:0:0:0:ca9:220e:c1c6:cef0%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.5', java.version: '1.8.0_221'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 77.0.3865.90, chrome: {chromedriverVersion: 77.0.3865.40 (f484704e052e0..., userDataDir: /var/folders/v1/tmhvs8hx43s...}, goog:chromeOptions: {debuggerAddress: localhost:58640}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 9ff3f46ca29e68509b1ce7bcbd0cc0ff
+*** Element info: {Using=css selector, value=a[href*='login']}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"a[href*='login']"}
+  (Session info: chrome=77.0.3865.90)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'ChetankumarsMBP.lan', ip: 'fe80:0:0:0:ca9:220e:c1c6:cef0%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.5', java.version: '1.8.0_221'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 77.0.3865.90, chrome: {chromedriverVersion: 77.0.3865.40 (f484704e052e0..., userDataDir: /var/folders/v1/tmhvs8hx43s...}, goog:chromeOptions: {debuggerAddress: localhost:58640}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 9ff3f46ca29e68509b1ce7bcbd0cc0ff
+*** Element info: {Using=css selector, value=a[href*='login']}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:416)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:431)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy29.click(Unknown Source)
+	at LST.Lst.LoginTest.doSignin(LoginTest.java:81)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doSignin -->
+        <test-method status="PASS" signature="doSigninAssertion()[pri:0, instance:LST.Lst.LoginTest@3c9754d8]" name="doSigninAssertion" duration-ms="5" started-at="2019-09-20T14:55:20Z" finished-at="2019-09-20T14:55:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doSigninAssertion -->
+      </class> <!-- LST.Lst.LoginTest -->
+      <class name="LST.Lst.LandingPageTest">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:LST.Lst.LandingPageTest@fbd1f6]" name="openBrowser" is-config="true" duration-ms="4767" started-at="2019-09-20T14:54:21Z" finished-at="2019-09-20T14:54:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method status="PASS" signature="verifyHeadNavForAllPages()[pri:0, instance:LST.Lst.LandingPageTest@fbd1f6]" name="verifyHeadNavForAllPages" duration-ms="1149" started-at="2019-09-20T14:54:26Z" finished-at="2019-09-20T14:54:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyHeadNavForAllPages -->
+        <test-method status="PASS" signature="verifyLandingPageAttributes()[pri:0, instance:LST.Lst.LandingPageTest@fbd1f6]" name="verifyLandingPageAttributes" duration-ms="5801" started-at="2019-09-20T14:54:27Z" finished-at="2019-09-20T14:54:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLandingPageAttributes -->
+        <test-method status="PASS" signature="clickOnLogin()[pri:0, instance:LST.Lst.LandingPageTest@fbd1f6]" name="clickOnLogin" duration-ms="1091" started-at="2019-09-20T14:54:33Z" finished-at="2019-09-20T14:54:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickOnLogin -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:LST.Lst.LandingPageTest@fbd1f6]" name="closeBrowser" is-config="true" duration-ms="80" started-at="2019-09-20T14:54:34Z" finished-at="2019-09-20T14:54:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- LST.Lst.LandingPageTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <test name="Test(failed)">
+    <classes>
+      <class name="LST.Lst.LoginTest">
+        <methods>
+          <include name="doSignin" invocation-numbers="1"/>
+          <include name="openBrowser"/>
+        </methods>
+      </class> <!-- LST.Lst.LoginTest -->
+      <class name="LST.Lst.SignUpTest">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="openBrowser"/>
+        </methods>
+      </class> <!-- LST.Lst.SignUpTest -->
+      <class name="LST.Lst.LandingPageTest">
+        <methods>
+          <include name="openBrowser"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- LST.Lst.LandingPageTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

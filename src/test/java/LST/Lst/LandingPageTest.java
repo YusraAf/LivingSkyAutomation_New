@@ -85,66 +85,66 @@ private LoginPage login;
 		  
 		  // Verify All Images display on landing page  
 		  AssertJUnit.assertTrue(log.img_NoLimitions.isDisplayed());
-		  logger.info("No Limitions image is displayed.");
+		  logger.info("No Limitions image is displayed in Landing Page.");
 		  AssertJUnit.assertTrue(log.img_Cloudbased.isDisplayed());
-		  logger.info("Cloud based image is displayed.");
+		  logger.info("Cloud based image is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.img_Mindmaps.isDisplayed());
-		  logger.info("Mind maps image is displayed.");
+		  logger.info("Mind maps image is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.img_RefManager.isDisplayed());
-		  logger.info("Ref Manager image is displayed.");
+		  logger.info("Ref Manager image is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.img_AutoFormat.isDisplayed());
-		  logger.info("Auto Format image is displayed.");
+		  logger.info("Auto Format image is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.img_ThemeDesigner.isDisplayed());
-		  logger.info("Theme Designer image is displayed.");
+		  logger.info("Theme Designer image is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.img_ArtIntelligence.isDisplayed());
-		  logger.info("Art Intelligence image is displayed.");
+		  logger.info("Art Intelligence image is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.img_MultipleDevices.isDisplayed());
-		  logger.info("Multiple Devices image is displayed.");
+		  logger.info("Multiple Devices image is displayed in Landing Page..");
 		  
 		// Verify All Labels display on landing page
 		  
 		  AssertJUnit.assertTrue(log.lbl_NoLimitions.isDisplayed());
-		  logger.info("No Limitions label is displayed.");
+		  logger.info("No Limitions label is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.lbl_Cloudbased.isDisplayed());
-		  logger.info("Cloud based label is displayed.");
+		  logger.info("Cloud based label is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.lbl_Mindmaps.isDisplayed());
-		  logger.info("Mind maps label is displayed.");
+		  logger.info("Mind maps label is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.lbl_RefManager.isDisplayed());
-		  logger.info("Ref Manager label is displayed.");
+		  logger.info("Ref Manager label is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.lbl_AutoFormat.isDisplayed());
-		  logger.info("Auto Format label is displayed.");
+		  logger.info("Auto Format label is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.lbl_ThemeDesigner.isDisplayed());
-		  logger.info("Theme Designer label is displayed.");
+		  logger.info("Theme Designer label is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.lbl_ArtIntelligence.isDisplayed());
-		  logger.info("Art Intelligence label is displayed.");
+		  logger.info("Art Intelligence label is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.lbl_MultipleDevices.isDisplayed());
-		  logger.info("Multiple Devices label is displayed.");
+		  logger.info("Multiple Devices label is displayed in Landing Page..");
 		 
 		// Verify All Texts display on landing page
 		 
 		  AssertJUnit.assertTrue(log.text_NoLimitions.isDisplayed());
-		  logger.info("No Limitions text is displayed.");
+		  logger.info("No Limitions text is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.text_Cloudbased.isDisplayed());
-		  logger.info("Cloud based text is displayed.");
+		  logger.info("Cloud based text is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.text_Mindmaps.isDisplayed());
-		  logger.info("Mind maps text is displayed.");
+		  logger.info("Mind maps text is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.text_RefManager.isDisplayed());
-		  logger.info("Ref Manager text is displayed.");
+		  logger.info("Ref Manager text is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.text_AutoFormat.isDisplayed());
-		  logger.info("Auto Format text is displayed.");
+		  logger.info("Auto Format text is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.text_ThemeDesigner.isDisplayed());
-		  logger.info("Theme Designer text is displayed.");
+		  logger.info("Theme Designer text is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.text_ArtIntelligence.isDisplayed());
-		  logger.info("Art ntelligence text is displayed.");
+		  logger.info("Art Intelligence text is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.text_MultipleDevices.isDisplayed());
-		  logger.info("Multiple Devices text is displayed.");
+		  logger.info("Multiple Devices text is displayed in Landing Page..");
 		 
 		  
 		  
 		  AssertJUnit.assertTrue(log.text_Writing.isDisplayed());
-		  logger.info("Writing - the way it should be text is displayed.");
+		  logger.info("Writing - the way it should be text is displayed in Landing Page..");
 		  AssertJUnit.assertTrue(log.btn_TryLiveDemo.isDisplayed());
-		  logger.info("Try Live Demo button is displayed.");
+		  logger.info("Try Live Demo button is displayed in Landing Page..");
 		 	 
 	}
 @Test(priority=3)
