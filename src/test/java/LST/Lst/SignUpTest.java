@@ -56,7 +56,7 @@ public void verifyHeadNavForAllPages() {
  public void checkSignupA() throws InterruptedException {
 	// basePageNavigation();
 	 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS); 
-
+	 common = new CommonTestForAllPages();
 	 landing= new LandingPage(driver);
 	 landing.initElement();
 	 signup = new SignUP(landing.getDriver());
@@ -65,9 +65,9 @@ public void verifyHeadNavForAllPages() {
 	 landing.txt_signup.click();
 		 
 	 signup.verifyPageUrl();
-	 
+	 System.out.println("Random Number: "+common.randomNumber());
 	 signup.txt_userName.click();
-	 signup.txt_userName.sendKeys("abtyuy1@yopmail.com");
+	 signup.txt_userName.sendKeys("test"+common.randomNumber()+"@yopmail.com");
 	    
 	 signup.txt_password.click();
 	    
