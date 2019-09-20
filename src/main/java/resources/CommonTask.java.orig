@@ -10,6 +10,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c19a31394062f1774075c77c971b570878f9d7c
 
 public class CommonTask {
 	private HeaderNavigation headNav;

@@ -30,7 +30,7 @@ public class CommonTestForAllPages extends TestBase  {
 
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 
-	//Verify the Navigation
+	//Verify the Navigation page
 	public void verifyNavBarHeaderContent(WebDriver driver) {
 		
 		

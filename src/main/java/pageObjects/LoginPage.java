@@ -15,7 +15,7 @@ public class LoginPage extends PageBase{
 		super(driver);
 		this.setUrl("login");
 	}
-
+//page factory
 
 @FindBy(name= "email")
 @CacheLookup

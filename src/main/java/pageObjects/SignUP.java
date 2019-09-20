@@ -50,4 +50,20 @@ public WebElement txt_capcha;
 @CacheLookup
 public WebElement btn_capcha;
 
+@FindBy(xpath="//div[contains(text(),'Sign up with Facebook')]")
+@CacheLookup
+public WebElement btn_Facebook;
+
+@FindBy(xpath="//div[contains(text(),'Sign up with Google')]")
+@CacheLookup
+public WebElement btn_Google;
+
+@FindBy(xpath="//div[@id='signup-form']//div[1]//div[1]//label[1]//span[2]")
+@CacheLookup
+public WebElement btn_TermsPolicy;
+
+@FindBy(xpath="//span[contains(text(),'I want to receive updates about WriteWay')]")
+@CacheLookup
+public WebElement btn_WriteWaySignUP;
+
 }
