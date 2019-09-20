@@ -17,7 +17,7 @@ import pageObjects.SignUP;
 import resources.CommonTask;
 import resources.HeaderNavigation;
 
-public class CommonTestForAllPages {
+public class CommonTestForAllPages extends CommonTask {
 	//private WebDriver driver;
 	private HeaderNavigation headNav;
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
