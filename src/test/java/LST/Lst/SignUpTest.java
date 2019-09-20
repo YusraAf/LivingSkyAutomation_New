@@ -30,14 +30,19 @@ import pageObjects.Browser;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
 import pageObjects.SignUP;
+import resources.CommonTask;
 
 public class SignUpTest extends TestBase{
 
 public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 private LandingPage landing;	
 private SignUP signup;
+<<<<<<< HEAD
 
 private CommonTestForAllPages common;
+=======
+private CommonTask common;
+>>>>>>> 1c19a31394062f1774075c77c971b570878f9d7c
 	
 @BeforeClass
 	
@@ -46,6 +51,7 @@ private CommonTestForAllPages common;
 	driver.get(baseUrl);
 	
 	}
+<<<<<<< HEAD
 	
 	
 	  @Test(priority=1) public void verifyHeadNavForAllPages() { 
@@ -113,6 +119,45 @@ private CommonTestForAllPages common;
 	  System.out.println("+++++++++++++++++++++++IN Signup+++++++++++++++++");
 	  
 	  }
+=======
+ 
+	
+ @Test(priority=1)
+ public void checkSignupA() throws InterruptedException {
+	
+	 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS); 
+	 common = new CommonTask();
+	 
+	 landing= new LandingPage(driver);
+	 landing.initElement();
+	 
+	 signup = new SignUP(landing.getDriver());
+	 signup.initElement();
+	 
+	 landing.txt_signup.click();
+		 
+	
+	 System.out.println("Random Number: "+common.randomNumber());
+	 signup.txt_userName.click();
+	 signup.txt_userName.sendKeys("test"+common.randomNumber()+"@yopmail.com");
+	    
+	 signup.txt_password.click();
+	    
+	 signup.txt_password.sendKeys("asdF1234");
+	   	
+	 signup.txt_confirmPassword.click();
+	 signup.txt_confirmPassword.sendKeys("asdF1234");
+	 signup.radio_termsandCond.click();
+	 signup.radio_updates.click();
+	 signup.btn_signUp.click();
+	 signup.txt_capcha.click();
+	 signup.txt_capcha.sendKeys("ssssfdg");
+	    Thread.sleep(200); 
+	    signup.btn_capcha.click();
+	    Thread.sleep(20000); 
+	    //driver.findElement(By.cssSelector(".content-canvas__container")).click();
+	 
+>>>>>>> 1c19a31394062f1774075c77c971b570878f9d7c
 	 
  
 @AfterClass

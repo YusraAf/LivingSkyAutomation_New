@@ -1,5 +1,6 @@
 package LST.Lst;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -8,18 +9,25 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import LST.core.TestBase;
+import pageObjects.Browser;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
 import pageObjects.SignUP;
 import resources.CommonTask;
 import resources.HeaderNavigation;
 
-public class CommonTestForAllPages extends CommonTask {
-	//private WebDriver driver;
+public class CommonTestForAllPages extends TestBase  {
+	
 	private HeaderNavigation headNav;
+	private LandingPage landing;	
+	private SignUP signup;
+	private LoginPage log;
+
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 
 	//Verify the Navigation
@@ -48,5 +56,49 @@ public class CommonTestForAllPages extends CommonTask {
 			
 		 
 	}
+@BeforeClass
+	
+	public void openBrowser() throws IOException, InterruptedException {
+	driver = Browser.getInstance();
+	driver.get(baseUrl);
+	
+	}
+@Test
+	public void verifyHeadNavAndPageLoadForSignUpPages() {
+		
+		landing= new LandingPage(driver);
+		 landing.initElement();
+		 landing.txt_signup.click();
+		 
+		 signup = new SignUP(landing.getDriver());
+		 signup.initElement();
+		
+		 signup.verifyPageUrl();
+		 logger.info("Signup Page URL is verified."); 
+		 verifyNavBarHeaderContent(driver);
+		
+	}
+@Test
+public void verifyHeadNavAndPageLoadForLoginPages() {
+		
+		landing= new LandingPage(driver);
+		landing.initElement();
+		landing.txt_login.click();
+		
+		log = new LoginPage(landing.getDriver());
+		log.initElement();
+		log.verifyPageUrl();
+		
+		logger.info("Login Page URL is verified."); 
+		verifyNavBarHeaderContent(driver);
+		
+	}
+
+@AfterClass
+public  void closeBrowser() {
+	System.out.println("Closing common  Test");
+    Browser.close();
+}
+
 }
  
