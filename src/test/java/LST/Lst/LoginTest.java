@@ -21,10 +21,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
 import pageObjects.Browser;
@@ -88,7 +84,7 @@ public void doSignin(String username, String password) throws IOException, Inter
 	 log.txt_userName.sendKeys(username);
 	 log.txt_password.sendKeys(password);
 	 log.btn_login.click();
-	 Thread.sleep(7000);
+	 Thread.sleep(500);
  
 	 Dashboard dash = new Dashboard(log.getDriver());
 		
@@ -111,7 +107,8 @@ public void doSignin(String username, String password) throws IOException, Inter
 		 WebElement element2 = dash.link_collections;
 		 Actions builder2 = new Actions(driver);
 		 builder2.moveToElement(element2).click().build().perform();
-		
+		 common.moveMouse(element2, driver);
+		 Thread.sleep(500);
 		 AssertJUnit.assertEquals(dash.link_collections.getText(), "Collection");
 		 logger.info("Collection is displayed in Dashboard.");
 		 
@@ -148,7 +145,7 @@ public Object[][] getLoginData(){
  return data;
 }
 
-//@AfterClass
+@AfterClass
 public void closeBrowser() {
 	System.out.println("Closing Login page Test");
 	Browser.close();
