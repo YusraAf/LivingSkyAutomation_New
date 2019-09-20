@@ -79,7 +79,7 @@ private CommonTask common;
 	  }
 	  
 	  
-	  @Test(priority=3) 
+	  @Test(priority=2) 
 
  public void checkSignupA() throws InterruptedException {
 	
