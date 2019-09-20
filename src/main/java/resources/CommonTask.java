@@ -22,5 +22,8 @@ public class CommonTask {
         }
 		return li_All;
 	} 
-
+public int randomNumber() {
+	
+	return (int)(Math.random()*20);
+}
 } 
