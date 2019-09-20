@@ -117,6 +117,14 @@ public class Browser {
 	        return driver;
 	    }
 	    
+	    public static void pageRefresh() {
+	    	driver.navigate().refresh();
+	    }
+	    
+	    public static void goBackPreviousPage() {
+	    	
+	    	driver.navigate().back();
+	    }
 	    public void ClearChromeHistory() throws InterruptedException
 
 	    {
@@ -138,26 +146,26 @@ public class Browser {
 	       
 	    }
 
-public void ClearBrowserCookies() throws InterruptedException
+	    public void ClearBrowserCookies() throws InterruptedException
 {
 driver.manage().deleteAllCookies();//delete all cookies
 Thread.sleep(5000); //wait 5 seconds to clear cookies.
 }
-public void clearChromeBrowserData() throws InterruptedException {
+	    public void clearChromeBrowserData() throws InterruptedException {
     driver.get("chrome://settings/clearBrowserData");
   //  driver.wait(2);
     Thread.sleep(2000);
     
      driver.findElement(By.id("clearBrowsingDataConfirm")).click();
 }
-private static void cleanCookieCache() {
+	    private static void cleanCookieCache() {
     driver.manage().getCookies().clear();
     driver.manage().deleteAllCookies();
 
 }
 
 
-public static void close() {
+	    public static void close() {
 	
     //driver.close();
     driver.quit();
