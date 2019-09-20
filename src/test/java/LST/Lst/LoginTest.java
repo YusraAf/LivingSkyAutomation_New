@@ -157,6 +157,10 @@ public Object[][] getLoginData(){
  
  data[1][0]= "niti5@yopmail.com";
  data[1][1]= "asdF1234";
+ 
+ data[1][0]= "";
+ data[1][1]= "";
+ 
  return data;
 }
 

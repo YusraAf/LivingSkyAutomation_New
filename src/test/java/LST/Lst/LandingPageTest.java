@@ -49,21 +49,7 @@ private LoginPage login;
 		common = new CommonTestForAllPages();
 		common.verifyNavBarHeaderContent(driver);
 		Thread.sleep(1000);
-		/*
-		 * //JavascriptExecutor js = (JavascriptExecutor) driver;
-		 * //js.executeScript("window.scrollBy(0,4000)"); WebElement element
-		 * =driver.findElement(By.xpath(
-		 * "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/a[1]"
-		 * ));
-		 * 
-		 * JavascriptExecutor js = (JavascriptExecutor) driver;
-		 * js.executeScript("arguments[0].scrollIntoView();",element);
-		 * 
-		 * //Actions actions = new Actions(driver); //
-		 * actions.moveToElement(element).perform();
-		 * 
-		 * Thread.sleep(2000);
-		 */
+		
 		
 	}
 	
