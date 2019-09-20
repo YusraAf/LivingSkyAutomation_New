@@ -31,13 +31,14 @@ import pageObjects.Browser;
 import pageObjects.Dashboard;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
+import resources.CommonTask;
 
 public class LoginTest extends TestBase{
 	
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 	private LandingPage landing;
 	private LoginPage log;
-	private CommonTestForAllPages common;
+	private CommonTask common;
 	
 @BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
@@ -72,16 +73,7 @@ public void verifyLoginPageAttributes() throws InterruptedException {
 }
 
 
-@Test(priority=2)
-public void verifyHeadNavForAllPages() {
-	log = new LoginPage(driver);
-	log.initElement();
-	common = new CommonTestForAllPages();
-	common.verifyNavBarHeaderContent(driver);
-	
-}
-
-@Test(dataProvider= "getLoginData",priority=3) 
+@Test(dataProvider= "getLoginData",priority=2) 
 public void doSignin(String username, String password) throws IOException, InterruptedException {
 	
 	 landing= new LandingPage(driver);
@@ -92,22 +84,25 @@ public void doSignin(String username, String password) throws IOException, Inter
 	 
 	 log =new LoginPage(landing.getDriver());
 	 landing.initElement(log);
-	 //LoginPage login=PageFactory.initElements(driver, LoginPage.class);
-	 
+	  
 	 log.txt_userName.sendKeys(username);
 	 log.txt_password.sendKeys(password);
 	 log.btn_login.click();
+	 Thread.sleep(7000);
  
-	 // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	 Dashboard dash = new Dashboard(log.getDriver());
-			 //PageFactory.initElements(driver, Dashboard.class);
+		
 	 landing.initElement(dash);
-	 
+	 common = new CommonTask();
 	 try {
  
 		 WebElement element = dash.link_projects;
-		 Actions builder = new Actions(driver);
-		 builder.moveToElement(element).click().build().perform();
+			
+			 // Actions builder = new Actions(driver);
+			//  builder.moveToElement(element).click().build().perform();
+			 
+		 
+		 common.moveMouse(element, driver);
 		
 		 AssertJUnit.assertEquals(dash.link_projects.getText(),"Projects");
 		 logger.info("Projects is displayed in Dashboard.");
@@ -127,20 +122,13 @@ public void doSignin(String username, String password) throws IOException, Inter
 		 
 		 //System.out.println("++++++++In Side Catch++++++++++++");
 		} 
-	  
-	 
-//driver.quit();
-//driver=null;
 
-Thread.sleep(2000);
-
-//basePageNavigation();
-//Thread.sleep(2000);
+Thread.sleep(500);
 
 }
 
 
-@Test(priority=4)
+@Test(priority=3)
 public void doSigninAssertion() { 
 
  AssertJUnit.assertEquals(driver.getTitle(), "Write Way");
@@ -152,7 +140,7 @@ public void doSigninAssertion() {
 public Object[][] getLoginData(){
  
  Object[][] data= new Object[2][2];
- data[0][0]= "niti@yopmail.com";
+ data[0][0]= "niti12@livingskytech.com";
  data[0][1]= "asdF1234";
  
  data[1][0]= "niti5@yopmail.com";
@@ -160,9 +148,9 @@ public Object[][] getLoginData(){
  return data;
 }
 
-@AfterClass
+//@AfterClass
 public void closeBrowser() {
-	System.out.println("Closing Landing page Test");
+	System.out.println("Closing Login page Test");
 	Browser.close();
 }
 

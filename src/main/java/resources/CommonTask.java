@@ -1,12 +1,21 @@
 package resources;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 
 public class CommonTask {
+	private HeaderNavigation headNav;
 	
+
 	
 	public List<WebElement> getLiElementInUl(WebElement path) {
 		
@@ -22,9 +31,11 @@ public class CommonTask {
         }
 		return li_All;
 	} 
+
+	
 public int randomNumber() {
 	
-	return (int)(Math.random()*20);
+	return (int)(Math.random()*200);
 }
 
 	  public void verifyTextOnThePage(String expected, String path, WebDriver driver1)
@@ -66,12 +77,9 @@ public int randomNumber() {
       public void moveMouse(WebElement el, WebDriver driver) throws InterruptedException
       {
           Actions action = new Actions(driver);
-          Thread.sleep(7000);
-         // driver.manage().timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
-         
-          action.moveToElement(el).click().perform();
-          Thread.sleep(7000);
-         // driver.manage().timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+           action.moveToElement(el).click().perform();
+          Thread.sleep(500);
+        
       }
 
    /*

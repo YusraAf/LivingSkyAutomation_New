@@ -26,12 +26,13 @@ import pageObjects.Browser;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
 import pageObjects.SignUP;
+import resources.CommonTask;
 
 public class SignUpTest extends TestBase{
 	
 private LandingPage landing;	
 private SignUP signup;
-private CommonTestForAllPages common;
+private CommonTask common;
 	
 @BeforeClass
 	
@@ -40,31 +41,23 @@ private CommonTestForAllPages common;
 	driver.get(baseUrl);
 	
 	}
-	
-
-@Test(priority=1)
-public void verifyHeadNavForAllPages() {
-	signup = new SignUP(driver);
-	signup.initElement();
-	common = new CommonTestForAllPages();
-	common.verifyNavBarHeaderContent(driver);
-	
-}
  
 	
- @Test(priority=2)
+ @Test(priority=1)
  public void checkSignupA() throws InterruptedException {
-	// basePageNavigation();
+	
 	 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS); 
-	 common = new CommonTestForAllPages();
+	 common = new CommonTask();
+	 
 	 landing= new LandingPage(driver);
 	 landing.initElement();
+	 
 	 signup = new SignUP(landing.getDriver());
 	 signup.initElement();
 	 
 	 landing.txt_signup.click();
 		 
-	 signup.verifyPageUrl();
+	
 	 System.out.println("Random Number: "+common.randomNumber());
 	 signup.txt_userName.click();
 	 signup.txt_userName.sendKeys("test"+common.randomNumber()+"@yopmail.com");
