@@ -16,7 +16,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import LST.core.TestBase;
@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import pageObjects.Browser;
+import pageObjects.Dashboard;
 //import org.testng.annotations.AfterTest;
 //import org.testng.annotations.BeforeTest;
 import pageObjects.LandingPage;
@@ -79,9 +80,9 @@ private CommonTask common;
 	  }
 	  
 	  
-	  @Test(priority=2) 
+@Test(dataProvider= "getSignInData",priority=2) 
 
- public void checkSignupA() throws InterruptedException {
+ public void checkSignupA(String username, String password, String cPassword, int testCase) throws InterruptedException {
 	
 	 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS); 
 	 common = new CommonTask();
@@ -95,16 +96,16 @@ private CommonTask common;
 	 landing.txt_signup.click();
 		 
 	
-	 System.out.println("Random Number: "+common.randomNumber());
+	
 	 signup.txt_userName.click();
-	 signup.txt_userName.sendKeys("test"+common.randomNumber()+"@yopmail.com");
+	 signup.txt_userName.sendKeys(username);
 	    
 	 signup.txt_password.click();
 	    
-	 signup.txt_password.sendKeys("asdF1234");
+	 signup.txt_password.sendKeys(password);
 	   	
 	 signup.txt_confirmPassword.click();
-	 signup.txt_confirmPassword.sendKeys("asdF1234");
+	 signup.txt_confirmPassword.sendKeys(cPassword);
 	 signup.radio_termsandCond.click();
 	 signup.radio_updates.click();
 	 signup.btn_signUp.click();
@@ -112,15 +113,49 @@ private CommonTask common;
 	 signup.txt_capcha.sendKeys("ssssfdg");
 	    Thread.sleep(200); 
 	    signup.btn_capcha.click();
-	    Thread.sleep(20000); 
+	    Thread.sleep(2000); 
 	    //driver.findElement(By.cssSelector(".content-canvas__container")).click();
 
+	    
+	    switch(testCase) {
+	    case 1: testCase1();break;
+	    case 2: testCase2(); break;
+	    }
 		  System.out.println("+++++++++++++++++++++++IN Signup+++++++++++++++++");
 		  
 		  }
 
-	 
+	  @DataProvider
+	  public Object[][] getSignInData(){
+		 common = new CommonTask();
+		 String user = "test"+common.randomNumber()+"@yopmail.com";
+		  
+	   Object[][] data= new Object[2][4];
+	   data[0][0]= user;
+	   data[0][1]= "asdF1234";
+	   data[0][2]= "asdF1234";
+	   data[0][3]= 1;
+	   
+	   data[1][0]= "";
+	   data[1][1]= "asdF1234";
+	   data[1][2]= "asdF1234";
+	   data[1][3]= 2;
+	   
+	   return data;
+	  }
+	  public void testCase1() throws InterruptedException {
+		  	signup = new SignUP(driver);
+			Dashboard dash = new Dashboard(signup.getDriver());
+			dash.initElement();
+			dash.verifyPageUrl();
+			dash.btn_logout.click();
+	  }
  
+	  public void testCase2() {
+		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Email address is required."); 
+		  logger.info("Empty email address message is showing successfully.");
+			 
+	  }
 @AfterClass
 public  void closeBrowser() {
 	System.out.println("Closing Signup page Test");
