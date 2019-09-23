@@ -34,7 +34,7 @@ public class CommonTask {
 	
 public int randomNumber() {
 	
-	return (int)(Math.random()*200);
+	return (int)(Math.random()*2000);
 }
 
 	  public void verifyTextOnThePage(String expected, String path, WebDriver driver1)
