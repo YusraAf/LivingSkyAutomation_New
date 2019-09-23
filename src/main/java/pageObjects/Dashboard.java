@@ -13,6 +13,7 @@ public class Dashboard extends PageBase {
 	
 	public Dashboard(WebDriver driver) { 
 		super(driver);
+		this.setUrl("dashboard");
 	} 
 	
 @FindBy(xpath= "//input[@placeholder='Search for a project']")
