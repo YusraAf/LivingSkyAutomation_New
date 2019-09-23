@@ -131,6 +131,7 @@ public Object[][] getLoginData(){
 public void testCase1() throws InterruptedException {
 	Dashboard dash = new Dashboard(log.getDriver());
 	dash.initElement();
+	dash.verifyPageUrl();
 	 WebElement element = dash.link_projects;
 		
 		 // Actions builder = new Actions(driver);
