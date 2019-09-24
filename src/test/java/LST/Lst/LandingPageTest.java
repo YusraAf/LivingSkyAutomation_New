@@ -157,6 +157,7 @@ private LoginPage login;
 		 l.initElement();
 		 
 		 FooterNavigation footer =new FooterNavigation(l.getDriver());
+		 footer.initElement();
 		 
 		 AssertJUnit.assertTrue(footer.wwImg_Footer.isDisplayed());
 		 logger.info("WW Image is displayed on the footer of Landing Page.");
@@ -219,8 +220,7 @@ private LoginPage login;
 		 AssertJUnit.assertTrue(footer.linkedInImg_Footer.isDisplayed());
 		 logger.info("LinkedIn Image link is displayed on the footer of Landing Page.");
 		 AssertJUnit.assertTrue(footer.youtubeImg_Footer.isDisplayed());
-		 logger.info("you Tube Image link is displayed on the footer of Landing Page.");
-		 
+		 logger.info("you Tube Image link is displayed on the footer of Landing Page.");	 
 	
 }
 @Test(priority=4)
