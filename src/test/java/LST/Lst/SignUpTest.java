@@ -130,8 +130,7 @@ private CommonTask common;
 	 try {
 	 	 signup.txt_capcha.click();
 		 signup.txt_capcha.sendKeys("ssssfdg");
-		    Thread.sleep(200); 
-		    signup.btn_capcha.click();
+		 signup.btn_capcha.click();
 	 
 	 }catch(Exception e) {
 		 System.out.println("in side catch: ");
@@ -146,7 +145,7 @@ private CommonTask common;
 
 	    
 	    switch(testCase) {
-	    case 1: testCase1();break;
+	    case 1: testCase1(); break;
 	    case 2: testCase2(); break;
 	    case 3: testCase3(); break;
 	    }
@@ -198,9 +197,10 @@ private CommonTask common;
 
 	  public void testCase3() {
 	
-		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "First you need to agree to the terms of use.."); 
-		  logger.info("Empty email address message is showing successfully.");
+		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "First you need to agree to the terms of use."); 
+		  logger.info("Empty T&C message is showing successfully.");
 		  Browser.pageRefresh();
+		  
 	  }
 
 @AfterClass
