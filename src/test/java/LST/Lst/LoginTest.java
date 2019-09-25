@@ -8,6 +8,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.AssertJUnit;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import LST.core.TestBase;
@@ -19,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.DataProvider;
@@ -79,7 +84,7 @@ public void doSignin(String username, String password, int testCase) throws IOEx
 	 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	 
 	 log =new LoginPage(landing.getDriver());
-	 landing.initElement(log);
+	 log.initElement();
 	  
 	 log.txt_userName.sendKeys(username);
 	 log.txt_password.sendKeys(password);
@@ -92,9 +97,9 @@ public void doSignin(String username, String password, int testCase) throws IOEx
 	 //common = new CommonTask();
 	 
 	 switch(testCase){
-		 case 1: testCase1(); break;
-		 case 2: testCase2(); break;
-		 case 3: testCase3(); break;
+		 case 1: testCase1(driver); break;
+		 case 2: testCase2(driver); break;
+		 case 3: testCase3(driver); break;
 	 }
 	 
 	
@@ -119,7 +124,7 @@ public Object[][] getLoginData(){
  data[0][2]= 1;
  
  data[1][0]= "niti5@yopmail.com";
- data[1][1]= "asdF1234";
+ data[1][1]= "asd12934";
  data[1][2]= 2;
  
  data[2][0]= "niti@yopmail.com";
@@ -128,7 +133,8 @@ public Object[][] getLoginData(){
  
  return data;
 }
-public void testCase1() throws InterruptedException {
+
+public void testCase1(WebDriver driver) throws InterruptedException {
 	Dashboard dash = new Dashboard(log.getDriver());
 	dash.initElement();
 	dash.verifyPageUrl();
@@ -136,14 +142,14 @@ public void testCase1() throws InterruptedException {
 		
 		 // Actions builder = new Actions(driver);
 		//  builder.moveToElement(element).click().build().perform();
-		 
+	 common = new CommonTask();
 	 
 	 common.moveMouse(element, driver);
 	
 	 AssertJUnit.assertEquals(dash.link_projects.getText(),"Projects");
 	 logger.info("Projects is displayed in Dashboard.");
 	 
-	// System.out.println("++++++++In Side Try++++++++++++"+ dash.link_projects.getText());
+	System.out.println("++++++++In Side Testcase1++++++++++++");
 	 WebElement element2 = dash.link_collections;
 	 Actions builder2 = new Actions(driver);
 	 builder2.moveToElement(element2).build().perform();
@@ -160,21 +166,23 @@ public void testCase1() throws InterruptedException {
 	 
 	 AssertJUnit.assertEquals(dash.link_collections.getText(), "Collection");
 	 logger.info("Collection is displayed in Dashboard.");
-	 
+	 Thread.sleep(200);
 	 dash.btn_logout.click();
 }
 
-public void testCase2() {
+
+public void testCase2(WebDriver driver) throws InterruptedException {
 	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Wrong email or password was provided."); 
 	 logger.info("Wrong login message is showing successfully.");
-	 
+	 Thread.sleep(200);
 	 Browser.pageRefresh();
 }
 
-public void testCase3() {
+
+public void testCase3(WebDriver driver) throws InterruptedException {
 	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password is required."); 
 	 logger.info("Wrong login message is showing successfully.");
-	 
+	 Thread.sleep(200);
 	 Browser.pageRefresh();
 }
 
