@@ -181,7 +181,7 @@ public void testCase2(WebDriver driver) throws InterruptedException {
 
 public void testCase3(WebDriver driver) throws InterruptedException {
 	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password is required."); 
-	 logger.info("Wrong login message is showing successfully.");
+	 logger.info("Password is required message is showing successfully.");
 	 Thread.sleep(200);
 	 Browser.pageRefresh();
 }
