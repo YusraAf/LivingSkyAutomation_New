@@ -226,7 +226,7 @@ private LoginPage login;
 		 AssertJUnit.assertTrue(footer.youtubeImg_Footer.isDisplayed());
 		 logger.info("you Tube Image link is displayed on the footer of Landing Page.");	 
 	
-}
+} 
 @Test(priority=4)
 	public void clickOnLogin() throws InterruptedException {
 		 
@@ -237,7 +237,8 @@ private LoginPage login;
 		logger.info("Click on Login page.");
 		 Thread.sleep(500);
 		 login= new LoginPage(landing.driver);
-		 login.verifyPageUrl();
+		 
+		 System.out.println(login.verifyPageUrl());
 		 Thread.sleep(500);
 		 
 	}
