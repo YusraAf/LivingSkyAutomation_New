@@ -1,5 +1,9 @@
 package LST.Lst;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -41,17 +45,17 @@ public class CommonTestForAllPages extends TestBase  {
 		CommonTask ct = new CommonTask();
 		List<WebElement> navBarContent1 = ct.getLiElementInUl(path);
 		
-		 Assert.assertEquals(navBarContent1.get(0).getText(), "Features");
+		 AssertJUnit.assertEquals(navBarContent1.get(0).getText(), "Features");
 		 logger.info("Features link is available in header.");
-		 Assert.assertEquals(navBarContent1.get(1).getText(), "Pricing");
+		 AssertJUnit.assertEquals(navBarContent1.get(1).getText(), "Pricing");
 		 logger.info("Pricing link is available in header.");
 
 		 WebElement path1 = headNav.navBar_HeaderContent2;
 		 List<WebElement> navBarContent2 = ct.getLiElementInUl(path1);
 			
-		 Assert.assertEquals(navBarContent2.get(0).getText(), "Sign In");
+		 AssertJUnit.assertEquals(navBarContent2.get(0).getText(), "Sign In");
 		 logger.info("Sign In link is available in header.");
-		 Assert.assertEquals(navBarContent2.get(1).getText(), "Try it for free");
+		 AssertJUnit.assertEquals(navBarContent2.get(1).getText(), "Try it for free");
 		 logger.info("Try it for free link is available in header.");
 			
 		 

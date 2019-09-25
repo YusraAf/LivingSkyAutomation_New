@@ -83,6 +83,7 @@ public abstract class PageBase {
     public PageBase verifyPageUrl() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
+            	System.out.println("Page URL: "+ pageUrl);
                 return d.getCurrentUrl().contains(pageUrl);
             }
         });

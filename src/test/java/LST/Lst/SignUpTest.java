@@ -1,5 +1,9 @@
 package LST.Lst;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
@@ -72,9 +76,9 @@ private CommonTask common;
 	 	 logger.info("Sign up with Facebook button is displayed in Signup Page.");
 	 	 AssertJUnit.assertTrue(signup.btn_Google.isDisplayed());
 	 	 logger.info("Sign up with Google button is displayed in Signup Page.");
-	 	 AssertJUnit.assertTrue(signup.btn_TermsPolicy.isDisplayed());
+	 	 AssertJUnit.assertTrue(signup.link_TermsPolicy.isDisplayed());
 	 	 logger.info("Terms and Policy button is displayed in Signup Page.");
-	 	 AssertJUnit.assertTrue(signup.btn_WriteWaySignUP.isDisplayed());
+	 	 AssertJUnit.assertTrue(signup.link_PrivacyPolicy.isDisplayed());
 	 	 logger.info("I want to receive updates about WriteWay button is displayed in Signup Page.");
 	 	 
 	  }
@@ -106,31 +110,57 @@ private CommonTask common;
 	   	
 	 signup.txt_confirmPassword.click();
 	 signup.txt_confirmPassword.sendKeys(cPassword);
+	 System.out.println("TestCase: "+ testCase);
+	 if (testCase ==3)
+	 {
+		 boolean actualValue= signup.radio_termsandCond.isSelected();
+		 System.out.println("Radio: "+ actualValue);
+		 if(actualValue==true) {
+			 signup.radio_termsandCond.click();
+		 }
+	 }else {
 	 signup.radio_termsandCond.click();
+	 }
 	 signup.radio_updates.click();
 	 signup.btn_signUp.click();
-	 signup.txt_capcha.click();
-	 signup.txt_capcha.sendKeys("ssssfdg");
-	    Thread.sleep(200); 
-	    signup.btn_capcha.click();
-	    Thread.sleep(2000); 
+	 Thread.sleep(200);
+	 System.out.println("text: ..........");
+	// boolean text = signup.text_ErrorMSg.isEnabled();
+	 //System.out.println("text 2: ..........");
+	 try {
+	 	 signup.txt_capcha.click();
+		 signup.txt_capcha.sendKeys("ssssfdg");
+		    Thread.sleep(200); 
+		    signup.btn_capcha.click();
+	 
+	 }catch(Exception e) {
+		 System.out.println("in side catch: ");
+		 if(signup.text_ErrorMSg.isDisplayed()) {
+			 System.out.println("text: ");
+		 }
+		
+	 }
+	 
+	   // Thread.sleep(200); 
 	    //driver.findElement(By.cssSelector(".content-canvas__container")).click();
 
 	    
 	    switch(testCase) {
 	    case 1: testCase1();break;
 	    case 2: testCase2(); break;
+	    case 3: testCase3(); break;
 	    }
 		  System.out.println("+++++++++++++++++++++++IN Signup+++++++++++++++++");
 		  
 		  }
 
-	  @DataProvider
+
+	@DataProvider
 	  public Object[][] getSignInData(){
 		 common = new CommonTask();
 		 String user = "test"+common.randomNumber()+"@yopmail.com";
 		  
-	   Object[][] data= new Object[2][4];
+	   Object[][] data= new Object[3][4];
 	   data[0][0]= user;
 	   data[0][1]= "asdF1234";
 	   data[0][2]= "asdF1234";
@@ -141,21 +171,38 @@ private CommonTask common;
 	   data[1][2]= "asdF1234";
 	   data[1][3]= 2;
 	   
+	   data[2][0]= user;
+	   data[2][1]= "asdF1234";
+	   data[2][2]= "asdF1234";
+	   data[2][3]= 3;
+	   
 	   return data;
 	  }
-	  public void testCase1() throws InterruptedException {
+	  
+	public void testCase1() throws InterruptedException {
 		  	signup = new SignUP(driver);
 			Dashboard dash = new Dashboard(signup.getDriver());
 			dash.initElement();
 			dash.verifyPageUrl();
 			dash.btn_logout.click();
+			
 	  }
  
-	  public void testCase2() {
+	  
+	public void testCase2() {
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Email address is required."); 
 		  logger.info("Empty email address message is showing successfully.");
-			 
+		Browser.pageRefresh();
 	  }
+	
+
+	  public void testCase3() {
+	
+		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "First you need to agree to the terms of use.."); 
+		  logger.info("Empty email address message is showing successfully.");
+		  Browser.pageRefresh();
+	  }
+
 @AfterClass
 public  void closeBrowser() {
 	System.out.println("Closing Signup page Test");
