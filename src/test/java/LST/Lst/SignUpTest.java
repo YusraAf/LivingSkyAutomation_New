@@ -148,18 +148,20 @@ private CommonTask common;
 	    case 1: testCase1(); break;
 	    case 2: testCase2(); break;
 	    case 3: testCase3(); break;
+	    case 4: testCase4(); break;
+	    case 5: testCase5(); break;
+	    case 6: testCase6(); break;
 	    }
 		  System.out.println("+++++++++++++++++++++++IN Signup+++++++++++++++++");
 		  
 		  }
-
 
 	@DataProvider
 	  public Object[][] getSignInData(){
 		 common = new CommonTask();
 		 String user = "test"+common.randomNumber()+"@yopmail.com";
 		  
-	   Object[][] data= new Object[3][4];
+	   Object[][] data= new Object[7][4];
 	   data[0][0]= user;
 	   data[0][1]= "asdF1234";
 	   data[0][2]= "asdF1234";
@@ -175,6 +177,26 @@ private CommonTask common;
 	   data[2][2]= "asdF1234";
 	   data[2][3]= 3;
 	   
+	   data[3][0]= user;
+	   data[3][1]= "asdF";
+	   data[3][2]= "asdF";
+	   data[3][3]= 4;
+	   
+	   data[4][0]= user;
+	   data[4][1]= "asdF123456";
+	   data[4][2]= "asdF1234";
+	   data[4][3]= 5;
+	   
+	   data[5][0]= user;
+	   data[5][1]= "";
+	   data[5][2]= "asdF1234";
+	   data[5][3]= 6;
+	   
+	   data[6][0]= user;
+	   data[6][1]= "asdF1234";
+	   data[6][2]= "";
+	   data[6][3]= 7;
+	   
 	   return data;
 	  }
 	  
@@ -183,11 +205,9 @@ private CommonTask common;
 			Dashboard dash = new Dashboard(signup.getDriver());
 			dash.initElement();
 			dash.verifyPageUrl();
-			dash.btn_logout.click();
-			
+			dash.btn_logout.click();		
 	  }
  
-	  
 	public void testCase2() {
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Email address is required."); 
 		  logger.info("Empty email address message is showing successfully.");
@@ -198,10 +218,39 @@ private CommonTask common;
 	  public void testCase3() {
 	
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "First you need to agree to the terms of use."); 
-		  logger.info("Empty T&C message is showing successfully.");
+
+		  logger.info("First you need to agree to the terms of use message is showing successfully.");
+		  Browser.pageRefresh();
+	  }
+	  
+	  public void testCase4() {
+			
+		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password must be 8 or more characters."); 
+		  logger.info("Password must be 8 or more characters message is showing successfully.");
 		  Browser.pageRefresh();
 		  
 	  }
+	  
+	  public void testCase5() {
+			
+		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Passwords do not match."); 
+		  logger.info("Passwords do not match message is showing successfully.");
+		  Browser.pageRefresh();
+	  }
+	  
+	  public void testCase6() {
+			
+		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password is required."); 
+		  logger.info("Password is required message is showing successfully.");
+		  Browser.pageRefresh();
+	  }
+	  
+	  public void testCase7() {
+			
+		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Confirm password is required."); 
+		  logger.info("Confirm password is required message is showing successfully.");
+		  Browser.pageRefresh();
+	  } 
 
 @AfterClass
 public  void closeBrowser() {
