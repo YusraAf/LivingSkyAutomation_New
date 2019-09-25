@@ -28,14 +28,13 @@ public WebElement txt_password;
 @CacheLookup
 public WebElement txt_confirmPassword;
 
+@FindBy(css = ".check:nth-child(3)")
+@CacheLookup
+public WebElement radio_termsandCond;
 
 @FindBy(xpath= "//div[@class='form-groups']//div[2]//div[1]//label[1]//span[1]")
 @CacheLookup
-public WebElement radio_termsandCond;	
-
-@FindBy(css = ".check:nth-child(3)")
-@CacheLookup
-public WebElement radio_updates;
+public WebElement radio_updates;	
 
 @FindBy(css = ".btn-text")
 @CacheLookup
@@ -58,12 +57,17 @@ public WebElement btn_Facebook;
 @CacheLookup
 public WebElement btn_Google;
 
-@FindBy(xpath="//div[@id='signup-form']//div[1]//div[1]//label[1]//span[2]")
+@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/label[1]/span[2]/a[1]")
 @CacheLookup
-public WebElement btn_TermsPolicy;
+public WebElement link_TermsPolicy;
 
-@FindBy(xpath="//span[contains(text(),'I want to receive updates about WriteWay')]")
+@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/label[1]/span[2]/a[2]")
 @CacheLookup
-public WebElement btn_WriteWaySignUP;
+public WebElement link_PrivacyPolicy;
+
+@FindBy(xpath="//p[@class='statusText error-msg']")
+@CacheLookup
+public WebElement text_ErrorMSg;
+
 
 }
