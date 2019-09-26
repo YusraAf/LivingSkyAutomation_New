@@ -29,7 +29,7 @@ public WebElement txt_password;
 @CacheLookup
 public WebElement btn_login;
 
-@FindBy(xpath= "//span[@class='label-text']")
+@FindBy(xpath= "//span[@class='check']")
 @CacheLookup
 public WebElement radio_remember_me;
 
