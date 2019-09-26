@@ -25,10 +25,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-
-import pageObjects.Browser;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
+import resources.Browser;
 import resources.FooterNavigation;
 
 public class LandingPageTest extends TestBase{

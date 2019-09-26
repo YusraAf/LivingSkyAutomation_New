@@ -28,10 +28,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.DataProvider;
 
-import pageObjects.Browser;
 import pageObjects.Dashboard;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
+import resources.Browser;
 import resources.CommonTask;
 
 public class LoginTest extends TestBase{

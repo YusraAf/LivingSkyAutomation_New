@@ -33,7 +33,7 @@ public static void postGreDbConnectionOpen() {
     }
 }
 
-public void dbClose() {
+public static void dbClose() {
 	try {
 		db.close();
 	} catch (SQLException e) {
@@ -41,25 +41,21 @@ public void dbClose() {
 		System.out.println(e.getMessage());
 	}
 }
-
-public static void main(String[] args) {
-	PostGreConnection ps =	new PostGreConnection();
-	ps.postGreDbConnectionOpen();
-	DbQuery dbq= new DbQuery();
-	try {
-		dbq.deleteData();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		System.out.println("No data is return");
-	}
-	try {
-		dbq.selectData();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-	
-}
+	/*
+	  public static void main(String[] args) { 
+		  PostGreConnection ps = new  PostGreConnection(); 
+		  ps.postGreDbConnectionOpen(); DbQuery dbq= new
+	  DbQuery(); try { 
+		  dbq.deleteData();
+		  } catch (SQLException e) { 
+			  System.out.println("No data is return"); 
+	  } 
+	  
+	  try {
+	  dbq.selectData(); } catch (SQLException e) { // TODO Auto-generated catch
+	  block e.printStackTrace(); }
+	 
+	  }
+	  */
 }
 
