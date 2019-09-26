@@ -1,4 +1,4 @@
- package pageObjects;
+ package resources;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Proxy;

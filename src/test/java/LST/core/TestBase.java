@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.util.Properties;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import pageObjects.Browser;
+
+import resources.Browser;
 
 //import pageObject.Browser;
 public class TestBase {

@@ -4,37 +4,28 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.AssertJUnit;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import LST.core.TestBase;
+import dbconnection.DbQuery;
+import dbconnection.PostGreConnection;
 
 import java.io.IOException;
+
 import java.util.concurrent.TimeUnit;
 
-import pageObjects.Browser;
 import pageObjects.Dashboard;
-//import org.testng.annotations.AfterTest;
-//import org.testng.annotations.BeforeTest;
+
 import pageObjects.LandingPage;
-import pageObjects.LoginPage;
+
 import pageObjects.SignUP;
+import resources.Browser;
 import resources.CommonTask;
 
 public class SignUpTest extends TestBase{
@@ -48,6 +39,8 @@ private CommonTask common;
 @BeforeClass
 	
 	public void openBrowser() throws IOException, InterruptedException {
+	
+	deleteRegisterData();
 	driver = Browser.getInstance();
 	driver.get(baseUrl);
 	
@@ -98,9 +91,7 @@ private CommonTask common;
 	 signup.initElement();
 	 
 	 landing.txt_signup.click();
-		 
-	
-	
+		
 	 signup.txt_userName.click();
 	 signup.txt_userName.sendKeys(username);
 	    
@@ -111,7 +102,8 @@ private CommonTask common;
 	 signup.txt_confirmPassword.click();
 	 signup.txt_confirmPassword.sendKeys(cPassword);
 	 System.out.println("TestCase: "+ testCase);
-	 if (testCase ==3)
+	 
+	 if (testCase ==2)
 	 {
 		 boolean actualValue= signup.radio_termsandCond.isSelected();
 		 System.out.println("Radio: "+ actualValue);
@@ -125,32 +117,28 @@ private CommonTask common;
 	 signup.btn_signUp.click();
 	 Thread.sleep(200);
 	 System.out.println("text: ..........");
-	// boolean text = signup.text_ErrorMSg.isEnabled();
-	 //System.out.println("text 2: ..........");
+	
 	 try {
-	 	 signup.txt_capcha.click();
-		 signup.txt_capcha.sendKeys("ssssfdg");
-		 signup.btn_capcha.click();
-	 
+	 	 if(signup.text_ErrorMSg.isDisplayed()) {
+				 System.out.println("text: ");
+		 }
 	 }catch(Exception e) {
 		 System.out.println("in side catch: ");
-		 if(signup.text_ErrorMSg.isDisplayed()) {
-			 System.out.println("text: ");
-		 }
+		
+		 signup.txt_capcha.click();
+		 signup.txt_capcha.sendKeys("ssssfdg");
+		 signup.btn_capcha.click();
 		
 	 }
 	 
-	   // Thread.sleep(200); 
-	    //driver.findElement(By.cssSelector(".content-canvas__container")).click();
-
-	    
-	    switch(testCase) {
+	 switch(testCase) {
 	    case 1: testCase1(); break;
 	    case 2: testCase2(); break;
 	    case 3: testCase3(); break;
 	    case 4: testCase4(); break;
 	    case 5: testCase5(); break;
 	    case 6: testCase6(); break;
+	    case 7: testCase7(); break;
 	    }
 		  System.out.println("+++++++++++++++++++++++IN Signup+++++++++++++++++");
 		  
@@ -162,60 +150,56 @@ private CommonTask common;
 		 String user = "test"+common.randomNumber()+"@yopmail.com";
 		  
 	   Object[][] data= new Object[7][4];
-	   data[0][0]= user;
+	   data[0][0]= "";
 	   data[0][1]= "asdF1234";
 	   data[0][2]= "asdF1234";
 	   data[0][3]= 1;
 	   
-	   data[1][0]= "";
+	   data[1][0]= user;
 	   data[1][1]= "asdF1234";
 	   data[1][2]= "asdF1234";
 	   data[1][3]= 2;
 	   
 	   data[2][0]= user;
-	   data[2][1]= "asdF1234";
-	   data[2][2]= "asdF1234";
+	   data[2][1]= "asdF";
+	   data[2][2]= "asdF";
 	   data[2][3]= 3;
 	   
 	   data[3][0]= user;
-	   data[3][1]= "asdF";
-	   data[3][2]= "asdF";
+	   data[3][1]= "asdF123456";
+	   data[3][2]= "asdF1234";
 	   data[3][3]= 4;
 	   
 	   data[4][0]= user;
-	   data[4][1]= "asdF123456";
+	   data[4][1]= "";
 	   data[4][2]= "asdF1234";
 	   data[4][3]= 5;
 	   
 	   data[5][0]= user;
-	   data[5][1]= "";
-	   data[5][2]= "asdF1234";
+	   data[5][1]= "asdF1234";
+	   data[5][2]= "";
 	   data[5][3]= 6;
 	   
 	   data[6][0]= user;
 	   data[6][1]= "asdF1234";
-	   data[6][2]= "";
+	   data[6][2]= "asdF1234";
 	   data[6][3]= 7;
+	   
+	   
 	   
 	   return data;
 	  }
 	  
-	public void testCase1() throws InterruptedException {
-		  	signup = new SignUP(driver);
-			Dashboard dash = new Dashboard(signup.getDriver());
-			dash.initElement();
-			dash.verifyPageUrl();
-			dash.btn_logout.click();		
-	  }
+	
  
-	public void testCase2() {
+	public void testCase1() {
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Email address is required."); 
 		  logger.info("Empty email address message is showing successfully.");
 		Browser.pageRefresh();
 	  }
 	
 
-	  public void testCase3() {
+	  public void testCase2() {
 	
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "First you need to agree to the terms of use."); 
 
@@ -223,7 +207,7 @@ private CommonTask common;
 		  Browser.pageRefresh();
 	  }
 	  
-	  public void testCase4() {
+	  public void testCase3() {
 			
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password must be 8 or more characters."); 
 		  logger.info("Password must be 8 or more characters message is showing successfully.");
@@ -231,27 +215,41 @@ private CommonTask common;
 		  
 	  }
 	  
-	  public void testCase5() {
+	  public void testCase4() {
 			
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Passwords do not match."); 
 		  logger.info("Passwords do not match message is showing successfully.");
 		  Browser.pageRefresh();
 	  }
 	  
-	  public void testCase6() {
+	  public void testCase5() {
 			
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password is required."); 
 		  logger.info("Password is required message is showing successfully.");
 		  Browser.pageRefresh();
 	  }
 	  
-	  public void testCase7() {
+	  public void testCase6() {
 			
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Confirm password is required."); 
 		  logger.info("Confirm password is required message is showing successfully.");
 		  Browser.pageRefresh();
 	  } 
-
+	  public void testCase7() throws InterruptedException {
+		  	signup = new SignUP(driver);
+			Dashboard dash = new Dashboard(signup.getDriver());
+			dash.initElement();
+			dash.verifyPageUrl();
+			dash.btn_logout.click();		
+	  }
+	  public void deleteRegisterData() {
+		  
+		  PostGreConnection.postGreDbConnectionOpen(); 
+		  DbQuery dbq= new  DbQuery(); 
+		  String query =  "Delete from public.\"unverifiedUsers\" where email like '%test%'";
+		  dbq.deleteData(query); 
+		  PostGreConnection.dbClose();
+	  }
 @AfterClass
 public  void closeBrowser() {
 	System.out.println("Closing Signup page Test");
