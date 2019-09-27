@@ -8,7 +8,8 @@ import org.testng.AssertJUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 
 
@@ -119,9 +120,12 @@ private CommonTask common;
 	 System.out.println("text: ..........");
 	
 	 try {
-	 	 if(signup.text_ErrorMSg.isDisplayed()) {
-				 System.out.println("text: ");
-		 }
+	 	// if(signup.text_ErrorMSg.isDisplayed()) {
+		//		 System.out.println("text: ");
+		 WebDriverWait wait=new WebDriverWait(driver,5);
+		 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='statusText error-msg']")));	 
+	 
+	  //}
 	 }catch(Exception e) {
 		 System.out.println("in side catch: ");
 		
@@ -184,8 +188,6 @@ private CommonTask common;
 	   data[6][1]= "asdF1234";
 	   data[6][2]= "asdF1234";
 	   data[6][3]= 7;
-	   
-	   
 	   
 	   return data;
 	  }
