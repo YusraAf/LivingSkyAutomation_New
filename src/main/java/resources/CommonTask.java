@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.AssertJUnit;
 
 public class CommonTask {
 	private HeaderNavigation headNav;
@@ -187,5 +188,30 @@ public int randomNumber() {
 
     * 
     */
+ public WebDriver childWindowHandler (WebDriver driver, WebElement el, String pageUrl, String parentWindow) {
+	 //String parentWindow = driver.getWindowHandle();
+	 el.click();
+	 //Thread.sleep(200);
+	 
+	 for (String childWindow : driver.getWindowHandles()) {
+		 driver.switchTo().window(childWindow);
+	 }
+	 boolean actualUrl = driver.getCurrentUrl().contains(pageUrl);
+     System.out.println("Link Url====>" + actualUrl);
+     
+	 AssertJUnit.assertEquals(actualUrl, true);
+     
+	 //driver.close();
+	// driver.switchTo().window(parentWindow);
+	 return driver;
+	 
+	 
+ }
+ public WebDriver backToParentWinFromChildWin (WebDriver driver, String parentWindow) {
 
+	 driver.close();
+	 driver.switchTo().window(parentWindow);
+	 return driver;
+	 
+ }
 } 
