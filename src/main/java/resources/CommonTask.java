@@ -13,7 +13,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.AssertJUnit;
 
 public class CommonTask {
-	private HeaderNavigation headNav;
+private HeaderNavigation headNav;
 	
 
 	
