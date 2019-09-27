@@ -28,7 +28,7 @@ public static void postGreDbConnectionOpen() {
          db = DriverManager.getConnection(url, username, password);
     	
         }
-    catch (java.sql.SQLException e) {
+    catch (java.sql.SQLException e) { 
         System.out.println(e.getMessage());
     }
 }
