@@ -46,8 +46,7 @@ private CommonTask common;
 	driver.get(baseUrl);
 	
 	}
-
-	  
+	 
 	  @Test(priority=1)
 	  public void checkSignupAttributes() throws InterruptedException {
 	 	// basePageNavigation();
@@ -59,7 +58,7 @@ private CommonTask common;
 	 	 signup.initElement();
 	 	 
 	 	 landing.txt_signup.click();
-	 	 
+	 	 // Verify all WebElement of SignUp page
 	 	 AssertJUnit.assertTrue(signup.txt_userName.isDisplayed());
 	 	 logger.info("Email text box is displayed in Signup Page.");
 	 	 AssertJUnit.assertTrue(signup.txt_password.isDisplayed());
@@ -82,6 +81,7 @@ private CommonTask common;
 
  public void checkSignupA(String username, String password, String cPassword, int testCase) throws InterruptedException {
 	
+	// Test Case ID : WW-48-TC-003 Verify SignUp with different Test Scenario 
 	 driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS); 
 	 common = new CommonTask();
 	 
@@ -205,7 +205,7 @@ private CommonTask common;
 		  logger.info("Empty email address message is showing successfully.");
 		Browser.pageRefresh();
 	  }
-	
+
 
 	  public void testCase2() {
 	
@@ -250,7 +250,7 @@ private CommonTask common;
 			dash.verifyPageUrl();
 			dash.btn_logout.click();		
 	  }
-	  
+	 
 	  public void testCase8() {
 			
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "User already exists."); 

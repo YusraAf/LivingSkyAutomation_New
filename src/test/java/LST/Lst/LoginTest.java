@@ -41,7 +41,7 @@ public class LoginTest extends TestBase{
 
 @Test(priority=1)
 public void verifyLoginPageAttributes() throws InterruptedException {
-	
+
 	landing= new LandingPage(driver);
 	landing.initElement();
 	landing.txt_login.click();
@@ -146,9 +146,16 @@ public void testCase1(WebDriver driver) throws InterruptedException {
 	 
 	 System.out.println("++++++++In Side Testcase1++++++++++++");
 	 WebElement element2 = dash.link_collections;
+<<<<<<< HEAD
 	
 	 common.moveMouse(element2, driver);
 	
+=======
+	 Actions builder2 = new Actions(driver);
+	 builder2.moveToElement(element2).build().perform();
+	 
+
+>>>>>>> d9a4d30b6e5a2de76da4824ed1f9709baa12349f
 	 /**
 	  *  I will upload it later ..
 	  */

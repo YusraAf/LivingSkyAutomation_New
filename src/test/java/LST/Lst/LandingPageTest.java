@@ -3,7 +3,6 @@ package LST.Lst;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.AssertJUnit;
 
 import LST.core.TestBase;
@@ -16,7 +15,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pageObjects.LandingPage;
@@ -42,7 +40,7 @@ public class LandingPageTest extends TestBase {
 		logger.info("Browser is initialized in landing page.");
 
 	}
-
+	
 	@Test(priority = 1)
 	public void verifyHeadNavForAllPages() throws InterruptedException {
 		// landing = new LandingPage(driver);
@@ -53,11 +51,12 @@ public class LandingPageTest extends TestBase {
 
 	}
 
-	// Test Case ID : WW-46-TC-007 Verify all Landing Page WebElements
+	// Test Case ID : WW-46-TC-007 Verify all WebElements of Landing Page
 
 	@Test(priority = 2)
 	public void verifyLandingPageAttributes() throws InterruptedException {
-
+		
+		logger.info("This is inside in Landing Page =====> Verify all Landing Page WebElements");
 		LandingPage l = new LandingPage(driver);
 		// PageFactory.initElements(driver, LandingPage.class);
 		l.initElement();
@@ -85,8 +84,9 @@ public class LandingPageTest extends TestBase {
 		logger.info("Publish text is displayed on the Landing Page.");
 
 		// Verify All Images display on landing page
+		
 		AssertJUnit.assertTrue(log.img_NoLimitions.isDisplayed());
-		logger.info("No Limitions image is displayed in Landing Page.");
+		logger.info("No Limitations image is displayed in Landing Page.");
 		AssertJUnit.assertTrue(log.img_Cloudbased.isDisplayed());
 		logger.info("Cloud based image is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.img_Mindmaps.isDisplayed());
@@ -105,7 +105,7 @@ public class LandingPageTest extends TestBase {
 		// Verify All Labels display on landing page
 
 		AssertJUnit.assertTrue(log.lbl_NoLimitions.isDisplayed());
-		logger.info("No Limitions label is displayed in Landing Page..");
+		logger.info("No Limitations label is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.lbl_Cloudbased.isDisplayed());
 		logger.info("Cloud based label is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.lbl_Mindmaps.isDisplayed());
@@ -124,7 +124,7 @@ public class LandingPageTest extends TestBase {
 		// Verify All Texts display on landing page
 
 		AssertJUnit.assertTrue(log.text_NoLimitions.isDisplayed());
-		logger.info("No Limitions text is displayed in Landing Page..");
+		logger.info("No Limitations text is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.text_Cloudbased.isDisplayed());
 		logger.info("Cloud based text is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.text_Mindmaps.isDisplayed());
@@ -225,6 +225,8 @@ public class LandingPageTest extends TestBase {
 
 	}
 	
+	// Test Case ID : WW-46-TC-009 Verify Our Story Link on the Footer of Landing Page
+
 	@Test(priority = 4)
 	public void verifyOurStoryFooterlink() throws InterruptedException {
 
@@ -248,6 +250,8 @@ public class LandingPageTest extends TestBase {
 			
 	} 
 	
+	// Test Case ID : WW-46-TC-010 Verify Careers Link on the Footer of Landing Page
+
 	@Test(priority = 5)
 	public void verifyCareersFooterlink() throws InterruptedException {
 
@@ -268,6 +272,8 @@ public class LandingPageTest extends TestBase {
 			
 	} 
 	
+	// Test Case ID : WW-46-TC-011 Verify Contact Us Link on the Footer of Landing Page
+
 	@Test(priority = 6)
 	public void verifyContactUsFooterlink() throws InterruptedException {
 
@@ -287,7 +293,8 @@ public class LandingPageTest extends TestBase {
 		 logger.info("ContacUs Link is Clicked and ContactUs page is displayed successfully.");
 			
 	} 
-	
+	// Test Case ID : WW-46-TC-
+
 	@Test(priority = 7)
 	public void clickOnLogin() throws InterruptedException {
 
@@ -301,11 +308,13 @@ public class LandingPageTest extends TestBase {
 
 		System.out.println(login.verifyPageUrl());
 		Thread.sleep(500);
-
+		
 	}
-
+	
+	
 	@AfterClass
 	public void closeBrowser() {
+		logger.info("Closing of Landing Page Test");
 		System.out.println("Closing Landing page Test");
 		Browser.close();
 	}

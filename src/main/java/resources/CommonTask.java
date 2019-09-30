@@ -9,7 +9,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.AssertJUnit;
 
 public class CommonTask {
+<<<<<<< HEAD
 
+=======
+>>>>>>> d9a4d30b6e5a2de76da4824ed1f9709baa12349f
 	
 	public List<WebElement> getLiElementInUl(WebElement path) {
 		
