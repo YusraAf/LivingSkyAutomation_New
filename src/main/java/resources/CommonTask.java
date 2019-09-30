@@ -13,8 +13,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.AssertJUnit;
 
 public class CommonTask {
-private HeaderNavigation headNav;
-	
 
 	
 	public List<WebElement> getLiElementInUl(WebElement path) {
