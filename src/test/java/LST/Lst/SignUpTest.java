@@ -132,7 +132,8 @@ private CommonTask common;
 		 signup.txt_capcha.click();
 		 signup.txt_capcha.sendKeys("ssssfdg");
 		 signup.btn_capcha.click();
-		
+		 Thread.sleep(1000);
+		 //driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS) ;
 	 }
 	 
 	 switch(testCase) {
@@ -143,6 +144,7 @@ private CommonTask common;
 	    case 5: testCase5(); break;
 	    case 6: testCase6(); break;
 	    case 7: testCase7(); break;
+	    case 8: testCase8(); break;
 	    }
 		  System.out.println("+++++++++++++++++++++++IN Signup+++++++++++++++++");
 		  
@@ -153,7 +155,7 @@ private CommonTask common;
 		 common = new CommonTask();
 		 String user = "test"+common.randomNumber()+"@yopmail.com";
 		  
-	   Object[][] data= new Object[7][4];
+	   Object[][] data= new Object[8][4];
 	   data[0][0]= "";
 	   data[0][1]= "asdF1234";
 	   data[0][2]= "asdF1234";
@@ -189,6 +191,10 @@ private CommonTask common;
 	   data[6][2]= "asdF1234";
 	   data[6][3]= 7;
 	   
+	   data[7][0]= user;
+	   data[7][1]= "asdF1234";
+	   data[7][2]= "asdF1234";
+	   data[7][3]= 8;
 	   return data;
 	  }
 	  
@@ -244,6 +250,13 @@ private CommonTask common;
 			dash.verifyPageUrl();
 			dash.btn_logout.click();		
 	  }
+	  
+	  public void testCase8() {
+			
+		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "User already exists."); 
+		  logger.info("Duplicate user checking message is showing successfully.");
+		  Browser.pageRefresh();
+	  } 
 	  public void deleteRegisterData() {
 		  
 		  PostGreConnection.postGreDbConnectionOpen(); 
