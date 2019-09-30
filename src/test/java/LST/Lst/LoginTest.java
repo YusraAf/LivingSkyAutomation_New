@@ -41,7 +41,7 @@ public class LoginTest extends TestBase{
 
 @Test(priority=1)
 public void verifyLoginPageAttributes() throws InterruptedException {
-	
+
 	landing= new LandingPage(driver);
 	landing.initElement();
 	landing.txt_login.click();
@@ -149,7 +149,7 @@ public void testCase1(WebDriver driver) throws InterruptedException {
 	 Actions builder2 = new Actions(driver);
 	 builder2.moveToElement(element2).build().perform();
 	 
-	
+
 	 /**
 	  *  I will upload it later ..
 	  */

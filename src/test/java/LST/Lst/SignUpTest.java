@@ -46,8 +46,7 @@ private CommonTask common;
 	driver.get(baseUrl);
 	
 	}
-
-	  
+	 
 	  @Test(priority=1)
 	  public void checkSignupAttributes() throws InterruptedException {
 	 	// basePageNavigation();
@@ -59,7 +58,7 @@ private CommonTask common;
 	 	 signup.initElement();
 	 	 
 	 	 landing.txt_signup.click();
-	 	 
+	 	 // Verify all WebElement of SignUp page
 	 	 AssertJUnit.assertTrue(signup.txt_userName.isDisplayed());
 	 	 logger.info("Email text box is displayed in Signup Page.");
 	 	 AssertJUnit.assertTrue(signup.txt_password.isDisplayed());
@@ -199,7 +198,7 @@ private CommonTask common;
 		  logger.info("Empty email address message is showing successfully.");
 		Browser.pageRefresh();
 	  }
-	
+
 
 	  public void testCase2() {
 	
