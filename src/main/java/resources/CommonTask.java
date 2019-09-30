@@ -1,10 +1,6 @@
 package resources;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -13,7 +9,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.AssertJUnit;
 
 public class CommonTask {
+<<<<<<< HEAD
+private HeaderNavigation headNav;
+=======
 
+>>>>>>> b8da4ecb0c99f9f447cb459cca3ac932e2a07bf9
 	
 	public List<WebElement> getLiElementInUl(WebElement path) {
 		
