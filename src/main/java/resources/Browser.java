@@ -88,8 +88,8 @@ public class Browser {
 	    } 
 
 	    private static WebDriver initChrome() {
-	        WebDriverManager.chromedriver().setup();
-	      
+	       WebDriverManager.chromedriver().setup();
+	        //WebDriverManager.chromedriver().version("77").setup();
 	       // driver = new ChromeDriver();
 	        
 	     // start the proxy
@@ -110,6 +110,7 @@ public class Browser {
 	        //-----------------------//
 	        ChromeOptions option = new ChromeOptions();
 	        option.addArguments(proxyOption);
+	        //option.addArguments("--headless");
 	        DesiredCapabilities capabilities = new DesiredCapabilities();
 	        capabilities.setCapability(ChromeOptions.CAPABILITY, option);
 	        driver = new ChromeDriver(option);

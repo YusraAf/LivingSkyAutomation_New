@@ -119,13 +119,20 @@ private CommonTask common;
 	 Thread.sleep(200);
 	 System.out.println("text: ..........");
 	
-	 try {
-	 	// if(signup.text_ErrorMSg.isDisplayed()) {
-		//		 System.out.println("text: ");
-		 WebDriverWait wait=new WebDriverWait(driver,5);
-		 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='statusText error-msg']")));	 
+	 /*try {
+	 	 if(signup.text_ErrorMSg.isDisplayed()) {
+				 System.out.println("text: ");
+		 
+		 
+		 
+		// WebDriverWait wait=new WebDriverWait(driver,5);
+		// wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='statusText error-msg']")));	
+		 if(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText().equals("Cannot access, please try again later.")) {
+			 driver.close();
+			 
+		 }
 	 
-	  //}
+	  }
 	 }catch(Exception e) {
 		 System.out.println("in side catch: ");
 		
@@ -134,7 +141,7 @@ private CommonTask common;
 		 signup.btn_capcha.click();
 		 Thread.sleep(1000);
 		 //driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS) ;
-	 }
+	 }*/
 	 
 	 switch(testCase) {
 	    case 1: testCase1(); break;
@@ -244,17 +251,52 @@ private CommonTask common;
 		  Browser.pageRefresh();
 	  } 
 	  public void testCase7() throws InterruptedException {
-		  	signup = new SignUP(driver);
+		  driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS) ;
+		  
+		  signup = new SignUP(driver);
+		  signup.txt_capcha.click();
+		  signup.txt_capcha.sendKeys("ssssfdg");
+		  
+		  //WebDriverWait wait = new WebDriverWait(driver, 30);
+		  //wait.until(ExpectedConditions.elementToBeClickable(By.name("answer")));
+		  signup.btn_capcha.click();
+		  	
 			Dashboard dash = new Dashboard(signup.getDriver());
 			dash.initElement();
 			dash.verifyPageUrl();
+			System.out.println("Inside the Dashboard: ");
 			dash.btn_logout.click();		
 	  }
 	 
-	  public void testCase8() {
-			
+	  public void testCase8() throws InterruptedException {
+		  try {
+		  driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS) ;
+		  signup = new SignUP(driver);
+		  signup.txt_capcha.click();
+		  signup.txt_capcha.sendKeys("ssssfdg");
+		 
+		  signup.btn_capcha.click();
+		
+		  // Thread.sleep(200);
+		//  driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS) ;
+		/*
+		 * if(driver.getCurrentUrl().contains("signup")) {
+		 * AssertJUnit.assertEquals(driver.findElement(By.
+		 * xpath("//p[@class='statusText error-msg']")).getText(),
+		 * "User already exists.");
+		 * logger.info("Duplicate user checking message is showing successfully."); }
+		 */
+		  
+		  WebDriverWait wait = new WebDriverWait(driver, 30);
+		  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.name("answer")));
+		  }catch(Exception e) {
+			  
+		  }
+		  
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "User already exists."); 
 		  logger.info("Duplicate user checking message is showing successfully.");
+		 
+		  Thread.sleep(800);
 		  Browser.pageRefresh();
 	  } 
 	  public void deleteRegisterData() {

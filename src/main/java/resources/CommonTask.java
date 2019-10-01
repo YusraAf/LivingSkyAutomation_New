@@ -6,14 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.AssertJUnit;
+
 
 public class CommonTask {
-<<<<<<< HEAD
 
-=======
->>>>>>> d9a4d30b6e5a2de76da4824ed1f9709baa12349f
-	
 	public List<WebElement> getLiElementInUl(WebElement path) {
 		
 		WebElement ul_element = path;
@@ -196,7 +192,7 @@ public int randomNumber() {
 	 boolean actualUrl = driver.getCurrentUrl().contains(pageUrl);
      System.out.println("Link Url====>" + actualUrl);
      
-	 AssertJUnit.assertEquals(actualUrl, true);
+	// AssertJUnit.assertEquals(actualUrl, true);
      
 	 //driver.close();
 	// driver.switchTo().window(parentWindow);
