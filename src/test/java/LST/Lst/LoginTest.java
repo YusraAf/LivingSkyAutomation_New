@@ -146,9 +146,9 @@ public void testCase1(WebDriver driver) throws InterruptedException {
 	 
 	 System.out.println("++++++++In Side Testcase1++++++++++++");
 	 WebElement element2 = dash.link_collections;
-	 Actions builder2 = new Actions(driver);
-	 builder2.moveToElement(element2).build().perform();
-	 
+
+	
+	 common.moveMouse(element2, driver);
 
 	 /**
 	  *  I will upload it later ..

@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 
 
 public class CommonTask {
-	
+
 	public List<WebElement> getLiElementInUl(WebElement path) {
 		
 		WebElement ul_element = path;
@@ -194,10 +194,15 @@ public int randomNumber() {
 	 boolean actualUrl = driver.getCurrentUrl().contains(pageUrl);
      System.out.println("Link Url====>" + actualUrl);
      
+
      List<Object> listOne = new ArrayList<Object>();
      listOne.add(driver);
      listOne.add(actualUrl);
     
+
+	// AssertJUnit.assertEquals(actualUrl, true);
+     
+
 	 //driver.close();
 	// driver.switchTo().window(parentWindow);
 	 return listOne;
