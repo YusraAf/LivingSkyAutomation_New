@@ -123,7 +123,7 @@ public class LandingPage extends PageBase{
 	@FindBy(xpath="//div[@class='benefits']/div[8]/p")
 	@CacheLookup
 	public WebElement text_MultipleDevices;
-	@FindBy(xpath="//div[@class='stacked-text']/div[1]/div[2]")
+	@FindBy(xpath="//div[contains(text(),'Plan')]")
 	@CacheLookup
 	public WebElement text_Plan;
 	@FindBy(xpath="//div[contains(text(),'Write')]")

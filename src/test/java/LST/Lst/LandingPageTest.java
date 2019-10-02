@@ -7,14 +7,18 @@ import org.testng.AssertJUnit;
 
 import LST.core.TestBase;
 
+//import java.awt.List;
+
 //import LST.core.TestBase;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pageObjects.LandingPage;
@@ -33,7 +37,6 @@ public class LandingPageTest extends TestBase {
 	private CommonTask com;
 
 	@BeforeClass
-
 	public void openBrowser() throws IOException, InterruptedException {
 		driver = Browser.getInstance();
 		driver.get(baseUrl);
@@ -162,8 +165,7 @@ public class LandingPageTest extends TestBase {
 		AssertJUnit.assertTrue(footer.img_wwFooter.isDisplayed());
 		logger.info("WW Image is displayed on the footer of Landing Page.");
 		AssertJUnit.assertTrue(footer.text_getPromoFooter.isDisplayed());
-		logger.info(
-				"Get updates on the latest features and promotions text is displayed on the footer of Landing Page.");
+		logger.info("Get updates on the latest features and promotions text is displayed on the footer of Landing Page.");
 		AssertJUnit.assertTrue(footer.textbox_enterEmailFooter.isDisplayed());
 		logger.info("Enter your email address text box is displayed on the footer of Landing Page.");
 		AssertJUnit.assertTrue(footer.btn_subscribeFooter.isDisplayed());
@@ -225,80 +227,80 @@ public class LandingPageTest extends TestBase {
 
 	}
 	
-	// Test Case ID : WW-46-TC-009 Verify Our Story Link on the Footer of Landing Page
-
-	@Test(priority = 4)
-	public void verifyOurStoryFooterlink() throws InterruptedException {
-
+	public void verifyAllFooterLink(WebElement footerLinkName, String urlLink) throws InterruptedException  
+	{
 		 LandingPage l = new LandingPage(driver);
 		 // PageFactory.initElements(driver,LandingPage.class);
 		 l.initElement();
-		 com = new CommonTask();
+		 CommonTask com = new CommonTask();
 		 FooterNavigation footer = new FooterNavigation(l.getDriver());
 		 footer.initElement();
-		
+		 
 		 String parentWindow = driver.getWindowHandle(); 
-	     WebElement story = footer.link_ourStoryFooter; 
-	     driver = com.childWindowHandler(driver,story,"about", parentWindow); 
-	     //System.out.println("In Side the test case ====>" + link); 
+		 
+	     // WebElement story = footer.link_ourStoryFooter;
+		 List<Object> childWindowList = (List<Object>) com.childWindowHandler(driver,footerLinkName,urlLink, parentWindow); 
+	 	
+	     WebDriver childWindow = (WebDriver) childWindowList.get(0);
+	     System.out.println("Print childwindow Url title======>" + childWindow);
+	     boolean actualUrl = (boolean) childWindowList.get(1);
+	     System.out.println("Print actualUrl title=======>" + actualUrl);
+	     
+	     AssertJUnit.assertEquals(actualUrl, true);   
 	     com.backToParentWinFromChildWin(driver, parentWindow);
 		  
 		 // for (String childWindow : driver.getWindowHandles()) {
 		 // driver.switchTo().window(childWindow); }
-		  	   
-		 logger.info("Our Story Link is clicked and About Living Sky Tech page is displayed successfully.");
-			
-	} 
+	}
 	
+	// Test Case ID : WW-46-TC-009 Verify Our Story Link on the Footer of Landing Page
+	@Test(priority = 4)
+	public void verifyOurStoryFooterLink() throws InterruptedException {
+		 LandingPage l = new LandingPage(driver);
+		 // PageFactory.initElements(driver,LandingPage.class);
+		 l.initElement();
+		
+		 FooterNavigation footer = new FooterNavigation(l.getDriver());
+		 footer.initElement();
+			
+		//WebElement footerLinkName = footer.link_ourStoryFooter;
+		//String urlLink = "https://www.livingskytech.com/about/";
+		//verifyallFooterLink(footerLinkName, "urlLink");
+		 verifyAllFooterLink(footer.link_ourStoryFooter, "about");	
+	     logger.info("Our Story Link is clicked and About Living Sky Tech page is displayed successfully.");
+		}
+		
 	// Test Case ID : WW-46-TC-010 Verify Careers Link on the Footer of Landing Page
-
 	@Test(priority = 5)
 	public void verifyCareersFooterlink() throws InterruptedException {
-
 		 LandingPage l = new LandingPage(driver);
 		 // PageFactory.initElements(driver,LandingPage.class);
 		 l.initElement();
-		 com = new CommonTask();
+		
 		 FooterNavigation footer = new FooterNavigation(l.getDriver());
 		 footer.initElement();
-		
-		 String parentWindow = driver.getWindowHandle(); 
-	     WebElement story = footer.link_careersFooter; 
-	     driver = com.childWindowHandler(driver,story,"careers", parentWindow); 
-	    
-	     com.backToParentWinFromChildWin(driver, parentWindow);
-		
-		 logger.info("Careers Link is Clicked and Careers page is displayed successfully.");
-			
-	} 
+		 verifyAllFooterLink(footer.link_careersFooter, "careers");
+	     logger.info("Careers Link is Clicked and Careers page is displayed successfully.");
+		}
 	
 	// Test Case ID : WW-46-TC-011 Verify Contact Us Link on the Footer of Landing Page
-
 	@Test(priority = 6)
 	public void verifyContactUsFooterlink() throws InterruptedException {
-
 		 LandingPage l = new LandingPage(driver);
 		 // PageFactory.initElements(driver,LandingPage.class);
 		 l.initElement();
-		 com = new CommonTask();
+		
 		 FooterNavigation footer = new FooterNavigation(l.getDriver());
 		 footer.initElement();
-		
-		 String parentWindow = driver.getWindowHandle(); 
-	     WebElement story = footer.link_contactUsFooter; 
-	     driver = com.childWindowHandler(driver,story,"contact", parentWindow); 
-	    
-	     com.backToParentWinFromChildWin(driver, parentWindow);
-		
-		 logger.info("ContacUs Link is Clicked and ContactUs page is displayed successfully.");
-			
-	} 
+		 verifyAllFooterLink(footer.link_contactUsFooter, "contact");
+	     logger.info("ContacUs Link is Clicked and ContactUs page is displayed successfully.");
+		}
+	
 	// Test Case ID : WW-46-TC-
-
 	@Test(priority = 7)
 	public void clickOnLogin() throws InterruptedException {
 
-		// Need to add initlement for page factory
+		// Need to add initElement for page factory
 		landing = new LandingPage(driver);
 		landing.initElement();
 		landing.txt_login.click();
@@ -307,11 +309,9 @@ public class LandingPageTest extends TestBase {
 		login = new LoginPage(landing.driver);
 
 		System.out.println(login.verifyPageUrl());
-		Thread.sleep(500);
-		
+		Thread.sleep(500);		
 	}
-	
-	
+
 	@AfterClass
 	public void closeBrowser() {
 		logger.info("Closing of Landing Page Test");

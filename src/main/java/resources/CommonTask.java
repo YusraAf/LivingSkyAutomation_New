@@ -1,12 +1,13 @@
 package resources;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.AssertJUnit;
+
 
 public class CommonTask {
 	
@@ -181,7 +182,8 @@ public int randomNumber() {
 
     * 
     */
- public WebDriver childWindowHandler (WebDriver driver, WebElement el, String pageUrl, String parentWindow) {
+      
+ public List<Object> childWindowHandler (WebDriver driver, WebElement el, String pageUrl, String parentWindow) throws InterruptedException {
 	 //String parentWindow = driver.getWindowHandle();
 	 el.click();
 	 //Thread.sleep(200);
@@ -192,19 +194,21 @@ public int randomNumber() {
 	 boolean actualUrl = driver.getCurrentUrl().contains(pageUrl);
      System.out.println("Link Url====>" + actualUrl);
      
-	 AssertJUnit.assertEquals(actualUrl, true);
-     
+     List<Object> listOne = new ArrayList<Object>();
+     listOne.add(driver);
+     listOne.add(actualUrl);
+    
 	 //driver.close();
 	// driver.switchTo().window(parentWindow);
-	 return driver;
+	 return listOne;
 	 
 	 
  }
  public WebDriver backToParentWinFromChildWin (WebDriver driver, String parentWindow) {
 
-	 driver.close();
-	 driver.switchTo().window(parentWindow);
-	 return driver;
-	 
- }
+	driver.close();
+	driver.switchTo().window(parentWindow);
+    return driver;
+ } 
+ 
 } 
