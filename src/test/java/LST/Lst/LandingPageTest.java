@@ -296,8 +296,41 @@ public class LandingPageTest extends TestBase {
 	     logger.info("ContacUs Link is Clicked and ContactUs page is displayed successfully.");
 		}
 	
-	// Test Case ID : WW-46-TC-
 	@Test(priority = 7)
+	public void verifyFacebookImgFooterlink() throws InterruptedException {
+		 LandingPage l = new LandingPage(driver);
+		 // PageFactory.initElements(driver,LandingPage.class);
+		 l.initElement();
+		
+		 FooterNavigation footer = new FooterNavigation(l.getDriver());
+		 footer.initElement();
+		 verifyAllFooterLink(footer.link_facebookImgFooter, "livingskytech");
+	     logger.info("FacebookImg Link is Clicked and FacebookImg page is displayed successfully.");
+		}
+	@Test(priority = 8)
+	public void verifyLinkedInImgFooterlink() throws InterruptedException {
+		 LandingPage l = new LandingPage(driver);
+		 // PageFactory.initElements(driver,LandingPage.class);
+		 l.initElement();
+		
+		 FooterNavigation footer = new FooterNavigation(l.getDriver());
+		 footer.initElement();
+		 verifyAllFooterLink(footer.link_linkedInImgFooter, "living-sky-technologies");
+	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
+		}
+	@Test(priority = 9)
+	public void verifyYouTubeImgFooterlink() throws InterruptedException {
+		 LandingPage l = new LandingPage(driver);
+		 // PageFactory.initElements(driver,LandingPage.class);
+		 l.initElement();
+		
+		 FooterNavigation footer = new FooterNavigation(l.getDriver());
+		 footer.initElement();
+		 verifyAllFooterLink(footer.link_youTubeImgFooter, "livingskytech");
+	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
+		}
+	// Test Case ID : WW-46-TC-
+	@Test(priority = 10)
 	public void clickOnLogin() throws InterruptedException {
 
 		// Need to add initElement for page factory
