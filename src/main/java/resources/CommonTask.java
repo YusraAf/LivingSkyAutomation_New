@@ -1,15 +1,27 @@
 package resources;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 
-public class CommonTask {
+public class CommonTask extends PageBase {
+
+	public CommonTask(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
 
 	public List<WebElement> getLiElementInUl(WebElement path) {
 		
@@ -27,17 +39,17 @@ public class CommonTask {
 	} 
 
 	
-public int randomNumber() {
+public static int randomNumber() {
 	
-	return (int)(Math.random()*2000);
+	return (int)(Math.random()*20);
 }
 
-	  public void verifyTextOnThePage(String expected, String path, WebDriver driver1)
+	  public void verifyTextOnThePage(String expected, String path)
       {
 
           try
           {
-              if (driver1.findElement(By.xpath(path)).getText().contains(expected))
+              if (driver.findElement(By.xpath(path)).getText().contains(expected))
               //if (expected == (driver.FindElement(By.XPath(path)).Text))
               {
                   System.out.println(expected + " text is on this page");
@@ -57,9 +69,9 @@ public int randomNumber() {
       }
 
 
-      public void clickOnLink(String path, WebDriver driver1)
+      public void clickOnLink(String path)
       {
-          WebElement upLoadVolData = driver1.findElement(By.xpath(path));
+          WebElement upLoadVolData = driver.findElement(By.xpath(path));
          // System.Threading.Thread.Sleep(7000);
           //driver1.manage().timeouts().ImplicitlyWait(TimeSpan.FromSeconds(15));
 
@@ -68,7 +80,7 @@ public int randomNumber() {
 
       }
 
-      public void moveMouse(WebElement el, WebDriver driver) throws InterruptedException
+      public void moveMouse(WebElement el) throws InterruptedException
       {
           Actions action = new Actions(driver);
            action.moveToElement(el).click().perform();
@@ -183,7 +195,17 @@ public int randomNumber() {
     * 
     */
       
- public List<Object> childWindowHandler (WebDriver driver, WebElement el, String pageUrl, String parentWindow) throws InterruptedException {
+    public static void takeScreenShot(String methodAndClass) throws IOException {
+
+   	 TakesScreenshot ts = (TakesScreenshot)driver;
+   	 File source = ts.getScreenshotAs(OutputType.FILE);
+   	 String dest = "screenshots/"+methodAndClass+".png";
+   	 File destination = new File(dest);
+   	 FileUtils.copyFile(source, destination);
+   	 
+    }
+      
+ public List<Object> childWindowHandler (WebElement el, String pageUrl, String parentWindow) throws InterruptedException {
 	 //String parentWindow = driver.getWindowHandle();
 	 el.click();
 	 //Thread.sleep(200);
@@ -209,7 +231,7 @@ public int randomNumber() {
 	 
 	 
  }
- public WebDriver backToParentWinFromChildWin (WebDriver driver, String parentWindow) {
+ public WebDriver backToParentWinFromChildWin (String parentWindow) {
 
 	driver.close();
 	driver.switchTo().window(parentWindow);

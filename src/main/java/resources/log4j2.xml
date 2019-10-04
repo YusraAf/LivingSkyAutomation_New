@@ -2,11 +2,12 @@
 <Configuration status="warn">
     <Properties>
         <Property name="basePath">logs</Property>
+         <Property name="basePath">screenshots</Property>
     </Properties>
  
     <Appenders>
         
-        <RollingFile name="File" fileName="${basePath}/WriteWaylogs-${date:yyyy-MM-dd}.log" filePattern="${basePath}/WriteWaylogs-%d{yyyy-MM-dd}.log" immediateFlush="false" append="false">
+        <RollingFile name="File" fileName="logs/WriteWaylogs-${date:yyyy-MM-dd}.log" filePattern="logs/WriteWaylogs-%d{yyyy-MM-dd}.log" immediateFlush="false" append="false">
             <PatternLayout>
             
                 <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>

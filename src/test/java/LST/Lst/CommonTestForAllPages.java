@@ -38,7 +38,7 @@ public class CommonTestForAllPages extends TestBase  {
 		headNav = new HeaderNavigation(driver);
 		headNav.initElement();
 		WebElement path = headNav.navBar_HeaderContent1;
-		CommonTask ct = new CommonTask();
+		CommonTask ct = new CommonTask(driver);
 		List<WebElement> navBarContent1 = ct.getLiElementInUl(path);
 		
 		 AssertJUnit.assertEquals(navBarContent1.get(0).getText(), "Features");

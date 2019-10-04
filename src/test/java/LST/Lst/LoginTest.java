@@ -5,19 +5,16 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 
 import LST.core.TestBase;
-
 import org.testng.AssertJUnit;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.DataProvider;
-
 import pageObjects.Dashboard;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
@@ -66,7 +63,8 @@ public void verifyLoginPageAttributes() throws InterruptedException {
 
 @Test(dataProvider= "getLoginData",priority=2) 
 public void doSignin(String username, String password, int testCase) throws IOException, InterruptedException {
-	 System.out.println("UserName : "+ username);
+	Browser.pageRefresh(); 
+	System.out.println("UserName : "+ username);
 	 landing= new LandingPage(driver);
 	 landing.initElement(); 
 	 landing.txt_login.click();
@@ -129,7 +127,7 @@ public void doSigninAssertion() {
 	 return data;
 }
 
-public void testCase1(WebDriver driver) throws InterruptedException {
+public void testCase1(WebDriver driver) throws InterruptedException, IOException {
 	Dashboard dash = new Dashboard(log.getDriver());
 	dash.initElement();
 	dash.verifyPageUrl();
@@ -137,27 +135,22 @@ public void testCase1(WebDriver driver) throws InterruptedException {
 		
 		 // Actions builder = new Actions(driver);
 		//  builder.moveToElement(element).click().build().perform();
-	 common = new CommonTask();
+	 common = new CommonTask(driver);
 	 
-	 common.moveMouse(element, driver);
+	 common.moveMouse(element);
 	
 	 AssertJUnit.assertEquals(dash.link_projects.getText(),"Projects");
 	 logger.info("Projects is displayed in Dashboard.");
 	 
 	 System.out.println("++++++++In Side Testcase1++++++++++++");
+	 
+	// System.out.println("Screenshot captured.");
 	 WebElement element2 = dash.link_collections;
 
 	
-	 common.moveMouse(element2, driver);
+	 common.moveMouse(element2);
 
-	 /**
-	  *  I will upload it later ..
-	  */
-	 //common.moveMouse(element2, driver);
-	 //Thread.sleep(1000);
-	 //driver.navigate().back();
-	 //Thread.sleep(500);
-	 	 
+	
 	 AssertJUnit.assertEquals(dash.link_collections.getText(), "Collection");
 	 logger.info("Collection is displayed in Dashboard.");
 	 Thread.sleep(200);
@@ -165,24 +158,24 @@ public void testCase1(WebDriver driver) throws InterruptedException {
 }
 
 public void testCase2(WebDriver driver) throws InterruptedException {
-	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Wrong email or password was provided."); 
+	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Wrong ema il or password was provided."); 
 	 logger.info("Wrong login message is showing successfully.");
 	 Thread.sleep(200);
-	 Browser.pageRefresh();
+	 //Browser.pageRefresh();
 }
 
 public void testCase3(WebDriver driver) throws InterruptedException {
 	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password is required."); 
 	 logger.info("Password is required message is showing successfully.");
 	 Thread.sleep(200);
-	 Browser.pageRefresh();
+	// Browser.pageRefresh();
 }
 
 public void testCase4(WebDriver driver) throws InterruptedException {
 	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Email address is required."); 
 	 logger.info("Email address is required message is showing successfully.");
 	 Thread.sleep(200);
-	 Browser.pageRefresh();
+	 //Browser.pageRefresh();
 }
 
 @AfterClass

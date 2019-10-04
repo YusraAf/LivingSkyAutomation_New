@@ -92,7 +92,7 @@ public class Browser {
 	        //WebDriverManager.chromedriver().version("77").setup();
 	       // driver = new ChromeDriver();
 	        
-	     // start the proxy
+	       // start the proxy
 	        BrowserMobProxy proxy = new BrowserMobProxyServer();
 	        proxy.start(0);
 
@@ -135,42 +135,37 @@ public class Browser {
 	        WebElement ClearData = driver.findElement(By.id("clearBrowsingDataConfirm"));
 	        ClearData.click();
 	        Thread.sleep(5000);
-	       /* List<WebElement> els = driver.findElements(By.id("checkbox"));
-	        System.out.println(Integer.toString(els.size()));
-	        for ( WebElement el : els ) {
-
-	            Thread.sleep(2000);
-
-	            el.click();
-	            
-	        }*/
-	       
+	        
 	    }
 
 	    public void ClearBrowserCookies() throws InterruptedException
-{
-driver.manage().deleteAllCookies();//delete all cookies
-Thread.sleep(5000); //wait 5 seconds to clear cookies.
-}
-	    public void clearChromeBrowserData() throws InterruptedException {
-    driver.get("chrome://settings/clearBrowserData");
-  //  driver.wait(2);
-    Thread.sleep(2000);
+	    {
+	    	driver.manage().deleteAllCookies();//delete all cookies
+	    	Thread.sleep(5000); //wait 5 seconds to clear cookies.
+	    }
+	    
+	    public void clearChromeBrowserData() throws InterruptedException 
+	    {
+	    	driver.get("chrome://settings/clearBrowserData");
+	    	//  driver.wait(2);
+	    	Thread.sleep(2000);
     
-     driver.findElement(By.id("clearBrowsingDataConfirm")).click();
-}
-	    private static void cleanCookieCache() {
-    driver.manage().getCookies().clear();
-    driver.manage().deleteAllCookies();
+	    	driver.findElement(By.id("clearBrowsingDataConfirm")).click();
+	    }
+	    
+	    private static void cleanCookieCache()
+	    {
+	    	driver.manage().getCookies().clear();
+	    	driver.manage().deleteAllCookies();
 
-}
+	    }
 
 
-	    public static void close() {
-	
-    //driver.close();
-    driver.quit();
-    driver = null;// to avoid closing time of browser by JVM
-}
+	    public static void close() 
+	    {
+	    	//driver.close();
+	    	driver.quit();
+	    	driver = null;// to avoid closing time of browser by JVM
+	    }
 
 }

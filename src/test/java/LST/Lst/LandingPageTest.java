@@ -232,14 +232,14 @@ public class LandingPageTest extends TestBase {
 		 LandingPage l = new LandingPage(driver);
 		 // PageFactory.initElements(driver,LandingPage.class);
 		 l.initElement();
-		 CommonTask com = new CommonTask();
+		 CommonTask com = new CommonTask(driver);
 		 FooterNavigation footer = new FooterNavigation(l.getDriver());
 		 footer.initElement();
 		 
 		 String parentWindow = driver.getWindowHandle(); 
 		 
 	     // WebElement story = footer.link_ourStoryFooter;
-		 List<Object> childWindowList = (List<Object>) com.childWindowHandler(driver,footerLinkName,urlLink, parentWindow); 
+		 List<Object> childWindowList = (List<Object>) com.childWindowHandler(footerLinkName,urlLink, parentWindow); 
 	 	
 	     WebDriver childWindow = (WebDriver) childWindowList.get(0);
 	     System.out.println("Print childwindow Url title======>" + childWindow);
@@ -247,7 +247,7 @@ public class LandingPageTest extends TestBase {
 	     System.out.println("Print actualUrl title=======>" + actualUrl);
 	     
 	     AssertJUnit.assertEquals(actualUrl, true);   
-	     com.backToParentWinFromChildWin(driver, parentWindow);
+	     com.backToParentWinFromChildWin( parentWindow);
 		  
 		 // for (String childWindow : driver.getWindowHandles()) {
 		 // driver.switchTo().window(childWindow); }

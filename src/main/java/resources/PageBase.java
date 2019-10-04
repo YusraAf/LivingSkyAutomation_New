@@ -17,7 +17,7 @@ public abstract class PageBase {
 
 	public String pageUrl;
     public String pageLoadText;
-    public WebDriver driver; 
+    public static WebDriver driver; 
     
     public PageBase(WebDriver aDriver) {
         this.driver = aDriver;
