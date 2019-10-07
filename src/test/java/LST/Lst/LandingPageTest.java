@@ -95,7 +95,7 @@ public class LandingPageTest extends TestBase {
 		AssertJUnit.assertTrue(log.img_Mindmaps.isDisplayed());
 		logger.info("Mind maps image is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.img_RefManager.isDisplayed());
-		logger.info("Ref Manager image is displayed in Landing Page..");
+		logger.info("Reference Manager image is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.img_AutoFormat.isDisplayed());
 		logger.info("Auto Format image is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.img_ThemeDesigner.isDisplayed());
@@ -114,7 +114,7 @@ public class LandingPageTest extends TestBase {
 		AssertJUnit.assertTrue(log.lbl_Mindmaps.isDisplayed());
 		logger.info("Mind maps label is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.lbl_RefManager.isDisplayed());
-		logger.info("Ref Manager label is displayed in Landing Page..");
+		logger.info("Reference Manager label is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.lbl_AutoFormat.isDisplayed());
 		logger.info("Auto Format label is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.lbl_ThemeDesigner.isDisplayed());
@@ -133,7 +133,7 @@ public class LandingPageTest extends TestBase {
 		AssertJUnit.assertTrue(log.text_Mindmaps.isDisplayed());
 		logger.info("Mind maps text is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.text_RefManager.isDisplayed());
-		logger.info("Ref Manager text is displayed in Landing Page..");
+		logger.info("Reference Manager text is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.text_AutoFormat.isDisplayed());
 		logger.info("Auto Format text is displayed in Landing Page..");
 		AssertJUnit.assertTrue(log.text_ThemeDesigner.isDisplayed());
@@ -295,7 +295,7 @@ public class LandingPageTest extends TestBase {
 		 verifyAllFooterLink(footer.link_contactUsFooter, "contact");
 	     logger.info("ContacUs Link is Clicked and ContactUs page is displayed successfully.");
 		}
-	
+	// Test Case ID : WW-46-TC-012 Verify Face book Img Link on the Footer of Landing Page
 	@Test(priority = 7)
 	public void verifyFacebookImgFooterlink() throws InterruptedException {
 		 LandingPage l = new LandingPage(driver);
@@ -307,6 +307,7 @@ public class LandingPageTest extends TestBase {
 		 verifyAllFooterLink(footer.link_facebookImgFooter, "livingskytech");
 	     logger.info("FacebookImg Link is Clicked and FacebookImg page is displayed successfully.");
 		}
+	// Test Case ID : WW-46-TC-013 Verify LinkedIn Img Link on the Footer of Landing Page
 	@Test(priority = 8)
 	public void verifyLinkedInImgFooterlink() throws InterruptedException {
 		 LandingPage l = new LandingPage(driver);
@@ -318,6 +319,7 @@ public class LandingPageTest extends TestBase {
 		 verifyAllFooterLink(footer.link_linkedInImgFooter, "living-sky-technologies");
 	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
 		}
+	// Test Case ID : WW-46-TC-014 Verify You tube Img Link on the Footer of Landing
 	@Test(priority = 9)
 	public void verifyYouTubeImgFooterlink() throws InterruptedException {
 		 LandingPage l = new LandingPage(driver);
@@ -329,8 +331,24 @@ public class LandingPageTest extends TestBase {
 		 verifyAllFooterLink(footer.link_youTubeImgFooter, "livingskytech");
 	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
 		}
+	// Test Case ID : WW-46-TC-015 Verify Privacy Link on the Footer of Landing Page
+			@Test(priority = 10)
+			public void privacyFooterlink() throws InterruptedException {
+				 LandingPage l = new LandingPage(driver);
+				 // PageFactory.initElements(driver,LandingPage.class);
+				 l.initElement();
+				
+				 FooterNavigation footer = new FooterNavigation(l.getDriver());
+				 footer.initElement();
+				 footer.link_privacyFooter.click();
+				 Thread.sleep(200);
+				 //AssertJUnit.assertEquals(driver.getTitle(), "Write Way"); 
+				 AssertJUnit.assertEquals(driver.getCurrentUrl(), "https://frontend-test.writeway.com/privacy-policy");
+				 Thread.sleep(100);
+			     logger.info("Privacy Link is Clicked and Privacy page is displayed successfully.");
+		}
 	// Test Case ID : WW-46-TC-
-	@Test(priority = 10)
+	@Test(priority = 11)
 	public void clickOnLogin() throws InterruptedException {
 
 		// Need to add initElement for page factory
