@@ -242,12 +242,16 @@ public class LandingPageTest extends TestBase {
 		 List<Object> childWindowList = (List<Object>) com.childWindowHandler(footerLinkName,urlLink, parentWindow); 
 	 	
 	     WebDriver childWindow = (WebDriver) childWindowList.get(0);
+	     Thread.sleep(200);
 	     System.out.println("Print childwindow Url title======>" + childWindow);
 	     boolean actualUrl = (boolean) childWindowList.get(1);
+	     Thread.sleep(300);
 	     System.out.println("Print actualUrl title=======>" + actualUrl);
 	     
-	     AssertJUnit.assertEquals(actualUrl, true);   
-	     com.backToParentWinFromChildWin( parentWindow);
+	     AssertJUnit.assertEquals(actualUrl, true);
+	     Thread.sleep(400);
+	     com.backToParentWinFromChildWin(parentWindow);
+	     Thread.sleep(200);
 		  
 		 // for (String childWindow : driver.getWindowHandles()) {
 		 // driver.switchTo().window(childWindow); }
@@ -329,7 +333,7 @@ public class LandingPageTest extends TestBase {
 		 FooterNavigation footer = new FooterNavigation(l.getDriver());
 		 footer.initElement();
 		 verifyAllFooterLink(footer.link_youTubeImgFooter, "livingskytech");
-	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
+	     logger.info("youTubeImg Link is Clicked and youTubeImg page is displayed successfully.");
 		}
 	// Test Case ID : WW-46-TC-015 Verify Privacy Link on the Footer of Landing Page
 			@Test(priority = 10)

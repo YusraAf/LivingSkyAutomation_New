@@ -205,7 +205,7 @@ private CommonTask common;
  
 	public void testCase1() {
 				
-		Assert.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Email add ress is required."); 
+		Assert.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Email address is required."); 
 		
 		 System.out.println("Test case 1 verified..");
 		  logger.info("Empty email address message is showing successfully.");
@@ -223,7 +223,7 @@ private CommonTask common;
 	  
 	  public void testCase3() {
 			
-		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Pass word must be 8 or more characters."); 
+		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password must be 8 or more characters."); 
 		  logger.info("Password must be 8 or more characters message is showing successfully.");
 		  
 		  

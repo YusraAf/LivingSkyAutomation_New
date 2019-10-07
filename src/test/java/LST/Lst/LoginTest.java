@@ -158,7 +158,7 @@ public void testCase1(WebDriver driver) throws InterruptedException, IOException
 }
 
 public void testCase2(WebDriver driver) throws InterruptedException {
-	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Wrong ema il or password was provided."); 
+	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Wrong email or password was provided."); 
 	 logger.info("Wrong login message is showing successfully.");
 	 Thread.sleep(200);
 	 //Browser.pageRefresh();
