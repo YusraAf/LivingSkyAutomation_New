@@ -242,7 +242,7 @@ public class LandingPageTest extends TestBase {
 		 List<Object> childWindowList = (List<Object>) com.childWindowHandler(footerLinkName,urlLink, parentWindow); 
 	 	
 	     WebDriver childWindow = (WebDriver) childWindowList.get(0);
-	     Thread.sleep(200);
+	     //Thread.sleep(200);
 	     System.out.println("Print childwindow Url title======>" + childWindow);
 	     boolean actualUrl = (boolean) childWindowList.get(1);
 	     Thread.sleep(300);

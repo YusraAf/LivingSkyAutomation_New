@@ -214,7 +214,7 @@ public static int randomNumber() {
 		 driver.switchTo().window(childWindow);
 	 }
 	 boolean actualUrl = driver.getCurrentUrl().contains(pageUrl);
-	 Thread.sleep(800);
+	 Thread.sleep(700);
      System.out.println("Link Url====>" + actualUrl);
      
 
