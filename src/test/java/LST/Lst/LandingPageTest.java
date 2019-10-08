@@ -227,35 +227,7 @@ public class LandingPageTest extends TestBase {
 
 	}
 	
-	public void verifyAllFooterLink(WebElement footerLinkName, String urlLink) throws InterruptedException  
-	{
-		 LandingPage l = new LandingPage(driver);
-		 // PageFactory.initElements(driver,LandingPage.class);
-		 l.initElement();
-		 CommonTask com = new CommonTask(driver);
-		 FooterNavigation footer = new FooterNavigation(l.getDriver());
-		 footer.initElement();
-		 
-		 String parentWindow = driver.getWindowHandle(); 
-		 
-	     // WebElement story = footer.link_ourStoryFooter;
-		 List<Object> childWindowList = (List<Object>) com.childWindowHandler(footerLinkName,urlLink, parentWindow); 
-	 	
-	     WebDriver childWindow = (WebDriver) childWindowList.get(0);
-	     //Thread.sleep(200);
-	     System.out.println("Print childwindow Url title======>" + childWindow);
-	     boolean actualUrl = (boolean) childWindowList.get(1);
-	     Thread.sleep(300);
-	     System.out.println("Print actualUrl title=======>" + actualUrl);
-	     
-	     AssertJUnit.assertEquals(actualUrl, true);
-	     Thread.sleep(400);
-	     com.backToParentWinFromChildWin(parentWindow);
-	     Thread.sleep(200);
-		  
-		 // for (String childWindow : driver.getWindowHandles()) {
-		 // driver.switchTo().window(childWindow); }
-	}
+	
 	
 	// Test Case ID : WW-46-TC-009 Verify Our Story Link on the Footer of Landing Page
 	@Test(priority = 4)
@@ -267,9 +239,7 @@ public class LandingPageTest extends TestBase {
 		 FooterNavigation footer = new FooterNavigation(l.getDriver());
 		 footer.initElement();
 			
-		//WebElement footerLinkName = footer.link_ourStoryFooter;
-		//String urlLink = "https://www.livingskytech.com/about/";
-		//verifyallFooterLink(footerLinkName, "urlLink");
+		
 		 verifyAllFooterLink(footer.link_ourStoryFooter, "about");	
 	     logger.info("Our Story Link is clicked and About Living Sky Tech page is displayed successfully.");
 		}
@@ -299,6 +269,8 @@ public class LandingPageTest extends TestBase {
 		 verifyAllFooterLink(footer.link_contactUsFooter, "contact");
 	     logger.info("ContacUs Link is Clicked and ContactUs page is displayed successfully.");
 		}
+	
+	
 	// Test Case ID : WW-46-TC-012 Verify Face book Img Link on the Footer of Landing Page
 	@Test(priority = 7)
 	public void verifyFacebookImgFooterlink() throws InterruptedException {
@@ -311,6 +283,8 @@ public class LandingPageTest extends TestBase {
 		 verifyAllFooterLink(footer.link_facebookImgFooter, "livingskytech");
 	     logger.info("FacebookImg Link is Clicked and FacebookImg page is displayed successfully.");
 		}
+	
+	
 	// Test Case ID : WW-46-TC-013 Verify LinkedIn Img Link on the Footer of Landing Page
 	@Test(priority = 8)
 	public void verifyLinkedInImgFooterlink() throws InterruptedException {
@@ -323,6 +297,8 @@ public class LandingPageTest extends TestBase {
 		 verifyAllFooterLink(footer.link_linkedInImgFooter, "living-sky-technologies");
 	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
 		}
+	
+	
 	// Test Case ID : WW-46-TC-014 Verify You tube Img Link on the Footer of Landing
 	@Test(priority = 9)
 	public void verifyYouTubeImgFooterlink() throws InterruptedException {
@@ -335,6 +311,8 @@ public class LandingPageTest extends TestBase {
 		 verifyAllFooterLink(footer.link_youTubeImgFooter, "livingskytech");
 	     logger.info("youTubeImg Link is Clicked and youTubeImg page is displayed successfully.");
 		}
+	
+	
 	// Test Case ID : WW-46-TC-015 Verify Privacy Link on the Footer of Landing Page
 			@Test(priority = 10)
 			public void privacyFooterlink() throws InterruptedException {
@@ -351,6 +329,8 @@ public class LandingPageTest extends TestBase {
 				 Thread.sleep(100);
 			     logger.info("Privacy Link is Clicked and Privacy page is displayed successfully.");
 		}
+			
+			
 	// Test Case ID : WW-46-TC-
 	@Test(priority = 11)
 	public void clickOnLogin() throws InterruptedException {
@@ -367,6 +347,23 @@ public class LandingPageTest extends TestBase {
 		Thread.sleep(500);		
 	}
 
+	public void verifyAllFooterLink(WebElement footerLinkName, String urlLink) throws InterruptedException  
+	{
+		 com= new CommonTask(driver);
+		 String parentWindow = driver.getWindowHandle(); 
+		 Thread.sleep(200);
+		
+		 List<Object> childWindowList = (List<Object>) com.childWindowHandler(footerLinkName,urlLink, parentWindow); 
+	 	
+	     
+	     boolean actualUrl = (boolean) childWindowList.get(1);
+	    
+	     AssertJUnit.assertEquals(actualUrl, true);
+	    
+	     com.backToParentWinFromChildWin(parentWindow);
+	     Thread.sleep(200);	  
+	
+	}
 	@AfterClass
 	public void closeBrowser() {
 		logger.info("Closing of Landing Page Test");

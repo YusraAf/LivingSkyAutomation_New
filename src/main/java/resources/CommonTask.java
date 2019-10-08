@@ -206,7 +206,7 @@ public static int randomNumber() {
     }
       
  public List<Object> childWindowHandler (WebElement el, String pageUrl, String parentWindow) throws InterruptedException {
-	 //String parentWindow = driver.getWindowHandle();
+	
 	 el.click();
 	 //Thread.sleep(200);
 	 
@@ -214,7 +214,7 @@ public static int randomNumber() {
 		 driver.switchTo().window(childWindow);
 	 }
 	 boolean actualUrl = driver.getCurrentUrl().contains(pageUrl);
-	 Thread.sleep(700);
+	 Thread.sleep(400);
      System.out.println("Link Url====>" + actualUrl);
      
 

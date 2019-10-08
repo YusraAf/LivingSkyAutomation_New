@@ -110,7 +110,7 @@ public class Browser {
 	        //-----------------------//
 	        ChromeOptions option = new ChromeOptions();
 	        option.addArguments(proxyOption);
-	        //option.addArguments("--headless");
+	       // option.addArguments("--headless");
 	        DesiredCapabilities capabilities = new DesiredCapabilities();
 	        capabilities.setCapability(ChromeOptions.CAPABILITY, option);
 	        driver = new ChromeDriver(option);
