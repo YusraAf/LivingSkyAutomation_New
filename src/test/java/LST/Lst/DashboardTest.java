@@ -82,8 +82,7 @@ public class DashboardTest extends TestBase {
 		logger.info("Add Photo button is displayed on dashboard.");
 	
 		AssertJUnit.assertTrue(das.nav_startTypingProjectName.isDisplayed());
-		logger.info("Start typing your project name is displayed on dashboard.");
-		
+		logger.info("Start typing your project name is displayed on dashboard.");	
 	}
 	
 	@AfterClass
@@ -91,6 +90,5 @@ public class DashboardTest extends TestBase {
 		System.out.println("Closing Dashboard page Test");
 		Browser.close();
 	}
-
 
 }
