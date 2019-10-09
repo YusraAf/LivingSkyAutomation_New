@@ -83,6 +83,7 @@ public class DashboardTest extends TestBase {
 	
 		AssertJUnit.assertTrue(das.nav_startTypingProjectName.isDisplayed());
 		logger.info("Start typing your project name is displayed on dashboard.");
+		
 	}
 	
 	@AfterClass
