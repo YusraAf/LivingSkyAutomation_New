@@ -9,6 +9,7 @@ import org.testng.AssertJUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
@@ -116,8 +117,12 @@ private CommonTask common;
 	 signup.radio_termsandCond.click();
 	 }
 	 signup.radio_updates.click();
-	 signup.btn_signUp.click();
-	 Thread.sleep(200);
+	 
+	 
+	 
+	 
+	// signup.btn_signUp.click();
+	 Thread.sleep(400);
 	 System.out.println("text: ..........");
 	
 	/* try {
@@ -155,8 +160,8 @@ private CommonTask common;
 
 	@DataProvider
 	  public Object[][] getSignInData(){
-		 common = new CommonTask(driver);
-		 String user = "test"+common.randomNumber()+"@yopmail.com";
+		 
+		String user = "test"+CommonTask.randomNumber()+"@yopmail.com";
 		  
 	   Object[][] data= new Object[8][4];
 	   data[0][0]= "";
@@ -204,25 +209,28 @@ private CommonTask common;
 	
  
 	public void testCase1() {
-				
-		Assert.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Email address is required."); 
+	
+		Assert.assertEquals(signup.btn_signUp.isEnabled(), false);
 		
-		 System.out.println("Test case 1 verified..");
+		// System.out.println("Test case 1 verified.. "+ button);
 		  logger.info("Empty email address message is showing successfully.");
 		
 	  }
 
 
 	  public void testCase2() {
-	
-		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "First you need to agree to the terms of use."); 
+		  
+		  
+		  Assert.assertEquals(signup.btn_signUp.isEnabled(), false);
+		  //AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "First you need to agree to the terms of use."); 
 
 		  logger.info("First you need to agree to the terms of use message is showing successfully.");
 		  
 	  }
 	  
 	  public void testCase3() {
-			
+		  driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS) ;
+		  captchaSelection();
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password must be 8 or more characters."); 
 		  logger.info("Password must be 8 or more characters message is showing successfully.");
 		  
@@ -230,7 +238,8 @@ private CommonTask common;
 	  }
 	  
 	  public void testCase4() {
-			
+
+		  captchaSelection();
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Passwords do not match."); 
 		  logger.info("Passwords do not match message is showing successfully.");
 		  
@@ -238,27 +247,20 @@ private CommonTask common;
 	  
 	  public void testCase5() {
 			
-		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password is required."); 
+		  Assert.assertEquals(signup.btn_signUp.isEnabled(), false);
 		  logger.info("Password is required message is showing successfully.");
 		 
 	  }
 	  
 	  public void testCase6() {
 			
-		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Confirm password is required."); 
+		 Assert.assertEquals(signup.btn_signUp.isEnabled(), false);
 		  logger.info("Confirm password is required message is showing successfully.");
 		  
 	  } 
 	  public void testCase7() throws InterruptedException {
-		  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
-		  
-		  signup = new SignUP(driver);
-		  signup.txt_capcha.click();
-		  signup.txt_capcha.sendKeys("captcha");
-		  Thread.sleep(500);
-		  //WebDriverWait wait = new WebDriverWait(driver, 30);
-		  //wait.until(ExpectedConditions.elementToBeClickable(By.name("answer")));
-		  signup.btn_capcha.click();
+
+		  captchaSelection();
 		  	
 			Dashboard dash = new Dashboard(signup.getDriver());
 			dash.initElement();
@@ -269,21 +271,32 @@ private CommonTask common;
 	 
 	  public void testCase8() throws InterruptedException {
 		
-		  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
-		  System.out.println("Inside testcase 8 ");
-		  signup = new SignUP(driver);
-		  signup.txt_capcha.click();
-		  signup.txt_capcha.sendKeys("captcha");
-		  Thread.sleep(500);
-		  signup.btn_capcha.click();
-		  Thread.sleep(500);
-		  signup.txt_userName.click();
+		  captchaSelection();
+
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "User already exists."); 
 		  logger.info("Duplicate user checking message is showing successfully.");
-		 
+		
 		  
 		  Browser.pageRefresh();
 	  } 
+	  
+	  public void captchaSelection()  {
+		
+		  System.out.println("Inside Captcha Code ");
+		  driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS) ;
+		  signup.txt_capcha.click();
+		  try {
+			Thread.sleep(800);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  //driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS) ;
+		  signup.txt_capcha.sendKeys("captcha");
+		  
+		 // Assert.assertEquals(signup.btn_signUp.isEnabled(), true);
+		  signup.btn_signUp.click();
+	  }
 	  public void deleteRegisterData() {
 		  
 		  PostGreConnection.postGreDbConnectionOpen(); 

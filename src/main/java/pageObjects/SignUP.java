@@ -36,11 +36,11 @@ public WebElement radio_termsandCond;
 @CacheLookup
 public WebElement radio_updates;	
 
-@FindBy(css = ".btn-text")
+@FindBy(xpath = "//button[@class='button-animate button-general']")
 @CacheLookup
 public WebElement btn_signUp;
 
-@FindBy(name = "answer")
+@FindBy(name = "captchaAnswer")
 @CacheLookup
 public WebElement txt_capcha;
 
