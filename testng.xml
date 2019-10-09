@@ -2,6 +2,7 @@
 <suite name="Suite">
 <listeners>
 <listener class-name="LST.core.TestListeners" />
+<listener class-name="LST.core.Extentreportsng" />
 </listeners>
 
   <test thread-count="5" name="Test">
@@ -10,6 +11,7 @@
       <class name="LST.Lst.SignUpTest"/>
       <class name="LST.Lst.LoginTest"/>
       <class name="LST.Lst.CommonTestForAllPages"/>
+      <class name="LST.Lst.DashboardTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
