@@ -88,7 +88,7 @@ public class DashboardTest extends TestBase {
 	
 	@AfterClass
 	public void closeBrowser() {
-		System.out.println("Closing Login page Test");
+		System.out.println("Closing Dashboard page Test");
 		Browser.close();
 	}
 
