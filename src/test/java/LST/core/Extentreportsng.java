@@ -27,13 +27,19 @@ package LST.core;
 	 public void onStart(ITestContext testContext)
 	 {
 	  htmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+ "/test-output/WriteWayExtentReports.html");//specify location of the report
-	  htmlReporter.loadXMLConfig(System.getProperty("user.dir")+ "/extent-config.xml");
+	  //htmlReporter.loadXMLConfig(System.getProperty("user.dir")+ "/extent-config.xml");
 	  
 	  extent=new ExtentReports();
-	  
+	  try {
+		PropertyLoader.loadProperties();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
 	  extent.attachReporter(htmlReporter);
-	  extent.setSystemInfo("Host name","localhost");
-	  extent.setSystemInfo("Environemnt","QA");
+	  extent.setSystemInfo("Host name",System.getProperty("url"));
+	  extent.setSystemInfo("Environemnt",System.getProperty("active.env"));
 	  extent.setSystemInfo("user","WriteWay");
 	  
 	  htmlReporter.config().setDocumentTitle("Automation Report"); // Tile of report
