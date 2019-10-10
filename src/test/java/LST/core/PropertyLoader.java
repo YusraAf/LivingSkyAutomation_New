@@ -9,8 +9,8 @@ public class PropertyLoader {
 	 public static void loadProperties() throws IOException {
 	        //load("./properties/default/log4j.properties");
 	        //load("./properties/default/allure.properties");
-	        load("./Property/data.properties");
-	        //load("./properties/webdriver.properties");
+	      //  load("./Property/data.properties");
+	        
 	        load("./Property/env."
 	                + System.getProperty("active.env")
 	                + ".properties");
