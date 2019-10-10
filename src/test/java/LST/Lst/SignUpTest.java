@@ -229,7 +229,12 @@ private CommonTask common;
 	  }
 	  
 	  public void testCase3() {
-		  driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS) ;
+		 try {
+			Thread.sleep(7000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		  captchaSelection();
 		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password must be 8 or more characters."); 
 		  logger.info("Password must be 8 or more characters message is showing successfully.");
