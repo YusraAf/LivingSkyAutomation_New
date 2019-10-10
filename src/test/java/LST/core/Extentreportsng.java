@@ -26,7 +26,7 @@ package LST.core;
 	  
 	 public void onStart(ITestContext testContext)
 	 {
-	  htmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+ "/test-output/WriteWayExtentReports.html");//specify location of the report
+	  htmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+ "/WriteWayExtentReports.html");//specify location of the report
 	  //htmlReporter.loadXMLConfig(System.getProperty("user.dir")+ "/extent-config.xml");
 	  
 	  extent=new ExtentReports();

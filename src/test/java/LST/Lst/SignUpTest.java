@@ -286,7 +286,7 @@ private CommonTask common;
 		  driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS) ;
 		  signup.txt_capcha.click();
 		  try {
-			Thread.sleep(800);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
