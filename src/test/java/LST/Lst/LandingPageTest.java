@@ -291,36 +291,6 @@ public class LandingPageTest extends TestBase {
 	} 
 	*/
 	
-	
-	// Test Case ID : WW-46-TC-012 Verify Face book Img Link on the Footer of Landing Page
-	@Test(priority = 8)
-	public void verifyCareersFooterlink() throws InterruptedException {
-		LandingPage l = new LandingPage(driver);
-		// PageFactory.initElements(driver,LandingPage.class);
-		l.initElement();
-				
-		FooterNavigation footer = new FooterNavigation(l.getDriver());
-		footer.initElement();
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		verifyAllFooterLink(footer.link_careersFooter, "https://www.livingskytech.com/careers/");
-		logger.info("Careers Link is Clicked and Careers page is displayed successfully.");
-	}
-	
-	
-	// Test Case ID : WW-46-TC-012 Verify Face book Img Link on the Footer of Landing Page
-	@Test(priority = 9)
-	public void verifyContactUsFooterlink() throws InterruptedException {
-		LandingPage l = new LandingPage(driver);
-		// PageFactory.initElements(driver,LandingPage.class);
-		l.initElement();
-			
-		FooterNavigation footer = new FooterNavigation(l.getDriver());
-		footer.initElement();
-		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-		verifyAllFooterLink(footer.link_contactUsFooter, "https://www.livingskytech.com/contact/");
-		logger.info("contactUs Link is Clicked and contactUs page is displayed successfully.");
-		}
-	
 	// Test Case ID : WW-46-TC-012 Verify Face book Img Link on the Footer of Landing Page
 	@Test(priority = 5)
 	public void verifyFacebookImgFooterlink() throws InterruptedException {
@@ -361,7 +331,34 @@ public class LandingPageTest extends TestBase {
 		 verifyAllFooterLink(footer.link_youTubeImgFooter, "livingskytech");
 	     logger.info("youTubeImg Link is Clicked and youTubeImg page is displayed successfully.");
 		 }
+
+	// Test Case ID : WW-46-TC-010 Verify Careers Link on the Footer of Landing Page
+	@Test(priority = 8)
+	public void verifyCareersFooterlink() throws InterruptedException {
+		LandingPage l = new LandingPage(driver);
+		// PageFactory.initElements(driver,LandingPage.class);
+		l.initElement();
+				
+		FooterNavigation footer = new FooterNavigation(l.getDriver());
+		footer.initElement();
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		verifyAllFooterLink(footer.link_careersFooter, "https://www.livingskytech.com/careers/");
+		logger.info("Careers Link is Clicked and Careers page is displayed successfully.");
+	}
 	
+	// Test Case ID : WW-46-TC-011 Verify Contact Us Link on the Footer of Landing Page
+	@Test(priority = 9)
+	public void verifyContactUsFooterlink() throws InterruptedException {
+		LandingPage l = new LandingPage(driver);
+		// PageFactory.initElements(driver,LandingPage.class);
+		l.initElement();
+			
+		FooterNavigation footer = new FooterNavigation(l.getDriver());
+		footer.initElement();
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+		verifyAllFooterLink(footer.link_contactUsFooter, "https://www.livingskytech.com/contact/");
+		logger.info("contactUs Link is Clicked and contactUs page is displayed successfully.");
+		}
 	
 	// Test Case ID : WW-46-TC-015 Verify Privacy Link on the Footer of Landing Page
 	@Test(priority = 10)
