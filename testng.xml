@@ -11,7 +11,7 @@
       <class name="LST.Lst.SignUpTest"/>
       <class name="LST.Lst.LoginTest"/>
       <class name="LST.Lst.CommonTestForAllPages"/>
-     
+     <class name="LST.Lst.DashboardTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
