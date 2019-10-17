@@ -121,14 +121,13 @@ private CommonTask common;
 		 }
 	 }else {
 	 signup.radio_termsandCond.click();
+	 Thread.sleep(5000);
 	 }
-	 signup.radio_updates.click();
-	 
-	 
+//	 signup.radio_updates.click();
 	 
 	 
 	// signup.btn_signUp.click();
-	 Thread.sleep(400);
+	
 	 System.out.println("text: ..........");
 	
 	/* try {
@@ -270,7 +269,13 @@ private CommonTask common;
 		  
 	  } 
 	  public void testCase7() throws InterruptedException {
-
+		  landing= new LandingPage(driver);
+			 landing.initElement();
+			 
+			 signup = new SignUP(landing.getDriver());
+			 signup.initElement();
+		  Thread.sleep(5000);
+		 signup.radio_updates.click();
 		  captchaSelection();
 		  	
 			Dashboard dash = new Dashboard(signup.getDriver());
@@ -297,7 +302,7 @@ private CommonTask common;
 		  driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS) ;
 		  signup.txt_capcha.click();
 		  try {
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 		
 			e.printStackTrace();

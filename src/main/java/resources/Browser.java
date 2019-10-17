@@ -1,5 +1,7 @@
  package resources;
 
+import java.io.FileOutputStream;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +20,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.proxy.CaptureType;
 //import net.lightbody.bmp.core.*;
 public class Browser {
  
@@ -105,6 +109,7 @@ public class Browser {
 	            return null;
 	        });
 	        
+	        
 	        String proxyOption = "--proxy-server=" + seleniumProxy.getHttpProxy();
 	       
 	        //-----------------------//
@@ -115,6 +120,15 @@ public class Browser {
 	        capabilities.setCapability(ChromeOptions.CAPABILITY, option);
 	        driver = new ChromeDriver(option);
 	        initBrowser();
+	        
+	     
+	        proxy.addResponseFilter((response, contents, messageInfo) -> {
+	            //if ((contents.getContentType().startsWith("application/json"))) {
+	              //  contents.setTextContents("");
+	            //}
+	            System.out.println(" Response: "+ response.headers().entries().toString());
+	        }); 
+
 	        return driver;
 	    }
 	    
@@ -164,6 +178,7 @@ public class Browser {
 	    public static void close() 
 	    {
 	    	//driver.close();
+	    	
 	    	driver.quit();
 	    	driver = null;// to avoid closing time of browser by JVM
 	    }

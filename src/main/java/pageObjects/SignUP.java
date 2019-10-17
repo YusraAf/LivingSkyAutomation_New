@@ -32,7 +32,7 @@ public WebElement txt_confirmPassword;
 @CacheLookup
 public WebElement radio_termsandCond;
 
-@FindBy(name= "marketingAccepted")
+@FindBy(xpath= "//div[@class='form-groups']//div[2]//div[1]//label[1]//span[1]")
 @CacheLookup
 public WebElement radio_updates;	
 
@@ -45,7 +45,6 @@ public WebElement btn_signUp;
 public WebElement txt_capcha;
 
 @FindBy(xpath = "//*[@name='arrowCircleRight']")
-//(css = ".continue > svg")
 @CacheLookup
 public WebElement btn_capcha;
 
