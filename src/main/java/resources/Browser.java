@@ -66,30 +66,20 @@ public class Browser {
 	    }
 
 	    private static WebDriver initFirefox() {
-	        
-	    	WebDriverManager.firefoxdriver().setup(); 
-	    	BrowserMobProxy proxy = new BrowserMobProxyServer();
-		        proxy.start(0);
-
-		        // get the Selenium proxy object
-		        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
-		        
-		        proxy.addRequestFilter((request, contents, messageInfo)->{
-		            request.headers().add("x-qa-super-user-token", "NWQwNGE5OWUtY2Y3OC0xMWU5LWJkY2ItMmEyYWUyZGJjY2U0");
-		            System.out.println(request.headers().entries().toString());
-		            return null;
-		        });
-		        
-		        String proxyOption = "--proxy-server=" + seleniumProxy.getHttpProxy();
-		       
-		       
-	        FirefoxOptions option = new FirefoxOptions();
-	       // option.addArguments("--headless");
-	        option.addArguments(proxyOption);
-	        DesiredCapabilities capabilities = new DesiredCapabilities();
-	        capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, option);
-	        driver = new FirefoxDriver(option);
+	        WebDriverManager.firefoxdriver().setup();
+	        disableDetailLoggingFirefox();
+	        driver = new FirefoxDriver();
 	        initBrowser();
+
+	        FirefoxOptions options = new FirefoxOptions();
+	        ProfilesIni allProfiles = new ProfilesIni();
+	        FirefoxProfile selenium_profile = allProfiles.getProfile("selenium_profile");
+	        options.setProfile(selenium_profile);
+	        driver = new FirefoxDriver(options);
+	        options.setBinary("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+	        System.setProperty("webdriver.gecko.driver", "C:\\Users\\pburgr\\Desktop\\geckodriver-v0.20.0-win64\\geckodriver.exe");
+	        driver = new FirefoxDriver(options);
+
 	        return driver;
 	    }
 
@@ -120,7 +110,7 @@ public class Browser {
 	        //-----------------------//
 	        ChromeOptions option = new ChromeOptions();
 	        option.addArguments(proxyOption);
-	       // option.addArguments("--headless");
+	        //option.addArguments("--headless");
 	        DesiredCapabilities capabilities = new DesiredCapabilities();
 	        capabilities.setCapability(ChromeOptions.CAPABILITY, option);
 	        driver = new ChromeDriver(option);

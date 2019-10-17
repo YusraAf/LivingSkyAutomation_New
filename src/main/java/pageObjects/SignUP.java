@@ -32,7 +32,7 @@ public WebElement txt_confirmPassword;
 @CacheLookup
 public WebElement radio_termsandCond;
 
-@FindBy(xpath= "//div[@class='form-groups']//div[2]//div[1]//label[1]//span[1]")
+@FindBy(name= "marketingAccepted")
 @CacheLookup
 public WebElement radio_updates;	
 

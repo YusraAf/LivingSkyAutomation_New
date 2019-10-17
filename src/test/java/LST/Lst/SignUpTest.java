@@ -18,7 +18,12 @@ import org.testng.annotations.DataProvider;
 import LST.core.TestBase;
 import dbconnection.DbQuery;
 import dbconnection.PostGreConnection;
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.proxy.CaptureType;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import java.util.concurrent.TimeUnit;
@@ -45,6 +50,7 @@ private CommonTask common;
 	
 	deleteRegisterData();
 	driver = Browser.getInstance();
+	
 	driver.get(baseUrl);
 	
 	}
@@ -313,7 +319,8 @@ private CommonTask common;
 @AfterClass
 public  void closeBrowser() {
 	System.out.println("Closing Signup page Test");
-    Browser.close();
+    
+	Browser.close();
 }
 
 }

@@ -45,16 +45,14 @@ public class DashboardTest extends TestBase {
 		log.txt_userName.sendKeys("niti@yopmail.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
-		Thread.sleep(200);
+		Thread.sleep(10000);
 	 
 		das = new Dashboard(log.getDriver());
 		das.initElement();
 		
 		das.btn_newProject.click();
 	
-		das.nav_startTypingProjectName.sendKeys("Write Way");
 		
-		das.btn_startProject.click();
 	}
 	
 	

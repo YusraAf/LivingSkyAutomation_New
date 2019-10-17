@@ -60,21 +60,7 @@ public WebElement link_help;
 @CacheLookup
 public WebElement btn_newProject;
 
-@FindBy(xpath= "//span[contains(text(),'Start Project')]")
-@CacheLookup
-public WebElement btn_startProject;
 
-@FindBy(xpath= "//span[contains(text(),'Add a photo')]")
-@CacheLookup
-public WebElement btn_addPhoto;
-
-@FindBy(xpath= "//span[contains(text(),'Add description')]")
-@CacheLookup
-public WebElement btn_addDescription;
-
-@FindBy(xpath= "//input[@id='input-name']")
-@CacheLookup
-public WebElement nav_startTypingProjectName;
 
 @FindBy(xpath= "//button[@id='button-k6usgnju']")
 @CacheLookup

@@ -3,6 +3,7 @@
     <Properties>
         <Property name="basePath">logs</Property>
          <Property name="basePath">screenshots</Property>
+         <Property name="basePath">harFile</Property>
     </Properties>
  
     <Appenders>
