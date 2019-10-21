@@ -14,7 +14,8 @@ public class Project extends PageBase{
 		
 	}
 	
-	@FindBy(xpath= "//span[contains(text(),'Add a photo')]")
+	//@FindBy(xpath= "//div[@class='new-project-btn add-field']")
+	@FindBy(xpath= "//div[@class='new-project-btn add-field']")
 	@CacheLookup
 	public WebElement btn_addPhoto;
 
@@ -30,6 +31,10 @@ public class Project extends PageBase{
 	@FindBy(xpath= "//input[@id='input-title']")
 	@CacheLookup
 	public WebElement nav_startTypingProjectName;
+	
+	@FindBy(xpath= "//textarea[@placeholder='Start typing your project name']")
+	@CacheLookup
+	public WebElement nav_addprojectdescription;
 
-
+	
 }

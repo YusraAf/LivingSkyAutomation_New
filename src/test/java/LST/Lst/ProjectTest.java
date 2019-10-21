@@ -2,14 +2,19 @@ package LST.Lst;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -36,11 +41,12 @@ public class ProjectTest  extends TestBase {
 		driver = Browser.getInstance();
 		driver.get(baseUrl);
 	}	
-	 	
+	 
 	@Test(priority=1) 
-	public void createProject() throws IOException, InterruptedException, AWTException {
-		
+	public void createProject() throws IOException, InterruptedException, Exception {
+		  
 		land= new LandingPage(driver);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		land.initElement(); 
 		land.txt_login.click();
 		 
@@ -63,27 +69,66 @@ public class ProjectTest  extends TestBase {
 		pro.nav_startTypingProjectName.sendKeys("Write Way");
 		Thread.sleep(1000);
 		
+		//driver.findElement(By.id("file")).click();
+		pro.btn_addPhoto.click();
+		
+		
+		//  File file = new File("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot2019-10-16at1.27.18PM.jpeg");
+		ClipboardOwner owner = null; 
+		Robot robot = new Robot();
+		StringSelection stringSelection= new StringSelection("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot20191016at12718PM.png");
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, owner);
+		  
+		robot.setAutoDelay(3000);
+		  
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		  
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_K);
+		  
+		robot.setAutoDelay(3000);
+	  
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		  
+		//robot.setAutoDelay(3000);
+		Thread.sleep(8000);  
+		pro.btn_addDescription.click();
+		Thread.sleep(400);
+		pro.nav_addprojectdescription.sendKeys("This is testing project");
+			
+		pro.btn_startProject.click();
+		Thread.sleep(800);
+
+		  /*
 		pro.btn_addPhoto.click();
 		
 		WebElement frame =driver.switchTo().activeElement();
 		System.out.println(frame.getText()+ "------");
 		System.out.println(frame.getTagName()+ "-----");
-		frame.clear();
-		frame.click();
-		frame.sendKeys("/Users⁩/nitijabin⁩/MyStuff⁩/2019-08-20_09-47-47.jpeg");
-		  
+		//frame.clear();
+		//frame.click();
+		frame.sendKeys("\\Users⁩\\chetankumarpatel⁩\\Desktop\\ScreenShot2019-10-16at1.27.18PM.png");
+		Thread.sleep(10000);
+		frame.click(); 
+		Thread.sleep(100);
 		System.out.println(frame.getText()+ "after------");
 		System.out.println(frame.getTagName()+ "after-----");
 		
+		Thread.sleep(1000);
 		
-		  Thread.sleep(10000);
-			
-		  
-		  
-		  
+		pro.btn_addDescription.click();
+		Thread.sleep(400);
+		pro.nav_addprojectdescription.sendKeys("This is testing project");
+		
+		pro.btn_startProject.click();
+		Thread.sleep(800);
+	*/	
+		 
 		////File Need to be imported
-	/*	  
-		  File file = new File("/Users⁩/nitijabin⁩/2019-08-20_09-47-47");
+	  /*
+		  File file = new File("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot2019-10-16at1.27.18PM.jpeg");
 		   
 		  StringSelection stringSelection= new StringSelection(file.getPath());
 		   
@@ -137,14 +182,13 @@ public class ProjectTest  extends TestBase {
 		   
 		  robot.keyPress(KeyEvent.VK_ENTER);
 		   
-		  robot.keyRelease(KeyEvent.VK_ENTER);*/
+		  robot.keyRelease(KeyEvent.VK_ENTER);
 		  
 		  Thread.sleep(10000);
 		  
-		  //pro.btn_startProject.click();
+		  pro.btn_startProject.click();
+		*/  
 	}
-	
-	
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Dashboard page Test");
