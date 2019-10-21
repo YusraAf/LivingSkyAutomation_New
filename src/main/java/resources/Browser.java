@@ -105,7 +105,7 @@ public class Browser {
 	        
 	        proxy.addRequestFilter((request, contents, messageInfo)->{
 	            request.headers().add("x-qa-super-user-token", "NWQwNGE5OWUtY2Y3OC0xMWU5LWJkY2ItMmEyYWUyZGJjY2U0");
-	            System.out.println(request.headers().entries().toString());
+	          //  System.out.println(request.headers().entries().toString());
 	            return null;
 	        });
 	        

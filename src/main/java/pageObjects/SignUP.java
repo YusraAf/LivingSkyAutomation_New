@@ -28,7 +28,8 @@ public WebElement txt_password;
 @CacheLookup
 public WebElement txt_confirmPassword;
 
-@FindBy(css = ".check:nth-child(3)")
+@FindBy(xpath="//div[@id='signup-form']//div[1]//div[1]//label[1]//span[1]")
+		
 @CacheLookup
 public WebElement radio_termsandCond;
 
@@ -68,5 +69,6 @@ public WebElement link_PrivacyPolicy;
 @CacheLookup
 public WebElement text_ErrorMSg;
 
+//css = ".check:nth-child(3)")
 
 }
