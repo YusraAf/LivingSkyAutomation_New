@@ -539,7 +539,7 @@ public class LandingPageTest extends TestBase {
 		
 		// FooterNavigation footer = new FooterNavigation(l.getDriver());
 		 footer.initElement();
-		 verifyAllFooterLink(footer.link_linkedInImgFooter, "company");
+		 verifyAllFooterLink(footer.link_linkedInImgFooter, "https://ca.linkedin.com/company/living-sky-technologies");
 	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
 		 }
 	

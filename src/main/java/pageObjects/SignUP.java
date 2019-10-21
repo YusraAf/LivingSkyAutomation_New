@@ -68,5 +68,6 @@ public WebElement link_PrivacyPolicy;
 @CacheLookup
 public WebElement text_ErrorMSg;
 
+//css = ".check:nth-child(3)")
 
 }
