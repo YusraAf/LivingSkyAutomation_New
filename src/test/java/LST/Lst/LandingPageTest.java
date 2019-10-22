@@ -21,6 +21,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageObjects.LandingPage;
@@ -539,7 +540,7 @@ public class LandingPageTest extends TestBase {
 		
 		// FooterNavigation footer = new FooterNavigation(l.getDriver());
 		 footer.initElement();
-		 verifyAllFooterLink(footer.link_linkedInImgFooter, "https://ca.linkedin.com/company/living-sky-technologies");
+		 verifyAllFooterLink(footer.link_linkedInImgFooter, "https://www.linkedin.com");
 	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
 		 }
 	
@@ -631,9 +632,9 @@ public class LandingPageTest extends TestBase {
 	 	
 	
 	     boolean actualUrl = (boolean) childWindowList.get(1);
-	    
+	     
 	     AssertJUnit.assertEquals(actualUrl, true);
-	    
+	     
 	     com.backToParentWinFromChildWin(parentWindow);
 	     Thread.sleep(200);	  
 	
