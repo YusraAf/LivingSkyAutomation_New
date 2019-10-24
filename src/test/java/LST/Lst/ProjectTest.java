@@ -246,14 +246,30 @@ public class ProjectTest  extends TestBase {
        
     }
 	
-	
-public void verifyDeletedProjectFromGrid_inTrash() {
+	@Test(priority=4)
+	public void verifyDeletedProjectFromGrid_inTrash() throws InterruptedException {
 	
 	das.link_trash.click();
 	
-}
+	if(driver.getCurrentUrl().contains("dashboard/deleted")) {
+		 Thread.sleep(10000);
+		
+	System.out.println(driver.getCurrentUrl()+" Project Title :");
+		
+	System.out.println(pro.txt_first_Project_Title_frm_grid.getText());
+		
+	WebElement elem =driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]"));
 
-@Test(priority=4)
+    Actions builder = new Actions(driver);
+	builder.moveToElement(elem).build().perform();
+	//elem.click();
+	
+	 
+	}
+	
+	}
+
+	@Test(priority=5)
 	public void openProjectFrom_ListView() throws InterruptedException   {
 		das.link_projects.click();
 		Actions builder = new Actions(driver);
