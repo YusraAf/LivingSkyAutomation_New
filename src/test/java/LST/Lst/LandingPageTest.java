@@ -20,9 +20,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
@@ -51,13 +48,8 @@ public class LandingPageTest extends TestBase {
 	
 	@Test(priority = 1)
 	public void verifyHeadNavForAllPages() throws InterruptedException {
-		// landing = new LandingPage(driver);
-		//landing.initElement();
-		//LandingPage l = new LandingPage(driver);
-		//landing.initElement();
-
-		//LandingPage log = new LandingPage(l.getDriver());
-		log.initElement();
+		
+		//log.initElement();
 		common = new CommonTestForAllPages();
 		common.verifyNavBarHeaderContent(driver);
 		Thread.sleep(1000);
@@ -67,10 +59,10 @@ public class LandingPageTest extends TestBase {
 
 		@Test(priority = 2)
 		public void verifyTryforfreeBtnLandingPageAttributes() throws InterruptedException {
-			
-			logger.info("This is inside in Landing Page =====> Verify all Landing Page WebElements");
-			//openLandingPage();
 			log.initElement();
+			logger.info("This is inside in Landing Page =====> Verify all Landing Page WebElements");
+			
+			
 			AssertJUnit.assertTrue(log.btn_Tryforfree.isDisplayed());
 			logger.info("Try for free button is displayed on the Landing Page.");
 		}
@@ -90,12 +82,6 @@ public class LandingPageTest extends TestBase {
 
 			AssertJUnit.assertTrue(log.text_Plan.isDisplayed());
 			logger.info("Plan text is displayed on the Landing Page.");
-			/*
-			AssertJUnit.assertTrue(log.text_Write.isDisplayed());
-			logger.info("Write text is displayed on the Landing Page.");
-			AssertJUnit.assertTrue(log.text_Publish.isDisplayed());
-			logger.info("Publish text is displayed on the Landing Page.");
-		*/	
 		}
 			
 		@Test(priority = 5)
@@ -347,6 +333,7 @@ public class LandingPageTest extends TestBase {
 		}
 		
 		// Verify all Partnership Web Elements display on the footer of Landing Page
+		
 		@Test(priority = 43)
 		public void verifyPartnershipTextFooterLandingPageAttributes() throws InterruptedException {
 			
@@ -459,14 +446,9 @@ public class LandingPageTest extends TestBase {
 	
 	// Test Case ID : WW-46-TC-009 Verify Our Story Link on the Footer of Landing Page
 	@Test(priority = 60)
-	public void verifyOurStoryFooterLink() throws InterruptedException {
-		 //LandingPage l = new LandingPage(driver);
-		 // PageFactory.initElements(driver,LandingPage.class);
-		// log.initElement();
+	public void verifyOurStoryFooterLink() throws InterruptedException {		
 		
-		// FooterNavigation footer = new FooterNavigation(l.getDriver());
-		// footer.initElement();		
-		
+
 		 verifyAllFooterLink(footer.link_ourStoryFooter, "about");	
 	     logger.info("Our Story Link is clicked and About Living Sky Tech page is displayed successfully.");
 		}
@@ -520,12 +502,8 @@ public class LandingPageTest extends TestBase {
 	// Test Case ID : WW-46-TC-012 Verify Facebook Img Link on the Footer of Landing Page
 	@Test(priority = 61)
 	public void verifyFacebookImgFooterlink() throws InterruptedException {
-		// LandingPage l = new LandingPage(driver);
-		 // PageFactory.initElements(driver,LandingPage.class);
-		// l.initElement();
+		 
 		
-		// FooterNavigation footer = new FooterNavigation(l.getDriver());
-		// footer.initElement();
 		 verifyAllFooterLink(footer.link_facebookImgFooter, "livingskytech");
 	     logger.info("FacebookImg Link is Clicked and FacebookImg page is displayed successfully.");
 		}
@@ -534,12 +512,8 @@ public class LandingPageTest extends TestBase {
 	// Test Case ID : WW-46-TC-013 Verify LinkedIn Img Link on the Footer of Landing Page
 	@Test(priority = 62)
 	public void verifyLinkedInImgFooterlink() throws InterruptedException {
-		// LandingPage l = new LandingPage(driver);
-		 // PageFactory.initElements(driver,LandingPage.class);
-		// l.initElement();
 		
-		// FooterNavigation footer = new FooterNavigation(l.getDriver());
-		 footer.initElement();
+		
 		 verifyAllFooterLink(footer.link_linkedInImgFooter, "https://www.linkedin.com");
 	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
 		 }
@@ -548,70 +522,53 @@ public class LandingPageTest extends TestBase {
 	// Test Case ID : WW-46-TC-014 Verify Youtube Img Link on the Footer of Landing
 	@Test(priority = 63)
 	public void verifyYouTubeImgFooterlink() throws InterruptedException {
-		// LandingPage l = new LandingPage(driver);
-		 // PageFactory.initElements(driver,LandingPage.class);
-		// l.initElement();
 		
-		// FooterNavigation footer = new FooterNavigation(l.getDriver());
-		 footer.initElement();
+		
 		 verifyAllFooterLink(footer.link_youTubeImgFooter, "livingskytech");
 	     logger.info("youTubeImg Link is Clicked and youTubeImg page is displayed successfully.");
 		 }
 
+	
 	// Test Case ID : WW-46-TC-010 Verify Careers Link on the Footer of Landing Page
 	@Test(priority = 64)
 	public void verifyCareersFooterlink() throws InterruptedException {
-	//	LandingPage l = new LandingPage(driver);
+	
 		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-		// PageFactory.initElements(driver,LandingPage.class);
-	//	l.initElement();
-				
-	//	FooterNavigation footer = new FooterNavigation(l.getDriver());
-		footer.initElement();
+	
 		
 		verifyAllFooterLink(footer.link_careersFooter, "https://www.livingskytech.com/careers/");
 		logger.info("Careers Link is Clicked and Careers page is displayed successfully.");
 	}
 	
+	
 	// Test Case ID : WW-46-TC-011 Verify Contact Us Link on the Footer of Landing Page
 	@Test(priority = 65)
 	public void verifyContactUsFooterlink() throws InterruptedException {
-	//	LandingPage l = new LandingPage(driver);
-		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-		// PageFactory.initElements(driver,LandingPage.class);
-	//	l.initElement();
-			
-	//	FooterNavigation footer = new FooterNavigation(l.getDriver());
-		footer.initElement();
+	
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
+	
 		verifyAllFooterLink(footer.link_contactUsFooter, "https://www.livingskytech.com/contact/");
 		logger.info("ContactUs Link is Clicked and ContactUs page is displayed successfully.");
 		}
 	
+	
 	// Test Case ID : WW-46-TC-015 Verify Privacy Link on the Footer of Landing Page
 	@Test(priority = 66)
 	public void privacyFooterlink() throws InterruptedException {
-	//	LandingPage l = new LandingPage(driver);
-		// PageFactory.initElements(driver,LandingPage.class);
-	//	l.initElement();
-				
-	//	FooterNavigation footer = new FooterNavigation(l.getDriver());
-		footer.initElement();
+	
+	
 		footer.link_privacyFooter.click();
 		Thread.sleep(200);
-		//AssertJUnit.assertEquals(driver.getTitle(), "Write Way"); 
 		AssertJUnit.assertEquals(driver.getCurrentUrl(), "https://frontend-test.writeway.com/privacy-policy");
 		logger.info("Privacy Link is Clicked and Privacy page is displayed successfully.");
 		}
-			
-			
+		
+	
 	// Test Case ID : WW-46-TC-
 	@Test(priority = 67)
 	public void clickOnLogin() throws InterruptedException {
 
-		// Need to add initElement for page factory
-		//log = new LandingPage(driver);
-		//landing.initElement();
 		log.txt_login.click();
 		logger.info("Click on Login page.");
 		Thread.sleep(500);
@@ -621,6 +578,7 @@ public class LandingPageTest extends TestBase {
 		Thread.sleep(500);		
 		}
 
+	
 	public void verifyAllFooterLink(WebElement footerLinkName, String urlLink) throws InterruptedException  
 	{
 		 com= new CommonTask(driver);
@@ -637,9 +595,9 @@ public class LandingPageTest extends TestBase {
 	     
 	     com.backToParentWinFromChildWin(parentWindow);
 	     Thread.sleep(200);	  
-	
 		}
 
+	
 	@AfterClass
 	public void closeBrowser() {
 		logger.info("Closing of Landing Page Test");
