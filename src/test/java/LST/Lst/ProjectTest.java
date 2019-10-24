@@ -13,8 +13,12 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -26,6 +30,7 @@ import pageObjects.LandingPage;
 import pageObjects.LoginPage;
 import pageObjects.Project;
 import resources.Browser;
+import resources.CommonTask;
 
 public class ProjectTest  extends TestBase {
 	
@@ -65,16 +70,29 @@ public class ProjectTest  extends TestBase {
 		
 		pro = new Project(das.getDriver());
 		pro.initElement();
-	
-		pro.nav_startTypingProjectName.sendKeys("Write Way");
+		
+		CommonTask com = new CommonTask(driver);
+		
+		String  projectName = System.getProperty("projectName");
+		pro.nav_startTypingProjectName.sendKeys(projectName);
 		Thread.sleep(1000);
 		
 		//driver.findElement(By.id("file")).click();
-		pro.btn_addPhoto.click();
+		//pro.btn_addPhoto.click();
+		pro.btn_startProject.click();
 		
+		
+		Thread.sleep(1000);
+		das.link_projects.click();
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		
+		
+		AssertJUnit.assertEquals(pro.txt_first_Project_Title_frm_grid.getText(),projectName);
+		
+		System.out.println("Project NAme out: "+ pro.txt_first_Project_Title_frm_grid.getText());
 		
 		//  File file = new File("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot2019-10-16at1.27.18PM.jpeg");
-		ClipboardOwner owner = null; 
+		/*ClipboardOwner owner = null; 
 		Robot robot = new Robot();
 		StringSelection stringSelection= new StringSelection("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot20191016at12718PM.png");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, owner);
@@ -99,7 +117,7 @@ public class ProjectTest  extends TestBase {
 		pro.nav_addprojectdescription.sendKeys("This is testing project");
 			
 		pro.btn_startProject.click();
-		Thread.sleep(800);
+		Thread.sleep(800);*/
 
 		  /*
 		pro.btn_addPhoto.click();
@@ -189,6 +207,106 @@ public class ProjectTest  extends TestBase {
 		  pro.btn_startProject.click();
 		*/  
 	}
+	@Test(priority=2)
+	public void verifyOpenProjectfrom_GridView() throws InterruptedException {
+		Actions builder = new Actions(driver);
+		builder.moveToElement(pro.btn_first_Project_open_grid).build().perform();
+		pro.btn_first_Project_open_grid.click();
+	
+		builder.moveToElement(pro.tab_two_inside_project).build().perform();
+		pro.tab_two_inside_project.click();
+		//Thread.sleep(10000);
+		AssertJUnit.assertTrue(pro.tab_two_inside_project.isDisplayed());
+	}
+	
+	@Test(priority=3)
+	
+    public void verifyDeleteProject_from_GridView() throws IOException, InterruptedException, Exception {
+          
+        das.link_projects.click();
+        //Thread.sleep(2000);
+      
+    	//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        Actions builder = new Actions(driver);
+        
+        
+		builder.moveToElement(pro.icon_grid).build().perform();
+		pro.icon_grid.click();
+		
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")));
+	
+		
+        WebElement hover = pro.thumbnail_first_Project_from_Grid;
+        
+        builder.moveToElement(hover).build().perform();
+        pro.btn_deleteProject_grid.click();
+        builder.moveToElement(pro.btn_delete_confirm_grid).build().perform();
+        pro.btn_delete_confirm_grid.click();
+       
+    }
+	
+	
+public void verifyDeletedProjectFromGrid_inTrash() {
+	
+	das.link_trash.click();
+	
+}
+
+@Test(priority=4)
+	public void openProjectFrom_ListView() throws InterruptedException   {
+		das.link_projects.click();
+		Actions builder = new Actions(driver);
+		builder.moveToElement(pro.icon_list).build().perform();
+		pro.icon_list.click();
+		
+		// WebDriverWait wait=new WebDriverWait(driver, 30);
+		//wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]"))));
+		 Thread.sleep(2000);
+		  
+		  JavascriptExecutor js = (JavascriptExecutor)driver;	
+		
+		js.executeScript("arguments[0].click();", pro.btn_first_Project_open_list);
+		
+		
+		//this is not implemented yet
+		/*builder.moveToElement(pro.tab_two_inside_project).build().perform();
+		pro.tab_two_inside_project.click();
+		Thread.sleep(10000);
+		AssertJUnit.assertTrue(pro.tab_two_inside_project.isDisplayed());*/
+		//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+	}
+	
+	@Test(priority=5)
+	 public void verifyDeleteProject_from_LISTView() throws IOException, InterruptedException, Exception {
+         
+	        das.link_projects.click();
+	        //Thread.sleep(2000);
+	      
+	      Actions builder = new Actions(driver);
+	        
+	        
+//			builder.moveToElement(pro.icon_list).build().perform();
+		//	pro.icon_list.click();
+			
+			WebDriverWait wait=new WebDriverWait(driver, 20);
+			  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")));
+		
+			
+	     WebElement hover = pro.thumbnail_first_Project_from_List;
+	     builder.moveToElement(hover).build().perform();
+			  //JavascriptExecutor js = (JavascriptExecutor)driver;	
+				
+				//js.executeScript("arguments[0].click();", pro.thumbnail_first_Project_from_List);
+				//js.executeScript("arguments[0].click();", pro.btn_deleteProject_list);
+				
+	       pro.btn_deleteProject_list.click();
+	        builder.moveToElement(pro.btn_delete_confirm_list).build().perform();
+	        pro.btn_delete_confirm_list.click();
+	        //Thread.sleep(200);
+	        das.btn_logout.click();
+	    }
+	
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Dashboard page Test");

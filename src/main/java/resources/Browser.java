@@ -1,6 +1,7 @@
  package resources;
 
 import java.io.FileOutputStream;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Proxy;
@@ -29,12 +30,14 @@ public class Browser {
 	
 	 public static WebDriver getInstance() {
 	        if (driver == null) {
-	        	System.out.println("Driver === "+driver);
+	        	
 	            driver = getDefaultBrowser();
+	            driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 	        }
 	        return driver;
 	    }
 	 public static void initBrowser()  {
+		
 		 cleanCookieCache();
 		 setSize();
 	        
@@ -46,6 +49,7 @@ public class Browser {
 		 driver.manage().window().maximize();
 	 } 
 	 private static WebDriver getDefaultBrowser() {
+		 
 	        return getABrowser(System.getProperty("Browser"));
 	    }
 
