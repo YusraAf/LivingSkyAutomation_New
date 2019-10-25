@@ -108,15 +108,15 @@ public void doSigninAssertion() {
 	public Object[][] getLoginData(){
  
 	 Object[][] data= new Object[4][3];
-	 data[0][0]= "niti12@livingskytech.com";
+	 data[0][0]= "niti@livingskytech.com";
 	 data[0][1]= "asdF1234";
 	 data[0][2]= 1;
  
-	 data[1][0]= "niti5@yopmail.com";
+	 data[1][0]= "niti@livingskytech.com";
 	 data[1][1]= "asd12934";
 	 data[1][2]= 2;
 	 
-	 data[2][0]= "niti@yopmail.com";
+	 data[2][0]= "niti@livingskytech.com";
 	 data[2][1]= "";
 	 data[2][2]= 3;
 	 

@@ -36,13 +36,11 @@ public WebElement btn_logout;
 @CacheLookup
 public WebElement link_favourites;
 
-@FindBy(xpath= "//div[contains(text(),'Trash')]")
+@FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]/div[1]/li[3]/a[1]")
 @CacheLookup
 public WebElement link_trash;
 
-@FindBy(xpath= "//span[@class='menu-btn-text delete-btn-text']")
-@CacheLookup
-public WebElement link_EmptyTrash;
+
 
 @FindBy(xpath= "//div[contains(text(),'My Account')]")
 @CacheLookup

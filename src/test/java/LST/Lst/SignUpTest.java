@@ -166,7 +166,7 @@ private CommonTask common;
 	@DataProvider
 	  public Object[][] getSignInData(){
 		 
-		String user = "test"+CommonTask.randomNumber()+"@yopmail.com";
+		String user = "niti"+CommonTask.randomNumber()+"@yopmail.com";
 		  
 	   Object[][] data= new Object[8][4];
 	   data[0][0]= "";
@@ -199,12 +199,12 @@ private CommonTask common;
 	   data[5][2]= "";
 	   data[5][3]= 6;
 	   
-	   data[6][0]= user;
+	   data[6][0]= "niti@livingskytech.com";
 	   data[6][1]= "asdF1234";
 	   data[6][2]= "asdF1234";
 	   data[6][3]= 7;
 	   
-	   data[7][0]= user;
+	   data[7][0]= "niti@livingskytech.com";
 	   data[7][1]= "asdF1234";
 	   data[7][2]= "asdF1234";
 	   data[7][3]= 8;
@@ -282,7 +282,9 @@ private CommonTask common;
 			dash.initElement();
 			dash.verifyPageUrl();
 			System.out.println("Inside the Dashboard: ");
-			dash.btn_logout.click();		
+			//dash.btn_logout.click();
+			
+			testProjectAfterSignUP();
 	  }
 	 
 	  public void testCase8() throws InterruptedException {
@@ -295,6 +297,82 @@ private CommonTask common;
 		  
 		  Browser.pageRefresh();
 	  } 
+	  
+	  
+	
+	  public void testProjectAfterSignUP() {
+		  
+		  ProjectTest pt= new ProjectTest();
+		
+			
+				try {
+					pt.createProject();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (InterruptedException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+			
+			try {
+				pt.verifyOpenProjectfrom_GridView();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			
+					try {
+						pt.verifyDeleteProject_from_GridView();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				
+		 
+		  try {
+			pt.verifyDeletedProjectFromGrid_inTrash();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  
+		  try {
+			pt.createProject_from_ListView();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  try {
+			pt.openProjectFrom_ListView();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  try {
+			pt.verifyDeleteProject_from_LISTView();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  try {
+			pt.verifyDeletedProjectFromList_inTrash();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  }
+	  
 	  
 	  public void captchaSelection()  {
 		
@@ -313,14 +391,18 @@ private CommonTask common;
 		 // Assert.assertEquals(signup.btn_signUp.isEnabled(), true);
 		  signup.btn_signUp.click();
 	  }
+	  
+	  
 	  public void deleteRegisterData() {
 		  
 		  PostGreConnection.postGreDbConnectionOpen(); 
 		  DbQuery dbq= new  DbQuery(); 
-		  String query =  "Delete from public.\"unverifiedUsers\" where email like '%test%'";
+		  String query =  "Delete from public.\"unverifiedUsers\" where email like '%niti%'";
 		  dbq.deleteData(query); 
 		  PostGreConnection.dbClose();
 	  }
+	  
+	  
 @AfterClass
 public  void closeBrowser() {
 	System.out.println("Closing Signup page Test");

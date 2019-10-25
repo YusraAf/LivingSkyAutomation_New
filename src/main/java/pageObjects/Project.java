@@ -28,7 +28,7 @@ public class Project extends PageBase{
 	public WebElement btn_startProject;
 
 
-	@FindBy(xpath= "//input[@id='input-title']")
+	@FindBy(xpath= "/html[1]/body[1]/reach-portal[2]/div[3]/div[1]/div[1]/div[1]/div[1]/form[1]/section[1]/input[1]")
 	@CacheLookup
 	public WebElement nav_startTypingProjectName;
 	
@@ -61,6 +61,7 @@ public class Project extends PageBase{
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[1]/div[2]/div[1]")
 	@CacheLookup
 	public WebElement txt_first_Project_Title_frm_grid;
+	
 	
 	@FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[2]/button[1]")
 	@CacheLookup
@@ -99,6 +100,19 @@ public class Project extends PageBase{
     @CacheLookup
     public WebElement tab_two_inside_project;
     
+    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/button[1]")
+    @CacheLookup
+    public WebElement btn_newProject_inside_project;
     
-	
+    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[4]/div[1]/button[1]")
+    @CacheLookup
+    public WebElement icon_share_thumbnail_project;
+    
+    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[4]/div[1]/button[2]")
+    @CacheLookup
+    public WebElement icon_copy_thumbnail_project;
+    
+    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[4]/div[1]/button[3]")
+    @CacheLookup
+    public WebElement icon_star_thumbnail_project;
 }

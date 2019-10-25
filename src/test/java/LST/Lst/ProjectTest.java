@@ -8,6 +8,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -29,8 +30,8 @@ import pageObjects.Dashboard;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
 import pageObjects.Project;
+import pageObjects.Trash;
 import resources.Browser;
-import resources.CommonTask;
 
 public class ProjectTest  extends TestBase {
 	
@@ -40,16 +41,13 @@ public class ProjectTest  extends TestBase {
 	private LoginPage log;
 	private Dashboard das;
 	private Project pro;
+	private Trash trs;
 	
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {	
 		driver = Browser.getInstance();
 		driver.get(baseUrl);
-	}	
-	 
-	@Test(priority=1) 
-	public void createProject() throws IOException, InterruptedException, Exception {
-		  
+		
 		land= new LandingPage(driver);
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		land.initElement(); 
@@ -58,20 +56,24 @@ public class ProjectTest  extends TestBase {
 		log =new LoginPage(land.getDriver());
 		log.initElement();
 		  
-		log.txt_userName.sendKeys("niti@yopmail.com"); 
+		log.txt_userName.sendKeys("niti@livingskytech.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
 		Thread.sleep(1000);
 	 
-		das = new Dashboard(log.getDriver());
+		//das = new Dashboard(log.getDriver());
+	}	
+	 
+	@Test(priority=1) 
+	public void createProject() throws IOException, InterruptedException, Exception {
+		  
+		das = new Dashboard(driver);
 		das.initElement();
 		
 		das.btn_newProject.click();
 		
 		pro = new Project(das.getDriver());
 		pro.initElement();
-		
-		CommonTask com = new CommonTask(driver);
 		
 		String  projectName = System.getProperty("projectName");
 		pro.nav_startTypingProjectName.sendKeys(projectName);
@@ -91,7 +93,6 @@ public class ProjectTest  extends TestBase {
 		
 		System.out.println("Project NAme out: "+ pro.txt_first_Project_Title_frm_grid.getText());
 		
-		//  File file = new File("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot2019-10-16at1.27.18PM.jpeg");
 		/*ClipboardOwner owner = null; 
 		Robot robot = new Robot();
 		StringSelection stringSelection= new StringSelection("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot20191016at12718PM.png");
@@ -207,8 +208,16 @@ public class ProjectTest  extends TestBase {
 		  pro.btn_startProject.click();
 		*/  
 	}
+	
+	public void verifyAllElements_Project_Grid() {
+		
+	}
+	
+	
 	@Test(priority=2)
 	public void verifyOpenProjectfrom_GridView() throws InterruptedException {
+		//das.link_projects.click();
+		
 		Actions builder = new Actions(driver);
 		builder.moveToElement(pro.btn_first_Project_open_grid).build().perform();
 		pro.btn_first_Project_open_grid.click();
@@ -224,11 +233,8 @@ public class ProjectTest  extends TestBase {
     public void verifyDeleteProject_from_GridView() throws IOException, InterruptedException, Exception {
           
         das.link_projects.click();
-        //Thread.sleep(2000);
-      
-    	//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-        Actions builder = new Actions(driver);
         
+        Actions builder = new Actions(driver);
         
 		builder.moveToElement(pro.icon_grid).build().perform();
 		pro.icon_grid.click();
@@ -252,33 +258,50 @@ public class ProjectTest  extends TestBase {
 	das.link_trash.click();
 	
 	if(driver.getCurrentUrl().contains("dashboard/deleted")) {
-		 Thread.sleep(10000);
+		 Thread.sleep(1000);
 		
-	System.out.println(driver.getCurrentUrl()+" Project Title :");
-		
-	System.out.println(pro.txt_first_Project_Title_frm_grid.getText());
-		
-	WebElement elem =driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]"));
+	
+	 trs= new Trash(driver);
+	trs.initElement();
+	 String pName =  trs.thumbnail_project_title.getText();
+	 AssertJUnit.assertEquals(pName, System.getProperty("projectName"));
+	 //driver.findElement(By.className("project-name")).getText();
 
-    Actions builder = new Actions(driver);
-	builder.moveToElement(elem).build().perform();
-	//elem.click();
 	
 	 
 	}
 	
 	}
-
 	@Test(priority=5)
-	public void openProjectFrom_ListView() throws InterruptedException   {
+	public void createProject_from_ListView() throws InterruptedException {
 		das.link_projects.click();
+		pro.initElement();
 		Actions builder = new Actions(driver);
 		builder.moveToElement(pro.icon_list).build().perform();
 		pro.icon_list.click();
 		
-		// WebDriverWait wait=new WebDriverWait(driver, 30);
-		//wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]"))));
-		 Thread.sleep(2000);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/button[1]"))));
+		pro.btn_newProject_inside_project.click();
+
+	
+		String  projectName = System.getProperty("projectName")+ " LIST";
+		System.out.println("Project Name list view: "+projectName);
+		
+		pro.nav_startTypingProjectName.sendKeys(projectName);
+		Thread.sleep(1000);
+		
+		pro.btn_startProject.click();
+		Thread.sleep(1000);
+	}
+
+	@Test(priority=6)
+	public void openProjectFrom_ListView() throws InterruptedException   {
+		das.link_projects.click();
+		
+		 WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]"))));
+		// Thread.sleep(2000);
 		  
 		  JavascriptExecutor js = (JavascriptExecutor)driver;	
 		
@@ -293,25 +316,20 @@ public class ProjectTest  extends TestBase {
 		//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 	}
 	
-	@Test(priority=5)
+	@Test(priority=7)
 	 public void verifyDeleteProject_from_LISTView() throws IOException, InterruptedException, Exception {
          
 	        das.link_projects.click();
-	        //Thread.sleep(2000);
-	      
+	       
 	      Actions builder = new Actions(driver);
-	        
-	        
-//			builder.moveToElement(pro.icon_list).build().perform();
-		//	pro.icon_list.click();
-			
+	     	
 			WebDriverWait wait=new WebDriverWait(driver, 20);
 			  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")));
 		
 			
 	     WebElement hover = pro.thumbnail_first_Project_from_List;
 	     builder.moveToElement(hover).build().perform();
-			  //JavascriptExecutor js = (JavascriptExecutor)driver;	
+			 // JavascriptExecutor js = (JavascriptExecutor)driver;	
 				
 				//js.executeScript("arguments[0].click();", pro.thumbnail_first_Project_from_List);
 				//js.executeScript("arguments[0].click();", pro.btn_deleteProject_list);
@@ -319,10 +337,37 @@ public class ProjectTest  extends TestBase {
 	       pro.btn_deleteProject_list.click();
 	        builder.moveToElement(pro.btn_delete_confirm_list).build().perform();
 	        pro.btn_delete_confirm_list.click();
-	        //Thread.sleep(200);
-	        das.btn_logout.click();
+	        
+	        
 	    }
+	@Test(priority=8)
+	public void verifyDeletedProjectFromList_inTrash() throws InterruptedException {
+		das.initElement();
 	
+        Thread.sleep(5000);
+      
+	    das.link_trash.click();
+
+	if(driver.getCurrentUrl().contains("dashboard/deleted")) {
+		 Thread.sleep(10000);
+		
+	System.out.println("In Side url "+driver.getCurrentUrl());
+	Trash trs= new Trash(das.getDriver());
+	
+	
+	trs.initElement();
+	 String pName =  trs.txt_Project_Title_frm_List.getText();
+	 String  projectName = System.getProperty("projectName")+ " LIST";
+	 AssertJUnit.assertEquals(pName, projectName);
+	 //driver.findElement(By.className("project-name")).getText();
+	System.out.println("Project Name from List: "+pName);
+	
+    das.btn_logout.click();
+	 
+	}
+	
+	}
+
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Dashboard page Test");
