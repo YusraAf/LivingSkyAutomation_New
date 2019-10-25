@@ -52,8 +52,6 @@ public class Project extends PageBase{
 	@CacheLookup
 	public WebElement btn_first_Project_open_grid;
 	
-			
-
 	@FindBy(xpath="//div[@class='App dashboard-page-wrapper']//div[1]//div[2]//div[1]//a[1]")
 	@CacheLookup
 	public WebElement btn_first_Project_open_list;
@@ -95,7 +93,7 @@ public class Project extends PageBase{
     @FindBy(xpath="//*[@class='icon-list']")
     @CacheLookup
     public WebElement icon_list;
-    
+    				
     @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/p[1]")
     @CacheLookup
     public WebElement tab_two_inside_project;

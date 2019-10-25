@@ -2,6 +2,7 @@ package LST.Lst;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import org.testng.annotations.BeforeClass;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -214,26 +215,27 @@ private CommonTask common;
 	
  
 	public void testCase1() {
-	
-		Assert.assertEquals(signup.btn_signUp.isEnabled(), false);
+		SoftAssert softassert6 = new SoftAssert();
+		softassert6.assertEquals(signup.btn_signUp.isEnabled(), false);
 		
 		// System.out.println("Test case 1 verified.. "+ button);
 		  logger.info("Empty email address message is showing successfully.");
-		
+		  softassert6.assertAll();
 	  }
 
 
 	  public void testCase2() {
 		  
-		  
-		  Assert.assertEquals(signup.btn_signUp.isEnabled(), false);
+		  SoftAssert softassert = new SoftAssert();
+		  softassert.assertEquals(signup.btn_signUp.isEnabled(), false);
 		  //AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "First you need to agree to the terms of use."); 
 
 		  logger.info("First you need to agree to the terms of use message is showing successfully.");
-		  
+		  softassert.assertAll();
 	  }
 	  
 	  public void testCase3() {
+		  SoftAssert softassert1 = new SoftAssert();
 		 try {
 			Thread.sleep(7000);
 		} catch (InterruptedException e) {
@@ -241,32 +243,32 @@ private CommonTask common;
 			e.printStackTrace();
 		}
 		  captchaSelection();
-		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password must be 8 or more characters."); 
+		  softassert1.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Passw ord must be 8 or more characters."); 
 		  logger.info("Password must be 8 or more characters message is showing successfully.");
-		  
+		  softassert1.assertAll();
 		  
 	  }
 	  
 	  public void testCase4() {
-
+		  SoftAssert softassert2 = new SoftAssert();
 		  captchaSelection();
-		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Passwords do not match."); 
+		  softassert2.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Passwords do not match."); 
 		  logger.info("Passwords do not match message is showing successfully.");
-		  
+		  softassert2.assertAll();	  
 	  }
 	  
 	  public void testCase5() {
-			
-		  Assert.assertEquals(signup.btn_signUp.isEnabled(), false);
+		  SoftAssert softassert3 = new SoftAssert();
+		  softassert3.assertEquals(signup.btn_signUp.isEnabled(), false);
 		  logger.info("Password is required message is showing successfully.");
-		 
+		  softassert3.assertAll();
 	  }
 	  
 	  public void testCase6() {
-			
-		 Assert.assertEquals(signup.btn_signUp.isEnabled(), false);
+		  SoftAssert softassert4 = new SoftAssert();	
+		  softassert4.assertEquals(signup.btn_signUp.isEnabled(), false);
 		  logger.info("Confirm password is required message is showing successfully.");
-		  
+		  softassert4.assertAll();
 	  } 
 	  public void testCase7() throws InterruptedException {
 		  landing= new LandingPage(driver);
@@ -288,12 +290,13 @@ private CommonTask common;
 	  }
 	 
 	  public void testCase8() throws InterruptedException {
+		  SoftAssert softassert5 = new SoftAssert();
 		
 		  captchaSelection();
 
-		  AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "User already exists."); 
+		  softassert5.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "User already exists."); 
 		  logger.info("Duplicate user checking message is showing successfully.");
-		
+		  softassert5.assertAll();
 		  
 		  Browser.pageRefresh();
 	  } 
@@ -375,7 +378,7 @@ private CommonTask common;
 	  
 	  
 	  public void captchaSelection()  {
-		
+		  
 		  System.out.println("Inside Captcha Code ");
 		  driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS) ;
 		  signup.txt_capcha.click();
@@ -411,3 +414,4 @@ public  void closeBrowser() {
 }
 
 }
+
