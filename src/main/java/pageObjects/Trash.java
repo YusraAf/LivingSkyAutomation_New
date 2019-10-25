@@ -43,12 +43,12 @@ public class Trash extends PageBase{
     public WebElement btn_deleteForever_Trash_list;
     				
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[1]/div[1]/input[1]")
-    @CacheLookup
-    public WebElement btn_deleteTrash_confirm_grid;
+    @CacheLookup     
+    public WebElement txt_deleteTrash_confirm_grid;
     
     @FindBy(xpath= "/html[1]/body[1]/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]")
     @CacheLookup
-    public WebElement btn_deleteTrash_confirm_list;
+    public WebElement txt_deleteTrash_confirm_list;
     
     @FindBy(xpath="//section[@class='content-canvas__container grid-view']")
     @CacheLookup
@@ -58,11 +58,11 @@ public class Trash extends PageBase{
     @CacheLookup
     public WebElement containerTrash_list_view;
     
-    @FindBy(xpath="//*[@class='icon-grid']")
+    @FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/div[2]/div[1]/button[1]/*")
     @CacheLookup
     public WebElement iconTrash_grid;
     
-    @FindBy(xpath="//*[@class='icon-list']")
+    @FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/div[2]/div[1]/button[2]/*")
     @CacheLookup
     public WebElement iconTrash_list;
     
@@ -70,5 +70,28 @@ public class Trash extends PageBase{
     @CacheLookup
     public WebElement btn_emptyTrash;
     
-  
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[1]/div[1]/button[1]/*")
+    @CacheLookup
+    public WebElement btn_deleteTrash_confirmClick_grid;
+    
+    @FindBy(xpath= "/html[1]/body[1]/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/button[1]/*")
+    @CacheLookup
+    public WebElement btn_deleteTrash_confirmClick_list;
+    
+    @FindBy(xpath= "/html[1]/body[1]/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]")
+    @CacheLookup
+    public WebElement txt_EmotyTrash_confirm;
+    
+    @FindBy(xpath= "/html[1]/body[1]/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/button[1]/*")
+    @CacheLookup
+    public WebElement btn_EmotyTrash_confirmClick; 
+    
+    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/div[2]/button[1]")
+    @CacheLookup
+    public WebElement dropDownbtn_sortBylastModifiedTrash;
+    
+    @FindBy(xpath= "//input[@placeholder='Search for a project']")
+    @CacheLookup
+    public WebElement nav_SearchProjectFromTrash;
 }
+
