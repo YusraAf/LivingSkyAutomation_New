@@ -460,12 +460,13 @@ public class ProjectTest  extends TestBase {
 	       
 			trs.initElement();
 			logger.info("This is inside in Trash Page =====> Verify DeleteForever Project From Trash_Listview");
-	     
-			
+			WebDriverWait wait=new WebDriverWait(driver, 20);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")));
+		
 	        WebElement deleteForeverList = trs.thumbnail_first_Trash_from_List;
 	        
 	        builder.moveToElement(deleteForeverList).build().perform();
-	        deleteForeverList.click();
+	       // deleteForeverList.click();
 	        Thread.sleep(500);
 	        trs.btn_deleteForever_Trash_list.click();
 	        Thread.sleep(200);
@@ -475,7 +476,7 @@ public class ProjectTest  extends TestBase {
 	        Thread.sleep(200);
 	        
 	    }
-	@Test(priority=13)
+@Test(priority=13)
 	  public void verifyDeleteALLProjectFromTrash() throws IOException, InterruptedException, Exception {
 	       das.link_projects.click();
 		  for(int i=0;i<3;i++) {
