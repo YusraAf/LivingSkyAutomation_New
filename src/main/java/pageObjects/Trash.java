@@ -23,7 +23,7 @@ public class Trash extends PageBase{
 	public WebElement thumbnail_first_Trash_from_Grid;
 					
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")
-	@CacheLookup
+	@CacheLookup 
 	public WebElement thumbnail_first_Trash_from_List;
 	
 	@FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[1]/button[1]/div[1]")
@@ -39,7 +39,7 @@ public class Trash extends PageBase{
     public WebElement btn_deleteForever_Trash_grid;
     
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/button[1]")
-    @CacheLookup
+    @CacheLookup  
     public WebElement btn_deleteForever_Trash_list;
     				
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[1]/div[1]/input[1]")

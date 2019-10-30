@@ -94,9 +94,11 @@ public class ProjectTest  extends TestBase {
 		//}catch(AssertionError ae) {
 		//	System.out.println(ae);
 		//}
+		SoftAssert sa =new SoftAssert();
+		sa.assertEquals(pro.txt_first_Project_Title_frm_grid.getText(),projectName);
 		
 		System.out.println("Project NAme out: "+ pro.txt_first_Project_Title_frm_grid.getText());
-		
+		sa.assertAll();
 		/*ClipboardOwner owner = null; 
 		Robot robot = new Robot();
 		StringSelection stringSelection= new StringSelection("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot20191016at12718PM.png");
@@ -463,6 +465,8 @@ public class ProjectTest  extends TestBase {
 	        WebElement deleteForeverList = trs.thumbnail_first_Trash_from_List;
 	        
 	        builder.moveToElement(deleteForeverList).build().perform();
+	        deleteForeverList.click();
+	        Thread.sleep(500);
 	        trs.btn_deleteForever_Trash_list.click();
 	        Thread.sleep(200);
 	        builder.moveToElement(trs.txt_deleteTrash_confirm_list).build().perform();
