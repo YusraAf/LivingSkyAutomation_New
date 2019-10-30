@@ -46,7 +46,7 @@ public class TrashTest  extends TestBase {
 		log =new LoginPage(land.getDriver());
 		log.initElement();
 		  
-		log.txt_userName.sendKeys("niti@yopmail.com"); 
+		log.txt_userName.sendKeys("niti@livingskytech.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
 		Thread.sleep(1000);

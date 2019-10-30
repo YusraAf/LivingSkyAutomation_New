@@ -70,7 +70,6 @@ public class Trash extends PageBase{
     @CacheLookup
     public WebElement btn_emptyTrash;
     
-<<<<<<< HEAD
     @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[1]/div[2]/div[1]")
     @CacheLookup
     public WebElement thumbnail_project_title;
@@ -78,7 +77,7 @@ public class Trash extends PageBase{
     @FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]")
     @CacheLookup
 	public WebElement txt_Project_Title_frm_List;
-=======
+
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[1]/div[1]/button[1]/*")
     @CacheLookup
     public WebElement btn_deleteTrash_confirmClick_grid;
@@ -102,6 +101,6 @@ public class Trash extends PageBase{
     @FindBy(xpath= "//input[@placeholder='Search for a project']")
     @CacheLookup
     public WebElement nav_SearchProjectFromTrash;
->>>>>>> a60d6653080219c78c787b4be361ee92b12c6147
+
 }
 

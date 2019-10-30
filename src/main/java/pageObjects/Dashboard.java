@@ -54,7 +54,7 @@ public WebElement link_settings;
 @CacheLookup
 public WebElement link_help;
 
-@FindBy(xpath= "//span[@class='menu-btn-text']")
+@FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/div[2]/button[2]")
 @CacheLookup
 public WebElement btn_newProject;
 

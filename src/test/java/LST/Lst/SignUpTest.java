@@ -167,7 +167,7 @@ private CommonTask common;
 	@DataProvider
 	  public Object[][] getSignInData(){
 		 
-		String user = "niti"+CommonTask.randomNumber()+"@yopmail.com";
+		String user = "niti@livingskytech.com";
 		  
 	   Object[][] data= new Object[8][4];
 	   data[0][0]= "";
@@ -200,12 +200,12 @@ private CommonTask common;
 	   data[5][2]= "";
 	   data[5][3]= 6;
 	   
-	   data[6][0]= "niti@livingskytech.com";
+	   data[6][0]= user;
 	   data[6][1]= "asdF1234";
 	   data[6][2]= "asdF1234";
 	   data[6][3]= 7;
 	   
-	   data[7][0]= "niti@livingskytech.com";
+	   data[7][0]= user;
 	   data[7][1]= "asdF1234";
 	   data[7][2]= "asdF1234";
 	   data[7][3]= 8;
@@ -243,7 +243,7 @@ private CommonTask common;
 			e.printStackTrace();
 		}
 		  captchaSelection();
-		  softassert1.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Passw ord must be 8 or more characters."); 
+		  softassert1.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password must be 8 or more characters."); 
 		  logger.info("Password must be 8 or more characters message is showing successfully.");
 		  softassert1.assertAll();
 		  
@@ -270,6 +270,12 @@ private CommonTask common;
 		  logger.info("Confirm password is required message is showing successfully.");
 		  softassert4.assertAll();
 	  } 
+	  
+	  /****
+	   * test case 7 will check project creation, delete project, after signup
+	   * @throws InterruptedException
+	   */
+	  
 	  public void testCase7() throws InterruptedException {
 		  landing= new LandingPage(driver);
 			 landing.initElement();
@@ -400,8 +406,10 @@ private CommonTask common;
 		  
 		  PostGreConnection.postGreDbConnectionOpen(); 
 		  DbQuery dbq= new  DbQuery(); 
-		  String query =  "Delete from public.\"unverifiedUsers\" where email like '%niti%'";
+		  String query =  "Delete from public.\"unverifiedUsers\" where email like '%niti@livingsky%'";
 		  dbq.deleteData(query); 
+		  String query1 =  "Delete from public.\"verifiedUsers\" where email like '%niti@livingsky%'";
+		  dbq.deleteData(query1); 
 		  PostGreConnection.dbClose();
 	  }
 	  

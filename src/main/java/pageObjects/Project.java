@@ -45,7 +45,7 @@ public class Project extends PageBase{
 	public WebElement thumbnail_first_Project_from_Grid;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")
-	@CacheLookup
+	@CacheLookup 
 	public WebElement thumbnail_first_Project_from_List;
 	
 	@FindBy(xpath="html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/a[1]")
