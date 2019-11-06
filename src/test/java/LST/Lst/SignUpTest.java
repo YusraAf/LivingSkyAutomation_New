@@ -282,17 +282,18 @@ private CommonTask common;
 			 
 			 signup = new SignUP(landing.getDriver());
 			 signup.initElement();
-		  Thread.sleep(5000);
-		 signup.radio_updates.click();
-		  captchaSelection();
+			 Thread.sleep(5000);
+			 signup.radio_updates.click();
+			 captchaSelection();
 		  	
 			Dashboard dash = new Dashboard(signup.getDriver());
 			dash.initElement();
 			dash.verifyPageUrl();
 			System.out.println("Inside the Dashboard: ");
-			//dash.btn_logout.click();
+			
 			
 			testProjectAfterSignUP();
+			dash.btn_logout.click();
 	  }
 	 
 	  public void testCase8() throws InterruptedException {
@@ -377,7 +378,6 @@ private CommonTask common;
 		  try {
 			pt.verifyDeletedProjectFromList_inTrash();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	  }

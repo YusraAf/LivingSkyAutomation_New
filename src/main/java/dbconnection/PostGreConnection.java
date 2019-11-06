@@ -9,9 +9,12 @@ public class PostGreConnection {
 	
 	
 // Connection for test environment database in postgre	
-private static	String url = "jdbc:postgresql://test-us-east-1.celhkzfjom8w.us-east-1.rds.amazonaws.com:5432/";
+//private static	String url = "jdbc:postgresql://test-us-east-1.celhkzfjom8w.us-east-1.rds.amazonaws.com:5432/";
+private static	String url = "jdbc:postgresql://dev-us-east-1.celhkzfjom8w.us-east-1.rds.amazonaws.com:5432/test";
 private static String username = "postgres";
-private static String password = "38W7YrnuhluHxfteHLhB";
+//private static String password = "38W7YrnuhluHxfteHLhB";
+
+private static String password = "Oojd4QBiPHpV";
 static Connection db ;
 	
 public static void postGreDbConnectionOpen() {

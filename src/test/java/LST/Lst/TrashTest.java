@@ -87,7 +87,7 @@ public class TrashTest  extends TestBase {
 		WebDriverWait wait=new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[2]")));
 		 
-        WebElement restoreList = trash.thumbnail_first_Trash_from_List;
+        WebElement restoreList = trash.thumbnail_first_Trash_Project_from_List;
         
         builder.moveToElement(restoreList).build().perform();
         trash.btn_restoreTrash_list.click();
@@ -144,7 +144,7 @@ public class TrashTest  extends TestBase {
 		WebDriverWait wait1=new WebDriverWait(driver, 20);
 		wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")));
 		
-        WebElement deleteForeverList = trash.thumbnail_first_Trash_from_List;
+        WebElement deleteForeverList = trash.thumbnail_first_Trash_Project_from_List;
         
         builder.moveToElement(deleteForeverList).build().perform();
         trash.btn_deleteForever_Trash_list.click();

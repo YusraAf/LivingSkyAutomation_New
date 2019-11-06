@@ -18,13 +18,13 @@ public class Trash extends PageBase{
 	@CacheLookup
 	public WebElement container_Trash;
 					
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]")
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")
 	@CacheLookup
 	public WebElement thumbnail_first_Trash_from_Grid;
 					
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")
 	@CacheLookup 
-	public WebElement thumbnail_first_Trash_from_List;
+	public WebElement thumbnail_first_Trash_Project_from_List;
 	
 	@FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[1]/button[1]/div[1]")
 	@CacheLookup
