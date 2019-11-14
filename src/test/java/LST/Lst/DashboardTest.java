@@ -58,7 +58,7 @@ public class DashboardTest extends TestBase {
 	
 		
 	}
-	@Test(priority=2) 
+	//@Test(priority=2) 
 	public void verifyAllProjectFromProject() throws IOException, InterruptedException, Exception {
 		ProjectTest pt= new ProjectTest();
 		   das = new Dashboard(log.getDriver());

@@ -78,8 +78,9 @@ public class ProjectTest  extends TestBase {
 		
 		pro = new Project(das.getDriver());
 		pro.initElement();
-		int number = com.randomNumber();
-		String  projectName = System.getProperty("projectName")+ number;
+		//int number = com.randomNumber();
+		String  projectName = System.getProperty("projectName");
+				
 		pro.nav_startTypingProjectName.sendKeys(projectName);
 		Thread.sleep(1000);
 		
@@ -95,7 +96,8 @@ public class ProjectTest  extends TestBase {
 		
 		
 		SoftAssert sa =new SoftAssert();
-		sa.assertEquals(pro.txt_first_Project_Title_frm_grid.getText(),projectName+number);
+		sa.assertEquals(pro.txt_first_Project_Title_frm_grid.getText(),projectName);
+				//+number);
 		
 		System.out.println("Project NAme out: "+ pro.txt_first_Project_Title_frm_grid.getText());
 		sa.assertAll();
@@ -313,7 +315,8 @@ public class ProjectTest  extends TestBase {
 		
 	
 	
-		String  projectName = System.getProperty("projectName")+ "_LIST_"+com.randomNumber();
+		String  projectName = System.getProperty("projectName")+ " LIST";
+		//+com.randomNumber();
 		System.out.println("Project Name list view: "+projectName);
 		
 		pro.nav_startTypingProjectName.sendKeys(projectName);
@@ -479,10 +482,7 @@ public class ProjectTest  extends TestBase {
 	        builder.moveToElement(deleteForeverList).build().perform();
 	       // deleteForeverList.click();
 	      Thread.sleep(500);
-	        
-
-			
-			//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/button[1]")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/button[1]")));
 		  
 	        trs.btn_deleteForever_Trash_list.click();
 	        Thread.sleep(200);
@@ -556,7 +556,7 @@ public void verify_Project_Grid_List() {
 
 
 
-//@Test(priority=14)    
+@Test(priority=15)    
 public void verifyAllProjectFromProject() throws IOException, InterruptedException, Exception {
   
   //   das = new Dashboard(log.getDriver());
@@ -564,8 +564,28 @@ public void verifyAllProjectFromProject() throws IOException, InterruptedExcepti
     das.link_projects.click();
     Thread.sleep(200);
     //pro = new Project(das.getDriver());
+    
+	
+	das.btn_newProject.click();
+	
+	pro = new Project(das.getDriver());
+	pro.initElement();
+	//int number = com.randomNumber();
+	String  projectName = System.getProperty("projectName");
+			
+	pro.nav_startTypingProjectName.sendKeys(projectName);
+	Thread.sleep(1000);
+	
+	//driver.findElement(By.id("file")).click();
+	//pro.btn_addPhoto.click();
+	pro.btn_startProject.click();
+	
+	
+	Thread.sleep(1000);
+
+    
      pro.initElement();
-     Actions builder = new Actions(driver);
+    Actions builder = new Actions(driver);
     WebElement project = pro.container_grid_view;
     builder.moveToElement(project).build().perform();
     List<WebElement> allproject = driver.findElements(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div"));
@@ -575,7 +595,7 @@ public void verifyAllProjectFromProject() throws IOException, InterruptedExcepti
     for(WebElement b : allproject) {
         String proTitle= b.findElement(By.className("card-project__title")).getText();
         System.out.println(proTitle);
-        verifyDeleteProject_from_GridView();
+        //verifyDeleteProject_from_GridView();
         }
 	}
 	@AfterClass
