@@ -37,9 +37,9 @@ public class Trash extends PageBase{
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[1]/button[2]/div[1]")
     @CacheLookup
     public WebElement btn_deleteForever_Trash_grid;
-    
-    @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/button[1]")
-    @CacheLookup  
+    //html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/button[1]
+    @FindBy(xpath= "//button[@class='control__content-btn delete-action delete-forever-list']")
+    @CacheLookup    
     public WebElement btn_deleteForever_Trash_list;
     				
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/div[1]/div[1]/input[1]")
@@ -101,6 +101,15 @@ public class Trash extends PageBase{
     @FindBy(xpath= "//input[@placeholder='Search for a project']")
     @CacheLookup
     public WebElement nav_SearchProjectFromTrash;
+    
+    @FindBy(xpath= "/html[1]/body[1]/ul[1]/li[1]/div[1]/section[1]/div[3]/button[1]")
+    @CacheLookup 
+    public WebElement undoProjectFromTrash_GridView; 
+  //css=.card-project__action-text //div[3]/button/div
+   
+    @FindBy(xpath= "/html[1]/body[1]/ul[1]/li[1]/div[1]/section[1]/div[3]/button[1]")
+    @CacheLookup 
+    public WebElement undoProjectFromTrash_ListView; 
 
 }
 

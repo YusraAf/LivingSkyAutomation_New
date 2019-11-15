@@ -60,7 +60,7 @@ public class ProjectTest  extends TestBase {
 		log =new LoginPage(land.getDriver());
 		log.initElement();
 		  
-		log.txt_userName.sendKeys("niti@livingskytech.com"); 
+		log.txt_userName.sendKeys("test8@gmail.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
 		Thread.sleep(1000);
@@ -249,14 +249,15 @@ public class ProjectTest  extends TestBase {
 		WebDriverWait wait=new WebDriverWait(driver, 20);
 		  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")));
 	
-		
         WebElement hover = pro.thumbnail_first_Project_from_Grid;
         
         builder.moveToElement(hover).build().perform();
         pro.btn_deleteProject_grid.click();
         builder.moveToElement(pro.btn_delete_confirm_grid).build().perform();
         pro.btn_delete_confirm_grid.click();
-       
+        Thread.sleep(2500);
+        //WebDriverWait wait1=new WebDriverWait(driver, 50);
+        //wait1.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("/html[1]/body[1]/ul[1]/li[1]/div[1]/section[1]")));
     }
 	
 	@Test(priority=4)
@@ -267,23 +268,19 @@ public class ProjectTest  extends TestBase {
 	if(driver.getCurrentUrl().contains("dashboard/deleted")) {
 		 Thread.sleep(1000);
 		
-	
-	 trs= new Trash(driver);
+	trs= new Trash(driver);
 	trs.initElement();
-	 String pName =  trs.thumbnail_project_title.getText();
-	 AssertJUnit.assertEquals(pName, System.getProperty("projectName"));
-	 //driver.findElement(By.className("project-name")).getText();
+	String pName =  trs.thumbnail_project_title.getText();
+	AssertJUnit.assertEquals(pName, System.getProperty("projectName"));
+	//driver.findElement(By.className("project-name")).getText();
 
-	 
 	}
 	
 	}
-	
 	
 	@Test(priority=5)
 	  public void verifyRestoreProjectFromTrash_Gridview() throws IOException, InterruptedException, Exception {
           
- 
 	        Actions builder = new Actions(driver);
 	        
 			builder.moveToElement(trs.iconTrash_grid).build().perform();
@@ -300,8 +297,25 @@ public class ProjectTest  extends TestBase {
 	        
 	    }
 	
+	@Test(priority=6) 
+	public void verifyUndoProjectFromTrash_GridView() throws IOException, InterruptedException, Exception {
 	
-	@Test(priority=6)
+		Actions builder = new Actions(driver);
+		builder.moveToElement(trs.iconTrash_grid).build().perform();
+		trs.iconTrash_grid.click();
+		Thread.sleep(300);
+		        
+		WebDriverWait wait1=new WebDriverWait(driver, 20);
+		wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/ul[1]/li[1]/div[1]/section[1]")));
+		         //html[1]/body[1]/ul[1]/li[1]/div[1]/section[1]/div[2]
+		WebElement undo = trs.undoProjectFromTrash_GridView;
+		        
+		builder.moveToElement(undo).build().perform();
+		trs.undoProjectFromTrash_GridView.click();
+		Thread.sleep(300);
+		}
+
+	@Test(priority=7)
 	public void createProject_from_ListView() throws InterruptedException {
 		das.link_projects.click();
 		pro.initElement();
@@ -313,8 +327,6 @@ public class ProjectTest  extends TestBase {
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/button[1]"))));
 		pro.btn_newProject_inside_project.click();
 		
-	
-	
 		String  projectName = System.getProperty("projectName")+ " LIST";
 		//+com.randomNumber();
 		System.out.println("Project Name list view: "+projectName);
@@ -324,25 +336,22 @@ public class ProjectTest  extends TestBase {
 		
 		pro.btn_startProject.click();
 		
-		
 	}
 
-@Test(priority=7)
+	@Test(priority=8)
 	public void openProjectFrom_ListView() throws InterruptedException   {
+		
 		Thread.sleep(1000);
 	
-		
 		das.link_projects.click();
 		
-	
-		 WebDriverWait wait=new WebDriverWait(driver, 30);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]"))));
 		// Thread.sleep(2000);
 		  
-		  JavascriptExecutor js = (JavascriptExecutor)driver;	
+		JavascriptExecutor js = (JavascriptExecutor)driver;	
 		
 		js.executeScript("arguments[0].click();", pro.btn_first_Project_open_list);
-		
 		
 		//this is not implemented yet
 		/*builder.moveToElement(pro.tab_two_inside_project).build().perform();
@@ -352,17 +361,16 @@ public class ProjectTest  extends TestBase {
 		//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 	}
 	
-	@Test(priority=8)
+	 @Test(priority=9)
 	 public void verifyDeleteProject_from_LISTView() throws IOException, InterruptedException, Exception {
 		Thread.sleep(1000);
-	        das.link_projects.click();
-	       pro.initElement();
-	      Actions builder = new Actions(driver);
+	     das.link_projects.click();
+	     pro.initElement();
+	     Actions builder = new Actions(driver);
 	     	
 			WebDriverWait wait=new WebDriverWait(driver,30);
 			  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")));
 		
-			
 	     WebElement hover = pro.thumbnail_first_Project_from_List;
 	     builder.moveToElement(hover).build().perform();
 			 // JavascriptExecutor js = (JavascriptExecutor)driver;	
@@ -370,13 +378,12 @@ public class ProjectTest  extends TestBase {
 				//js.executeScript("arguments[0].click();", pro.thumbnail_first_Project_from_List);
 				//js.executeScript("arguments[0].click();", pro.btn_deleteProject_list);
 				
-	       pro.btn_deleteProject_list.click();
-	        builder.moveToElement(pro.btn_delete_confirm_list).build().perform();
-	        pro.btn_delete_confirm_list.click();
-	        
-	        
+	     pro.btn_deleteProject_list.click();
+	     builder.moveToElement(pro.btn_delete_confirm_list).build().perform();
+	     pro.btn_delete_confirm_list.click();
+	     Thread.sleep(1000);          
 	    }
-	@Test(priority=9)
+	@Test(priority=10)
 	public void verifyDeletedProjectFromList_inTrash() throws InterruptedException {
 		das.initElement();
 	
@@ -390,12 +397,11 @@ public class ProjectTest  extends TestBase {
 	System.out.println("In Side url "+driver.getCurrentUrl());
 	Trash trs= new Trash(das.getDriver());
 	
-	
 	trs.initElement();
-	 String pName =  trs.txt_Project_Title_frm_List.getText();
-	 String  projectName = System.getProperty("projectName")+ " LIST";
-	 AssertJUnit.assertEquals(pName, projectName);
-	 //driver.findElement(By.className("project-name")).getText();
+	String pName =  trs.txt_Project_Title_frm_List.getText();
+	String  projectName = System.getProperty("projectName")+ " LIST";
+	AssertJUnit.assertEquals(pName, projectName);
+	//driver.findElement(By.className("project-name")).getText();
 	System.out.println("Project Name from List: "+pName);
 	
   //  das.btn_logout.click();
@@ -403,7 +409,7 @@ public class ProjectTest  extends TestBase {
 	}
 	
 	}
-	@Test(priority=10)	
+	@Test(priority=11)	
     public void verifyRestoreProjectFromTrash_Listview() throws IOException, InterruptedException, Exception {
 		
 		logger.info("This is inside in Trash Page =====> Verify Restore Project From Trash_Listview");
@@ -422,19 +428,43 @@ public class ProjectTest  extends TestBase {
         Thread.sleep(200);
         
     }
-	@Test(priority=11)	
+
+	@Test(priority=12) 
+	public void verifyUndoProjectFromTrash_ListView() throws IOException, InterruptedException, Exception {
+	 	
+		Actions builder = new Actions(driver);
+		builder.moveToElement(trs.iconTrash_list).build().perform();
+		trs.iconTrash_list.click();
+		Thread.sleep(300);
+		        
+		WebDriverWait wait1=new WebDriverWait(driver, 50);
+		wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/ul[1]")));
+		//wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/ul[1]/li[1]/div[1]/section[1]")));
+		WebElement undo = trs.undoProjectFromTrash_ListView;
+		        
+		builder.moveToElement(undo).build().perform();
+		trs.undoProjectFromTrash_ListView.click();
+		Thread.sleep(300);
+		}
+	
+	 @Test(priority=13)	
 	 public void verifyDeleteForeverProjectFromTrash_Gridview() throws IOException, InterruptedException, Exception {
 	       
-		 verifyDeleteProject_from_GridView();
-		 
-		 
-		   das.link_trash.click();
-	       
+		// verifyDeleteProject_from_GridView();
+		    
+		    das.link_trash.click();
+	        Thread.sleep(300);
+	        
 			trs.initElement();
 			logger.info("This is inside in Trash Page =====> Verify DeleteForever Project From Trash_Gridview");
+			Actions builder = new Actions(driver);
+			builder.moveToElement(trs.iconTrash_grid).build().perform();
+			trs.iconTrash_grid.click();
+			Thread.sleep(300);
+			
 			// WebDriverWait iconTrash_grid=new WebDriverWait(driver, 30);
 			// iconTrash_grid.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/div[2]/div[1]/button[1]/*")));
-	        Actions builder = new Actions(driver); 
+	       // Actions builder = new Actions(driver); 
 	        
 			//builder.moveToElement(trs.iconTrash_grid).build().perform();
 		//	trs.iconTrash_grid.click();
@@ -457,22 +487,22 @@ public class ProjectTest  extends TestBase {
 	       
 	    }
 	
-@Test(priority=12)	
+	 @Test(priority=14)	
 	 public void verifyDeleteForeverProjectFromTrash_Listview() throws IOException, InterruptedException, Exception {   
 		   
-		Actions builder = new Actions(driver);
-	   builder.moveToElement(pro.icon_list).build().perform();
+		 Actions builder = new Actions(driver);
+		 builder.moveToElement(pro.icon_list).build().perform();
 			pro.icon_list.click();
 			Thread.sleep(200);			
 		 
-			verifyDeleteProject_from_LISTView();
+		//	verifyDeleteProject_from_LISTView();
 		 
 		 	das.link_trash.click();
 	       
 			trs.initElement();
 			logger.info("This is inside in Trash Page =====> Verify DeleteForever Project From Trash_Listview");
 			
-			WebDriverWait wait=new WebDriverWait(driver, 20);
+			WebDriverWait wait=new WebDriverWait(driver, 50);
 			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]")));
 		    
@@ -480,12 +510,12 @@ public class ProjectTest  extends TestBase {
 	        WebElement deleteForeverList = trs.thumbnail_first_Trash_Project_from_List;
 	        
 	        builder.moveToElement(deleteForeverList).build().perform();
-	       // deleteForeverList.click();
-	      Thread.sleep(500);
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]/button[1]")));
+	        //deleteForeverList.click();
+	        //Thread.sleep(500);
+			//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='control__content-btn delete-action delete-forever-list']")));
 		  
 	        trs.btn_deleteForever_Trash_list.click();
-	        Thread.sleep(200);
+	        Thread.sleep(500);
 	        builder.moveToElement(trs.txt_deleteTrash_confirm_list).build().perform();
 	        trs.txt_deleteTrash_confirm_list.sendKeys("DELETE");
 	        trs.btn_deleteTrash_confirmClick_list.click();
@@ -493,10 +523,12 @@ public class ProjectTest  extends TestBase {
 	        
 	    }
 
-@Test(priority=13)
-public void verify_Project_Grid_List() {
-	das.link_projects.click();
-	 Actions builder = new Actions(driver);
+	@Test(priority=15)
+	public void verify_Project_Grid_List() throws InterruptedException {
+		das.link_projects.click();
+		Thread.sleep(200);
+		pro.initElement();
+		Actions builder = new Actions(driver);
         
 		builder.moveToElement(pro.icon_grid).build().perform();
 		pro.icon_grid.click();
@@ -509,7 +541,7 @@ public void verify_Project_Grid_List() {
 		
 			sa.assertTrue(pro.container_list_view.isDisplayed(),"It is in List View.");
 			sa.assertAll();
-}
+	 }
   public void verifyDropDownForSorting() throws InterruptedException{
 	
 	  das.link_projects.click();
@@ -520,47 +552,45 @@ public void verify_Project_Grid_List() {
 	  for(int i=0;i<3;i++) {
 		  createProject_from_ListView();
 	     
-	  }
-  }
+	  	}
+  	}
 
-@Test(priority=14)
-	  public void verifyDeleteALLProjectFromTrash() throws IOException, InterruptedException, Exception {
+  	@Test(priority=16)
+	public void verifyDeleteALLProjectFromTrash() throws IOException, InterruptedException, Exception {
 	       das.link_projects.click();
 	       
 	      /***
 	       * Creating multiple project
 	       */
-		  for(int i=0;i<3;i++) {
-			  createProject_from_ListView();
+	       for(int i=0;i<3;i++) {
+			 createProject_from_ListView();
 		     verifyDeleteProject_from_LISTView();
-		  }
+	       }
 		  
-	        das.link_trash.click();
+	       das.link_trash.click();
 	       
-			trs.initElement();
-			logger.info("This is inside in Trash Page =====> Verify EmoptyTrash Project From Trash");
-	        Actions builder = new Actions(driver);
+	       trs.initElement();
+	       logger.info("This is inside in Trash Page =====> Verify EmoptyTrash Project From Trash");
+	       Actions builder = new Actions(driver);
 			
-			builder.moveToElement(trs.btn_emptyTrash).build().perform();
-			trs.btn_emptyTrash.click();
+	       builder.moveToElement(trs.btn_emptyTrash).build().perform();
+	       trs.btn_emptyTrash.click();
 			
 	       // WebElement emptyTrash = trash.txt_EmotyTrash_confirm;
 	        
-	        builder.moveToElement(trs.txt_EmotyTrash_confirm).build().perform();
-	        trs.txt_EmotyTrash_confirm.sendKeys("DELETE ALL");
-	        Thread.sleep(200);
-	        trs.btn_EmotyTrash_confirmClick.click();
-	        Thread.sleep(200);
+	       builder.moveToElement(trs.txt_EmotyTrash_confirm).build().perform();
+	       trs.txt_EmotyTrash_confirm.sendKeys("DELETE ALL");
+	       Thread.sleep(200);
+	       trs.btn_EmotyTrash_confirmClick.click();
+	       Thread.sleep(200);
 	        
 	    }
 
-
-
-@Test(priority=15)    
+//@Test(priority=17)    
 public void verifyAllProjectFromProject() throws IOException, InterruptedException, Exception {
   
   //   das = new Dashboard(log.getDriver());
-     das.initElement();
+    das.initElement();
     das.link_projects.click();
     Thread.sleep(200);
     //pro = new Project(das.getDriver());
@@ -580,11 +610,9 @@ public void verifyAllProjectFromProject() throws IOException, InterruptedExcepti
 	//pro.btn_addPhoto.click();
 	pro.btn_startProject.click();
 	
-	
 	Thread.sleep(1000);
 
-    
-     pro.initElement();
+    pro.initElement();
     Actions builder = new Actions(driver);
     WebElement project = pro.container_grid_view;
     builder.moveToElement(project).build().perform();
@@ -597,7 +625,8 @@ public void verifyAllProjectFromProject() throws IOException, InterruptedExcepti
         System.out.println(proTitle);
         //verifyDeleteProject_from_GridView();
         }
-	}
+    
+	} 
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Dashboard page Test");

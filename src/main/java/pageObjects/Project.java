@@ -117,4 +117,13 @@ public class Project extends PageBase{
     @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[4]/div[1]/button[3]")
     @CacheLookup
     public WebElement icon_star_thumbnail_project;
+    
+    @FindBy(xpath= "/html[1]/body[1]/ul[1]/li[1]/div[1]/section[1]/div[3]/button[1]/div[1]")
+    @CacheLookup    
+    public WebElement undoFrmProject_GridView;
+    
+    @FindBy(xpath= "/html[1]/body[1]/ul[1]/li[1]/div[1]/section[1]/div[3]/button[1]")
+    @CacheLookup    
+    public WebElement undoFrmProject_ListView;
+
 }
