@@ -97,7 +97,7 @@ public class ProjectTest  extends TestBase {
 		
 		SoftAssert sa =new SoftAssert();
 		sa.assertEquals(pro.txt_first_Project_Title_frm_grid.getText(),projectName);
-				//+number);
+				
 		
 		System.out.println("Project NAme out: "+ pro.txt_first_Project_Title_frm_grid.getText());
 		sa.assertAll();
@@ -558,33 +558,38 @@ public void verify_Project_Grid_List() {
 
 @Test(priority=15)    
 public void verifyAllProjectFromProject() throws IOException, InterruptedException, Exception {
-  
-  //   das = new Dashboard(log.getDriver());
-     das.initElement();
-    das.link_projects.click();
-    Thread.sleep(200);
-    //pro = new Project(das.getDriver());
-    
 	
-	das.btn_newProject.click();
-	
+	com = new CommonTask(driver);
+	das = new Dashboard(driver);
+ 
+	das.initElement();
 	pro = new Project(das.getDriver());
 	pro.initElement();
-	//int number = com.randomNumber();
+	
+	int number = com.randomNumber();
 	String  projectName = System.getProperty("projectName");
-			
-	pro.nav_startTypingProjectName.sendKeys(projectName);
+	
+for(int i=1;i<=5;i++) {
+	
+	das.link_projects.click();
+    Thread.sleep(3000);
+    das.initElement();
+	das.btn_newProject.click();
+	pro.initElement();			
+	pro.nav_startTypingProjectName.sendKeys(i+projectName);
 	Thread.sleep(1000);
 	
-	//driver.findElement(By.id("file")).click();
-	//pro.btn_addPhoto.click();
 	pro.btn_startProject.click();
 	
 	
 	Thread.sleep(1000);
+	
 
-    
-     pro.initElement();
+}
+
+	das.link_projects.click();
+	driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+	
     Actions builder = new Actions(driver);
     WebElement project = pro.container_grid_view;
     builder.moveToElement(project).build().perform();
@@ -592,11 +597,42 @@ public void verifyAllProjectFromProject() throws IOException, InterruptedExcepti
     
     
     System.out.println("All project=======>" + allproject.size());
-    for(WebElement b : allproject) {
-        String proTitle= b.findElement(By.className("card-project__title")).getText();
-        System.out.println(proTitle);
-        //verifyDeleteProject_from_GridView();
-        }
+    
+   for(WebElement b : allproject) {
+     String proTitle= b.findElement(By.className("card-project__title")).getText();
+     System.out.println(proTitle);
+     // verifyDeleteProject_from_GridView();
+      }
+	Thread.sleep(1000);
+	
+   driver.findElement(By.cssSelector(".dropdown-button__text")).click();
+   Thread.sleep(600);
+   System.out.println("Checking "+driver.findElement(By.cssSelector("reach-portal > div > div > div:nth-child(1)")).getText()); 
+   // Xpath for first child
+    driver.findElement(By.xpath("//reach-portal/div/div/div")).click();
+   
+    //driver.findElement(By.cssSelector("reach-portal > div > div > div:nth-child(1)")).click();
+    
+    //Sort Button
+    driver.findElement(By.xpath("//div[@id=\'root\']/div/section/header/div[2]/button")).click();
+ 
+    System.out.println("SELECT LAst Modified: "+driver.findElement(By.className("card-project__title")).getText()); 
+   
+   	SoftAssert sa =new SoftAssert();
+	sa.assertEquals(driver.findElement(By.className("card-project__title")).getText(),"5WriteWayTest_Project");
+	
+	
+    WebElement element = driver.findElement(By.xpath("//reach-portal/div/div/div[2]"));
+    Actions builder1 = new Actions(driver);
+    builder1.moveToElement(element).clickAndHold().perform();
+    
+    Thread.sleep(1000);
+    
+    driver.findElement(By.xpath("//reach-portal/div/div/div[2]")).click();
+    sa.assertEquals(driver.findElement(By.className("card-project__title")).getText(),"1WriteWayTest_Project");
+
+    System.out.println("Select Title: "+driver.findElement(By.className("card-project__title")).getText()); 
+    sa.assertAll();
 	}
 	@AfterClass
 	public void closeBrowser() {

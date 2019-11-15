@@ -514,7 +514,7 @@ public class LandingPageTest extends TestBase {
 	public void verifyLinkedInImgFooterlink() throws InterruptedException {
 		
 		
-		 verifyAllFooterLink(footer.link_linkedInImgFooter, "https://www.linkedin.com");
+		 verifyAllFooterLink(footer.link_linkedInImgFooter, "linkedin");
 	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
 		 }
 	
