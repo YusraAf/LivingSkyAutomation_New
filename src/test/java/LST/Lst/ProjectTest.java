@@ -590,7 +590,7 @@ for(int i=1;i<=5;i++) {
 	das.link_projects.click();
 	driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 	
-    Actions builder = new Actions(driver);
+   /* Actions builder = new Actions(driver);
     WebElement project = pro.container_grid_view;
     builder.moveToElement(project).build().perform();
     List<WebElement> allproject = driver.findElements(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div"));
@@ -602,7 +602,7 @@ for(int i=1;i<=5;i++) {
      String proTitle= b.findElement(By.className("card-project__title")).getText();
      System.out.println(proTitle);
      // verifyDeleteProject_from_GridView();
-      }
+      }*/
 	Thread.sleep(1000);
 	
    driver.findElement(By.cssSelector(".dropdown-button__text")).click();
@@ -615,11 +615,11 @@ for(int i=1;i<=5;i++) {
     
     //Sort Button
     driver.findElement(By.xpath("//div[@id=\'root\']/div/section/header/div[2]/button")).click();
- 
-    System.out.println("SELECT LAst Modified: "+driver.findElement(By.className("card-project__title")).getText()); 
+    Thread.sleep(1000);
+    System.out.println("SELECT LAst Modified: "+ pro.txt_first_Project_Title_frm_grid.getText()); 
    
    	SoftAssert sa =new SoftAssert();
-	sa.assertEquals(driver.findElement(By.className("card-project__title")).getText(),"5WriteWayTest_Project");
+	sa.assertEquals(pro.txt_first_Project_Title_frm_grid.getText(),"5WriteWayTest_Project");
 	
 	
     WebElement element = driver.findElement(By.xpath("//reach-portal/div/div/div[2]"));
@@ -629,9 +629,31 @@ for(int i=1;i<=5;i++) {
     Thread.sleep(1000);
     
     driver.findElement(By.xpath("//reach-portal/div/div/div[2]")).click();
+    Thread.sleep(1000);
     sa.assertEquals(driver.findElement(By.className("card-project__title")).getText(),"1WriteWayTest_Project");
 
     System.out.println("Select Title: "+driver.findElement(By.className("card-project__title")).getText()); 
+    
+   // -----
+    
+    driver.findElement(By.cssSelector(".dropdown-button__text")).click();
+    
+   // driver.findElement(By.xpath("//reach-portal/div/div/div")).click();
+    
+    //driver.findElement(By.cssSelector("reach-portal > div > div > div:nth-child(1)")).click();
+    
+    //Sort Button
+    WebElement element1 = driver.findElement(By.xpath("//reach-portal/div/div/div"));
+    
+    builder1.moveToElement(element1).clickAndHold().perform();
+    
+    
+    driver.findElement(By.xpath("//reach-portal/div/div/div")).click();
+    Thread.sleep(1000);
+    System.out.println("SELECT Last Modified again: "+ pro.txt_first_Project_Title_frm_grid.getText()); 
+   
+    Thread.sleep(1000);
+	sa.assertEquals(pro.txt_first_Project_Title_frm_grid.getText(),"5WriteWayTest_Project");
     sa.assertAll();
 	}
 	@AfterClass

@@ -56,7 +56,7 @@ public class Project extends PageBase{
 	@CacheLookup
 	public WebElement btn_first_Project_open_list;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[1]/div[2]")
+	@FindBy(className="card-project__title")
 	@CacheLookup
 	public WebElement txt_first_Project_Title_frm_grid;
 	
