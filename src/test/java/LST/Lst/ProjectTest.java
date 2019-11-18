@@ -60,7 +60,7 @@ public class ProjectTest  extends TestBase {
 		log =new LoginPage(land.getDriver());
 		log.initElement();
 		  
-		log.txt_userName.sendKeys("test8@gmail.com"); 
+		log.txt_userName.sendKeys("niti@livingskytech.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
 		Thread.sleep(1000);
@@ -620,6 +620,9 @@ for(int i=1;i<=5;i++) {
 	
 
     Actions builder = new Actions(driver);
+    builder.moveToElement(pro.icon_grid).build().perform();
+	pro.icon_grid.click();
+    
     WebElement project = pro.container_grid_view;
     builder.moveToElement(project).build().perform();
     List<WebElement> allproject = driver.findElements(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div"));
