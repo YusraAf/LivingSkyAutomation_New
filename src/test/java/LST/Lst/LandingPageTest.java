@@ -447,15 +447,14 @@ public class LandingPageTest extends TestBase {
 	// Test Case ID : WW-46-TC-009 Verify Our Story Link on the Footer of Landing Page
 	@Test(priority = 60)
 	public void verifyOurStoryFooterLink() throws InterruptedException {		
-		
-
+	
 		 verifyAllFooterLink(footer.link_ourStoryFooter, "about");	
 	     logger.info("Our Story Link is clicked and About Living Sky Tech page is displayed successfully.");
 		}
 	
 	/*	
 	// Test Case ID : WW-46-TC-010 Verify Careers Link on the Footer of Landing Page
-	@Test(priority = 8)
+	@Test(priority = 64)
 	public void verifyCareersFooterlink() throws InterruptedException {
 		LandingPage l = new LandingPage(driver);
 		l.initElement();
@@ -478,7 +477,7 @@ public class LandingPageTest extends TestBase {
 		}
 			
 	// Test Case ID : WW-46-TC-011 Verify Contact Us Link on the Footer of Landing Page
-	@Test(priority = 9)
+	@Test(priority = 65)
 	public void verifyContactUsFooterlink() throws InterruptedException {
 		LandingPage l = new LandingPage(driver);
 		l.initElement();
@@ -502,10 +501,10 @@ public class LandingPageTest extends TestBase {
 	// Test Case ID : WW-46-TC-012 Verify Facebook Img Link on the Footer of Landing Page
 	@Test(priority = 61)
 	public void verifyFacebookImgFooterlink() throws InterruptedException {
-		 
 		
-		 verifyAllFooterLink(footer.link_facebookImgFooter, "livingskytech");
-	     logger.info("FacebookImg Link is Clicked and FacebookImg page is displayed successfully.");
+		footer.initElement();
+		verifyAllFooterLink(footer.link_facebookImgFooter, "livingskytech");
+	    logger.info("FacebookImg Link is Clicked and FacebookImg page is displayed successfully.");
 		}
 	
 	
@@ -513,16 +512,37 @@ public class LandingPageTest extends TestBase {
 	@Test(priority = 62)
 	public void verifyLinkedInImgFooterlink() throws InterruptedException {
 		
-		
 		 verifyAllFooterLink(footer.link_linkedInImgFooter, "linkedin");
 	     logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");
 		 }
-	
+	/*
+	@Test(priority = 62)
+	public void verifyLinkedInImgFooterlink() throws InterruptedException {
+		LandingPage l = new LandingPage(driver);
+		l.initElement();
+		FooterNavigation footer = new FooterNavigation(l.getDriver());
+		footer.initElement();
+		
+		footer.link_linkedInImgFooter.click();
+		String parentWindow = driver.getWindowHandle(); 
+			 
+		for (String childWindow : driver.getWindowHandles()) {
+			 driver.switchTo().window(childWindow);
+			}
+		try {
+		AssertJUnit.assertEquals(driver.getCurrentUrl(), "linkedin");
+		} catch (Throwable t){
+		AssertJUnit.assertEquals(driver.getCurrentUrl(), "https://ca.linkedin.com/company/living-sky-technologies");	
+		}
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.close();
+		driver.switchTo().window(parentWindow);
+		logger.info("LinkedInImg Link is Clicked and LinkedInImg page is displayed successfully.");	
+	} */
 	
 	// Test Case ID : WW-46-TC-014 Verify Youtube Img Link on the Footer of Landing
 	@Test(priority = 63)
 	public void verifyYouTubeImgFooterlink() throws InterruptedException {
-		
 		
 		 verifyAllFooterLink(footer.link_youTubeImgFooter, "livingskytech");
 	     logger.info("youTubeImg Link is Clicked and youTubeImg page is displayed successfully.");
@@ -535,7 +555,6 @@ public class LandingPageTest extends TestBase {
 	
 		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 	
-		
 		verifyAllFooterLink(footer.link_careersFooter, "https://www.livingskytech.com/careers/");
 		logger.info("Careers Link is Clicked and Careers page is displayed successfully.");
 	}
@@ -546,7 +565,6 @@ public class LandingPageTest extends TestBase {
 	public void verifyContactUsFooterlink() throws InterruptedException {
 	
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		
 	
 		verifyAllFooterLink(footer.link_contactUsFooter, "https://www.livingskytech.com/contact/");
 		logger.info("ContactUs Link is Clicked and ContactUs page is displayed successfully.");
@@ -556,7 +574,6 @@ public class LandingPageTest extends TestBase {
 	// Test Case ID : WW-46-TC-015 Verify Privacy Link on the Footer of Landing Page
 	@Test(priority = 66)
 	public void privacyFooterlink() throws InterruptedException {
-	
 	
 		footer.link_privacyFooter.click();
 		Thread.sleep(200);
