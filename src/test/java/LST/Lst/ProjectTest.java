@@ -86,6 +86,16 @@ public class ProjectTest  extends TestBase {
 		
 		//driver.findElement(By.id("file")).click();
 		//pro.btn_addPhoto.click();
+		
+		
+		File file = new File("Images/project_image.jpeg"); 
+		WebElement fileBrowser =  pro.btn_addPhoto;
+		String path = file.getAbsolutePath(); 
+		pro.btn_addPhoto.sendKeys(path);
+		pro.btn_addDescription.click();
+		Thread.sleep(400);
+		pro.nav_addprojectdescription.sendKeys("This is testing project");
+		
 		pro.btn_startProject.click();
 		
 		
@@ -101,120 +111,7 @@ public class ProjectTest  extends TestBase {
 		
 		System.out.println("Project NAme out: "+ pro.txt_first_Project_Title_frm_grid.getText());
 		sa.assertAll();
-		/*ClipboardOwner owner = null; 
-		Robot robot = new Robot();
-		StringSelection stringSelection= new StringSelection("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot20191016at12718PM.png");
-		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, owner);
-		  
-		robot.setAutoDelay(3000);
-		  
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_V);
-		  
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_K);
-		  
-		robot.setAutoDelay(3000);
-	  
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
-		  
-		//robot.setAutoDelay(3000);
-		Thread.sleep(8000);  
-		pro.btn_addDescription.click();
-		Thread.sleep(400);
-		pro.nav_addprojectdescription.sendKeys("This is testing project");
-			
-		pro.btn_startProject.click();
-		Thread.sleep(800);*/
-
-		  /*
-		pro.btn_addPhoto.click();
 		
-		WebElement frame =driver.switchTo().activeElement();
-		System.out.println(frame.getText()+ "------");
-		System.out.println(frame.getTagName()+ "-----");
-		//frame.clear();
-		//frame.click();
-		frame.sendKeys("\\Users⁩\\chetankumarpatel⁩\\Desktop\\ScreenShot2019-10-16at1.27.18PM.png");
-		Thread.sleep(10000);
-		frame.click(); 
-		Thread.sleep(100);
-		System.out.println(frame.getText()+ "after------");
-		System.out.println(frame.getTagName()+ "after-----");
-		
-		Thread.sleep(1000);
-		
-		pro.btn_addDescription.click();
-		Thread.sleep(400);
-		pro.nav_addprojectdescription.sendKeys("This is testing project");
-		
-		pro.btn_startProject.click();
-		Thread.sleep(800);
-	*/	
-		 
-		////File Need to be imported
-	  /*
-		  File file = new File("/Users⁩/⁨chetankumarpatel⁩/Desktop/⁩ScreenShot2019-10-16at1.27.18PM.jpeg");
-		   
-		  StringSelection stringSelection= new StringSelection(file.getPath());
-		   
-		  //Copy to clipboard Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-		   
-		  Robot robot = new Robot();
-		   
-		  // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-		   
-		  robot.keyPress(KeyEvent.VK_META);
-		   
-		  robot.keyPress(KeyEvent.VK_TAB);
-		   
-		  robot.keyRelease(KeyEvent.VK_META);
-		   
-		  robot.keyRelease(KeyEvent.VK_TAB);
-		   
-		  //robot.delay(500);
-		   
-		  //Open Goto window
-		   
-		  robot.keyPress(KeyEvent.VK_META);
-		   
-		  robot.keyPress(KeyEvent.VK_SHIFT);
-		   
-		  robot.keyPress(KeyEvent.VK_G);
-		   
-		  robot.keyRelease(KeyEvent.VK_META);
-		   
-		  robot.keyRelease(KeyEvent.VK_SHIFT);
-		   
-		  robot.keyRelease(KeyEvent.VK_G);
-		   
-		  //Paste the clipboard value
-		   
-		  robot.keyPress(KeyEvent.VK_META);
-		   
-		  robot.keyPress(KeyEvent.VK_V);
-		   
-		  robot.keyRelease(KeyEvent.VK_META);
-		   
-		  robot.keyRelease(KeyEvent.VK_V);
-		   
-		  //Press Enter key to close the Goto window and Upload window
-		   
-		  robot.keyPress(KeyEvent.VK_ENTER);
-		   
-		  robot.keyRelease(KeyEvent.VK_ENTER);
-		   
-		 // robot.delay(500);
-		   
-		  robot.keyPress(KeyEvent.VK_ENTER);
-		   
-		  robot.keyRelease(KeyEvent.VK_ENTER);
-		  
-		  Thread.sleep(10000);
-		  
-		  pro.btn_startProject.click();
-		*/  
 	}
 	
 	public boolean elementHasClass(WebElement element, String active) {

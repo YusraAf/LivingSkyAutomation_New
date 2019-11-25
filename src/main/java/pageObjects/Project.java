@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -15,7 +16,7 @@ public class Project extends PageBase{
 	}
 	
 	//@FindBy(xpath= "//div[@class='new-project-btn add-field']")
-	@FindBy(xpath= "//div[@class='new-project-btn add-field']")
+	@FindBy(xpath="//input[@type='file']")
 	@CacheLookup
 	public WebElement btn_addPhoto;
 
