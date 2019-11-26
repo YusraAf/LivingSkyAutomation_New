@@ -119,6 +119,8 @@ public class Browser {
 	        //-----------------------//
 	        ChromeOptions option = new ChromeOptions();
 	        option.addArguments(proxyOption);
+	        //option.addArguments("--window-size=1920,1080");
+	        //option.addArguments("--start-maximized");
 	        //option.addArguments("--headless");
 	        DesiredCapabilities capabilities = new DesiredCapabilities();
 	        capabilities.setCapability(ChromeOptions.CAPABILITY, option);

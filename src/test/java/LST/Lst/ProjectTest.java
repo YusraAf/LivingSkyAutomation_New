@@ -159,7 +159,7 @@ public class ProjectTest  extends TestBase {
 	
 	@Test(priority=4)
 	public void verifyDeletedProjectFromGrid_inTrash() throws InterruptedException {
-	
+		Thread.sleep(5000);
 	das.link_trash.click();
 	
 	if(driver.getCurrentUrl().contains("dashboard/deleted")) {
@@ -222,6 +222,7 @@ public class ProjectTest  extends TestBase {
 		
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/button[1]"))));
+		Thread.sleep(1000);
 		pro.btn_newProject_inside_project.click();
 		
 		String  projectName = System.getProperty("projectName")+ " LIST";
@@ -536,7 +537,7 @@ for(int i=1;i<=5;i++) {
     System.out.println(proTitle);
      // verifyDeleteProject_from_GridView();
       }*/
-	Thread.sleep(1000);
+	Thread.sleep(3000);
 	
     driver.findElement(By.cssSelector(".dropdown-button__text")).click();
     Thread.sleep(600);
