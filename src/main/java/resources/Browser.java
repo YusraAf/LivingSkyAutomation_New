@@ -14,6 +14,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 //import org.browsermob.proxy;
 
@@ -122,8 +123,10 @@ public class Browser {
 	        //option.addArguments("--window-size=1920,1080");
 	        //option.addArguments("--start-maximized");
 	        //option.addArguments("--headless");
+	       
 	        DesiredCapabilities capabilities = new DesiredCapabilities();
 	        capabilities.setCapability(ChromeOptions.CAPABILITY, option);
+	        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 	        driver = new ChromeDriver(option);
 	        initBrowser();
 	        

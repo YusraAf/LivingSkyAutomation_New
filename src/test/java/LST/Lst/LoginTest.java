@@ -137,7 +137,7 @@ public void testCase1(WebDriver driver) throws InterruptedException, IOException
 		//  builder.moveToElement(element).click().build().perform();
 	 common = new CommonTask(driver);
 	 
-	 common.moveMouse(element);
+	 common.moveMouseAndClick(element);
 	
 	 AssertJUnit.assertEquals(dash.link_projects.getText(),"Projects");
 	 logger.info("Projects is displayed in Dashboard.");
@@ -148,7 +148,7 @@ public void testCase1(WebDriver driver) throws InterruptedException, IOException
 	 WebElement element2 = dash.link_collections;
 
 	
-	 common.moveMouse(element2);
+	 common.moveMouseAndClick(element2);
 
 	
 	 AssertJUnit.assertEquals(dash.link_collections.getText(), "Collection");

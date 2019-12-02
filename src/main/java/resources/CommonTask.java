@@ -17,6 +17,8 @@ import org.openqa.selenium.interactions.Actions;
 
 public class CommonTask extends PageBase {
 
+	
+	
 	public CommonTask(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -80,10 +82,20 @@ public static int randomNumber() {
 
       }
 
-      public void moveMouse(WebElement el) throws InterruptedException
+      public void moveMouseAndClick(WebElement el) throws InterruptedException
       {
           Actions action = new Actions(driver);
-           action.moveToElement(el).click().perform();
+           action.moveToElement(el).build().perform();
+           el.click();
+          Thread.sleep(500);
+        
+      }
+      
+      public void mouseHoverOnly(WebElement el) throws InterruptedException
+      {
+          Actions action = new Actions(driver);
+           action.moveToElement(el).build().perform();
+          
           Thread.sleep(500);
         
       }
