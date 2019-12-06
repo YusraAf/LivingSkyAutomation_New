@@ -33,7 +33,7 @@ public class Project extends PageBase{
 	@CacheLookup
 	public WebElement nav_startTypingProjectName;
 	
-	@FindBy(xpath= "//textarea[@placeholder='Start typing your project name']")
+	@FindBy(xpath= "//textarea[@placeholder='Add a description']")
 	@CacheLookup
 	public WebElement nav_addprojectdescription;
 	

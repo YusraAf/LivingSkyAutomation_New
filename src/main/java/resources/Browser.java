@@ -1,6 +1,8 @@
  package resources;
 
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -17,6 +19,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 //import org.browsermob.proxy;
+import org.openqa.selenium.safari.SafariDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import net.lightbody.bmp.BrowserMobProxy;
@@ -59,49 +62,15 @@ public class Browser {
 	            return initChrome();
 	        } else if ("firefox".equals(browserName)) {
 	            return initFirefox();
-	        } else if ("ie".equals(browserName)) {
-	            return initIE();
+	        } else if ("safari".equals(browserName)) {
+	            return initSafari();
 	        } else {
 	            throw new RuntimeException("No Valid Browser Found");
 	        }
 	    }
 	    
-	    private static WebDriver initIE() {
-	        WebDriverManager.iedriver().arch32().setup();
-
-	        driver = new InternetExplorerDriver();
-	        initBrowser();
-	        return driver;
-	    }
-
-	    private static WebDriver initFirefox() {
-	        WebDriverManager.firefoxdriver().setup();
-	        disableDetailLoggingFirefox();
-	        driver = new FirefoxDriver();
-	        initBrowser();
-
-	        FirefoxOptions options = new FirefoxOptions();
-	        ProfilesIni allProfiles = new ProfilesIni();
-	        FirefoxProfile selenium_profile = allProfiles.getProfile("selenium_profile");
-	        options.setProfile(selenium_profile);
-	        driver = new FirefoxDriver(options);
-	        options.setBinary("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
-	        System.setProperty("webdriver.gecko.driver", "C:\\Users\\pburgr\\Desktop\\geckodriver-v0.20.0-win64\\geckodriver.exe");
-	        driver = new FirefoxDriver(options);
-
-	        return driver;
-	    }
-
-	    private static void disableDetailLoggingFirefox() {
-	        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");//disable debug logging
-	    } 
-
-	    private static WebDriver initChrome() {
-	       WebDriverManager.chromedriver().setup();
-	        //WebDriverManager.chromedriver().version("77").setup();
-	       // driver = new ChromeDriver();
-	        
-	       // start the proxy
+	    public static String setProxy() {
+	    	 // start the proxy
 	        BrowserMobProxy proxy = new BrowserMobProxyServer();
 	        proxy.start(0);
 
@@ -114,14 +83,81 @@ public class Browser {
 	            return null;
 	        });
 	        
+	        proxy.addResponseFilter((response, contents, messageInfo) -> {
+	            //if ((contents.getContentType().startsWith("application/json"))) {
+	              //  contents.setTextContents("");
+	            //}
+	            System.out.println(" Response: "+ response.headers().entries().toString());
+	        }); 
 	        
 	        String proxyOption = "--proxy-server=" + seleniumProxy.getHttpProxy();
 	       
-	        //-----------------------//
+	      
+	        return proxyOption;
+	    }
+	    
+	    private static WebDriver initIE() {
+	        WebDriverManager.iedriver().arch32().setup();
+
+	        driver = new InternetExplorerDriver();
+	        initBrowser();
+	        return driver;
+	    }
+	    
+	    private static WebDriver initSafari() {
+	    	WebDriver driver = new SafariDriver();
+	    	
+	   
+	    	// initBrowser();
+	    	driver.manage().window().maximize();
+		     
+		        return driver;
+	    }
+
+	    private static WebDriver initFirefox() {
+	       
+	    	WebDriverManager.firefoxdriver().setup();
+	    	BrowserMobProxy proxy = new BrowserMobProxyServer();
+	        proxy.start(0);
+
+	        // get the Selenium proxy object
+	        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+	        String proxyOption = "--proxy-server=" + seleniumProxy.getHttpProxy();
+	        
+	        
+	        proxy.addRequestFilter((request, contents, messageInfo)->{
+	            request.headers().add("x-qa-super-user-token", "NWQwNGE5OWUtY2Y3OC0xMWU5LWJkY2ItMmEyYWUyZGJjY2U0");
+	            System.out.println(request.headers().entries().toString());
+	            return null;
+	        });
+
+		       FirefoxOptions option = new FirefoxOptions();
+		       option.addArguments(proxyOption);
+		       option.setProxy(seleniumProxy);
+		   
+	        // start the browser up
+	         driver = new FirefoxDriver(option);
+	         initBrowser();
+	        return driver;
+	    }
+
+	    private static void disableDetailLoggingFirefox() {
+	        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");//disable debug logging
+	    } 
+	    
+	    
+
+	    private static WebDriver initChrome() {
+	       WebDriverManager.chromedriver().setup();
+	        //WebDriverManager.chromedriver().version("77").setup();
+	       // driver = new ChromeDriver();
+	        //-------setup proxy here//
+	       String proxyOption = setProxy();
+	       
 	        ChromeOptions option = new ChromeOptions();
 	        option.addArguments(proxyOption);
-	        //option.addArguments("--window-size=1920,1080");
-	        //option.addArguments("--start-maximized");
+	        option.addArguments("--window-size=1920,1080");
+	        option.addArguments("--start-maximized");
 	        //option.addArguments("--headless");
 	       
 	        DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -129,18 +165,12 @@ public class Browser {
 	        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 	        driver = new ChromeDriver(option);
 	        initBrowser();
-	        
+	       
 	     
-	        proxy.addResponseFilter((response, contents, messageInfo) -> {
-	            //if ((contents.getContentType().startsWith("application/json"))) {
-	              //  contents.setTextContents("");
-	            //}
-	            System.out.println(" Response: "+ response.headers().entries().toString());
-	        }); 
-
 	        return driver;
 	    }
 	    
+	   
 	    public static void pageRefresh() {
 	    	driver.navigate().refresh();
 	    }
