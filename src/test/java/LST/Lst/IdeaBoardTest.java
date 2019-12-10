@@ -17,7 +17,6 @@ import pageObjects.Ideaboard;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
 import pageObjects.Project;
-import pageObjects.Trash;
 import resources.Browser;
 import resources.CommonTask;
 
@@ -28,7 +27,6 @@ public class IdeaBoardTest extends TestBase {
 	private LoginPage log;
 	private Dashboard das;
 	private Project pro;
-	private Trash trs;
 	private Ideaboard idb;
 	private CommonTask com  = new CommonTask(driver);
 	
