@@ -44,7 +44,7 @@ public class IdeaBoardTest extends TestBase {
 		log =new LoginPage(land.getDriver());
 		log.initElement();
 		  
-		log.txt_userName.sendKeys("test8@gmail.com"); 
+		log.txt_userName.sendKeys("niti@livingskytech.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
 		Thread.sleep(1000);
