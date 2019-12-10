@@ -464,7 +464,7 @@ public class ProjectTest  extends TestBase {
 	    }
 
 @Test(priority=17)    
-public void verifyAllProjectFromProject() throws IOException, InterruptedException, Exception {
+public void verifySortingDropDownFromProject() throws IOException, InterruptedException, Exception {
 
 	com = new CommonTask(driver);
 	das = new Dashboard(driver);

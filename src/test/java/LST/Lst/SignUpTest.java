@@ -292,7 +292,7 @@ private CommonTask common;
 			System.out.println("Inside the Dashboard: ");
 			
 			
-			testProjectAfterSignUP();
+			//testProjectAfterSignUP();
 			dash.btn_logout.click();
 	  }
 	 

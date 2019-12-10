@@ -76,7 +76,7 @@ public class Browser {
 
 	        // get the Selenium proxy object
 	        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
-	        
+	     
 	        proxy.addRequestFilter((request, contents, messageInfo)->{
 	            request.headers().add("x-qa-super-user-token", "NWQwNGE5OWUtY2Y3OC0xMWU5LWJkY2ItMmEyYWUyZGJjY2U0");
 	          //  System.out.println(request.headers().entries().toString());
@@ -158,11 +158,14 @@ public class Browser {
 	        option.addArguments(proxyOption);
 	        option.addArguments("--window-size=1920,1080");
 	        option.addArguments("--start-maximized");
+	        //option.addArguments("--ignore-certificate-errors");
 	        //option.addArguments("--headless");
 	       
 	        DesiredCapabilities capabilities = new DesiredCapabilities();
-	        capabilities.setCapability(ChromeOptions.CAPABILITY, option);
+	       
 	        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+	        capabilities.setCapability(ChromeOptions.CAPABILITY, option);
+	       // capabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
 	        driver = new ChromeDriver(option);
 	        initBrowser();
 	       
