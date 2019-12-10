@@ -85,7 +85,8 @@ public class IdeaBoardTest extends TestBase {
 	
 @Test(priority=2) 	
 public void createNewIdea() throws IOException, InterruptedException, Exception {
-		
+	
+		logger.info("This is inside in IdeaBoard Page =====> Creating new idea on the Idea Board");
 		idb = new Ideaboard(pro.getDriver());
 		idb.initElement();
 		
