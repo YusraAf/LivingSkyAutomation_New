@@ -1,6 +1,7 @@
 package LST.Lst;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -50,8 +51,7 @@ public class IdeaBoardTest extends TestBase {
 		Thread.sleep(1000);
 	
 	}	
-	
-	
+
 	
 @Test(priority=1) 	
 public void createNewIdea() throws IOException, InterruptedException, Exception {
@@ -84,9 +84,29 @@ public void createNewIdea() throws IOException, InterruptedException, Exception 
 		
 		idb.btn_newIdea_IdeaBoard.click();
 		
-		idb.nav_startTyping_Canvas.sendKeys("About Living Sky Technologies Empowering creators everywhere. What if an idea could exist interrupted, flowing freely from the imagination to the page? What if the research didn’t draw you away from the page, or formatting didn’t drag out the process? Answering these questions has led the Living Sky Technologies team to discover a way to simplify the creativity process by building a platform from which any content creator can be launched. In an era of endless digital distractions, creating content can be burdened by the need to format content. The goal of Living Sky Technologies is to stamp out these distractions and guide the content creator down a clear, productive path. The Living Sky team understands how the process of modern writing can cause distractions and impair the flow of productivity. Our software is able to establish patterns from the seemingly random nature of drafting, formatting, and editing to enhance the writing and content creation process. Vision Our vision is to provide a suite of products and services that are indispensable to content creators across all disciplines. Mission  The mission of Living Sky Technologies is to streamline your workflow by making content creation more efficient.");
+		//idb.nav_startTyping_Canvas.sendKeys("About Living Sky Technologies Empowering creators everywhere. What if an idea could exist interrupted, flowing freely from the imagination to the page? What if the research didn’t draw you away from the page, or formatting didn’t drag out the process? Answering these questions has led the Living Sky Technologies team to discover a way to simplify the creativity process by building a platform from which any content creator can be launched. In an era of endless digital distractions, creating content can be burdened by the need to format content. The goal of Living Sky Technologies is to stamp out these distractions and guide the content creator down a clear, productive path. The Living Sky team understands how the process of modern writing can cause distractions and impair the flow of productivity. Our software is able to establish patterns from the seemingly random nature of drafting, formatting, and editing to enhance the writing and content creation process. Vision Our vision is to provide a suite of products and services that are indispensable to content creators across all disciplines. Mission  The mission of Living Sky Technologies is to streamline your workflow by making content creation more efficient.");
 		
+		idb.nav_startTyping_Canvas.sendKeys("About Living Sky Technologies Empowering creators everywhere.\n"+ 
+				"\n" + "What if an idea could exist interrupted, flowing freely from the imagination to the page? What if the research didn’t draw you away from the page, or formatting didn’t drag out the process? Answering these questions has led the Living Sky Technologies team to discover a way to simplify the creativity process by building a platform from which any content creator can be launched."+ 
+				"\n" + "In an era of endless digital distractions, creating content can be burdened by the need to format content. The goal of Living Sky Technologies is to stamp out these distractions and guide the content creator down a clear, productive path. The Living Sky team understands how the process of modern writing can cause distractions and impair the flow of productivity. Our software is able to establish patterns from the seemingly random nature of drafting, formatting, and editing to enhance the writing and content creation process." + 
+				"\n" + "Vision" + 
+				"\n" + "Our vision is to provide a suite of products and services that are indispensable to content creators across all disciplines." + 
+				"\n" + "Mission" + 
+				"\n" + "The mission of Living Sky Technologies is to streamline your workflow by making content creation more efficient.");
+		Thread.sleep(10000);
 		com.mouseHoverOnly(idb.objectCreationControlBar_container_Canvas);
+		
+		File file = new File("Images/project_image.jpeg"); 
+		String path = file.getAbsolutePath(); 
+		idb.iconCamera_Canvas.sendKeys(path);
+		
+		idb.nav_imageTitle_imageEditor.sendKeys("Add Image testing with paragraph in chrome browser");
+		idb.nav_imageCaption_imageEditor.sendKeys("Image added with paragraph on dated 121119");
+		idb.nav_imageAttribution_imageEditor.sendKeys("tested");
+		Thread.sleep(2000);
+		
+		idb.btn_imageSaveClose_imageEditor.click();
+		Thread.sleep(2000);
 		
 		idb.btn_canvasSaveClose_Canvas.click();
 		Thread.sleep(200);

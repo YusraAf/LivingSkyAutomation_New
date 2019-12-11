@@ -70,7 +70,7 @@ public class Ideaboard extends PageBase{
 	@CacheLookup
 	public WebElement iconQuote_Canvas;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/section[1]/div[1]/button[2]")
+	@FindBy(xpath="//input[@type='file']")
 	@CacheLookup
 	public WebElement iconCamera_Canvas;
 	 
