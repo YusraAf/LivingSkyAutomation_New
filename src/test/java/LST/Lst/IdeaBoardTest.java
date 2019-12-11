@@ -50,39 +50,33 @@ public class IdeaBoardTest extends TestBase {
 		Thread.sleep(1000);
 	
 	}	
-	 
-	@Test(priority=1) 
-	public void createProject() throws IOException, InterruptedException, Exception {
-		
-		das = new Dashboard(driver);
-		das.initElement();
-		
-		das.btn_newProject.click();
-		
-		pro = new Project(das.getDriver());
-		pro.initElement();
-		
-		String  projectName = System.getProperty("projectName");
-				
-		pro.nav_startTypingProjectName.sendKeys(projectName);
-		Thread.sleep(1000);
-		
-		File file = new File("Images/project_image.jpeg"); 
-		WebElement fileBrowser =  pro.btn_addPhoto;
-		String path = file.getAbsolutePath(); 
-		pro.btn_addPhoto.sendKeys(path);
-		pro.btn_addDescription.click();
-		Thread.sleep(400);
-		pro.nav_addprojectdescription.sendKeys("This is testing project");
-		
-		pro.btn_startProject.click();
-		Thread.sleep(100);
-		
-	}
 	
 	
-@Test(priority=2) 	
+	
+@Test(priority=1) 	
 public void createNewIdea() throws IOException, InterruptedException, Exception {
+	
+	
+	das = new Dashboard(driver);
+	das.initElement();
+	
+	das.btn_newProject.click();
+	
+	pro = new Project(das.getDriver());
+	pro.initElement();
+	
+	String  projectName = "Project_With_Idea";
+			
+	pro.nav_startTypingProjectName.sendKeys(projectName);
+	Thread.sleep(1000);
+	
+	
+	pro.btn_addDescription.click();
+	Thread.sleep(400);
+	pro.nav_addprojectdescription.sendKeys("This is test project with idea");
+	
+	pro.btn_startProject.click();
+	Thread.sleep(100);
 	
 		logger.info("This is inside in IdeaBoard Page =====> Creating new idea on the Idea Board");
 		idb = new Ideaboard(pro.getDriver());
@@ -99,7 +93,7 @@ public void createNewIdea() throws IOException, InterruptedException, Exception 
 		das.link_projects.click();
 		Thread.sleep(500);
 		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 }
 	
 	@AfterClass
