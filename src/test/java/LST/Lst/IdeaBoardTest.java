@@ -1,13 +1,11 @@
 package LST.Lst;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -51,7 +49,6 @@ public class IdeaBoardTest extends TestBase {
 		Thread.sleep(1000);
 	
 	}	
-
 	
 @Test(priority=1) 	
 public void createNewIdeaWithParagraphAndImageAndScrolling() throws IOException, InterruptedException, Exception {
@@ -151,6 +148,7 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 	Thread.sleep(2000);
 }
+
 	
 	@AfterClass
 	public void closeBrowser() {
