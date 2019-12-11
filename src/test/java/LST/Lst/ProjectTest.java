@@ -40,7 +40,7 @@ public class ProjectTest  extends TestBase {
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 	private LandingPage land;
 	private LoginPage log;
-	private Dashboard das;
+	private Dashboard das = new Dashboard(driver);
 	private Project pro;
 	private Trash trs;
 	private CommonTask com  = new CommonTask(driver);;
@@ -71,7 +71,7 @@ public class ProjectTest  extends TestBase {
 	@Test(priority=1) 
 	public void createProject() throws IOException, InterruptedException, Exception {
 		
-		das = new Dashboard(driver);
+		
 		das.initElement();
 		
 		das.btn_newProject.click();
@@ -121,11 +121,12 @@ public class ProjectTest  extends TestBase {
 	@Test(priority=2)
 	public void verifyOpenProjectfrom_GridView() throws InterruptedException {
 		//das.link_projects.click();
-		
+		pro = new Project(das.getDriver());
+		pro.initElement();
 		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
-	
-		com.moveMouseAndClick(pro.tab_document_inside_project);
-		//Thread.sleep(10000);
+	Thread.sleep(500);
+		com.mouseHoverOnly(pro.tab_document_inside_project);
+		
 		AssertJUnit.assertTrue(pro.tab_document_inside_project.isDisplayed());
 		
 		com.moveMouseAndClick(pro.tab_ideas_inside_project);

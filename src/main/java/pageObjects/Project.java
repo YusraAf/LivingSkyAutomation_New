@@ -99,11 +99,11 @@ public class Project extends PageBase{
     @CacheLookup
     public WebElement icon_list;
     				
-    @FindBy(xpath ="//p[contains(text(),'Document Editor')]")
+    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]")
     @CacheLookup
     public WebElement tab_document_inside_project;
     
-    @FindBy(xpath ="//p[contains(text(),'Ideas')]")
+    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[1]/p[1]")
     @CacheLookup
     public WebElement tab_ideas_inside_project;
     
