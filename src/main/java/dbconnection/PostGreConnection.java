@@ -27,8 +27,8 @@ public static void postGreDbConnectionOpen() {
     // replace below details
     
     try {
-    String stgdb= "testCerberus";
-    String testdb= "test";
+    String testdb= "testCerberus";
+    String stgdb= "test";
     if (System.getProperty("active.env")=="stg") {
          db = DriverManager.getConnection(url+testdb, username, password);
     }
