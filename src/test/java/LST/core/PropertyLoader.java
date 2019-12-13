@@ -11,9 +11,9 @@ public class PropertyLoader {
 	        //load("./properties/default/allure.properties");
 	       load("./Property/data.properties");
 	        
-	      //  load("./Property/env."
-	         //       + System.getProperty("active.env")
-	           //     + ".properties");
+	        load("./Property/env."
+	                + System.getProperty("active.env")
+	             + ".properties");
 	        load("./Property/projectData.properties");
 	    }
 	    public static void load(final String propertyPath) throws IOException {
