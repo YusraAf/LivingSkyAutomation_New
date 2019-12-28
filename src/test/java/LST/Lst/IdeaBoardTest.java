@@ -130,14 +130,14 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	
 	//idb.iconCamera_Canvas.clear();
 	
-	//idb.iconCamera_Canvas.click();
+	idb.iconCamera_Canvas.click();
 	
 	
-	//UploadFile  upfile= new UploadFile();
-	//upfile.upload("//qa//LivingSKY//LivingSkyAutomation_New//Images//MyImage3.jpeg");
-	File file = new File("Images/MyImage3.jpeg"); 
+	UploadFile  upfile= new UploadFile();
+	upfile.upload("C:\\Users\\tanzi\\eclipse-workspace\\livingsky\\LivingSkyAutomation_New\\Images\\MyImage3.jpeg");
+	/*File file = new File("Images/MyImage3.jpeg"); 
 	String path = file.getAbsolutePath(); 
-	idb.iconCamera_Canvas_File_type.sendKeys(path);
+	idb.iconCamera_Canvas_File_type.sendKeys(path);*/
 	
 	//Thread.sleep(30000);
 	
@@ -155,20 +155,20 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	idb.btn_imageSaveClose_imageEditor.click();
 	//idb.btn_imageSaveClose_imageEditor.click();
 	//driver.navigate().refresh();
-	Thread.sleep(20000);
+	Thread.sleep(2000);
 	
-	//com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
+	com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
 	//Thread.sleep(5000);
 	
-	//pro = new Project(das.getDriver());
+	pro = new Project(das.getDriver());
 	
-	//pro.initElement();
-	//das.initElement();
-	//das.link_projects.click();
-	//driver.navigate().refresh();
-	//Thread.sleep(500);
-	//com.moveMouseAndClick(pro.btn_first_Project_open_grid);
-	//Thread.sleep(2000);
+	pro.initElement();
+	das.initElement();
+	das.link_projects.click();
+	driver.navigate().refresh();
+	Thread.sleep(500);
+	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
+	Thread.sleep(2000);
 }
 
 	
