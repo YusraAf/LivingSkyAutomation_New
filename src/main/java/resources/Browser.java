@@ -145,7 +145,7 @@ public class Browser {
 	        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");//disable debug logging
 	    } 
 	    
-	    
+	 /*   
 
 	    private static WebDriver initChrome() {
 	       WebDriverManager.chromedriver().setup();
@@ -158,7 +158,7 @@ public class Browser {
 	        option.addArguments(proxyOption);
 	        option.addArguments("--window-size=1920,1080");
 	        option.addArguments("--start-maximized");
-	        //option.addArguments("--ignore-certificate-errors");
+	        option.addArguments("--ignore-certificate-errors");
 	        //option.addArguments("--headless");
 	       
 	        DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -172,8 +172,16 @@ public class Browser {
 	     
 	        return driver;
 	    }
-	    
+	    */
 	   
+	    private static WebDriver initChrome() {
+		       WebDriverManager.chromedriver().setup();
+		        //WebDriverManager.chromedriver().version("77").setup();
+		       driver = new ChromeDriver();
+		       driver.manage().window().maximize();
+		       return driver;
+		       
+	    }
 	    public static void pageRefresh() {
 	    	driver.navigate().refresh();
 	    }

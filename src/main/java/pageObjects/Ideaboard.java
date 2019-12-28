@@ -54,7 +54,10 @@ public class Ideaboard extends PageBase{
 	@CacheLookup
 	public WebElement btn_Cancel_Canvas;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]")
+			//---/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]
+	              ///html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]/div[2]
+					
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
 	@CacheLookup
 	public WebElement nav_startTyping_Canvas;
 	
@@ -70,9 +73,13 @@ public class Ideaboard extends PageBase{
 	@CacheLookup
 	public WebElement iconQuote_Canvas;
 	
-	@FindBy(xpath="//input[@type='file']")
+	@FindBy(xpath="//section[@class='content-editor-container']//*[@class='icon-camera-small']")
 	@CacheLookup
 	public WebElement iconCamera_Canvas;
+	
+	@FindBy(id="file")
+	@CacheLookup
+	public WebElement iconCamera_Canvas_File_type;
 	 
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/section[1]/div[1]/button[4]/*")
 	@CacheLookup

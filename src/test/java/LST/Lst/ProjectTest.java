@@ -124,7 +124,7 @@ public class ProjectTest  extends TestBase {
 		pro = new Project(das.getDriver());
 		pro.initElement();
 		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
-	Thread.sleep(500);
+		Thread.sleep(500);
 		com.mouseHoverOnly(pro.tab_document_inside_project);
 		
 		AssertJUnit.assertTrue(pro.tab_document_inside_project.isDisplayed());

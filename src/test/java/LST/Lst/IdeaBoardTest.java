@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -18,6 +20,7 @@ import pageObjects.LoginPage;
 import pageObjects.Project;
 import resources.Browser;
 import resources.CommonTask;
+import resources.UploadFile;
 
 public class IdeaBoardTest extends TestBase {
 	
@@ -43,7 +46,7 @@ public class IdeaBoardTest extends TestBase {
 		log =new LoginPage(land.getDriver());
 		log.initElement();
 		  
-		log.txt_userName.sendKeys("niti@livingskytech.com"); 
+		log.txt_userName.sendKeys("niti@yopmail.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
 		Thread.sleep(1000);
@@ -91,15 +94,14 @@ public void createNewIdeaWithParagraphAndImageAndScrolling() throws IOException,
 				"\n" + "Mission" + 
 				"\n" + "The mission of Living Sky Technologies is to streamline your workflow by making content creation more efficient.");
 		*/
-		
-		
-		
+	
+		com.moveMouseAndClick(idb.nav_startTyping_Canvas);
 		idb.nav_startTyping_Canvas.sendKeys(System.getProperty("paragraph") +" \n "+System.getProperty("paragraph2") +" \n " +System.getProperty("paragraph3")+" \n " +System.getProperty("paragraph4")+" \n " +System.getProperty("paragraph5"));
 		
 		Thread.sleep(2000);
 		com.mouseHoverOnly(idb.objectCreationControlBar_container_Canvas);
 		
-		File file = new File("Images/project_image.jpeg"); 
+	/*	File file = new File("Images/project_image.jpeg"); 
 		String path = file.getAbsolutePath(); 
 		idb.iconCamera_Canvas.sendKeys(path);
 		
@@ -110,7 +112,7 @@ public void createNewIdeaWithParagraphAndImageAndScrolling() throws IOException,
 		
 		idb.btn_imageSaveClose_imageEditor.click();
 		Thread.sleep(2000);
-		
+		*/
 		idb.btn_canvasSaveClose_Canvas.click();
 		Thread.sleep(200);
 		das.link_projects.click();
@@ -126,34 +128,54 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	idb.btn_newIdea_IdeaBoard.click();
 	Thread.sleep(800);
 	
-	File file = new File("Images/images2.jpeg"); 
+	//idb.iconCamera_Canvas.clear();
+	
+	//idb.iconCamera_Canvas.click();
+	
+	
+	//UploadFile  upfile= new UploadFile();
+	//upfile.upload("//qa//LivingSKY//LivingSkyAutomation_New//Images//MyImage3.jpeg");
+	File file = new File("Images/MyImage3.jpeg"); 
 	String path = file.getAbsolutePath(); 
-	idb.iconCamera_Canvas.sendKeys(path);
+	idb.iconCamera_Canvas_File_type.sendKeys(path);
 	
-	idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
-	idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
-	idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
-	Thread.sleep(2000);
+	//Thread.sleep(30000);
 	
+	//JavascriptExecutor js = (JavascriptExecutor) driver; 
+	//js.executeScript("document.getElementById('input-banner-image').style.display = 'block';"); 
+	//driver.findElement(By.id("file")).sendKeys(path); 
+	//js.executeScript("document.getElementById('input-banner-image').style.display = 'none';");
+	
+	
+	//idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
+	//idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
+	//idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
+	//Thread.sleep(15000);
+	com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
 	idb.btn_imageSaveClose_imageEditor.click();
-	Thread.sleep(2000);
+	//idb.btn_imageSaveClose_imageEditor.click();
+	//driver.navigate().refresh();
+	Thread.sleep(20000);
 	
-	idb.btn_canvasSaveClose_Canvas.click();
-	Thread.sleep(200);
-	pro = new Project(das.getDriver());
-	pro.initElement();
-	das.initElement();
-	das.link_projects.click();
-	Thread.sleep(500);
-	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
-	Thread.sleep(2000);
+	//com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
+	//Thread.sleep(5000);
+	
+	//pro = new Project(das.getDriver());
+	
+	//pro.initElement();
+	//das.initElement();
+	//das.link_projects.click();
+	//driver.navigate().refresh();
+	//Thread.sleep(500);
+	//com.moveMouseAndClick(pro.btn_first_Project_open_grid);
+	//Thread.sleep(2000);
 }
 
 	
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Idea Board page Test");
-		Browser.close();
+		//Browser.close();
 	}
 	
 }
