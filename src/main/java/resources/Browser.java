@@ -145,7 +145,7 @@ public class Browser {
 	        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");//disable debug logging
 	    } 
 	    
-	 /*   
+	   
 
 	    private static WebDriver initChrome() {
 	       WebDriverManager.chromedriver().setup();
@@ -172,7 +172,7 @@ public class Browser {
 	     
 	        return driver;
 	    }
-	    */
+	    /*
 	   
 	    private static WebDriver initChrome() {
 		       WebDriverManager.chromedriver().setup();
@@ -181,7 +181,7 @@ public class Browser {
 		       driver.manage().window().maximize();
 		       return driver;
 		       
-	    }
+	    }*/
 	    public static void pageRefresh() {
 	    	driver.navigate().refresh();
 	    }

@@ -1,5 +1,9 @@
 package LST.Lst;
 
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -8,6 +12,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -130,18 +136,34 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	
 	//idb.iconCamera_Canvas.clear();
 	
-	idb.iconCamera_Canvas.click();
-	
-	
-	UploadFile  upfile= new UploadFile();
-	upfile.upload("C:\\Users\\tanzi\\eclipse-workspace\\livingsky\\LivingSkyAutomation_New\\Images\\MyImage3.jpeg");
-	/*File file = new File("Images/MyImage3.jpeg"); 
-	String path = file.getAbsolutePath(); 
-	idb.iconCamera_Canvas_File_type.sendKeys(path);*/
-	
-	//Thread.sleep(30000);
+
 	
 	//JavascriptExecutor js = (JavascriptExecutor) driver; 
+	
+//	js.executeScript("document.addEventListener('click',function(evt){if(evt.target.type==='file')evt.preventDefault();},true)", "");
+	
+	
+	Thread.sleep(2000);
+	//File file = new File("Images/MyImage3.jpeg"); 
+	//String path = file.getAbsolutePath(); 
+	
+	//idb.iconCamera_Canvas_File_type.sendKeys(path);
+	
+	//String filepath= "Images/MyImage3.jpeg";
+	
+	File file = new File("Images/MyImage3.jpeg"); 
+	String path = file.getAbsolutePath(); 
+		
+
+    
+    idb.iconCamera_Canvas.click();
+
+	UploadFile  upfile= new UploadFile();
+	upfile.upload(path);
+
+   
+	//Thread.sleep(3000);
+	
 	//js.executeScript("document.getElementById('input-banner-image').style.display = 'block';"); 
 	//driver.findElement(By.id("file")).sendKeys(path); 
 	//js.executeScript("document.getElementById('input-banner-image').style.display = 'none';");
@@ -153,8 +175,7 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	//Thread.sleep(15000);
 	com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
 	idb.btn_imageSaveClose_imageEditor.click();
-	//idb.btn_imageSaveClose_imageEditor.click();
-	//driver.navigate().refresh();
+	
 	Thread.sleep(2000);
 	
 	com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
@@ -169,13 +190,16 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	Thread.sleep(500);
 	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 	Thread.sleep(2000);
+	
 }
-
+public void dragImageFromIdea() {
+//	driver.findElement(By.xpath());
+}
 	
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Idea Board page Test");
-		//Browser.close();
+		Browser.close();
 	}
 	
 }
