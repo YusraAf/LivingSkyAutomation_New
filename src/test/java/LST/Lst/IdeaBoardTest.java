@@ -10,9 +10,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -71,7 +73,7 @@ public void createNewIdeaWithParagraphAndImageAndScrolling() throws IOException,
 	pro = new Project(das.getDriver());
 	pro.initElement();
 	
-	String  projectName = "Project_With_Idea";
+	String  projectName = "Project_With_Idea_New";
 			
 	pro.nav_startTypingProjectName.sendKeys(projectName);
 	Thread.sleep(1000);
@@ -104,6 +106,7 @@ public void createNewIdeaWithParagraphAndImageAndScrolling() throws IOException,
 		com.moveMouseAndClick(idb.nav_startTyping_Canvas);
 		idb.nav_startTyping_Canvas.sendKeys(System.getProperty("paragraph") +" \n "+System.getProperty("paragraph2") +" \n " +System.getProperty("paragraph3")+" \n " +System.getProperty("paragraph4")+" \n " +System.getProperty("paragraph5"));
 		
+
 		Thread.sleep(2000);
 		com.mouseHoverOnly(idb.objectCreationControlBar_container_Canvas);
 		
@@ -125,6 +128,8 @@ public void createNewIdeaWithParagraphAndImageAndScrolling() throws IOException,
 		Thread.sleep(500);
 		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 		Thread.sleep(2000);
+		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'idea-content')]")).isDisplayed());
+		
 }
 
 @Test(priority=2) 	
@@ -134,44 +139,25 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	idb.btn_newIdea_IdeaBoard.click();
 	Thread.sleep(800);
 	
-	//idb.iconCamera_Canvas.clear();
 	
-
-	
-	//JavascriptExecutor js = (JavascriptExecutor) driver; 
-	
-//	js.executeScript("document.addEventListener('click',function(evt){if(evt.target.type==='file')evt.preventDefault();},true)", "");
-	
-	
-	Thread.sleep(2000);
 	//File file = new File("Images/MyImage3.jpeg"); 
 	//String path = file.getAbsolutePath(); 
 	
 	//idb.iconCamera_Canvas_File_type.sendKeys(path);
 	
-	//String filepath= "Images/MyImage3.jpeg";
-	
-	File file = new File("Images/MyImage3.jpeg"); 
-	String path = file.getAbsolutePath(); 
 		
-
+    String filepath="/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/MyImage3.jpeg";
     
     idb.iconCamera_Canvas.click();
-
+  
 	UploadFile  upfile= new UploadFile();
-	upfile.upload(path);
+	upfile.upload(filepath);
 
-   
-	//Thread.sleep(3000);
+	Thread.sleep(1000);
 	
-	//js.executeScript("document.getElementById('input-banner-image').style.display = 'block';"); 
-	//driver.findElement(By.id("file")).sendKeys(path); 
-	//js.executeScript("document.getElementById('input-banner-image').style.display = 'none';");
-	
-	
-	//idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
-	//idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
-	//idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
+	idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
+	idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
+	idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
 	//Thread.sleep(15000);
 	com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
 	idb.btn_imageSaveClose_imageEditor.click();
@@ -187,13 +173,90 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	das.initElement();
 	das.link_projects.click();
 	driver.navigate().refresh();
-	Thread.sleep(500);
+	Thread.sleep(1000);
 	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 	Thread.sleep(2000);
 	
+	Assert.assertTrue(driver.findElement(By.xpath("//img[contains(@class,'project-image')]")).isDisplayed());
+	
+}
+
+@Test(priority=3)
+public void verifyIdeaWithParagraphAndImage() throws Exception {
+	idb = new Ideaboard(pro.getDriver());
+	idb.initElement();
+	
+	idb.btn_newIdea_IdeaBoard.click();
+	Thread.sleep(800);
+	
+	com.moveMouseAndClick(idb.nav_startTyping_Canvas);
+	idb.nav_startTyping_Canvas.sendKeys(System.getProperty("paragraph"));
+	
+	Thread.sleep(2000);
+	com.mouseHoverOnly(idb.objectCreationControlBar_container_Canvas);
+	
+	
+	Thread.sleep(800);
+		
+    String path="/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/project_image.jpeg";
+    
+    idb.iconCamera_Canvas.click();
+    Thread.sleep(800);
+    
+    driver.switchTo().window(driver.getWindowHandle());
+	UploadFile  upfile= new UploadFile();
+	//upfile.upload(path);
+    
+ 
+    upfile.setClipboardData(path);
+    upfile.uploadFileInMac();
+
+	Thread.sleep(1000);
+	
+	idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
+	idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
+	idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
+	//Thread.sleep(15000);
+	com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
+	idb.btn_imageSaveClose_imageEditor.click();
+	
+	Thread.sleep(2000);
+	Actions action = new Actions(driver);
+	WebElement element = idb.dotFirstParagraphInCanvas; 
+	WebElement target = idb.dotSecondParagraphInCanvas;
+
+	com.moveMouseAndClick(element);
+	
+	Thread.sleep(2000);
+	action.clickAndHold().dragAndDrop(element, target).build().perform();
+	
+	
+	//(new Actions(driver)).dragAndDrop(element, target).perform();
+	
+	Thread.sleep(2000);
+	
+	
+	com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
+	//Thread.sleep(5000);
+	
+	pro = new Project(das.getDriver());
+	
+	pro.initElement();
+	das.initElement();
+	
+	das.link_projects.click();
+	//driver.navigate().refresh();
+	Thread.sleep(3000);
+	
+	
+	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
+	
+	Thread.sleep(2000);
 }
 public void dragImageFromIdea() {
-//	driver.findElement(By.xpath());
+
+	
+	//	driver.findElement(By.xpath());
 }
 	
 	@AfterClass

@@ -205,4 +205,15 @@ public class Ideaboard extends PageBase{
 	@CacheLookup
 	public WebElement nav_enterBody_DocumentEditor;
 	
+	
+			
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]")
+	@CacheLookup
+	public WebElement dotFirstParagraphInCanvas;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]")
+	@CacheLookup
+	public WebElement dotSecondParagraphInCanvas;
+			
+	
 }

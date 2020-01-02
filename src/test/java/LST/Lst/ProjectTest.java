@@ -263,8 +263,8 @@ public class ProjectTest  extends TestBase {
 			
 	     // JavascriptExecutor js = (JavascriptExecutor)driver;	
 				
-				//js.executeScript("arguments[0].click();", pro.thumbnail_first_Project_from_List);
-				//js.executeScript("arguments[0].click();", pro.btn_deleteProject_list);
+		//js.executeScript("arguments[0].click();", pro.thumbnail_first_Project_from_List);
+		//js.executeScript("arguments[0].click();", pro.btn_deleteProject_list);
 				
 	     pro.btn_deleteProject_list.click();
 	     com.moveMouseAndClick(pro.btn_delete_confirm_list);
@@ -292,7 +292,7 @@ public class ProjectTest  extends TestBase {
 	//driver.findElement(By.className("project-name")).getText();
 	System.out.println("Project Name from List: "+pName);
 	
-  //  das.btn_logout.click();
+    // das.btn_logout.click();
 	 
 	}
 	
