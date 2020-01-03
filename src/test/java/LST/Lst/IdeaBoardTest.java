@@ -15,6 +15,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -64,8 +65,12 @@ public class IdeaBoardTest extends TestBase {
 @Test(priority=1) 	
 public void createNewIdeaWithParagraphAndImageAndScrolling() throws IOException, InterruptedException, Exception {
 	
+//	Robot robot = new Robot();
+//	robot.mouseMove(1069, 195);
 	
-	//das = new Dashboard(driver);
+	
+	
+	das = new Dashboard(driver);
 	das.initElement();
 	
 	das.btn_newProject.click();
@@ -190,7 +195,7 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
 	Thread.sleep(800);
 	
 	com.moveMouseAndClick(idb.nav_startTyping_Canvas);
-	idb.nav_startTyping_Canvas.sendKeys(System.getProperty("paragraph"));
+	idb.nav_startTyping_Canvas.sendKeys(System.getProperty("paragraph2"));
 	
 	Thread.sleep(2000);
 	com.mouseHoverOnly(idb.objectCreationControlBar_container_Canvas);
@@ -211,6 +216,7 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
     upfile.setClipboardData(path);
     upfile.uploadFileInMac();
 
+
 	Thread.sleep(1000);
 	
 	idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
@@ -220,21 +226,52 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
 	com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
 	idb.btn_imageSaveClose_imageEditor.click();
 	
+/***
+ * Action drawSquare2=builder.moveToElement(canvas, 10, 10)
+ .clickAndHold()
+ .moveToElement(canvas)
+ .release().build();
+ drawSquare2.perform();
+ */
+	
+	
 	Thread.sleep(2000);
 	Actions action = new Actions(driver);
-	WebElement element = idb.dotFirstParagraphInCanvas; 
-	WebElement target = idb.dotSecondParagraphInCanvas;
-
+	WebElement element = idb.dotSecondParagraphInCanvas; 
+													///html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]
+													///html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]
+	WebElement target1 = idb.dotFirstParagraphInCanvas;
+			
+			//driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]"));
+			//idb.dotSecondParagraphInCanvas;
+			
+	//Robot robot = new Robot();
+	//robot.mouseMove(1079, 269);
+	
+	Thread.sleep(2000);
+	System.out.println("X + Y: "+target1.getLocation().getX()+" "+target1.getLocation().getY());
+	
 	com.moveMouseAndClick(element);
 	
+	
+	//com.moveMouseAndClick(target1);
+	//action.clickAndHold(element);
+	Thread.sleep(5000);
+	
+	action.moveByOffset(target1.getLocation().getX(), target1.getLocation().getY());
+	
 	Thread.sleep(2000);
-	action.clickAndHold().dragAndDrop(element, target).build().perform();
+	
+	(new Actions(driver)).clickAndHold(element).moveToElement(target1).release().perform();
 	
 	
-	//(new Actions(driver)).dragAndDrop(element, target).perform();
+	//(new Actions(driver)).dragAndDropBy(element, 1079,195).build().perform();
+	
+	//Action dragAndDrop = action.clickAndHold(element).moveToElement(target1).click().release(target1).build();
+	//dragAndDrop.perform();
 	
 	Thread.sleep(2000);
-	
+/*	
 	
 	com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
 	//Thread.sleep(5000);
@@ -251,7 +288,7 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
 	
 	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 	
-	Thread.sleep(2000);
+	Thread.sleep(2000);*/
 }
 public void dragImageFromIdea() {
 
@@ -262,7 +299,7 @@ public void dragImageFromIdea() {
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Idea Board page Test");
-		Browser.close();
+		//Browser.close();
 	}
 	
 }
