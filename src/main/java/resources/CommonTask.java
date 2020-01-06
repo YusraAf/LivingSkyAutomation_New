@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -250,5 +251,48 @@ public static int randomNumber() {
 	driver.switchTo().window(parentWindow);
     return driver;
  } 
+ 
+ 
+ public void dragAndDrop(WebElement element, WebElement target) {
+	 
+	//tried possible way 1
+//		(new Actions(driver)).clickAndHold(element).moveToElement(target1).release().perform();
+		
+		//tried possible way 2
+		
+	 /*
+	   new Actions(driver)
+		.clickAndHold(dragPoint)
+		.moveByOffset(0, -10)
+		.moveToElement(dropPoint,0,10)
+		.release()
+		.build()
+		.perform();
+
+	  */
+		
+		//tried possible way 3
+		//(new Actions(driver)).dragAndDropBy(element, 1079,195).build().perform();
+		
+		
+		//tried possible way 4
+		//Action dragAndDrop = action.clickAndHold(element).moveToElement(target1).click().release(target1).build();
+		//dragAndDrop.perform();
+		
+		//tried possible way 5
+		final String java_script =
+				"var src=arguments[0],tgt=arguments[1];var dataTransfer={dropEffe" +
+				                "ct:'',effectAllowed:'all',files:[],items:{},types:[],setData:fun" +
+				                "ction(format,data){this.items[format]=data;this.types.append(for" +
+				                "mat);},getData:function(format){return this.items[format];},clea" +
+				                "rData:function(format){}};var emit=function(event,target){var ev" +
+				                "t=document.createEvent('Event');evt.initEvent(event,true,false);" +
+				                "evt.dataTransfer=dataTransfer;target.dispatchEvent(evt);};emit('" +
+				                "dragstart',src);emit('dragenter',tgt);emit('dragover',tgt);emit(" +
+				                "'drop',tgt);emit('dragend',src);";
+
+				        ((JavascriptExecutor)driver).executeScript(java_script, element, target);
+				  
+ }
  
 } 
