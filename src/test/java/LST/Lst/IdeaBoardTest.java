@@ -3,6 +3,7 @@ package LST.Lst;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -210,8 +212,6 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
     if(System.getProperty("os").equals("mac")) {
     driver.switchTo().window(driver.getWindowHandle());
 	
-	
- 
     upfile.setClipboardData(path);
     upfile.uploadFileInMac();
     }else {
@@ -266,7 +266,7 @@ public void dragIdeaFromDocument() throws InterruptedException {
 	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 	
 	Thread.sleep(2000);
-	
+
 	
 	com.mouseHoverOnly(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]/div[1]/button[1]")));
 	
