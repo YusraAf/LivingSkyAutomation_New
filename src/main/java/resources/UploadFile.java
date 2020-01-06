@@ -85,8 +85,8 @@ public void upload(String fileLocation) throws Exception {
   
 
    Thread.sleep(1000);
-   String os="mac";
-    switch (os) { // Pass your OS platform name here, I am using properties file where OS name is saved you can as a string.
+  // String os="mac";
+    switch (System.getProperty("os")) { // Pass your OS platform name here, I am using properties file where OS name is saved you can as a string.
 
     case "mac":
 

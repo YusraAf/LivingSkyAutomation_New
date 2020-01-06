@@ -14,6 +14,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -208,14 +209,19 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
     idb.iconCamera_Canvas.click();
     Thread.sleep(800);
     
-    driver.switchTo().window(driver.getWindowHandle());
-	UploadFile  upfile= new UploadFile();
-	//upfile.upload(path);
     
+    UploadFile  upfile= new UploadFile();
+    if(System.getProperty("os").equals("mac")) {
+    driver.switchTo().window(driver.getWindowHandle());
+	
+	
  
     upfile.setClipboardData(path);
     upfile.uploadFileInMac();
-
+    }else {
+    	upfile.upload(path);
+        	
+    }
 
 	Thread.sleep(1000);
 	
@@ -254,24 +260,28 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
 	com.moveMouseAndClick(element);
 	
 	
-	//com.moveMouseAndClick(target1);
 	//action.clickAndHold(element);
-	Thread.sleep(5000);
+	//Thread.sleep(5000);
 	
-	action.moveByOffset(target1.getLocation().getX(), target1.getLocation().getY());
+	//action.moveByOffset(target1.getLocation().getX(), target1.getLocation().getY());
 	
 	Thread.sleep(2000);
+//tried possible way 1
+	//(new Actions(driver)).clickAndHold(element).moveToElement(target1).release().perform();
 	
-	(new Actions(driver)).clickAndHold(element).moveToElement(target1).release().perform();
+	//tried possible way 2
+	dragAndDrop(element,target1, driver);
 	
-	
+	//tried possible way 3
 	//(new Actions(driver)).dragAndDropBy(element, 1079,195).build().perform();
 	
+	
+	//tried possible way 4
 	//Action dragAndDrop = action.clickAndHold(element).moveToElement(target1).click().release(target1).build();
 	//dragAndDrop.perform();
 	
-	Thread.sleep(2000);
-/*	
+	Thread.sleep(5000);
+	
 	
 	com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
 	//Thread.sleep(5000);
@@ -288,18 +298,27 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
 	
 	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 	
-	Thread.sleep(2000);*/
+	Thread.sleep(2000);
 }
 public void dragImageFromIdea() {
 
 	
 	//	driver.findElement(By.xpath());
 }
+
+private void dragAndDrop(WebElement dragPoint, WebElement dropPoint, WebDriver driver) {
+new Actions(driver)
+.clickAndHold(dragPoint)
+.moveByOffset(-10, 0)
+.moveToElement(dropPoint)
+.release()
+.perform();
+}
 	
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Idea Board page Test");
-		//Browser.close();
+		Browser.close();
 	}
 	
 }

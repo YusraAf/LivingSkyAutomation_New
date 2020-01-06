@@ -15,6 +15,7 @@ public class PropertyLoader {
 	                + System.getProperty("active.env")
 	             + ".properties");
 	        load("./Property/projectData.properties");
+	       
 	    }
 	    public static void load(final String propertyPath) throws IOException {
 	        Properties properties = new Properties();
