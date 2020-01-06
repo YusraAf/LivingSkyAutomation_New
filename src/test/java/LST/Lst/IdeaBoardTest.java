@@ -3,6 +3,7 @@ package LST.Lst;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -56,7 +58,7 @@ public class IdeaBoardTest extends TestBase {
 		log =new LoginPage(land.getDriver());
 		log.initElement();
 		  
-		log.txt_userName.sendKeys("niti@yopmail.com"); 
+		log.txt_userName.sendKeys("test8@gmail.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
 		Thread.sleep(1000);
@@ -138,7 +140,7 @@ public void createNewIdeaWithParagraphAndImageAndScrolling() throws IOException,
 		
 }
 
-@Test(priority=2) 	
+//@Test(priority=2) 	
 public void createNewIdeaWithImageObject() throws IOException, InterruptedException, Exception {
 	idb = new Ideaboard(pro.getDriver());
 	idb.initElement();
@@ -152,7 +154,7 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	//idb.iconCamera_Canvas_File_type.sendKeys(path);
 	
 		
-    String filepath="/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/MyImage3.jpeg";
+    String filepath="/Users/chetankumarpatel/Desktop/LivingSkyAutomation_New/Images/MyImage3.jpeg";
     
     idb.iconCamera_Canvas.click();
   
@@ -187,7 +189,7 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	
 }
 
-@Test(priority=3)
+//@Test(priority=3)
 public void verifyIdeaWithParagraphAndImage() throws Exception {
 	idb = new Ideaboard(pro.getDriver());
 	idb.initElement();
@@ -204,7 +206,7 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
 	
 	Thread.sleep(800);
 		
-    String path="/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/project_image.jpeg";
+    String path="/Users/chetankumarpatel/Desktop/LivingSkyAutomation_New/Images/MyImage3.jpeg";
     
     idb.iconCamera_Canvas.click();
     Thread.sleep(800);
@@ -299,6 +301,87 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
 	com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 	
 	Thread.sleep(2000);
+}
+
+@Test(priority=4)
+public void verifyIdeaWithParagraphAndImagedrag() throws Exception {
+	idb = new Ideaboard(pro.getDriver());
+	idb.initElement();
+	
+	idb.btn_newIdea_IdeaBoard.click();
+	Thread.sleep(800);
+	
+	com.moveMouseAndClick(idb.nav_startTyping_Canvas);
+	idb.nav_startTyping_Canvas.sendKeys(System.getProperty("paragraph2"));
+	
+	Thread.sleep(2000);
+	com.mouseHoverOnly(idb.objectCreationControlBar_container_Canvas);
+	
+	
+	Thread.sleep(800);
+		
+    String path="/Users/chetankumarpatel/Desktop/LivingSkyAutomation_New/Images/MyImage3.jpeg";
+    
+    idb.iconCamera_Canvas.click();
+    Thread.sleep(800);
+    
+    
+    UploadFile  upfile= new UploadFile();
+    if(System.getProperty("os").equals("mac")) {
+    driver.switchTo().window(driver.getWindowHandle());
+	
+	
+ 
+    upfile.setClipboardData(path);
+    upfile.uploadFileInMac();
+    }else {
+    	upfile.upload(path);
+        	
+    }
+
+	Thread.sleep(1000);
+	
+	idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
+	idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
+	idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
+	//Thread.sleep(15000);
+	com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
+	idb.btn_imageSaveClose_imageEditor.click();
+	
+/***
+ * Action drawSquare2=builder.moveToElement(canvas, 10, 10)
+ .clickAndHold()
+ .moveToElement(canvas)
+ .release().build();
+ drawSquare2.perform();
+ */
+	
+	
+	Thread.sleep(2000);
+	
+	
+	
+	Actions action = new Actions(driver);
+	WebElement element = idb.dotSecondParagraphInCanvas; 
+													///html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]
+													///html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]
+	WebElement target1 = idb.dotFirstParagraphInCanvas;
+			
+			//driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[2]"));
+			//idb.dotSecondParagraphInCanvas;
+			
+	//Robot robot = new Robot();
+	//robot.mouseMove(1079, 269);
+	Point coordinates1 = element.getLocation();
+	Point coordinates2 = target1.getLocation();  
+	Robot robot = new Robot();           
+	robot.mouseMove(coordinates1.getX(), coordinates1.getY());
+	robot.mousePress(InputEvent.BUTTON1_MASK);
+	robot.mouseMove(coordinates2.getX(), coordinates2.getY());
+	robot.mouseRelease(InputEvent.BUTTON1_MASK);
+	Thread.sleep(2000);
+	
+	
 }
 public void dragImageFromIdea() {
 
