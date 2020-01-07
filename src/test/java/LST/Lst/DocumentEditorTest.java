@@ -25,8 +25,8 @@ import resources.CommonTask;
 
 public class DocumentEditorTest extends TestBase {
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
-	private LandingPage land;
-	private LoginPage log;
+
+	private LoginTest log;
 	private Dashboard das = new Dashboard(driver);
 	private Project pro;
 	private DocumentEditor doce;
@@ -38,17 +38,9 @@ public class DocumentEditorTest extends TestBase {
 		driver = Browser.getInstance();
 		driver.get(baseUrl);
 		
-		land= new LandingPage(driver);
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		land.initElement(); 
-		land.txt_login.click();
-		 
-		log =new LoginPage(land.getDriver());
-		log.initElement();
-		  
-		log.txt_userName.sendKeys("test8@gmail.com"); 
-		log.txt_password.sendKeys("asdF1234");
-		log.btn_login.click();
+		log =new LoginTest();
+		log.doSignin("test8@gmail.com", "asdF1234");;
+		
 		Thread.sleep(1000);
 	
 	}	
