@@ -62,28 +62,16 @@ public void verifyLoginPageAttributes() throws InterruptedException {
 
 
 @Test(dataProvider= "getLoginData",priority=2) 
-public void doSignin(String username, String password, int testCase) throws IOException, InterruptedException {
-	Browser.pageRefresh(); 
-	System.out.println("UserName : "+ username);
-	 landing= new LandingPage(driver);
-	 landing.initElement(); 
-	 landing.txt_login.click();
-	 
-	 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-	 
-	 log =new LoginPage(landing.getDriver());
-	 log.initElement();
-	  
-	 log.txt_userName.sendKeys(username);
-	 log.txt_password.sendKeys(password);
-	 log.btn_login.click();
-	 Thread.sleep(500);
+
+public void testLoginWithDifferentData(String username, String password, int testCase) throws IOException, InterruptedException {
  
 	// Dashboard dash = new Dashboard(log.getDriver());
 		
 	// landing.initElement(dash);
 	 //common = new CommonTask();
-	 
+
+	doSignin( username,  password);
+	
 	 switch(testCase){
 		 case 1: testCase1(driver); break;
 		 case 2: testCase2(driver); break;
@@ -127,6 +115,27 @@ public void doSigninAssertion() {
 	 return data;
 }
 
+	public void doSignin(String username, String password) throws InterruptedException {
+		
+		Browser.pageRefresh(); 
+		System.out.println("UserName : "+ username);
+		 landing= new LandingPage(driver);
+		 landing.initElement(); 
+		 landing.txt_login.click();
+		 
+		 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		 
+		 log =new LoginPage(landing.getDriver());
+		 log.initElement();
+		  
+		 log.txt_userName.sendKeys(username);
+		 log.txt_password.sendKeys(password);
+		 log.btn_login.click();
+		 Thread.sleep(500);
+
+	}
+
+	
 public void testCase1(WebDriver driver) throws InterruptedException, IOException {
 	Dashboard dash = new Dashboard(log.getDriver());
 	dash.initElement();
@@ -177,6 +186,8 @@ public void testCase4(WebDriver driver) throws InterruptedException {
 	 Thread.sleep(200);
 	 //Browser.pageRefresh();
 }
+
+
 
 @AfterClass
 public void closeBrowser() {

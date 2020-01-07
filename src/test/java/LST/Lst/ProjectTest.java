@@ -39,7 +39,7 @@ public class ProjectTest  extends TestBase {
 	//SoftAssert softassert5 = new SoftAssert();
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 	private LandingPage land;
-	private LoginPage log;
+	private LoginTest log;
 	private Dashboard das = new Dashboard(driver);
 	private Project pro;
 	private Trash trs;
@@ -52,20 +52,11 @@ public class ProjectTest  extends TestBase {
 		driver = Browser.getInstance();
 		driver.get(baseUrl);
 		
-		land= new LandingPage(driver);
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		land.initElement(); 
-		land.txt_login.click();
-		 
-		log =new LoginPage(land.getDriver());
-		log.initElement();
-		  
-		log.txt_userName.sendKeys("niti@livingskytech.com"); 
-		log.txt_password.sendKeys("asdF1234");
-		log.btn_login.click();
+		log =new LoginTest();
+		log.doSignin("niti@yopmail.com", "asdF1234");;
+		
 		Thread.sleep(1000);
-	 
-		//das = new Dashboard(log.getDriver());
+
 	}	
 	 
 	@Test(priority=1) 
@@ -139,7 +130,8 @@ public class ProjectTest  extends TestBase {
     public void verifyDeleteProject_from_GridView() throws IOException, InterruptedException, Exception {
           
         das.link_projects.click();
-        
+       
+
         com.moveMouseAndClick(pro.icon_grid);
 		
 		WebDriverWait wait=new WebDriverWait(driver, 20);
@@ -148,6 +140,8 @@ public class ProjectTest  extends TestBase {
         WebElement hover = pro.thumbnail_first_Project_from_Grid;
         
         com.mouseHoverOnly(hover);
+        Thread.sleep(2000);
+        
         pro.btn_deleteProject_grid.click();
         com.moveMouseAndClick(pro.btn_delete_confirm_grid);
         Thread.sleep(2500);

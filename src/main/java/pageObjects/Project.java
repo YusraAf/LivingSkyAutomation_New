@@ -65,7 +65,7 @@ public class Project extends PageBase{
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]")
 	@CacheLookup
 	public WebElement txt_first_Project_Title_frm_list;
-	
+					
 	@FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[2]/button[1]")
 	@CacheLookup
     public WebElement btn_deleteProject_grid;

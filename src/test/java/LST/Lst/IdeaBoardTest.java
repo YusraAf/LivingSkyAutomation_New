@@ -1,11 +1,5 @@
 package LST.Lst;
 
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -13,13 +7,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -38,7 +28,7 @@ public class IdeaBoardTest extends TestBase {
 	
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 	private LandingPage land;
-	private LoginPage log;
+	private LoginTest log;
 	private Dashboard das = new Dashboard(driver);
 	private Project pro;
 	private Ideaboard idb;
@@ -50,17 +40,10 @@ public class IdeaBoardTest extends TestBase {
 		driver = Browser.getInstance();
 		driver.get(baseUrl);
 		
-		land= new LandingPage(driver);
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		land.initElement(); 
-		land.txt_login.click();
-		 
-		log =new LoginPage(land.getDriver());
-		log.initElement();
-		  
-		log.txt_userName.sendKeys("niti@yopmail.com"); 
-		log.txt_password.sendKeys("asdF1234");
-		log.btn_login.click();
+	
+		log =new LoginTest();
+		log.doSignin("niti@yopmail.com", "asdF1234");;
+		
 		Thread.sleep(1000);
 	
 	}	
@@ -138,8 +121,8 @@ public void createNewIdeaWithParagraphAndImageAndScrolling() throws IOException,
 
 @Test(priority=2) 	
 public void createNewIdeaWithImageObject() throws IOException, InterruptedException, Exception {
-	idb = new Ideaboard(pro.getDriver());
-	idb.initElement();
+	//idb = new Ideaboard(pro.getDriver());
+	//idb.initElement();
 	idb.btn_newIdea_IdeaBoard.click();
 	Thread.sleep(800);
 	
@@ -187,8 +170,8 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 
 @Test(priority=3)
 public void verifyIdeaWithParagraphAndImage() throws Exception {
-	idb = new Ideaboard(pro.getDriver());
-	idb.initElement();
+	//idb = new Ideaboard(pro.getDriver());
+	//idb.initElement();
 	
 	idb.btn_newIdea_IdeaBoard.click();
 	Thread.sleep(800);
