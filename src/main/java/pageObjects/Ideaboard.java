@@ -116,45 +116,7 @@ public class Ideaboard extends PageBase{
 	@FindBy(xpath="/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/section[2]/div[1]/button[7]/*")
 	public WebElement iconFormula_ImageEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]")
-	public WebElement tab_Name_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]")
-	public WebElement controlBarMenu_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]/*")
-	public WebElement iconMatter_controlBarMenu_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[2]/*")
-	public WebElement iconPlus_controlBarMenu_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[3]/*")
-	public WebElement iconCopy_controlBarMenu_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[4]/*")
-	public WebElement iconTrash_controlBarMenu_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[2]/div[1]")
-	public WebElement cardSeparatorLine_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[2]")
-	public WebElement nav_enterTitle_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[3]/div[1]/div[2]")
-	public WebElement iconPlus_mousehoverSubtitle_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[3]/div[1]/div[2]/div[1]/ul[1]/li[1]")
-	public WebElement btn_clickonSubtitle_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]")
-	public WebElement nav_enterSubtitle_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[4]/div[1]/div[2]")
-	public WebElement btn_mouseHoverclickonBody_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[2]")
-	public WebElement nav_enterBody_DocumentEditor;
-	
+
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]")
 	public WebElement dotFirstParagraphInCanvas;
 	
