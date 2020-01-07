@@ -15,7 +15,7 @@ public class DocumentEditor extends PageBase {
 	}
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]")
 	@CacheLookup   
-	public WebElement documentName_DocumentEditor;
+	public WebElement tab_documentName_DocumentEditor;
 	
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]")
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]")
@@ -25,10 +25,10 @@ public class DocumentEditor extends PageBase {
 	//@FindBy(xpath="//div[@class='section-content']")
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[2]")
 	@CacheLookup
-	public WebElement nav_title_DocumentEditor;
+	public WebElement nav_FirstTitle_DocumentEditor;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]/button[1]/*")
-	@CacheLookup
+	@CacheLookup   
 	public WebElement plusIcon_DocumentEditor;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]/div[1]/ul[1]/li[1]")
@@ -39,5 +39,43 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[2]")
 	@CacheLookup   
 	public WebElement nav_body_DocumentEditor;
+
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]")
+	@CacheLookup   
+	public WebElement nav_SecondTitle_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[2]/div[1]/div[1]")
+	@CacheLookup   
+	public WebElement mousehover_SecondCard_DocumentEditor;
+	
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[1]/div[1]/div[1]/div[1]/button[2]/*")
+	@CacheLookup   
+	public WebElement addNewCard_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]")
+	@CacheLookup
+	public WebElement controlBarMenu_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]/*")
+	@CacheLookup
+	public WebElement iconMatter_controlBarMenu_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[2]/*")
+	@CacheLookup
+	public WebElement iconPlus_controlBarMenu_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[3]/*")
+	@CacheLookup
+	public WebElement iconCopy_controlBarMenu_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[4]/*")
+	@CacheLookup
+	public WebElement iconTrash_controlBarMenu_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[2]/div[1]")
+	@CacheLookup
+	public WebElement cardSeparatorLine_DocumentEditor;
+	
 
 }
