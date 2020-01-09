@@ -250,18 +250,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	@Test(priority=13) 	
-	public void verifyObjectCreationControlBarContainerTest() throws IOException, InterruptedException, Exception {
-		
-		WebElement objectContainer = doce.container_ObjectCreationControlBar_DocumentEditor;
-		Actions action3 = new Actions(driver);
-		
-		action3.moveToElement(objectContainer).build().perform();
-		Assert.assertTrue((doce.container_ObjectCreationControlBar_DocumentEditor).isDisplayed());
-		logger.info("Object Creation Control Bar Container is displayed at the bottom in the Document Editor");
-		Thread.sleep(5000);
-		
-	}
+	
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Document Editor page Test");
