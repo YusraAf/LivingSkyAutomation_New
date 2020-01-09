@@ -26,7 +26,7 @@ import resources.CommonTask;
 
 public class DashboardTest extends TestBase {
 	
-	SoftAssert softassert5 = new SoftAssert();
+	
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 	private LandingPage land;
 	private LoginPage log;
