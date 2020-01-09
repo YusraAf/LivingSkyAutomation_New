@@ -50,7 +50,7 @@ public class DashboardTest extends TestBase {
 		log =new LoginPage(land.getDriver());
 		log.initElement();
 		  
-		log.txt_userName.sendKeys("niti@livingskytech.com"); 
+		log.txt_userName.sendKeys("niti@yopmail.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
 	//	Thread.sleep(5000);
@@ -71,7 +71,7 @@ public class DashboardTest extends TestBase {
 		   das.link_projects.click();
 		  
 		
-		  for(int i=0; i<5;i++) { 
+		for(int i=0; i<5;i++) { 
 			  pt.createProject(); 
 			  
 		  }
@@ -83,11 +83,14 @@ public class DashboardTest extends TestBase {
 		    Actions builder = new Actions(driver);
 		    WebElement project = pro.container_grid_view;
 		    builder.moveToElement(project).build().perform();
+		    
 		    List<WebElement> allproject = project.findElements(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div"));
 		    
 		    
 		    System.out.println("All project=======>" + allproject.size());
+		    
 		    for(WebElement b : allproject) {
+		    	
 		        String proTitle= b.findElement(By.className("card-project__title")).getText();
 		        System.out.println("Pro title: "+proTitle);
 		        pro = new Project(das.getDriver());
