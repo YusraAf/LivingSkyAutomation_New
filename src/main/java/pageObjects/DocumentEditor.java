@@ -23,13 +23,13 @@ public class DocumentEditor extends PageBase {
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]")
 	//@FindBy(xpath="//div[@id='title-blank']")
 	//@FindBy(xpath="//div[@class='section-content']")
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[2]")
+	@FindBy(xpath="//*[@class='blank-placeholder__card'] //div[@class='section-content']")
 	@CacheLookup   
-	public WebElement nav_FirstTitle_DocumentEditor;
+	public WebElement txt_BlankPlaceHolderEnterTitle_DocumentEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/span[1]")
+	@FindBy(xpath="//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'Title')]")
 	@CacheLookup   
-	public WebElement lbl_Title_DocumentEditor;
+	public WebElement lbl_First_Card_Title_DocumentEditor;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]")
 	@CacheLookup   
@@ -71,9 +71,11 @@ public class DocumentEditor extends PageBase {
 	@CacheLookup   
 	public WebElement nav_SecondBody_DocumentEditor;
 
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]")
-	@CacheLookup   
-	public WebElement nav_SecondTitle_DocumentEditor;
+	//@FindBy(xpath="//*[@class='blank-placeholder__card']//div[@class='blank-card-content']//div[@class='ContextMenu']//div[@id='title-blank']//div[@class='section-content']")
+			
+			///"/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]")
+	//@CacheLookup   
+	//public WebElement nav_SecondTitle_DocumentEditor;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[2]/div[1]/div[1]")
 	@CacheLookup   

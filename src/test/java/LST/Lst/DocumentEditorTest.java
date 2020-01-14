@@ -75,7 +75,7 @@ public class DocumentEditorTest extends TestBase {
 		//WebDriverWait wait = new WebDriverWait(driver, 50);
 		//WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[2]")));
 		
-		WebElement title = doce.nav_FirstTitle_DocumentEditor;
+		WebElement title = doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor;
 		//JavascriptExecutor executor = (JavascriptExecutor)driver;
 		//executor.executeScript("arguments[0].click();", ele);
 		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -91,9 +91,9 @@ public class DocumentEditorTest extends TestBase {
 		logger.info("Object Handle for Title is displayed in the Document Editor");
 		//System.out.println("Verifing Object Handle for Title in the Document Editor");
 			
-		System.out.println("Area Name is ---->  " + doce.lbl_Title_DocumentEditor.getText());
+		System.out.println("Area Name is ---->  " + doce.lbl_First_Card_Title_DocumentEditor.getText());
 	//	driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/span[1]")).getText());
-		Assert.assertTrue((doce.lbl_Title_DocumentEditor).isDisplayed());
+		Assert.assertTrue((doce.lbl_First_Card_Title_DocumentEditor).isDisplayed());
 		logger.info("Label for Title card area is displayed in the Document Editor");
 	}
 	@Test(priority=2) 	
@@ -154,15 +154,20 @@ public class DocumentEditorTest extends TestBase {
 			
 		Actions action = new Actions(driver);
 				
-		com.moveMouseAndClick(doce.mousehover_SecondCard_DocumentEditor);
-		WebElement secondTitle = doce.nav_SecondTitle_DocumentEditor;
-				
+	//com.moveMouseAndClick(doce.mousehover_SecondCard_DocumentEditor);
+		
+	
+		WebElement secondTitle = doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor;
+		//com.moveMouseAndClick(secondTitle);
+		Thread.sleep(1000);
+		//action.click(secondTitle).sendKeys("Living Sky Technologies" ).perform();
+		
 		action.click(secondTitle).sendKeys("Living Sky Technologies" + Keys.ENTER).perform();
 		Thread.sleep(1000);
 				
 		//WebElement body = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[4]/div[1]/div[2]/div[1]/div[2]"));
 		WebElement body = doce.nav_SecondBody_DocumentEditor;
-		action.click(body).sendKeys("Empowering creators everywhere. What if an idea could exist interrupted, flowing freely from the imagination to the page? What if the research didn’t draw you away from the page, or formatting didn’t drag out the process? Answering these questions has led the Living Sky Technologies team to discover a way to simplify the creativity process by building a platform from which any content creator can be launched." + Keys.ENTER).perform();
+		action.click(body).sendKeys("Empowering creators everywhere. What if an idea could exist interrupted, flowing freely from the imagination to the page? What if the research didn’t draw you away from the page, or formatting didn’t drag out the process? Answering these questions has led the Living Sky Technologies team to discover a way to simplify the creativity process by building a platform from which any content creator can be launched." ).perform();
 		Thread.sleep(1000);	
 		
 		//com.moveMouseAndClick(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[3]/div[1]/div[2]")));	
@@ -224,7 +229,13 @@ public class DocumentEditorTest extends TestBase {
 	public void verifyAddNewCardControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		com.moveMouseAndClick(doce.icon_AddCard_controlBarSeparator_DocumentEditor);
-		WebElement title5 = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]"));
+		
+		Thread.sleep(3000);
+		WebElement title5 = driver.findElement(By.xpath("//div[2]/div/div[2]/div/div[2]/div/div"));
+				
+				//doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor;
+				
+				//--- driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]"));
 		
 		Actions action2 = new Actions(driver);
 			
