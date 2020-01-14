@@ -31,6 +31,10 @@ public class DocumentEditor extends PageBase {
 	@CacheLookup   
 	public WebElement lbl_Title_DocumentEditor;
 	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]")
+	@CacheLookup   
+	public WebElement ObjHandle_Title_DocumentEditor;
+	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]/button[1]/*")
 	@CacheLookup   
 	public WebElement plusIcon_DocumentEditor;
@@ -42,6 +46,10 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/span[1]")
 	@CacheLookup   
 	public WebElement lbl_SubTitle_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]")
+	@CacheLookup   
+	public WebElement ObjHandle_SubTitle_DocumentEditor;
 		
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[3]/div[1]/div[2]")
 	@CacheLookup   
@@ -54,6 +62,10 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[1]/span[1]")
 	@CacheLookup   
 	public WebElement lbl_Body_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]")
+	@CacheLookup   
+	public WebElement ObjHandle_Body_DocumentEditor;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[4]/div[1]/div[2]/div[1]/div[2]")
 	@CacheLookup   
@@ -99,5 +111,37 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[2]")
 	@CacheLookup
 	public WebElement container_ObjectCreationControlBar_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[2]/button[1]")
+	@CacheLookup
+	public WebElement btn_Preview_ObjectCreationControlBar_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[2]/div[1]/button[1]")
+	@CacheLookup
+	public WebElement iconQuote_ObjectCreationControlBar_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[2]/div[1]/button[2]")
+	@CacheLookup
+	public WebElement iconCamera_ObjectCreationControlBar_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[2]/div[1]/button[4]")
+	@CacheLookup
+	public WebElement iconList_ObjectCreationControlBar_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[2]/div[1]/button[5]")
+	@CacheLookup
+	public WebElement iconTable_ObjectCreationControlBar_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[2]/div[1]/button[6]")
+	@CacheLookup
+	public WebElement iconMicrophone_ObjectCreationControlBar_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[2]/div[1]/button[7]")
+	@CacheLookup
+	public WebElement iconFormula_ObjectCreationControlBar_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[2]/button[2]")
+	@CacheLookup
+	public WebElement btn_More_ObjectCreationControlBar_DocumentEditor;
 	
 }

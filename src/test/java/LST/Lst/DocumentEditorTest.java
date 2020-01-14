@@ -87,11 +87,12 @@ public class DocumentEditorTest extends TestBase {
 		action.click(title).sendKeys("Living Sky Technologies").perform();
 		Thread.sleep(1000);
 			
-		Assert.assertTrue(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]")).isDisplayed());
+		Assert.assertTrue((doce.ObjHandle_Title_DocumentEditor).isDisplayed());
 		logger.info("Object Handle for Title is displayed in the Document Editor");
 		//System.out.println("Verifing Object Handle for Title in the Document Editor");
 			
-		System.out.println("Area Name is ---->  " + driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/span[1]")).getText());
+		System.out.println("Area Name is ---->  " + doce.lbl_Title_DocumentEditor.getText());
+	//	driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/span[1]")).getText());
 		Assert.assertTrue((doce.lbl_Title_DocumentEditor).isDisplayed());
 		logger.info("Label for Title card area is displayed in the Document Editor");
 	}
@@ -106,11 +107,12 @@ public class DocumentEditorTest extends TestBase {
 		action.click(subtitle).sendKeys("Vision").perform();
 		Thread.sleep(1000);
 			
-		Assert.assertTrue(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]")).isDisplayed());
+		Assert.assertTrue((doce.ObjHandle_SubTitle_DocumentEditor).isDisplayed());
 		logger.info("Object Handle for SubTitle is displayed in the Document Editor");
 		//System.out.println("Verifing Object Handle for SubTitle in the Document Editor");
 			
-		System.out.println("Area Name is ---->  " + driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/span[1]")).getText());
+		System.out.println("Area Name is ---->  " + doce.lbl_SubTitle_DocumentEditor.getText());
+		//driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/span[1]")).getText());
 		Assert.assertTrue((doce.lbl_SubTitle_DocumentEditor).isDisplayed());
 		logger.info("Label for SubTitle card area is displayed in the Document Editor");
 	}
@@ -126,11 +128,12 @@ public class DocumentEditorTest extends TestBase {
 		action.click(body).sendKeys("Our vision is to provide a suite of products and services that are indispensable to content creators across all disciplines.").perform();
 		Thread.sleep(1000);
 			
-		Assert.assertTrue(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]")).isDisplayed());
+		Assert.assertTrue((doce.ObjHandle_Body_DocumentEditor).isDisplayed());
 		logger.info("Object Handle for Body is displayed in the Document Editor");
 		//System.out.println("Verifing Object Handle for Body in the Document Editor");
 			
-		System.out.println("Area Name is ---->  " + driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[1]/span[1]")).getText());
+		System.out.println("Area Name is ---->  " + doce.lbl_Body_DocumentEditor.getText());
+		//driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[1]/span[1]")).getText());
 		Assert.assertTrue((doce.lbl_Body_DocumentEditor).isDisplayed());
 		logger.info("Label for Body card area is displayed in the Document Editor");
 		Thread.sleep(500);
@@ -241,7 +244,16 @@ public class DocumentEditorTest extends TestBase {
 			
 	}
 
-	@Test(priority=12) 	
+	//@Test(priority=12) 	
+	public void verifyCopyCardControlBarTest() throws IOException, InterruptedException, Exception {
+		
+		com.mouseHoverOnly(doce.controlBarSeparator_DocumentEditor);
+		com.moveMouseAndClick(doce.icon_CopyCard_controlBarSeparator_DocumentEditor);
+		Thread.sleep(500);
+		
+	}
+	
+	@Test(priority=13) 	
 	public void verifyDeleteCardControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		com.mouseHoverOnly(doce.controlBarSeparator_DocumentEditor);
@@ -250,6 +262,45 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
+	@Test(priority=14) 	
+	public void verifyObjectCreationControlBarContainerTest() throws IOException, InterruptedException, Exception {
+		
+		WebElement objectContainer = doce.container_ObjectCreationControlBar_DocumentEditor;
+		Actions action3 = new Actions(driver);
+		
+		action3.moveToElement(objectContainer).build().perform();
+		Assert.assertTrue((doce.container_ObjectCreationControlBar_DocumentEditor).isDisplayed());
+		logger.info("Object Creation Control Bar Container is displayed at the bottom in the Document Editor");
+		Thread.sleep(500);
+		
+	}
+	
+	@Test(priority=15) 	
+	public void verifyPreviewObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
+		
+		Assert.assertTrue((doce.btn_Preview_ObjectCreationControlBar_DocumentEditor).isDisplayed());
+		logger.info("Preview button Object Creation Control Bar is displayed at the bottom in the Document Editor");
+		Thread.sleep(500);
+		
+	}
+	
+	@Test(priority=16) 	
+	public void verifyQuoteObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
+		
+		Assert.assertTrue((doce.iconQuote_ObjectCreationControlBar_DocumentEditor).isDisplayed());
+		logger.info("Quote icon Object Creation Control Bar is displayed at the bottom in the Document Editor");
+		Thread.sleep(500);
+		
+	}
+	
+	@Test(priority=17) 	
+	public void verifyCameraObjectCreationControlBarrTest() throws IOException, InterruptedException, Exception {
+		
+		Assert.assertTrue((doce.iconCamera_ObjectCreationControlBar_DocumentEditor).isDisplayed());
+		logger.info("Camera icon Object Creation Control Bar is displayed at the bottom in the Document Editor");
+		Thread.sleep(500);
+		
+	}
 	
 	@AfterClass
 	public void closeBrowser() {
