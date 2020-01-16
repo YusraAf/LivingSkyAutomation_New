@@ -100,9 +100,9 @@ public class DocumentEditorTest extends TestBase {
 	public void verifyAndCreateCardSubTitleAreaInDocumentEditorTest() throws IOException, InterruptedException, Exception {
 		
 		Actions action = new Actions(driver);	
-		com.moveMouseAndClick(doce.plusIcon_DocumentEditor);
+		com.moveMouseAndClick(doce.icon_Plus_DocumentEditor);
 
-		WebElement subtitle = doce.nav_subTitle_DocumentEditor;
+		WebElement subtitle = doce.txt_subTitle_First_DocumentEditor;
 			
 		action.click(subtitle).sendKeys("Vision").perform();
 		Thread.sleep(1000);
@@ -121,9 +121,9 @@ public class DocumentEditorTest extends TestBase {
 	public void verifyAndCreateCardBodyAreaInDocumentEditorTest() throws IOException, InterruptedException, Exception {
 		
 		Actions action = new Actions(driver);	
-		com.moveMouseAndClick(doce.plusIcon_DocumentEditor);
+		com.moveMouseAndClick(doce.icon_Plus_DocumentEditor);
 			
-		WebElement body = doce.nav_body_DocumentEditor;
+		WebElement body = doce.txt_body_First_DocumentEditor;
 			
 		action.click(body).sendKeys("Our vision is to provide a suite of products and services that are indispensable to content creators across all disciplines.").perform();
 		Thread.sleep(1000);
@@ -173,7 +173,7 @@ public class DocumentEditorTest extends TestBase {
 		//com.moveMouseAndClick(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[3]/div[1]/div[2]")));	
 		//com.moveMouseAndClick(doce.plusIcon_DocumentEditor);
 
-		WebElement addSubtitleAfterBody = doce.nav_AddSubTitleAfterBody_DocumentEditor;
+		WebElement addSubtitleAfterBody = doce.txt_AddSubTitle_AfterBody_DocumentEditor;
 			
 		action.click(addSubtitleAfterBody).sendKeys("About Living Sky Technologies").perform();
 		Thread.sleep(1000);
@@ -230,7 +230,7 @@ public class DocumentEditorTest extends TestBase {
 		
 		com.moveMouseAndClick(doce.icon_AddCard_controlBarSeparator_DocumentEditor);
 		
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		WebElement title5 = driver.findElement(By.xpath("//div[2]/div/div[2]/div/div[2]/div/div"));
 				
 				//doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor;
@@ -247,7 +247,9 @@ public class DocumentEditorTest extends TestBase {
 	@Test(priority=11) 	
 	public void verifyDropDownMenuForMatterCardControlBarTest() throws IOException, InterruptedException, Exception {
 		
+		com.mouseHoverOnly(doce.line_topOfCardSeparator_DocumentEditor);
 		com.mouseHoverOnly(doce.controlBarSeparator_DocumentEditor);
+		Thread.sleep(500);
 		com.moveMouseAndClick(doce.icon_MatterCard_controlBarSeparator_DocumentEditor);
 		Thread.sleep(500);
 		Assert.assertTrue((doce.dropDown_MatterMenu_controlBarSeparator_DocumentEditor).isDisplayed());
@@ -267,7 +269,7 @@ public class DocumentEditorTest extends TestBase {
 	@Test(priority=13) 	
 	public void verifyDeleteCardControlBarTest() throws IOException, InterruptedException, Exception {
 		
-		com.mouseHoverOnly(doce.controlBarSeparator_DocumentEditor);
+		//com.mouseHoverOnly(doce.controlBarSeparator_DocumentEditor);
 		com.moveMouseAndClick(doce.icon_DeleteCard_controlBarSeparator_DocumentEditor);
 		Thread.sleep(1000);
 		
@@ -305,13 +307,14 @@ public class DocumentEditorTest extends TestBase {
 	}
 	
 	@Test(priority=17) 	
-	public void verifyCameraObjectCreationControlBarrTest() throws IOException, InterruptedException, Exception {
+	public void verifyCameraObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		Assert.assertTrue((doce.iconCamera_ObjectCreationControlBar_DocumentEditor).isDisplayed());
 		logger.info("Camera icon Object Creation Control Bar is displayed at the bottom in the Document Editor");
 		Thread.sleep(500);
 		
 	}
+	
 	
 	@AfterClass
 	public void closeBrowser() {

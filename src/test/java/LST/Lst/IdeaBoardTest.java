@@ -134,7 +134,7 @@ public void createNewIdeaWithImageObject() throws IOException, InterruptedExcept
 	
 		
     String filepath="/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/MyImage3.jpeg";
-    
+    //String filepath=System.getProperty("user.dir")+"/Images/MyImage3.jpeg";
     idb.iconCamera_Canvas.click();
   
 	UploadFile  upfile= new UploadFile();
@@ -186,7 +186,7 @@ public void verifyIdeaWithParagraphAndImage() throws Exception {
 	Thread.sleep(800);
 		
     String path="/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/project_image.jpeg";
-    
+    //String path=System.getProperty("user.dir")+"/Images/project_image.jpeg";
     idb.iconCamera_Canvas.click();
     Thread.sleep(800);
     
