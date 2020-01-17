@@ -25,60 +25,61 @@ public class DocumentEditor extends PageBase {
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]")
 	//@FindBy(xpath="//div[@id='title-blank']")
 	//@FindBy(xpath="//div[@class='section-content']")
-	@FindBy(xpath="//*[@class='blank-placeholder__card'] //div[@class='section-content']")
+	//@FindBy(xpath="//*[@class='blank-placeholder__card'] //div[@class='section-content']")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='blank-placeholder__card']//div[@class='section-content']")
 	@CacheLookup   
 	public WebElement txt_BlankPlaceHolderEnterTitle_DocumentEditor;
 	
-	@FindBy(xpath="//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'Title')]")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'Title')]")
 	@CacheLookup   
 	public WebElement lbl_First_Card_Title_DocumentEditor;
 	
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]") object-handle-container 
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[2]//div[2]//div[@class='ObjectHandle']")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='doc-editor__card']//div[2]//div[2]//div[@class='ObjectHandle']")
 	@CacheLookup    
 	public WebElement ObjHandle_Title_DocumentEditor;
 	
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]/button[1]/*")
-	@FindBy(xpath="//div[@class='control-bar with-menu']//*[@class='icon-plus']")
+	@FindBy(xpath="//div[@class='Tab focused']//div[@class='control-bar with-menu']//*[@class='icon-plus']")
 	@CacheLookup   
 	public WebElement icon_Plus_DocumentEditor;
 					
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]/div[1]/ul[1]/li[1]")
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[3]//ul[@class='menu-list']//li[1]")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='doc-editor__card']//div[3]//ul[@class='menu-list']//li[1]")
 	@CacheLookup   
 	public WebElement txt_subTitle_First_DocumentEditor;
 	
-	@FindBy(xpath="//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'Subtitle')]")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'Subtitle')]")
 	@CacheLookup   
 	public WebElement lbl_SubTitle_DocumentEditor;
 	
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]")
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[3]//div[2]//div[@class='ObjectHandle']")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='doc-editor__card']//div[3]//div[2]//div[@class='ObjectHandle']")
 	@CacheLookup   
 	public WebElement ObjHandle_SubTitle_DocumentEditor;
 		
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[3]/div[1]/div[2]")
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[3]//button[1]")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='doc-editor__card']//div[3]//button[1]")
 	@CacheLookup   
 	public WebElement txt_AddSubTitle_AfterBody_DocumentEditor;
 	
-//	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[2]")
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[4]")
+	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[2]")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='doc-editor__card']//div[4]")
 	@CacheLookup   
 	public WebElement txt_body_First_DocumentEditor;
 	
-	@FindBy(xpath="//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'Body')]")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'Body')]")
 	@CacheLookup   
 	public WebElement lbl_Body_DocumentEditor;
 	
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]")
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[4]//div[2]//div[@class='ObjectHandle']")
+	@FindBy(xpath="//div[@class='Tab focused']//*[@class='doc-editor__card']//div[4]//div[2]//div[@class='ObjectHandle']")
 	@CacheLookup   
 	public WebElement ObjHandle_Body_DocumentEditor;
 	
-	@FindBy(xpath="//section[@id='document-editor']//div[2]//div[4]")
+	@FindBy(xpath="//div[@class='Tab focused']//section[@id='document-editor']//div[2]//div[4]")
 	@CacheLookup   
-	public WebElement nav_SecondBody_DocumentEditor;
+	public WebElement txt_Body_Second_DocumentEditor;
 
 	//@FindBy(xpath="//*[@class='blank-placeholder__card']//div[@class='blank-card-content']//div[@class='ContextMenu']//div[@id='title-blank']//div[@class='section-content']")
 			
@@ -91,12 +92,13 @@ public class DocumentEditor extends PageBase {
 	public WebElement mousehover_SecondCard_DocumentEditor;
 	
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[1]")
-	@FindBy(xpath="//div[@class='doc-editor__card'][1]//div[@class='card-separator hide']")
+	@FindBy(xpath="//div[@class='Tab focused']//div[@class='doc-editor__card'][1]//div[@class='card-separator hide']")
 	@CacheLookup
 	public WebElement line_topOfCardSeparator_DocumentEditor;
 	
 	//@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]")
-	@FindBy(xpath="//div[@class='doc-editor__card'][1]//div[@class='control-bar-btns']")
+	//@FindBy(xpath="//div[@class='doc-editor__card'][1]//div[@class='control-bar-btns']")
+	@FindBy(xpath="//div[@class='Tab focused']//div[@class='control-bar-content']")
 	@CacheLookup   
 	public WebElement controlBarSeparator_DocumentEditor;
 	
@@ -122,7 +124,7 @@ public class DocumentEditor extends PageBase {
 	
 	//@FindBy(xpath="/html[1]/body[1]/reach-portal[4]/div[1]/div[1]/div[2]/div[1]")
 	//@FindBy(xpath="//div[@class='input-dropdown-inner__menu-list css-11unzgr']")
-	@FindBy(xpath=" //div[@class='input-dropdown-inner__menu css-26l3qy-menu']")
+	@FindBy(xpath="//div[@class='input-dropdown-inner__menu css-26l3qy-menu']")
 	@CacheLookup
 	public WebElement dropDown_MatterMenu_controlBarSeparator_DocumentEditor;
 	
