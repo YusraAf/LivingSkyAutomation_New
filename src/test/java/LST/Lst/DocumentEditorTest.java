@@ -16,8 +16,6 @@ import org.testng.annotations.Test;
 import LST.core.TestBase;
 import pageObjects.Dashboard;
 import pageObjects.DocumentEditor;
-import pageObjects.LandingPage;
-import pageObjects.LoginPage;
 import pageObjects.Project;
 import resources.Browser;
 import resources.CommonTask;
@@ -92,7 +90,7 @@ public class DocumentEditorTest extends TestBase {
 		//System.out.println("Verifing Object Handle for Title in the Document Editor");
 			
 		System.out.println("Area Name is ---->  " + doce.lbl_First_Card_Title_DocumentEditor.getText());
-	//	driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/span[1]")).getText());
+		//driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[1]/div[1]/span[1]")).getText());
 		Assert.assertTrue((doce.lbl_First_Card_Title_DocumentEditor).isDisplayed());
 		logger.info("Label for Title card area is displayed in the Document Editor");
 	}
@@ -154,7 +152,7 @@ public class DocumentEditorTest extends TestBase {
 			
 		Actions action = new Actions(driver);
 				
-	//com.moveMouseAndClick(doce.mousehover_SecondCard_DocumentEditor);
+		//com.moveMouseAndClick(doce.mousehover_SecondCard_DocumentEditor);
 		
 	
 		WebElement secondTitle = doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor;
@@ -166,7 +164,7 @@ public class DocumentEditorTest extends TestBase {
 		Thread.sleep(1000);
 				
 		//WebElement body = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[4]/div[1]/div[2]/div[1]/div[2]"));
-		WebElement body = doce.nav_SecondBody_DocumentEditor;
+		WebElement body = doce.txt_Body_Second_DocumentEditor;
 		action.click(body).sendKeys("Empowering creators everywhere. What if an idea could exist interrupted, flowing freely from the imagination to the page? What if the research didn’t draw you away from the page, or formatting didn’t drag out the process? Answering these questions has led the Living Sky Technologies team to discover a way to simplify the creativity process by building a platform from which any content creator can be launched." ).perform();
 		Thread.sleep(1000);	
 		
@@ -315,6 +313,50 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
+	@Test(priority=18) 	
+	public void verifyListObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
+		
+		Assert.assertTrue((doce.iconList_ObjectCreationControlBar_DocumentEditor).isDisplayed());
+		logger.info("List icon Object Creation Control Bar is displayed at the bottom in the Document Editor");
+		Thread.sleep(500);
+		
+	}
+	
+	@Test(priority=19) 	
+	public void verifyTableObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
+		
+		Assert.assertTrue((doce.iconTable_ObjectCreationControlBar_DocumentEditor).isDisplayed());
+		logger.info("Table icon Object Creation Control Bar is displayed at the bottom in the Document Editor");
+		Thread.sleep(500);
+		
+	}
+	
+	@Test(priority=20) 	
+	public void verifyMicrophoneObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
+		
+		Assert.assertTrue((doce.iconMicrophone_ObjectCreationControlBar_DocumentEditor).isDisplayed());
+		logger.info("Microphone icon Object Creation Control Bar is displayed at the bottom in the Document Editor");
+		Thread.sleep(500);
+		
+	}
+	
+	@Test(priority=21) 	
+	public void verifyFormulaObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
+		
+		Assert.assertTrue((doce.iconFormula_ObjectCreationControlBar_DocumentEditor).isDisplayed());
+		logger.info("Formula icon Object Creation Control Bar is displayed at the bottom in the Document Editor");
+		Thread.sleep(500);
+		
+	}
+
+	@Test(priority=22) 	
+	public void verifyMoreObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
+		
+		Assert.assertTrue((doce.iconFormula_ObjectCreationControlBar_DocumentEditor).isDisplayed());
+		logger.info("More button Object Creation Control Bar is displayed at the bottom in the Document Editor");
+		Thread.sleep(500);
+		
+	}
 	
 	@AfterClass
 	public void closeBrowser() {
