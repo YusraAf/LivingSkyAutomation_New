@@ -14,8 +14,24 @@ public class Ideaboard extends PageBase{
 		
 	}
 
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[1]/p[1]")
-	public WebElement tab_Name_IdeaBoard;
+					
+	@FindBy(xpath="//div[@id='Right-tab-0']//p[contains(text(),'Idea Board')]")
+	public WebElement tabFirstTabInIdeaBoard;
+	
+	@FindBy(xpath="//div[@id='Right-tab-1']//p[contains(text(),'Idea Board')]")
+	public WebElement tabSecondTabInIdeaBoard;
+	
+	@FindBy(xpath="//div[@id='Left-tab-0']//p[contains(text(),'Untitled Document')]")
+	public WebElement tabFirstTabInDocEditor;
+	
+	@FindBy(xpath="//div[@id='Left-add-tab-1']")
+	public WebElement btnPlusInTabInDocEditor;
+	
+	@FindBy(xpath="//div[@id='Right-add-tab-1']")
+	public WebElement btnPlusInTabInIdeaBoard;
+	
+	@FindBy(xpath="//reach-portal[2]/div/div/div[2]")
+	public WebElement dropDownSecondItemSelectionInIdeaBoard;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]")
 	public WebElement containerGrid_IdeaBoard;
