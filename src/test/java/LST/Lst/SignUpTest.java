@@ -406,10 +406,10 @@ private CommonTask common;
 		  
 		  PostGreConnection.postGreDbConnectionOpen(); 
 		  DbQuery dbq= new  DbQuery(); 
-		  String query =  "Delete from public.\"unverifiedUsers\" where email like '%niti@livingsky%'";
+		  String query =  "Delete from public.\"users\" where email like '%niti@livingsky%'";
 		  dbq.deleteData(query); 
-		  String query1 =  "Delete from public.\"verifiedUsers\" where email like '%niti@livingsky%'";
-		  dbq.deleteData(query1); 
+		 // String query1 =  "Delete from public.\"verifiedUsers\" where email like '%niti@livingsky%'";
+		  //dbq.deleteData(query1); 
 		  PostGreConnection.dbClose();
 	  }
 	  

@@ -1,5 +1,8 @@
 package LST.Lst;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -7,16 +10,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import LST.core.TestBase;
 import pageObjects.Dashboard;
-import pageObjects.Ideaboard;
+import pageObjects.IdeaBoard;
 import pageObjects.Project;
 import resources.Browser;
 import resources.CommonTask;
@@ -29,8 +33,9 @@ public class IdeaBoardTest extends TestBase {
 	private LoginTest log;
 	private Dashboard das = new Dashboard(driver);
 	private Project pro;
-	private Ideaboard idb;
+	private IdeaBoard idb;
 	private CommonTask com = new CommonTask(driver);
+	
 
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
@@ -70,7 +75,7 @@ public class IdeaBoardTest extends TestBase {
 		Thread.sleep(100);
 
 		logger.info("This is inside in IdeaBoard Page =====> Creating new idea on the Idea Board");
-		idb = new Ideaboard(pro.getDriver());
+		idb = new IdeaBoard(pro.getDriver());
 		idb.initElement();
 
 		idb.btn_newIdea_IdeaBoard.click();
@@ -102,6 +107,7 @@ public class IdeaBoardTest extends TestBase {
 		Thread.sleep(500);
 		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 		Thread.sleep(2000);
+		//Checking the first idea with paragraph is showing 
 		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'idea-content')]")).isDisplayed());
 
 	}
@@ -130,7 +136,7 @@ public class IdeaBoardTest extends TestBase {
 		idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
 		idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
 		idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
-		// Thread.sleep(15000);
+		 Thread.sleep(1000);
 		com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
 		idb.btn_imageSaveClose_imageEditor.click();
 
@@ -148,46 +154,13 @@ public class IdeaBoardTest extends TestBase {
 		Thread.sleep(1000);
 		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 		Thread.sleep(2000);
+		
+		//Checking the idea object for image element
 
 		Assert.assertTrue(driver.findElement(By.xpath("//img[contains(@class,'project-image')]")).isDisplayed());
 
 	}
-
 	@Test(priority = 3)
-	public void dragIdeaFromDocument() throws InterruptedException {
-
-		pro = new Project(das.getDriver());
-
-		pro.initElement();
-		das.initElement();
-
-		das.link_projects.click();
-
-		Thread.sleep(4000);
-
-		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
-
-		Thread.sleep(2000);
-
-		com.mouseHoverOnly(idb.btnPlusInTabInIdeaBoard);
-		idb.btnPlusInTabInIdeaBoard.click();
-		
-		
-		idb.dropDownSecondItemSelectionInIdeaBoard.click();
-
-		Thread.sleep(1000);
-	
-		WebElement element = idb.tabSecondTabInIdeaBoard;
-		WebElement target = idb.tabFirstTabInDocEditor;
-
-		com.moveMouseAndClick(element);
-
-		com.dragAndDrop(element, target);
-		Thread.sleep(5000);
-
-	}
-
-	@Test(priority = 4)
 	public void verifyIdeaWithParagraphAndImage() throws Exception {
 		// idb = new Ideaboard(pro.getDriver());
 		// idb.initElement();
@@ -226,11 +199,15 @@ public class IdeaBoardTest extends TestBase {
 		idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
 		// Thread.sleep(15000);
 		com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
+		
 		idb.btn_imageSaveClose_imageEditor.click();
-
+		
+		Thread.sleep(1000);
+	
 	}
-
-	@Test(priority = 5)
+	
+	@Test(priority = 4)
+	
 	public void verifyDragAndDropInsideCanvas() throws Exception {
 
 		Thread.sleep(2000);
@@ -248,13 +225,161 @@ public class IdeaBoardTest extends TestBase {
 
 		com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
 		Thread.sleep(2000);
+		
+		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'ideas-wrapper')]//div[contains(@class,'idea-content')]")).isDisplayed());
+		
 
 	}
+
+	@Test(priority = 5)
+	public void dragIdeaTabToDocumentEditor() throws InterruptedException, AWTException {
+
+		pro = new Project(das.getDriver());
+
+		pro.initElement();
+		das.initElement();
+
+		das.link_projects.click();
+
+		Thread.sleep(5000);
+
+		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
+
+		Thread.sleep(2000);
+		
+		idb = new IdeaBoard(pro.getDriver());
+		idb.initElement();
+/****
+ * 
+ * this portion will be open once the drop down have more idea board creation option
+ * 
+ */
+/*		com.mouseHoverOnly(idb.btnPlusInTabInIdeaBoard);
+		idb.btnPlusInTabInIdeaBoard.click();
+		
+		
+		idb.dropDownSecondItemSelectionInIdeaBoard.click();
+*/
+		Thread.sleep(1000);
+	
+		WebElement element = idb.tabFirstTabInIdeaBoard;
+		WebElement target = idb.tabFirstTabInDocEditor;
+
+		com.moveMouseAndClick(element);
+
+		com.dragAndDrop(element, target);
+		Thread.sleep(5000);
+		
+		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'idea-content')]")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//img[contains(@class,'project-image')]")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'ideas-wrapper')]//div[contains(@class,'idea-content')]")).isDisplayed());
+		
+	//	com.moveMouseAndClick(driver.findElement(By.xpath("//p[contains(text(),'Untitled Document')]")));
+		
+		WebElement element1 =driver.findElement(By.id("Left-tab-0"));
+		WebElement target1 = driver.findElement(By.id("Left-panel-0"));
+		com.moveMouseAndClick(element1);
+		
+		Thread.sleep(1000);
+		//Thread.sleep(30000);
+		
+		//com.dragAndDrop2(element1, target1);
+		
+		 //(new Actions(driver)).dragAndDrop(element1, target1).perform();
+		//(new Actions(driver)).dragAndDropBy(element1, 1079,195).build().perform();
+		
+	
+
+				final String java_script ="var selectorDrag = arguments[0], selectorDrop= arguments[1]; var triggerDragAndDrop = function (selectorDrag, selectorDrop) {\n" + 
+						"  // function for triggering mouse events\n" + 
+						"  var fireMouseEvent = function (type, elem, centerX, centerY) {\n" + 
+						"    var evt = document.createEvent('MouseEvents');\n" + 
+						"    evt.initMouseEvent(type, true, true, window, 1, 1, 1, centerX, centerY, false, false, false, false, 0, elem);\n" + 
+						"    elem.dispatchEvent(evt);\n" + 
+						"  };\n" + 
+						"  // fetch target elements\n" + 
+						"  var elemDrag = selectorDrag;\n" + 
+						"  var elemDrop = selectorDrop;\n" + 
+						"  if (!elemDrag || !elemDrop) return false;\n" + 
+						"  // calculate positions\n" + 
+						"  var pos = elemDrag.getBoundingClientRect();\n" + 
+						"  var center1X = Math.floor((pos.left + pos.right) / 2);\n" + 
+						"  var center1Y = Math.floor((pos.top + pos.bottom) / 2);\n" + 
+						"  pos = elemDrop.getBoundingClientRect();\n" + 
+						"  var center2X = Math.floor((pos.left + pos.right) *2 / 3);\n" + 
+						"  var center2Y = Math.floor((pos.top + pos.bottom) / 2);\n" + 
+						"  console.log('(' + center1X + ', ' + center1Y + ') (' + center2X + ', ' + center2Y + ')');\n" + 
+						"  // mouse over dragged element and mousedown\n" + 
+						"  fireMouseEvent('mousemove', elemDrag, center1X, center1Y);\n" + 
+						"  fireMouseEvent('mouseenter', elemDrag, center1X, center1Y);\n" + 
+						"  fireMouseEvent('mouseover', elemDrag, center1X, center1Y);\n" + 
+						"  fireMouseEvent('mousedown', elemDrag, center1X, center1Y);\n" + 
+						"  // start dragging process over to drop target\n" + 
+						"  fireMouseEvent('dragstart', elemDrag, center1X, center1Y);\n" + 
+						"  fireMouseEvent('drag', elemDrag, center1X, center1Y);\n" + 
+						"  fireMouseEvent('mousemove', elemDrag, center1X, center1Y);\n" + 
+						"  fireMouseEvent('drag', elemDrag, center2X, center2Y);\n" + 
+						"  fireMouseEvent('mousemove', elemDrop, center2X, center2Y);\n" + 
+						"  // trigger dragging process on top of drop target\n" + 
+						"  fireMouseEvent('mouseenter', elemDrop, center2X, center2Y);\n" + 
+						"  fireMouseEvent('dragenter', elemDrop, center2X, center2Y);\n" + 
+						"  fireMouseEvent('mouseover', elemDrop, center2X, center2Y);\n" + 
+						"  fireMouseEvent('dragover', elemDrop, center2X, center2Y);\n" + 
+						"  // release dragged element on top of drop target\n" + 
+						"  fireMouseEvent('drop', elemDrop, center2X, center2Y);\n" + 
+						"  fireMouseEvent('dragend', elemDrag, center2X, center2Y);\n" + 
+						"  fireMouseEvent('mouseup', elemDrag, center2X, center2Y);\n" + 
+						"  return true; \n" + 
+						"};"
+						+ "triggerDragAndDrop(selectorDrag,selectorDrop)";
+						
+				        ((JavascriptExecutor)driver).executeScript(java_script,element1,target1);
+			/*	       
+				        Thread.sleep(5000);
+		Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
+		System.out.println("My Location x"+ newButton.x + "My Location y"+ newButton.y);
+		com.mouseHoverOnly(idb.btn_newIdea_IdeaBoard);
+		
+		//(new Actions(driver)).dragAndDropBy(element1, newButton.x,newButton.y).build().perform();
+				        //(new Actions(driver)).clickAndHold(element1).moveToElement(target1).release().perform();
+//		(new Actions(driver)).moveToElement(target1);
+				      (new Actions(driver)).dragAndDropBy(element1, 800, 400).release().build().perform();*/
+		
+		Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
+		
+		/*Robot rb=new Robot();
+		rb.setAutoDelay(15);
+		//rb.keyPress(KeyEvent.VK_F11);
+		rb.mouseMove(1100,400);
+		
+		Thread.sleep(5000);
+		(new Actions(driver)).dragAndDrop(element1,target1).build().perform();*/
+		
+			//rb.mouseMove(coordinates1.getX(), coordinates1.getY());
+		   // rb.mousePress(InputEvent.BUTTON1_MASK);
+		   // rb.mouseMove(coordinates2.getX(), coordinates2.getY());
+		   // rb.mouseRelease(InputEvent.BUTTON1_MASK);
+		Thread.sleep(3000);
+		
+		
+		com.mouseHoverOnly(idb.btn_newIdea_IdeaBoard);
+		
+		
+		
+	}
+	
+	
+	@Test(priority = 6)
+	public void dragIdeaFromPaneToSplitview() throws InterruptedException {
+		
+	}
+	
+	
 
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Idea Board page Test");
-		Browser.close();
+		//Browser.close();
 	}
 
 }

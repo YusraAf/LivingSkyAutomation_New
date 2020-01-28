@@ -69,32 +69,7 @@ public class Browser {
 	        }
 	    }
 	    
-	    public static String setProxy() {
-	    	 // start the proxy
-	        BrowserMobProxy proxy = new BrowserMobProxyServer();
-	        proxy.start(0);
-
-	        // get the Selenium proxy object
-	        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
-	     
-	        proxy.addRequestFilter((request, contents, messageInfo)->{
-	            request.headers().add("x-qa-super-user-token", "NWQwNGE5OWUtY2Y3OC0xMWU5LWJkY2ItMmEyYWUyZGJjY2U0");
-	          //  System.out.println(request.headers().entries().toString());
-	            return null;
-	        });
-	        
-	        proxy.addResponseFilter((response, contents, messageInfo) -> {
-	            //if ((contents.getContentType().startsWith("application/json"))) {
-	              //  contents.setTextContents("");
-	            //}
-	            System.out.println(" Response: "+ response.headers().entries().toString());
-	        }); 
-	        
-	        String proxyOption = "--proxy-server=" + seleniumProxy.getHttpProxy();
-	       
-	      
-	        return proxyOption;
-	    }
+	 
 	    
 	    private static WebDriver initIE() {
 	        WebDriverManager.iedriver().arch32().setup();
@@ -145,9 +120,34 @@ public class Browser {
 	        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");//disable debug logging
 	    } 
 	    
-	   
+	    public static String setProxy() {
+	    	 // start the proxy
+	        BrowserMobProxy proxy = new BrowserMobProxyServer();
+	        proxy.start(0);
 
-	    private static WebDriver initChrome() {
+	        // get the Selenium proxy object
+	        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+	     
+	        proxy.addRequestFilter((request, contents, messageInfo)->{
+	        request.headers().add("x-qa-super-user-token", "NWQwNGE5OWUtY2Y3OC0xMWU5LWJkY2ItMmEyYWUyZGJjY2U0");
+	        System.out.println(request.headers().entries().toString());
+	         return null;
+	        });
+	        
+	        proxy.addResponseFilter((response, contents, messageInfo) -> {
+	            //if ((contents.getContentType().startsWith("application/json"))) {
+	              //  contents.setTextContents("");
+	            //}
+	            System.out.println(" Response: "+ response.headers().entries().toString());
+	        }); 
+	        
+	        String proxyOption = "--proxy-server=" + seleniumProxy.getHttpProxy();
+	       
+	      
+	        return proxyOption;
+	    }
+
+	/*  private static WebDriver initChrome() {
 	       WebDriverManager.chromedriver().setup();
 	        //WebDriverManager.chromedriver().version("77").setup();
 	       // driver = new ChromeDriver();
@@ -172,16 +172,16 @@ public class Browser {
 	     
 	        return driver;
 	    }
-	    /*
+	*/
 	   
-	    private static WebDriver initChrome() {
+	  private static WebDriver initChrome() {
 		       WebDriverManager.chromedriver().setup();
 		        //WebDriverManager.chromedriver().version("77").setup();
 		       driver = new ChromeDriver();
 		       driver.manage().window().maximize();
 		       return driver;
 		       
-	    }*/
+	    }
 	    public static void pageRefresh() {
 	    	driver.navigate().refresh();
 	    }

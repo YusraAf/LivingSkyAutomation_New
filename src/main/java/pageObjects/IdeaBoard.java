@@ -7,21 +7,21 @@ import org.openqa.selenium.support.FindBy;
 
 import resources.PageBase;
 
-public class Ideaboard extends PageBase{
+public class IdeaBoard extends PageBase{
 
-	public Ideaboard(WebDriver aDriver) {
+	public IdeaBoard(WebDriver aDriver) {
 		super(aDriver);
 		
 	}
 
 					
-	@FindBy(xpath="//div[@id='Right-tab-0']//p[contains(text(),'Idea Board')]")
+	@FindBy(xpath="//div[@id='Right-tab-0']")
 	public WebElement tabFirstTabInIdeaBoard;
 	
-	@FindBy(xpath="//div[@id='Right-tab-1']//p[contains(text(),'Idea Board')]")
+	@FindBy(xpath="//div[@id='Right-tab-1']")
 	public WebElement tabSecondTabInIdeaBoard;
 	
-	@FindBy(xpath="//div[@id='Left-tab-0']//p[contains(text(),'Untitled Document')]")
+	@FindBy(xpath="//div[@id='Left-tab-0']")
 	public WebElement tabFirstTabInDocEditor;
 	
 	@FindBy(xpath="//div[@id='Left-add-tab-1']")
@@ -51,7 +51,7 @@ public class Ideaboard extends PageBase{
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/div[1]/header[1]/div[2]/button[3]")
 	public WebElement iconList_IdeaBoard;
 	 
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/div[1]/header[1]/div[4]/button[1]/div[1]/div[1]")
+	@FindBy(xpath="//div[@class='dropdown-button__text']")
 	public WebElement btn_newIdea_IdeaBoard;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]")
@@ -99,16 +99,23 @@ public class Ideaboard extends PageBase{
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/section[1]")
 	public WebElement objectCreationControlBar_container_ImageEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/section[1]/input[1]")
+	@FindBy(xpath="//section[@class='image-editor-container title-input__container'] //input[@id='input-title']")
+			
+			//"/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/section[1]/input[1]")
 	public WebElement nav_imageTitle_imageEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/input[1]")
+	@FindBy(xpath="//section[@class='image-editor-container title-input__container'] //input[@id='input-caption']")
+			//"/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/input[1]")
 	public WebElement nav_imageCaption_imageEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/input[2]")
+	@FindBy(xpath="//section[@class='image-editor-container title-input__container'] //input[@id='input-attribution']")
+			//"/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/input[2]")
 	public WebElement nav_imageAttribution_imageEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/section[2]/button[2]")
+	@FindBy(xpath="//section[@class='image-editor-container title-input__container']//button[@class='button-transparant'][contains(text(),'Save & Close')]")
+	
+	///html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/section[2]/button[2]
+	
 	public WebElement btn_imageSaveClose_imageEditor;
 	
 	@FindBy(xpath="/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/section[2]/button[1]/span[1]")
@@ -139,5 +146,7 @@ public class Ideaboard extends PageBase{
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]")
 	public WebElement dotSecondParagraphInCanvas;
 	
+	@FindBy(xpath="//div[contains(@class,'masonry-grid medium show')] /div[contains(@class,'text-wrapper')][1]")
+	public WebElement ideaFirstInIdeaBoard;
 	
 }
