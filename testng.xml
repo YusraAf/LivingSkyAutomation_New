@@ -12,6 +12,7 @@
        <class name="LST.Lst.LoginTest"/>
        <class name="LST.Lst.ProjectTest"/>
        <class name="LST.Lst.IdeaBoardTest"/>
+       <class name="LST.Lst.DashboardTest"/>
      	<class name="LST.Lst.CommonTestForAllPages"/>
     
     </classes>
