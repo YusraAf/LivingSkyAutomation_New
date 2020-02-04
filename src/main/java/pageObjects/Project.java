@@ -93,10 +93,10 @@ public class Project extends PageBase{
     @FindBy(xpath="//*[@class='icon-list']")
     public WebElement icon_list;
     				
-    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]")
+    @FindBy(xpath ="//div[@id='Left-tab-0']")
     public WebElement tab_document_inside_project;
     
-    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[1]/p[1]")
+    @FindBy(xpath ="//div[@id='Right-tab-0']")
      public WebElement tab_ideas_inside_project;
     
     @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/button[1]")

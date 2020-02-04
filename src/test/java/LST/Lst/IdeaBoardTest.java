@@ -290,50 +290,7 @@ public class IdeaBoardTest extends TestBase {
 		
 	
 
-				final String java_script ="var selectorDrag = arguments[0], selectorDrop= arguments[1]; var triggerDragAndDrop = function (selectorDrag, selectorDrop) {\n" + 
-						"  // function for triggering mouse events\n" + 
-						"  var fireMouseEvent = function (type, elem, centerX, centerY) {\n" + 
-						"    var evt = document.createEvent('MouseEvents');\n" + 
-						"    evt.initMouseEvent(type, true, true, window, 1, 1, 1, centerX, centerY, false, false, false, false, 0, elem);\n" + 
-						"    elem.dispatchEvent(evt);\n" + 
-						"  };\n" + 
-						"  // fetch target elements\n" + 
-						"  var elemDrag = selectorDrag;\n" + 
-						"  var elemDrop = selectorDrop;\n" + 
-						"  if (!elemDrag || !elemDrop) return false;\n" + 
-						"  // calculate positions\n" + 
-						"  var pos = elemDrag.getBoundingClientRect();\n" + 
-						"  var center1X = Math.floor((pos.left + pos.right) / 2);\n" + 
-						"  var center1Y = Math.floor((pos.top + pos.bottom) / 2);\n" + 
-						"  pos = elemDrop.getBoundingClientRect();\n" + 
-						"  var center2X = Math.floor((pos.left + pos.right) *2 / 3);\n" + 
-						"  var center2Y = Math.floor((pos.top + pos.bottom) / 2);\n" + 
-						"  console.log('(' + center1X + ', ' + center1Y + ') (' + center2X + ', ' + center2Y + ')');\n" + 
-						"  // mouse over dragged element and mousedown\n" + 
-						"  fireMouseEvent('mousemove', elemDrag, center1X, center1Y);\n" + 
-						"  fireMouseEvent('mouseenter', elemDrag, center1X, center1Y);\n" + 
-						"  fireMouseEvent('mouseover', elemDrag, center1X, center1Y);\n" + 
-						"  fireMouseEvent('mousedown', elemDrag, center1X, center1Y);\n" + 
-						"  // start dragging process over to drop target\n" + 
-						"  fireMouseEvent('dragstart', elemDrag, center1X, center1Y);\n" + 
-						"  fireMouseEvent('drag', elemDrag, center1X, center1Y);\n" + 
-						"  fireMouseEvent('mousemove', elemDrag, center1X, center1Y);\n" + 
-						"  fireMouseEvent('drag', elemDrag, center2X, center2Y);\n" + 
-						"  fireMouseEvent('mousemove', elemDrop, center2X, center2Y);\n" + 
-						"  // trigger dragging process on top of drop target\n" + 
-						"  fireMouseEvent('mouseenter', elemDrop, center2X, center2Y);\n" + 
-						"  fireMouseEvent('dragenter', elemDrop, center2X, center2Y);\n" + 
-						"  fireMouseEvent('mouseover', elemDrop, center2X, center2Y);\n" + 
-						"  fireMouseEvent('dragover', elemDrop, center2X, center2Y);\n" + 
-						"  // release dragged element on top of drop target\n" + 
-						"  fireMouseEvent('drop', elemDrop, center2X, center2Y);\n" + 
-						"  fireMouseEvent('dragend', elemDrag, center2X, center2Y);\n" + 
-						"  fireMouseEvent('mouseup', elemDrag, center2X, center2Y);\n" + 
-						"  return true; \n" + 
-						"};"
-						+ "triggerDragAndDrop(selectorDrag,selectorDrop)";
-						
-				        ((JavascriptExecutor)driver).executeScript(java_script,element1,target1);
+				
 			/*	       
 				        Thread.sleep(5000);
 		Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
@@ -364,7 +321,7 @@ public class IdeaBoardTest extends TestBase {
 		
 		com.mouseHoverOnly(idb.btn_newIdea_IdeaBoard);
 		
-		
+		com.dragAndDrop2(element1, target1);
 		
 	}
 	

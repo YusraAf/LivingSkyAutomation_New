@@ -2,6 +2,7 @@ package LST.Lst;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
@@ -213,9 +214,14 @@ public class DocumentEditorTest extends TestBase {
 		
 		Thread.sleep(1000);
 		WebElement title5 = driver.findElement(By.xpath("//div[@id='doc-editor-card']/div/div[2]/div/section/div/div/div/div[3]/div[2]/div/div"));
+		
 		Actions action2 = new Actions(driver);
 			
-		action2.click(title5).sendKeys("Michael Zhou" + Keys.ENTER + "Founder & Chief Executive Officer").build().perform();
+		action2.click(title5).sendKeys("Michael Zhou"+Keys.ENTER).build().perform();
+		Thread.sleep(1000);
+		//rb.keyPress(KeyEvent.VK_ENTER);
+		WebElement body=driver.findElement(By.xpath("//div[@class='doc-editor__card']//div[4]//div[1]//div[1]//div[3]"));
+		action2.click(body).sendKeys( "Founder & Chief Executive Officer").build().perform();
 		Thread.sleep(1000);
 		Assert.assertEquals(doce.txtBodyAreaInTheTopCardCreated.getText(),"Founder & Chief Executive Officer");
 		
@@ -389,6 +395,8 @@ public class DocumentEditorTest extends TestBase {
 		
 		Thread.sleep(5000);
 		(new Actions(driver)).dragAndDrop(element,target).build().perform();
+		
+		//com.dragAndDrop2(element, target);
 		//(new Actions(driver)).clickAndHold(element).moveToElement(target).build().perform();
 		//com.dragAndDrop(element, target);
 		//(new Actions(driver)).dragAndDrop(element, target);

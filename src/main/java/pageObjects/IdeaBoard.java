@@ -90,7 +90,7 @@ public class IdeaBoard extends PageBase{
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/section[1]/div[1]/button[7]/*")
 	public WebElement iconFormula_Canvas;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/section[1]/button[2]")
+	@FindBy(xpath="//button[@class='button-transparant']")
 	public WebElement btn_canvasSaveClose_Canvas;
 	
 	@FindBy(xpath="/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]")
@@ -112,7 +112,7 @@ public class IdeaBoard extends PageBase{
 			//"/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/input[2]")
 	public WebElement nav_imageAttribution_imageEditor;
 	
-	@FindBy(xpath="//section[@class='image-editor-container title-input__container']//button[@class='button-transparant'][contains(text(),'Save & Close')]")
+	@FindBy(xpath="//section[@class='image-editor-container title-input__container']//button[@class='button-transparant'][contains(text(),'Done')]")
 	
 	///html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/section[2]/button[2]
 	

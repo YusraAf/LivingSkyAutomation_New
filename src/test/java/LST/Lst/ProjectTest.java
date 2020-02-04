@@ -203,8 +203,8 @@ public class ProjectTest  extends TestBase {
 		
 		com.moveMouseAndClick(pro.icon_list);
 		
-		WebDriverWait wait=new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/button[1]"))));
+		//WebDriverWait wait=new WebDriverWait(driver, 30);
+	//	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/button[1]"))));
 		Thread.sleep(1000);
 		
 		//builder.moveToElement(pro.btn_newProject_inside_project).build().perform();
