@@ -124,8 +124,8 @@ public class IdeaBoardTest extends TestBase {
 
 		// idb.iconCamera_Canvas_File_type.sendKeys(path);
 
-		String filepath = "/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/MyImage3.jpeg";
-		// String filepath=System.getProperty("user.dir")+"/Images/MyImage3.jpeg";
+		//String filepath = "/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/MyImage3.jpeg";
+		 String filepath=System.getProperty("user.dir")+"/Images/MyImage3.jpeg";
 		idb.iconCamera_Canvas.click();
 
 		UploadFile upfile = new UploadFile();
@@ -176,8 +176,8 @@ public class IdeaBoardTest extends TestBase {
 
 		Thread.sleep(800);
 
-		String path = "/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/project_image.jpeg";
-		// String path=System.getProperty("user.dir")+"/Images/project_image.jpeg";
+		//String path = "/Users/nitijabin/qa/LivingSKY/LivingSkyAutomation_New/Images/project_image.jpeg";
+		 String path=System.getProperty("user.dir")+"/Images/project_image.jpeg";
 		idb.iconCamera_Canvas.click();
 		Thread.sleep(800);
 

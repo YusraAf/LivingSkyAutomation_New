@@ -14,7 +14,7 @@ public class DocumentEditor extends PageBase {
 		
 	}
 	
-	@FindBy(xpath="//p[contains(text(),'Untitled Document')]")
+	@FindBy(xpath="//span[contains(text(),'Untitled Document')]")
 	public WebElement tab_documentName_DocumentEditor;
 	
 	
@@ -27,10 +27,10 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//*[@class='doc-editor__card'] //div[@class='editor-area editor-area_title'] //div[@class='ObjectHandle']")
 	public WebElement ObjHandle_Title_DocumentEditor;
 	
-	@FindBy(xpath="//div[@class='control-bar with-menu']//*[@class='icon-plus']")
+	@FindBy(xpath="//button[contains(@class,'icon-btn add-area-button')]//*[contains(@class,'icon-plus')]")
 	public WebElement iconPlusSubTileAndBoby;
 	
-	@FindBy(xpath="//span[contains(.,'Body')]")
+	@FindBy(xpath="//span[contains(text(),'Body')]")
 	public WebElement iconPlusBoby;
 					
 	@FindBy(xpath="//*[@class='doc-editor__card']//div[3]//ul[@class='menu-list']//li[1]")
@@ -70,7 +70,7 @@ public class DocumentEditor extends PageBase {
 	//"//*[@class='doc-editor__card']//div[@class='editor-area editor-area_body']//div[@class='ObjectHandle']")
 	public WebElement ObjHandle_Body_DocumentEditor;
 	
-	@FindBy(xpath="//section[@id='document-editor']//div[2]//div[4]")
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[2]/div[1]/section[1]/div[4]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]")
 	public WebElement txt_Body_Second_DocumentEditor;
 
 	
@@ -131,7 +131,7 @@ public class DocumentEditor extends PageBase {
 	@FindBy(css="#Right-tab-1 p")
 	public WebElement tabForPreviewInIdeaBoard;
 	
-	@FindBy(xpath="//div[@id='Right-tab-1']//div[contains(@class,'tab-close')]")
+	@FindBy(xpath="//div[@id='Right-tab-1']//*[contains(@class,'icon-cancel')]")
 	public WebElement btnTabPreviewCloseButton;
 	
 	@FindBy(id="Left-panel-0")

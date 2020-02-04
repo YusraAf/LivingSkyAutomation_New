@@ -74,7 +74,7 @@ public class Trash extends PageBase{
     @CacheLookup
     public WebElement thumbnail_project_title;
     
-    @FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]")
+    @FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")
     @CacheLookup
 	public WebElement txt_Project_Title_frm_List;
 

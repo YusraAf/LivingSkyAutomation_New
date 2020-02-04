@@ -71,7 +71,7 @@ public class Project extends PageBase{
     public WebElement btn_deleteProject_grid;
 	
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[2]/div[1]/div[1]/button[1]")
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[2]/div[2]/div[1]/button[1]")
 	
     public WebElement btn_deleteProject_list;
 	
@@ -99,7 +99,7 @@ public class Project extends PageBase{
     @FindBy(xpath ="//div[@id='Right-tab-0']")
      public WebElement tab_ideas_inside_project;
     
-    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/button[1]")
+    @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/div[2]/button[2]/div[1]")
     public WebElement btn_newProject_inside_project;
     
     @FindBy(xpath ="/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[4]/div[1]/button[1]")
