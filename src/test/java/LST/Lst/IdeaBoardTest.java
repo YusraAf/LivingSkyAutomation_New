@@ -336,7 +336,7 @@ public class IdeaBoardTest extends TestBase {
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Idea Board page Test");
-		//Browser.close();
+		Browser.close();
 	}
 
 }

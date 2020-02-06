@@ -367,9 +367,9 @@ public class DocumentEditorTest extends TestBase {
 		doce = new DocumentEditor(pro.getDriver());
 		doce.initElement();
 		
-		das.link_projects.click();
+		//das.link_projects.click();
 		
-		pro.btn_first_Project_open_grid.click();
+	//	pro.btn_first_Project_open_grid.click();
 		
 		Thread.sleep(1000);
 		
@@ -379,14 +379,14 @@ public class DocumentEditorTest extends TestBase {
 		//(new Actions(driver)).sendKeys(Keys.ENTER).build().perform();
 		//(new Actions(driver)).clickAndHold(target).build().perform();
 		//com.moveMouseAndClick(target);
-			Thread.sleep(5000);
+		//	Thread.sleep(5000);
 		
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor);
+		//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor);
 		   
-		com.moveMouseAndClick(doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor);
-		Thread.sleep(3000);
+		//com.moveMouseAndClick(doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor);
+		//Thread.sleep(3000);
 		com.moveMouseAndClick(element);
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		
 		 rb=new Robot();
 		rb.setAutoDelay(15);
@@ -421,10 +421,10 @@ public class DocumentEditorTest extends TestBase {
 		//System.out.println("TargetEMEhjasdhask"+ target.getText());
 		Thread.sleep(3000);
 		
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor);
+		//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor);
 		   
-		com.moveMouseAndClick(doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor);
-		Thread.sleep(3000);
+		//com.moveMouseAndClick(doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor);
+		//Thread.sleep(3000);
 		com.moveMouseAndClick(element);
 		Thread.sleep(2000);
 		//com.dragAndDrop2(element, target);
@@ -439,7 +439,7 @@ public class DocumentEditorTest extends TestBase {
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Document Editor page Test");
-		//Browser.close();
+		Browser.close();
 	}
 	
 }
