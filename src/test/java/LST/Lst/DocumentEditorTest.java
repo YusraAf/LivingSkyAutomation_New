@@ -24,6 +24,7 @@ import pageObjects.IdeaBoard;
 import pageObjects.Project;
 import resources.Browser;
 import resources.CommonTask;
+import resources.UploadFile;
 
 public class DocumentEditorTest extends TestBase {
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
@@ -62,7 +63,6 @@ public class DocumentEditorTest extends TestBase {
 				
 		pro.nav_startTypingProjectName.sendKeys(projectName);
 		Thread.sleep(1000);
-		
 		
 		pro.btn_addDescription.click();
 		Thread.sleep(400);
@@ -136,7 +136,23 @@ public class DocumentEditorTest extends TestBase {
 		//driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[4]/div[1]/div[1]/span[1]")).getText());
 		Assert.assertTrue((doce.lbl_Body_DocumentEditor).isDisplayed());
 		logger.info("Label for Body card area is displayed in the Document Editor");
-		Thread.sleep(500);		
+		Thread.sleep(500);	
+		
+		String filepath=System.getProperty("user.dir")+"/Images/MyImage3.jpeg";
+		doce.iconCamera_ObjectCreationControlBar_DocumentEditor.click();
+
+		UploadFile upfile = new UploadFile();
+		upfile.upload(filepath);
+
+		Thread.sleep(1000);
+
+		doce.nav_imageTitle_imageEditorInDocumentEditor.sendKeys("Image added in Document Editor ");
+		doce.nav_imageCaption_imageEditorInDocumentEditor.sendKeys("Image Caption added in Document Editor");
+		doce.nav_imageAttribution_imageEditorInDocumentEditor.sendKeys("Image Object attribute in Document Editor");
+		Thread.sleep(1000);
+		com.mouseHoverOnly(doce.btn_imageSaveClose_imageEditorInDocumentEditor);
+		doce.btn_imageSaveClose_imageEditorInDocumentEditor.click();
+
 	}
 
 	@Test(priority=4) 	
@@ -155,12 +171,35 @@ public class DocumentEditorTest extends TestBase {
 		WebElement body = doce.txt_Body_Second_DocumentEditor;
 		action.click(body).sendKeys("Empowering creators everywhere. What if an idea could exist interrupted, flowing freely from the imagination to the page? What if the research didn’t draw you away from the page, or formatting didn’t drag out the process? Answering these questions has led the Living Sky Technologies team to discover a way to simplify the creativity process by building a platform from which any content creator can be launched." ).perform();
 		Thread.sleep(1000);	
-	
+		
+		String imagepath=System.getProperty("user.dir")+"/Images/project_image.jpeg";
+		doce.iconCamera_ObjectCreationControlBar_DocumentEditor.click();
+		Thread.sleep(700);
+		
+		UploadFile upfile = new UploadFile();
+		if (System.getProperty("os").equals("mac")) {
+			driver.switchTo().window(driver.getWindowHandle());
+
+			upfile.setClipboardData(imagepath);
+			upfile.uploadFileInMac();
+		} else {
+			upfile.upload(imagepath);
+
+		}
+		Thread.sleep(1000);
+
+		doce.nav_imageTitle_imageEditorInDocumentEditor.sendKeys("Image added in Document Editor ");
+		doce.nav_imageCaption_imageEditorInDocumentEditor.sendKeys("Image Caption added in Document Editor");
+		doce.nav_imageAttribution_imageEditorInDocumentEditor.sendKeys("Image Object attribute in Document Editor");
+		Thread.sleep(1000);
+		com.mouseHoverOnly(doce.btn_imageSaveClose_imageEditorInDocumentEditor);
+		doce.btn_imageSaveClose_imageEditorInDocumentEditor.click();
+		
 		WebElement addSubtitleAfterBody = doce.txt_AddSubTitle_AfterBody_DocumentEditor;
 			
 		action.click(addSubtitleAfterBody).sendKeys("About Living Sky Technologies").perform();
 		Thread.sleep(1000);
-			
+		
 	}
 
 	@Test(priority=5) 	
@@ -234,10 +273,11 @@ public class DocumentEditorTest extends TestBase {
 		com.mouseHoverOnly(doce.controlBarSeparator_DocumentEditor);
 		Thread.sleep(500);
 		com.moveMouseAndClick(doce.icon_MatterCard_controlBarSeparator_DocumentEditor);
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		Assert.assertTrue((doce.dropDown_MatterMenu_controlBarSeparator_DocumentEditor).isDisplayed());
 		logger.info("Drop Down Menu for Matter card is displayed inside Control Bar Separator in the Document Editor");
-			
+		com.moveMouseAndClick(doce.icon_MatterCard_controlBarSeparator_DocumentEditor);
+		Thread.sleep(500);	
 	}
 	// Copy Card
 	@Test(priority=12) 	
@@ -352,24 +392,20 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	
 	@Test(priority=23)
 	public void verifyDargBodyToIdeaBoard() throws InterruptedException, AWTException{
 		das = new Dashboard(driver);
 		das.initElement();
 		
-		
-		
 		pro = new Project(das.getDriver());
 		pro.initElement();
 		
-	
 		doce = new DocumentEditor(pro.getDriver());
 		doce.initElement();
 		
 		//das.link_projects.click();
 		
-	//	pro.btn_first_Project_open_grid.click();
+	    //pro.btn_first_Project_open_grid.click();
 		
 		Thread.sleep(1000);
 		
@@ -379,7 +415,7 @@ public class DocumentEditorTest extends TestBase {
 		//(new Actions(driver)).sendKeys(Keys.ENTER).build().perform();
 		//(new Actions(driver)).clickAndHold(target).build().perform();
 		//com.moveMouseAndClick(target);
-		//	Thread.sleep(5000);
+		//Thread.sleep(5000);
 		
 		//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor);
 		   
@@ -388,7 +424,7 @@ public class DocumentEditorTest extends TestBase {
 		com.moveMouseAndClick(element);
 		Thread.sleep(3000);
 		
-		 rb=new Robot();
+		rb=new Robot();
 		rb.setAutoDelay(15);
 		//rb.keyPress(KeyEvent.VK_F11);
 		rb.mouseMove(1150,500);
@@ -406,9 +442,7 @@ public class DocumentEditorTest extends TestBase {
 		idb.initElement();
 		
 		Assert.assertTrue(idb.ideaFirstInIdeaBoard.isDisplayed());
-		
-		
-		
+			
 	}
 	
 	@Test(priority=24)
@@ -436,6 +470,7 @@ public class DocumentEditorTest extends TestBase {
 		//Assert.assertTrue(target.getText().contains(element.getText()));
 	
 	}
+	
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Document Editor page Test");

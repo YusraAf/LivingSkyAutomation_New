@@ -288,7 +288,7 @@ private CommonTask common;
 		  	
 			Dashboard dash = new Dashboard(signup.getDriver());
 			dash.initElement();
-			dash.verifyPageUrl();
+			Thread.sleep(1000);
 			System.out.println("Inside the Dashboard: ");
 			
 			

@@ -146,7 +146,8 @@ public class IdeaBoard extends PageBase{
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]")
 	public WebElement dotSecondParagraphInCanvas;
 	
-	@FindBy(xpath="//div[contains(@class,'masonry-grid medium show')] /div[contains(@class,'text-wrapper')][1]")
+	//@FindBy(xpath="//div[contains(@class,'masonry-grid medium show')] /div[contains(@class,'text-wrapper')][1]")
+	@FindBy(xpath="//div[@class='idea-content']")
 	public WebElement ideaFirstInIdeaBoard;
 	
 }
