@@ -304,24 +304,24 @@ public class IdeaBoardTest extends TestBase {
 		
 		Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
 		
-		/*Robot rb=new Robot();
+		Robot rb=new Robot();
 		rb.setAutoDelay(15);
 		//rb.keyPress(KeyEvent.VK_F11);
-		rb.mouseMove(1100,400);
+		rb.mouseMove(1356,400);
 		
-		Thread.sleep(5000);
-		(new Actions(driver)).dragAndDrop(element1,target1).build().perform();*/
+		//Thread.sleep(5000);
+		(new Actions(driver)).dragAndDrop(element1,target1).build().perform();
 		
 			//rb.mouseMove(coordinates1.getX(), coordinates1.getY());
 		   // rb.mousePress(InputEvent.BUTTON1_MASK);
 		   // rb.mouseMove(coordinates2.getX(), coordinates2.getY());
 		   // rb.mouseRelease(InputEvent.BUTTON1_MASK);
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		
 		
-		com.mouseHoverOnly(idb.btn_newIdea_IdeaBoard);
-		
-		com.dragAndDrop2(element1, target1);
+		//com.mouseHoverOnly(idb.btn_newIdea_IdeaBoard);
+		//Thread.sleep(1000);
+		//com.dragAndDrop2(element1, target1);
 		
 	}
 	
