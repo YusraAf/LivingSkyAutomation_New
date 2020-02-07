@@ -43,7 +43,7 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//*[@class='doc-editor__card']//div[@class='editor-area editor-area_subtitle']//div[@class='ObjectHandle']")
 	public WebElement ObjHandle_SubTitle_DocumentEditor;
 		
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[3]//button[1]")
+	@FindBy(xpath="//span[contains(text(),'Subtitle')]")
 	public WebElement txt_AddSubTitle_AfterBody_DocumentEditor;
 	
 	
@@ -139,5 +139,23 @@ public class DocumentEditor extends PageBase {
 	
 	@FindBy(id="Right-panel-0")
 	public WebElement panelRight;
+	
+	@FindBy(xpath="//input[@id='input-title']")
+	public WebElement nav_imageTitle_imageEditorInDocumentEditor;
+
+	@FindBy(xpath="//input[@id='input-caption']")
+	public WebElement nav_imageCaption_imageEditorInDocumentEditor;
+
+	@FindBy(xpath="//input[@id='input-attribution']")
+	public WebElement nav_imageAttribution_imageEditorInDocumentEditor;
+
+	@FindBy(xpath="//button[@class='button-transparant']")
+	public WebElement btn_imageSaveClose_imageEditorInDocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[1]")
+	public WebElement controlBarSeparatorThridCard_DocumentEditor;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]")
+	public WebElement icon_MoveCard_controlBarSeparator_DocumentEditor;
 	
 }
