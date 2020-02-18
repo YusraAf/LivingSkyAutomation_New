@@ -82,10 +82,9 @@ public class IdeaBoardTest extends TestBase {
 		Thread.sleep(800);
 	
 		com.moveMouseAndClick(idb.nav_startTyping_Canvas);
-		idb.nav_startTyping_Canvas.sendKeys(System.getProperty("paragraph") + " \n " + System.getProperty("paragraph2")
-				+ " \n " + System.getProperty("paragraph3") + " \n " + System.getProperty("paragraph4") + " \n "
-				+ System.getProperty("paragraph5"));
-
+		idb.nav_startTyping_Canvas.sendKeys(System.getProperty("paragraph") + " \n " + System.getProperty("paragraph2") + System.getProperty("paragraph3") + " \n " + System.getProperty("paragraph4") + System.getProperty("paragraph5"));
+		
+		
 		Thread.sleep(2000);
 		com.mouseHoverOnly(idb.objectCreationControlBar_container_Canvas);
 
@@ -158,7 +157,7 @@ public class IdeaBoardTest extends TestBase {
 		//Checking the idea object for image element
 
 		Assert.assertTrue(driver.findElement(By.xpath("//img[contains(@class,'project-image')]")).isDisplayed());
-
+		Thread.sleep(2000);
 	}
 	@Test(priority = 3)
 	public void verifyIdeaWithParagraphAndImage() throws Exception {
@@ -275,60 +274,37 @@ public class IdeaBoardTest extends TestBase {
 		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'ideas-wrapper')]//div[contains(@class,'idea-content')]")).isDisplayed());
 		
 	//	com.moveMouseAndClick(driver.findElement(By.xpath("//p[contains(text(),'Untitled Document')]")));
+	
+		
+	}
+	
+	
+	@Test(priority = 6)
+	public void dragIdeaFromPaneToSplitview() throws InterruptedException, AWTException {
 		
 		WebElement element1 =driver.findElement(By.id("Left-tab-0"));
 		WebElement target1 = driver.findElement(By.id("Left-panel-0"));
 		com.moveMouseAndClick(element1);
 		
 		Thread.sleep(1000);
-		//Thread.sleep(30000);
-		
-		//com.dragAndDrop2(element1, target1);
-		
-		 //(new Actions(driver)).dragAndDrop(element1, target1).perform();
-		//(new Actions(driver)).dragAndDropBy(element1, 1079,195).build().perform();
-		
 	
-
-				
-			/*	       
-				        Thread.sleep(5000);
-		Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
-		System.out.println("My Location x"+ newButton.x + "My Location y"+ newButton.y);
-		com.mouseHoverOnly(idb.btn_newIdea_IdeaBoard);
-		
-		//(new Actions(driver)).dragAndDropBy(element1, newButton.x,newButton.y).build().perform();
-				        //(new Actions(driver)).clickAndHold(element1).moveToElement(target1).release().perform();
-//		(new Actions(driver)).moveToElement(target1);
-				      (new Actions(driver)).dragAndDropBy(element1, 800, 400).release().build().perform();*/
 		
 		Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
 		
-		Robot rb=new Robot();
-		rb.setAutoDelay(15);
+	  //  Robot rb=new Robot();
+		//rb.setAutoDelay(15);
 		//rb.keyPress(KeyEvent.VK_F11);
-		rb.mouseMove(1356,400);
+		//rb.mouseMove(1356,400);
 		
 		//Thread.sleep(5000);
-		(new Actions(driver)).dragAndDrop(element1,target1).build().perform();
-		
-			//rb.mouseMove(coordinates1.getX(), coordinates1.getY());
-		   // rb.mousePress(InputEvent.BUTTON1_MASK);
-		   // rb.mouseMove(coordinates2.getX(), coordinates2.getY());
-		   // rb.mouseRelease(InputEvent.BUTTON1_MASK);
+		//(new Actions(driver)).dragAndDrop(element1,target1).build().perform();
+	
 		Thread.sleep(1000);
 		
 		
 		//com.mouseHoverOnly(idb.btn_newIdea_IdeaBoard);
-		//Thread.sleep(1000);
-		//com.dragAndDrop2(element1, target1);
-		
-	}
-	
-	
-	@Test(priority = 6)
-	public void dragIdeaFromPaneToSplitview() throws InterruptedException {
-		
+		Thread.sleep(1000);
+com.dragAndDrop2(element1, target1);
 	}
 	
 	

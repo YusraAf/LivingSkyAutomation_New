@@ -43,7 +43,7 @@ public class DocumentEditorTest extends TestBase {
 		driver.get(baseUrl);
 		
 		log =new LoginTest();
-		log.doSignin("test8@gmail.com", "asdF1234");;
+		log.doSignin("LoadTest@yopmail.com", "asdF1234");;
 		
 		Thread.sleep(1000);
 	}	
@@ -82,10 +82,11 @@ public class DocumentEditorTest extends TestBase {
 		//executor.executeScript("arguments[0].click();", ele);
 		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		//com.moveMouseAndClick(ele);
-		//Thread.sleep(3000);
+		Thread.sleep(5000);
 			
 		Actions action = new Actions(driver);
-			
+		com.moveMouseAndClick(title);
+		//	title.sendKeys("hjhjhj");
 		action.click(title).sendKeys("Living Sky Technologies").perform();
 		Thread.sleep(1000);
 			
@@ -470,11 +471,37 @@ public class DocumentEditorTest extends TestBase {
 		//Assert.assertTrue(target.getText().contains(element.getText()));
 	
 	}
+	//@Test(priority=25)
+	public void verifyDragWholeCardToIdea() throws InterruptedException {
+		rb.mouseMove(1356,840);
+		
+		com.mouseHoverOnly(driver.findElement(By.cssSelector(".doc-editor__card:nth-child(2) > .card-separator")));
+
+		com.mouseHoverOnly(driver.findElement(By.cssSelector(".doc-editor__card:nth-child(2) .icon-move")));
 	
+		com.moveMouseAndClick(driver.findElement(By.cssSelector(".doc-editor__card:nth-child(2) .icon-move")));
+		
+		//Thread.sleep(500);
+		//com.moveMouseAndClick(doce.icon_MatterCard_controlBarSeparator_DocumentEditor);
+		Thread.sleep(1000);
+		
+		
+		
+		WebElement element =driver.findElement(By.cssSelector(".doc-editor__card:nth-child(2) #Line_19-2"));
+		
+		WebElement target = idb.ideaFirstInIdeaBoard;
+		//element.click();
+		
+		//com.moveMouseAndClick(element);
+		
+		Thread.sleep(1000);
+		//(new Actions(driver)).clickAndHold(element).perform();
+		(new Actions(driver)).dragAndDrop(element,target).build().perform();
+	}
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Document Editor page Test");
-		Browser.close();
+	//	Browser.close();
 	}
 	
 }

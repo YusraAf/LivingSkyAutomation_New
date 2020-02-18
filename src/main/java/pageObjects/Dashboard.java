@@ -19,7 +19,8 @@ public class Dashboard extends PageBase {
 @FindBy(xpath= "//input[@placeholder='Search for a project']")
 public WebElement nav_menuBar;
 
-@FindBy(xpath= "//div[contains(text(),'Projects')]")
+@FindBy(xpath= "//*[@class='icon-rocket']") 
+//"//div[contains(text(),'Projects')]")
 public WebElement link_projects;
 
 @FindBy(xpath= "//div[contains(text(),'Collection')]")

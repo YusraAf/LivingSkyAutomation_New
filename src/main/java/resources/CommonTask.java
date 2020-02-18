@@ -356,8 +356,8 @@ public static int randomNumber() {
 	 		"    elem.dispatchEvent(evt);\r\n" + 
 	 		"  };\r\n" + 
 	 		"  // fetch target elements\r\n" + 
-	 		"  var elemDrag = document.querySelector(selectorDrag);\r\n" + 
-	 		"  var elemDrop = document.querySelector(selectorDrop);\r\n" + 
+	 		"  var elemDrag = selectorDrag;\r\n" + 
+	 		"  var elemDrop = selectorDrop;\r\n" + 
 	 		"  if (!elemDrag || !elemDrop) return false;\r\n" + 
 	 		"  // calculate positions\r\n" + 
 	 		"  var pos = elemDrag.getBoundingClientRect();\r\n" + 
@@ -390,8 +390,10 @@ public static int randomNumber() {
 	 		"  return true;\r\n" + 
 	 		"};triggerDragAndDrop(selectorDrag, selectorDrop);";
 	 
-	 
+	
 	 ((JavascriptExecutor)driver).executeScript(java_script,element,target);
+	 
+	 
 					  
 	 }
  
