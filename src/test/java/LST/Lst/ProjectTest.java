@@ -53,7 +53,7 @@ public class ProjectTest  extends TestBase {
 		driver.get(baseUrl);
 		
 		log =new LoginTest();
-		log.doSignin("niti@yopmail.com", "asdF1234");;
+		log.doSignin("test18@livingskytech.com", "asdF1234");
 		
 		Thread.sleep(1000);
 
@@ -230,7 +230,7 @@ public class ProjectTest  extends TestBase {
 		
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]"))));
-		// Thread.sleep(2000);
+		//Thread.sleep(2000);
 		  
 		JavascriptExecutor js = (JavascriptExecutor)driver;	
 		
@@ -238,7 +238,7 @@ public class ProjectTest  extends TestBase {
 		
 		//this is not implemented yet
 		com.moveMouseAndClick(pro.tab_document_inside_project);
-		Thread.sleep(10000);
+		Thread.sleep(1000);
 		AssertJUnit.assertTrue(pro.tab_document_inside_project.isDisplayed());
 		//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 	}
