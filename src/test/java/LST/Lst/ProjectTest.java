@@ -53,7 +53,7 @@ public class ProjectTest  extends TestBase {
 		driver.get(baseUrl);
 		
 		log =new LoginTest();
-		log.doSignin("niti@yopmail.com", "asdF1234");;
+		log.doSignin("LoadTest2@livingskytech.com", "asdF1234");;
 		
 		Thread.sleep(1000);
 

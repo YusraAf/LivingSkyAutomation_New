@@ -84,7 +84,9 @@ public class DashboardTest extends TestBase {
 		    WebElement project = pro.container_grid_view;
 		    builder.moveToElement(project).build().perform();
 		    
-		    List<WebElement> allproject = project.findElements(By.xpath("/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div"));
+		    String divListOfAllProject = "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div";
+		    
+		    List<WebElement> allproject = project.findElements(By.xpath(divListOfAllProject));
 		    
 		    
 		    System.out.println("All project=======>" + allproject.size());

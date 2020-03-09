@@ -29,7 +29,7 @@ public class Project extends PageBase{
 	public WebElement btn_startProject;
 
 
-	@FindBy(xpath= "/html[1]/body[1]/reach-portal[2]/div[3]/div[1]/div[1]/div[1]/div[1]/form[1]/section[1]/input[1]")
+	@FindBy(id= "input-title")
 	
 	public WebElement nav_startTypingProjectName;
 	

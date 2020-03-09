@@ -33,7 +33,10 @@ public class IdeaBoard extends PageBase{
 	@FindBy(xpath="//reach-portal[2]/div/div/div[2]")
 	public WebElement dropDownSecondItemSelectionInIdeaBoard;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]")
+	@FindBy(xpath="//div[@class='masonry-grid large show']")
+			
+			
+			//"/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]")
 	public WebElement containerGrid_IdeaBoard;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/div[1]/header[1]/div[1]/input[1]")
@@ -100,17 +103,13 @@ public class IdeaBoard extends PageBase{
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/section[1]")
 	public WebElement objectCreationControlBar_container_ImageEditor;
 	
-	@FindBy(xpath="//section[@class='image-editor-container title-input__container'] //input[@id='input-title']")
-			
-			//"/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/section[1]/input[1]")
+	@FindBy(id="input-title")
 	public WebElement nav_imageTitle_imageEditor;
 	
-	@FindBy(xpath="//section[@class='image-editor-container title-input__container'] //input[@id='input-caption']")
-			//"/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/input[1]")
+	@FindBy(id="input-caption")
 	public WebElement nav_imageCaption_imageEditor;
 	
-	@FindBy(xpath="//section[@class='image-editor-container title-input__container'] //input[@id='input-attribution']")
-			//"/html[1]/body[1]/reach-portal[3]/div[3]/div[1]/div[1]/div[1]/div[1]/section[1]/input[2]")
+	@FindBy(id="input-attribution")
 	public WebElement nav_imageAttribution_imageEditor;
 	
 	@FindBy(xpath="//section[@class='image-editor-container title-input__container']//button[@class='button-transparant'][contains(text(),'Done')]")
@@ -150,5 +149,8 @@ public class IdeaBoard extends PageBase{
 	//@FindBy(xpath="//div[contains(@class,'masonry-grid medium show')] /div[contains(@class,'text-wrapper')][1]")
 	@FindBy(xpath="//div[@class='idea-content']")
 	public WebElement ideaFirstInIdeaBoard;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[1]/span[1]/img[1]")
+	public WebElement ideaSecondInIdeaBoard;
 	
 }
