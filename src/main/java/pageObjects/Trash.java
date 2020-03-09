@@ -46,7 +46,7 @@ public class Trash extends PageBase{
     @CacheLookup     
     public WebElement txt_deleteTrash_confirm_grid;
     
-    @FindBy(xpath= "/html[1]/body[1]/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]")
+    @FindBy(xpath= "//input[@name='confirmDelete']")
     @CacheLookup
     public WebElement txt_deleteTrash_confirm_list;
     
@@ -82,15 +82,15 @@ public class Trash extends PageBase{
     @CacheLookup
     public WebElement btn_deleteTrash_confirmClick_grid;
     
-    @FindBy(xpath= "/html[1]/body[1]/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/button[1]/*")
+    @FindBy(xpath= "//*[@name='arrowCircleRight']")
     @CacheLookup
     public WebElement btn_deleteTrash_confirmClick_list;
     
-    @FindBy(xpath= "/html[1]/body[1]/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]")
+    @FindBy(xpath= " //input[@name='confirmDelete']")
     @CacheLookup
     public WebElement txt_EmotyTrash_confirm;
     
-    @FindBy(xpath= "/html[1]/body[1]/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/button[1]/*")
+    @FindBy(xpath= "//*[@name='arrowCircleRight']")
     @CacheLookup
     public WebElement btn_EmotyTrash_confirmClick; 
     

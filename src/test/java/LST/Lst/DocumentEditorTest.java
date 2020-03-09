@@ -43,7 +43,7 @@ public class DocumentEditorTest extends TestBase {
 		driver.get(baseUrl);
 		
 		log =new LoginTest();
-		log.doSignin("LoadTest@yopmail.com", "asdF1234");;
+		log.doSignin("test18@livingskytech.com", "asdF1234");
 		
 		Thread.sleep(1000);
 	}	
@@ -241,19 +241,12 @@ public class DocumentEditorTest extends TestBase {
 	}
 	
 	@Test(priority=9) 	
-	public void verifyIconDeleteCardControlBarTest() throws IOException, InterruptedException, Exception {
-	
-		Assert.assertTrue((doce.icon_DeleteCard_controlBarSeparator_DocumentEditor).isDisplayed());
-		logger.info("Delete or remove card icon is displayed inside Control Bar Separator in the Document Editor");
-	}
-	
-	@Test(priority=10) 	
 	public void verifyAddNewCardControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		com.moveMouseAndClick(doce.icon_AddCard_controlBarSeparator_DocumentEditor);
 		
 		Thread.sleep(1000);
-		WebElement title5 = driver.findElement(By.xpath("//div[@id='doc-editor-card']/div/div[2]/div/section/div/div/div/div[3]/div[2]/div/div"));
+		WebElement title5 = driver.findElement(By.xpath("//div[@id='doc-editor-card']/div[1]/div[2]/section/div/div/div/div[3]/div[2]/div/div"));
 		
 		Actions action2 = new Actions(driver);
 			
@@ -267,7 +260,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	@Test(priority=11) 	
+	@Test(priority=10) 	
 	public void verifyDropDownMenuForMatterCardControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		com.mouseHoverOnly(doce.line_topOfCardSeparator_DocumentEditor);
@@ -281,20 +274,26 @@ public class DocumentEditorTest extends TestBase {
 		Thread.sleep(500);	
 	}
 	// Copy Card
-	@Test(priority=12) 	
+	@Test(priority=11) 	
 	public void verifyCopyCardControlBarTest() throws IOException, InterruptedException, Exception {
 		
-		com.mouseHoverOnly(doce.controlBarSeparator_DocumentEditor);
+		//com.mouseHoverOnly(doce.controlBarSeparator_DocumentEditor);
 		com.moveMouseAndClick(doce.icon_CopyCard_controlBarSeparator_DocumentEditor);
 		Thread.sleep(1000);
 		
+	}
+	
+	@Test(priority=12) 	
+	public void verifyIconDeleteCardControlBarTest() throws IOException, InterruptedException, Exception {
+	
+		Assert.assertTrue((doce.icon_DeleteCard_controlBarSeparator_DocumentEditor).isDisplayed());
+		logger.info("Delete or remove card icon is displayed inside Control Bar Separator in the Document Editor");
 	}
 	
 	// Delete Card
 	@Test(priority=13) 	
 	public void verifyDeleteCardControlBarTest() throws IOException, InterruptedException, Exception {
 		
-		//com.mouseHoverOnly(doce.controlBarSeparator_DocumentEditor);
 		com.moveMouseAndClick(doce.icon_DeleteCard_controlBarSeparator_DocumentEditor);
 		Thread.sleep(1000);
 		
@@ -410,7 +409,7 @@ public class DocumentEditorTest extends TestBase {
 		
 		Thread.sleep(1000);
 		
-		WebElement element =doce.ObjHandleFirst_DocumentEditor;
+		WebElement element =doce.ObjHandle_Body_DocumentEditor_new;
 														
 		WebElement target = doce.panelRight;
 		//(new Actions(driver)).sendKeys(Keys.ENTER).build().perform();
@@ -450,7 +449,7 @@ public class DocumentEditorTest extends TestBase {
 	public void verifyDragBodyElementToDropInsideAnIdea() throws InterruptedException, AWTException{
 	
 		rb.mouseMove(1102, 402);
-		WebElement element =doce.ObjHandle_Body_DocumentEditor_new;
+		WebElement element =doce.ObjHandle_Body_DocumentEditor;
 		
 		WebElement target = idb.ideaFirstInIdeaBoard;
 		//System.out.println("TargetEMEhjasdhask"+ target.getText());

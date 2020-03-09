@@ -29,7 +29,9 @@ public class Project extends PageBase{
 	public WebElement btn_startProject;
 
 
-	@FindBy(id= "input-title")
+
+	@FindBy(id="input-title")
+
 	
 	public WebElement nav_startTypingProjectName;
 	
@@ -53,8 +55,8 @@ public class Project extends PageBase{
 	
 	public WebElement btn_first_Project_open_grid;
 	
-	@FindBy(xpath="//div[@class='App dashboard-page-wrapper']//div[1]//div[2]//div[1]//a[1]")
-	
+	//@FindBy(xpath="//div[@class='App dashboard-page-wrapper']//div[1]//div[2]//div[1]//a[1]")
+	@FindBy(xpath="//section[@class='content-canvas']//div[1]//div[2]//div[1]//a[1]")
 	public WebElement btn_first_Project_open_list;
 	
 	@FindBy(className="card-project__title")
@@ -78,7 +80,7 @@ public class Project extends PageBase{
     @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div[1]/div[2]/div[3]/div[2]/button[2]/div[1]")
     public WebElement btn_delete_confirm_grid;
     
-    @FindBy(xpath= "/html[1]/body[1]/reach-portal[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/button[1]")
+    @FindBy(xpath= "//div[@class='delete-action'][contains(text(),'Delete')]")
     public WebElement btn_delete_confirm_list;
     
     @FindBy(xpath="//section[@class='content-canvas__container grid-view']")
