@@ -113,7 +113,7 @@ public class IdeaBoardTest extends TestBase {
 
 	}
 
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void createNewIdeaWithImageObject() throws IOException, InterruptedException, Exception {
 		// idb = new Ideaboard(pro.getDriver());
 		// idb.initElement();
@@ -164,7 +164,7 @@ public class IdeaBoardTest extends TestBase {
 		Assert.assertTrue(driver.findElement(By.xpath("//img[contains(@class,'project-image')]")).isDisplayed());
 		Thread.sleep(2000);
 	}
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void verifyIdeaWithParagraphAndImage() throws Exception {
 		// idb = new Ideaboard(pro.getDriver());
 		// idb.initElement();
@@ -210,7 +210,7 @@ public class IdeaBoardTest extends TestBase {
 	
 	}
 	
-	@Test(priority = 4)
+	//@Test(priority = 4)
 	
 	public void verifyDragAndDropInsideCanvas() throws Exception {
 
@@ -235,7 +235,7 @@ public class IdeaBoardTest extends TestBase {
 
 	}
 
-	@Test(priority = 5)
+	//@Test(priority = 5)
 	public void dragFirstIdeaToDropInSecondIdea() throws InterruptedException {
 		
 		Thread.sleep(2000);
@@ -261,7 +261,7 @@ public class IdeaBoardTest extends TestBase {
 	}
 	
 	
-	@Test(priority = 6)
+	//@Test(priority = 6)
 	public void dragIdeaTabToDocumentEditor() throws InterruptedException, AWTException {
 
 		pro = new Project(das.getDriver());
@@ -310,7 +310,7 @@ public class IdeaBoardTest extends TestBase {
 	}
 	
 	
-	@Test(priority = 7)
+//	@Test(priority = 7)
 	public void dragIdeaFromPaneToSplitview() throws InterruptedException, AWTException {
 		
 		WebElement element1 =driver.findElement(By.id("Left-tab-0"));
@@ -320,14 +320,14 @@ public class IdeaBoardTest extends TestBase {
 		Thread.sleep(1000);
 	
 		
-		Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
+		//Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
 		
 	    Robot rb=new Robot();
 		rb.setAutoDelay(15);
 		//rb.keyPress(KeyEvent.VK_F11);
 		rb.mouseMove(1356,400);
 		
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		(new Actions(driver)).dragAndDrop(element1,target1).build().perform();
 	
 		Thread.sleep(1000);
@@ -338,7 +338,26 @@ public class IdeaBoardTest extends TestBase {
 		//com.dragAndDrop2(element1, target1);
 	}
 	
+	@Test(priority=8)
+	public void dragIdeaToDocEditor() throws InterruptedException, AWTException{
+		WebElement element1 =idb.ideaFirstInIdeaBoard;
+		WebElement target1 = idb.tabFirstTabInDocEditor;
+		com.moveMouseAndClick(element1);
+		
+		Thread.sleep(1000);
 	
+	    Robot rb=new Robot();
+		rb.setAutoDelay(15);
+		//rb.keyPress(KeyEvent.VK_F11);
+		rb.mouseMove(700,500);
+		
+		Thread.sleep(3000);
+		(new Actions(driver)).dragAndDrop(element1,target1).build().perform();
+	
+		Thread.sleep(5000);
+		
+		
+	}
 
 	@AfterClass
 	public void closeBrowser() {

@@ -64,7 +64,8 @@ public class IdeaBoard extends PageBase{
 	public WebElement btn_Cancel_Canvas;
 							
 					//		/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]")
+					//  /html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]")
 	public WebElement nav_startTyping_Canvas;
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/section[1]")
