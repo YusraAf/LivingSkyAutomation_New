@@ -4,6 +4,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -44,7 +45,7 @@ public class IdeaBoardTest extends TestBase {
 		driver.get(baseUrl);
 
 		log = new LoginTest();
-		log.doSignin("niti@yopmail.com", "asdF1234");
+		log.doSignin("niti2@livingskytech.com", "asdF1234");
 		;
 
 		Thread.sleep(1000);
@@ -100,18 +101,19 @@ public class IdeaBoardTest extends TestBase {
 		 * 
 		 * idb.btn_imageSaveClose_imageEditor.click(); Thread.sleep(2000);
 		 */
+		
 		idb.btn_canvasSaveClose_Canvas.click();
-		Thread.sleep(200);
+		Thread.sleep(1000);
 		das.link_projects.click();
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
 		Thread.sleep(2000);
 		//Checking the first idea with paragraph is showing 
-		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'idea-content')]")).isDisplayed());
+		Assert.assertTrue(idb.ideaFirstInIdeaBoard.isDisplayed());
 
 	}
 
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void createNewIdeaWithImageObject() throws IOException, InterruptedException, Exception {
 		// idb = new Ideaboard(pro.getDriver());
 		// idb.initElement();
@@ -132,14 +134,17 @@ public class IdeaBoardTest extends TestBase {
 
 		Thread.sleep(1000);
 
-		idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
-		idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
-		idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
-		 Thread.sleep(1000);
-		com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
-		idb.btn_imageSaveClose_imageEditor.click();
+		//idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
+		//Thread.sleep(1000);
+		//idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
+		//Thread.sleep(1000);
+		//idb.nav_imageAttribution_imageEditor.sendKeys("Image Object attribute");
+		// Thread.sleep(1000);
+		//com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
+		
+		//idb.btn_imageSaveClose_imageEditor.click();
 
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 
 		com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
 		// Thread.sleep(5000);
@@ -149,17 +154,17 @@ public class IdeaBoardTest extends TestBase {
 		pro.initElement();
 		das.initElement();
 		das.link_projects.click();
-		driver.navigate().refresh();
-		Thread.sleep(1000);
+		//driver.navigate().refresh();
+		Thread.sleep(3000);
 		com.moveMouseAndClick(pro.btn_first_Project_open_grid);
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		
 		//Checking the idea object for image element
 
 		Assert.assertTrue(driver.findElement(By.xpath("//img[contains(@class,'project-image')]")).isDisplayed());
 		Thread.sleep(2000);
 	}
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void verifyIdeaWithParagraphAndImage() throws Exception {
 		// idb = new Ideaboard(pro.getDriver());
 		// idb.initElement();
@@ -191,7 +196,7 @@ public class IdeaBoardTest extends TestBase {
 
 		}
 
-		Thread.sleep(1000);
+		/*Thread.sleep(1000);
 
 		idb.nav_imageTitle_imageEditor.sendKeys("Add Image ");
 		idb.nav_imageCaption_imageEditor.sendKeys("Image Caption added");
@@ -199,13 +204,13 @@ public class IdeaBoardTest extends TestBase {
 		// Thread.sleep(15000);
 		com.mouseHoverOnly(idb.btn_imageSaveClose_imageEditor);
 		
-		idb.btn_imageSaveClose_imageEditor.click();
+		idb.btn_imageSaveClose_imageEditor.click();*/
 		
 		Thread.sleep(1000);
 	
 	}
 	
-	@Test(priority = 4)
+	//@Test(priority = 4)
 	
 	public void verifyDragAndDropInsideCanvas() throws Exception {
 
@@ -230,7 +235,33 @@ public class IdeaBoardTest extends TestBase {
 
 	}
 
-	@Test(priority = 5)
+	//@Test(priority = 5)
+	public void dragFirstIdeaToDropInSecondIdea() throws InterruptedException {
+		
+		Thread.sleep(2000);
+		WebElement element = idb.ideaFirstInIdeaBoard;
+		WebElement target1 = idb.ideaSecondInIdeaBoard;
+
+		com.moveMouseAndClick(element);
+
+		Thread.sleep(2000);
+		com.dragAndDrop(element, target1);
+
+		Thread.sleep(5000);
+		
+		WebElement ideaBoard = driver.findElement(By.id("idea-grid"));
+				
+				//idb.containerGrid_IdeaBoard;
+		
+		 List<WebElement> allIdea = ideaBoard.findElements(By.className("idea-content"));
+		    
+		    Assert.assertEquals(allIdea.size(), 2);
+		    System.out.println("All project=======>" + allIdea.size());
+
+	}
+	
+	
+	//@Test(priority = 6)
 	public void dragIdeaTabToDocumentEditor() throws InterruptedException, AWTException {
 
 		pro = new Project(das.getDriver());
@@ -279,7 +310,7 @@ public class IdeaBoardTest extends TestBase {
 	}
 	
 	
-	@Test(priority = 6)
+//	@Test(priority = 7)
 	public void dragIdeaFromPaneToSplitview() throws InterruptedException, AWTException {
 		
 		WebElement element1 =driver.findElement(By.id("Left-tab-0"));
@@ -289,25 +320,44 @@ public class IdeaBoardTest extends TestBase {
 		Thread.sleep(1000);
 	
 		
-		Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
+		//Point newButton = idb.btn_newIdea_IdeaBoard.getLocation();
 		
-	  //  Robot rb=new Robot();
-		//rb.setAutoDelay(15);
+	    Robot rb=new Robot();
+		rb.setAutoDelay(15);
 		//rb.keyPress(KeyEvent.VK_F11);
-		//rb.mouseMove(1356,400);
+		rb.mouseMove(1356,400);
 		
-		//Thread.sleep(5000);
-		//(new Actions(driver)).dragAndDrop(element1,target1).build().perform();
+		Thread.sleep(3000);
+		(new Actions(driver)).dragAndDrop(element1,target1).build().perform();
 	
 		Thread.sleep(1000);
 		
 		
 		//com.mouseHoverOnly(idb.btn_newIdea_IdeaBoard);
-		Thread.sleep(1000);
-com.dragAndDrop2(element1, target1);
+		//Thread.sleep(1000);
+		//com.dragAndDrop2(element1, target1);
 	}
 	
+	@Test(priority=8)
+	public void dragIdeaToDocEditor() throws InterruptedException, AWTException{
+		WebElement element1 =idb.ideaFirstInIdeaBoard;
+		WebElement target1 = idb.tabFirstTabInDocEditor;
+		com.moveMouseAndClick(element1);
+		
+		Thread.sleep(1000);
 	
+	    Robot rb=new Robot();
+		rb.setAutoDelay(15);
+		//rb.keyPress(KeyEvent.VK_F11);
+		rb.mouseMove(700,500);
+		
+		Thread.sleep(3000);
+		(new Actions(driver)).dragAndDrop(element1,target1).build().perform();
+	
+		Thread.sleep(5000);
+		
+		
+	}
 
 	@AfterClass
 	public void closeBrowser() {

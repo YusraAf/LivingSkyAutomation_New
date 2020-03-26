@@ -52,4 +52,7 @@ public WebElement btn_newProject;
 @FindBy(xpath= "//button[@id='button-k6usgnju']")
 public WebElement dropDownbtn_sortBylastModified;
 
+@FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/div")
+public WebElement divListOfAllProject;
+
 }

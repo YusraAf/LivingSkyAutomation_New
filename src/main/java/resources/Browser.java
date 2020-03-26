@@ -92,6 +92,12 @@ public class Browser {
 	    private static WebDriver initFirefox() {
 	       
 	    	WebDriverManager.firefoxdriver().setup();
+	    	
+		       driver = new FirefoxDriver();
+		       driver.manage().window().maximize();
+		       initBrowser();
+		       return driver;
+	    /*	
 	    	BrowserMobProxy proxy = new BrowserMobProxyServer();
 	        proxy.start(0);
 
@@ -113,7 +119,7 @@ public class Browser {
 	        // start the browser up
 	         driver = new FirefoxDriver(option);
 	         initBrowser();
-	        return driver;
+	        return driver;*/
 	    }
 
 	    private static void disableDetailLoggingFirefox() {

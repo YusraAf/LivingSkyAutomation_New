@@ -53,7 +53,9 @@ public class ProjectTest  extends TestBase {
 		driver.get(baseUrl);
 		
 		log =new LoginTest();
+
 		log.doSignin("test18@livingskytech.com", "asdF1234");
+
 		
 		Thread.sleep(1000);
 

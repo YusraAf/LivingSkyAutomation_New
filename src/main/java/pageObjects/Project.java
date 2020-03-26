@@ -29,7 +29,9 @@ public class Project extends PageBase{
 	public WebElement btn_startProject;
 
 
+
 	@FindBy(id="input-title")
+
 	
 	public WebElement nav_startTypingProjectName;
 	
