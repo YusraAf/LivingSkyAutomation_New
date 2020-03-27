@@ -113,7 +113,7 @@ public class IdeaBoardTest extends TestBase {
 
 	}
 
-	//@Test(priority = 2)
+	@Test(priority = 2)
 	public void createNewIdeaWithImageObject() throws IOException, InterruptedException, Exception {
 		// idb = new Ideaboard(pro.getDriver());
 		// idb.initElement();
@@ -164,7 +164,7 @@ public class IdeaBoardTest extends TestBase {
 		Assert.assertTrue(driver.findElement(By.xpath("//img[contains(@class,'project-image')]")).isDisplayed());
 		Thread.sleep(2000);
 	}
-	//@Test(priority = 3)
+	@Test(priority = 3)
 	public void verifyIdeaWithParagraphAndImage() throws Exception {
 		// idb = new Ideaboard(pro.getDriver());
 		// idb.initElement();
@@ -210,7 +210,7 @@ public class IdeaBoardTest extends TestBase {
 	
 	}
 	
-	//@Test(priority = 4)
+	@Test(priority = 4)
 	
 	public void verifyDragAndDropInsideCanvas() throws Exception {
 
@@ -235,7 +235,7 @@ public class IdeaBoardTest extends TestBase {
 
 	}
 
-	//@Test(priority = 5)
+	@Test(priority = 5)
 	public void dragFirstIdeaToDropInSecondIdea() throws InterruptedException {
 		
 		Thread.sleep(2000);
@@ -261,7 +261,7 @@ public class IdeaBoardTest extends TestBase {
 	}
 	
 	
-	//@Test(priority = 6)
+	@Test(priority = 6)
 	public void dragIdeaTabToDocumentEditor() throws InterruptedException, AWTException {
 
 		pro = new Project(das.getDriver());
