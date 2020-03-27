@@ -51,17 +51,17 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//div[@id='doc-editor-card']/div[2]/div[2]/div[1]/section[1]/div[3]/div[1]/div[1]/div[3]/div[1]")
 	public WebElement ObjHandleFirst_DocumentEditor;
 	
-	@FindBy(xpath="//div[@id='doc-editor-card']/div[1]/div[2]/section/div[3]/div/div/div[3]/div[2]/div")
+	@FindBy(xpath="//div[@id='doc-editor-card']/div[1]/div[2]/section/div[3]/div/div/div[2]/div[2]/div[2]/div")
   	public WebElement txt_body_First_DocumentEditor;
 					
-	@FindBy(xpath="//div[@id='doc-editor-card']/div[1]/div[2]/section[1]/div[4]/div[1]/div[1]/div[3]/div[2]/div/div")
+	@FindBy(xpath="//div[@id='doc-editor-card']/div[1]/div[2]/section[1]/div[4]/div[1]/div[1]/div[2]/div[2]/div[2]/div")
 	public WebElement txtBodyAreaInTheTopCardCreated;
 	
 	@FindBy(xpath="//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'body')]")
 	public WebElement lbl_Body_DocumentEditor;
 	
 	//@FindBy(xpath="//div[contains(@class,'doc-editor__card')]/div[contains(@class,'doc-editor__card-drop-zone')]/div[contains(@class,'ContextMenu')]/section[contains(@class,'document-container')]/div[4]/div[1]/div[1]/div[3]/div[1]")
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[1]/div[2]/section[1]/div[4]/div[1]/div[1]/div[3]/div[1]/div[1]")		
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[2]/section[1]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]")		
 			//"//*[@class='doc-editor__card']//div[@class='editor-area editor-area_body']//div[@class='ObjectHandle']")
 	public WebElement ObjHandle_Body_DocumentEditor_new;
 	
@@ -70,7 +70,7 @@ public class DocumentEditor extends PageBase {
 	//"//*[@class='doc-editor__card']//div[@class='editor-area editor-area_body']//div[@class='ObjectHandle']")
 	public WebElement ObjHandle_Body_DocumentEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[2]/section[1]/div[4]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]")
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[2]/section[1]/div[4]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]")
 	public WebElement txt_Body_Second_DocumentEditor;
 
 	
@@ -98,7 +98,7 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//div[@class='doc-editor__card'][2]//div[@class='control-bar-btns']//button[4]")
 	public WebElement icon_DeleteCard_controlBarSeparator_DocumentEditor;
 	
-	@FindBy(xpath="//div[@class='input-dropdown-inner__menu css-26l3qy-menu']")
+	@FindBy(xpath="//button[@class='icon-btn 701f4325-1aa9-41a5-92dc-8119ea8f039d-matter']")
 	public WebElement dropDown_MatterMenu_controlBarSeparator_DocumentEditor;
 	
 	@FindBy(xpath="//section[@class='object-creation-control-bar-container']")
@@ -113,16 +113,16 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//div[@class='btn-wrapper']//button[2]")
 	public WebElement iconCamera_ObjectCreationControlBar_DocumentEditor;
 	
-	@FindBy(xpath="//div[@class='btn-wrapper']//button[4]")
+	@FindBy(xpath="//div[@class='btn-wrapper']//button[3]")
 	public WebElement iconList_ObjectCreationControlBar_DocumentEditor;
 	
-	@FindBy(xpath="//div[@class='btn-wrapper']//button[5]")
+	@FindBy(xpath="//div[@class='btn-wrapper']//button[4]")
 	public WebElement iconTable_ObjectCreationControlBar_DocumentEditor;
 	
-	@FindBy(xpath="//div[@class='btn-wrapper']//button[6]")
+	@FindBy(xpath="//div[@class='btn-wrapper']//button[5]")
 	public WebElement iconMicrophone_ObjectCreationControlBar_DocumentEditor;
 	
-	@FindBy(xpath="//div[@class='btn-wrapper']//button[7]")
+	@FindBy(xpath="//div[@class='btn-wrapper']//button[6]")
 	public WebElement iconFormula_ObjectCreationControlBar_DocumentEditor;
 	
 	@FindBy(css=".dropdown-button__content > .dropdown-button__text")
