@@ -533,7 +533,7 @@ public class DocumentEditorTest extends TestBase {
 	@AfterClass
 	public void closeBrowser() {
 		System.out.println("Closing Document Editor page Test");
-	//	Browser.close();
+		Browser.close();
 	}
 	
 }

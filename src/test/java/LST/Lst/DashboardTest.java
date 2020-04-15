@@ -1,7 +1,9 @@
 package LST.Lst;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,11 +40,6 @@ public class DashboardTest extends TestBase {
 	public void openBrowser() throws IOException, InterruptedException {	
 		driver = Browser.getInstance();
 		driver.get(baseUrl);
-	}	
-	 	
-	@Test(priority=1) 
-	public void createProject() throws IOException, InterruptedException {
-		
 		land= new LandingPage(driver);
 		land.initElement(); 
 		land.txt_login.click();
@@ -50,9 +47,15 @@ public class DashboardTest extends TestBase {
 		log =new LoginPage(land.getDriver());
 		log.initElement();
 		  
-		log.txt_userName.sendKeys("test@gmail.com"); 
+		log.txt_userName.sendKeys("testUser@livingskytech.com"); 
 		log.txt_password.sendKeys("asdF1234");
 		log.btn_login.click();
+	}	
+	 	
+	@Test(priority=1) 
+	public void loginCreateProject() throws Exception {
+		
+		
 	//	Thread.sleep(5000);
 	 
 		das = new Dashboard(log.getDriver());
@@ -60,21 +63,21 @@ public class DashboardTest extends TestBase {
 		
 		//das.btn_newProject.click();
 	
-		
-	}
-	@Test(priority=2) 
-	public void verifyAllProjectAndDeleteFromProject() throws IOException, InterruptedException, Exception {
-		ProjectTest pt= new ProjectTest();
 		   das = new Dashboard(log.getDriver());
 		   das.initElement();
 		     
 		   das.link_projects.click();
 		  
 		
-		for(int i=0; i<5;i++) { 
-			  pt.createProject(); 
+		for(int i=0; i<10;i++) { 
+			  createProject(); 
 			  
 		  }
+		
+	}
+	//@Test(priority=2) 
+	public void verifyAllProjectAndDeleteFromProject() throws IOException, InterruptedException, Exception {
+		
 		 
 		    Thread.sleep(200);
 		    pro = new Project(das.getDriver());
@@ -112,6 +115,43 @@ public class DashboardTest extends TestBase {
 		       
 		        }
 			}
+	
+	public void createProject() throws IOException, InterruptedException, Exception {
+		
+		
+		das.initElement();
+		
+		das.btn_newProject.click();
+		
+		pro = new Project(das.getDriver());
+		pro.initElement();
+		int number = com.randomNumber();
+		String  projectName = System.getProperty("projectName");
+				
+		pro.nav_startTypingProjectName.sendKeys(projectName+number);
+		Thread.sleep(1000);
+		
+		//driver.findElement(By.id("file")).click();
+		//pro.btn_addPhoto.click();
+		
+		
+		File file = new File("Images/project_image.jpeg"); 
+		WebElement fileBrowser =  pro.btn_addPhoto;
+		String path = file.getAbsolutePath(); 
+		pro.btn_addPhoto.sendKeys(path);
+		pro.btn_addDescription.click();
+		Thread.sleep(400);
+		pro.nav_addprojectdescription.sendKeys("This is testing project");
+		
+		pro.btn_startProject.click();
+		
+		
+		Thread.sleep(1000);
+		
+		das.link_projects.click();
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		
+	}
 	
 	
 	@AfterClass
