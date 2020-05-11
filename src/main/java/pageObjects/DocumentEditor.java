@@ -17,62 +17,30 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//span[contains(text(),'Untitled Document')]")
 	public WebElement tab_documentName_DocumentEditor;
 	
-	
-	@FindBy(xpath="//*[@class='blank-placeholder__card']//div[@class='section-content']")
+	@FindBy(xpath="//div[@class='object-container-content']")
 	public WebElement txt_BlankPlaceHolderEnterTitle_DocumentEditor;
 	
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[@class='editor-area editor-area_title']//span[@class='label-content'][contains(text(),'title')]")
+	//@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--title selected']")
+	//public WebElement lbl_First_Card_Title_DocumentEditor;
+	
+	@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--title selected']")
 	public WebElement lbl_First_Card_Title_DocumentEditor;
 	
-	@FindBy(xpath="//*[@class='doc-editor__card'] //div[@class='editor-area editor-area_title'] //div[@class='ObjectHandle']")
+	@FindBy(xpath="//div[@class='object-handle object-handle--paragraph']//*[local-name()='svg']")
 	public WebElement ObjHandle_Title_DocumentEditor;
 	
-	@FindBy(xpath="//button[contains(@class,'icon-btn add-area-button')]//*[contains(@class,'icon-plus')]")
-	public WebElement iconPlusSubTileAndBoby;
-	
-	@FindBy(xpath="//span[contains(text(),'Body')]")
-	public WebElement iconPlusBoby;
-					
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[3]//ul[@class='menu-list']//li[1]")
-	public WebElement txt_subTitle_First_DocumentEditor;
-	
-	@FindBy(xpath="//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'subtitle')]")
-	@CacheLookup   
-	public WebElement lbl_SubTitle_DocumentEditor;
-	
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[@class='editor-area editor-area_subtitle']//div[@class='ObjectHandle']")
-	public WebElement ObjHandle_SubTitle_DocumentEditor;
-		
-	@FindBy(xpath="//span[contains(text(),'Subtitle')]")
-	public WebElement txt_AddSubTitle_AfterBody_DocumentEditor;
-	
-	
-	
-	@FindBy(xpath="//div[@id='doc-editor-card']/div[2]/div[2]/div[1]/section[1]/div[3]/div[1]/div[1]/div[3]/div[1]")
-	public WebElement ObjHandleFirst_DocumentEditor;
-	
-	@FindBy(xpath="//div[@id='doc-editor-card']/div[1]/div[2]/section/div[3]/div/div/div[2]/div[2]/div[2]/div")
-  	public WebElement txt_body_First_DocumentEditor;
-					
-	@FindBy(xpath="//div[@id='doc-editor-card']/div[1]/div[2]/section[1]/div[4]/div[1]/div[1]/div[2]/div[2]/div[2]/div")
-	public WebElement txtBodyAreaInTheTopCardCreated;
-	
-	@FindBy(xpath="//*[@class='doc-editor__card']//span[@class='label-content'][contains(text(),'body')]")
-	public WebElement lbl_Body_DocumentEditor;
-	
-	//@FindBy(xpath="//div[contains(@class,'doc-editor__card')]/div[contains(@class,'doc-editor__card-drop-zone')]/div[contains(@class,'ContextMenu')]/section[contains(@class,'document-container')]/div[4]/div[1]/div[1]/div[3]/div[1]")
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[2]/section[1]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]")		
-			//"//*[@class='doc-editor__card']//div[@class='editor-area editor-area_body']//div[@class='ObjectHandle']")
-	public WebElement ObjHandle_Body_DocumentEditor_new;
-	
-	@FindBy(xpath="//*[@class='doc-editor__card']//div[@class='editor-area editor-area_body']//div[@class='ObjectHandle']")
-	
-	//"//*[@class='doc-editor__card']//div[@class='editor-area editor-area_body']//div[@class='ObjectHandle']")
+	@FindBy(xpath="//div[@class='object-container paragraph-object active']//div[@class='object-handle object-handle--paragraph']//*[local-name()='svg']")
 	public WebElement ObjHandle_Body_DocumentEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[2]/div[2]/section[1]/div[4]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]")
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/span[1]/span[1]")
+	//@FindBy(xpath="//div[@class='object-container paragraph-object']//div[@class='object-container-content']")
+  	public WebElement txt_body_First_DocumentEditor;
+	
+	@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--body selected']")
+	public WebElement lbl_Body_DocumentEditor;
+	
+	@FindBy(xpath="//div[@class='object-container paragraph-object active']//div[@class='object-container-content']//div[2]")
 	public WebElement txt_Body_Second_DocumentEditor;
-
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[2]/div[1]/div[1]")
 	public WebElement mousehover_SecondCard_DocumentEditor;
@@ -104,13 +72,13 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//section[@class='object-creation-control-bar-container']")
 	public WebElement container_ObjectCreationControlBar_DocumentEditor;
 	
-	@FindBy(css="reach-portal > div > div > div")
+	@FindBy(xpath="//div[contains(text(),'Preview')]")
 	public WebElement btn_Preview_ObjectCreationControlBar_DocumentEditor;
 	
 	@FindBy(xpath="//div[@class='btn-wrapper']//button[1]")
 	public WebElement iconQuote_ObjectCreationControlBar_DocumentEditor;
 	
-	@FindBy(xpath="//div[@class='btn-wrapper']//button[2]")
+	@FindBy(xpath="//div[@class='document-control-bar']//button[2]")
 	public WebElement iconCamera_ObjectCreationControlBar_DocumentEditor;
 	
 	@FindBy(xpath="//div[@class='btn-wrapper']//button[3]")
@@ -125,7 +93,7 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//div[@class='btn-wrapper']//button[6]")
 	public WebElement iconFormula_ObjectCreationControlBar_DocumentEditor;
 	
-	@FindBy(css=".dropdown-button__content > .dropdown-button__text")
+	@FindBy(xpath="//span[@class='dropdown-button__text']")
 	public WebElement btn_More_ObjectCreationControlBar_DocumentEditor;
 	
 	@FindBy(css="#Right-tab-1 p")
@@ -143,19 +111,25 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//input[@id='input-title']")
 	public WebElement nav_imageTitle_imageEditorInDocumentEditor;
 
-	@FindBy(xpath="//input[@id='input-caption']")
+	@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--caption']//div[@class='object-container-content']")
 	public WebElement nav_imageCaption_imageEditorInDocumentEditor;
 
-	@FindBy(xpath="//input[@id='input-attribution']")
-	public WebElement nav_imageAttribution_imageEditorInDocumentEditor;
+	@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--citation']//div[@class='object-content']")
+	public WebElement nav_imageCitation_imageEditorInDocumentEditor;
 
 	@FindBy(xpath="//button[@class='button-transparant']")
 	public WebElement btn_imageSaveClose_imageEditorInDocumentEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[1]")
-	public WebElement controlBarSeparatorThridCard_DocumentEditor;
+	@FindBy(xpath="//div[@class='editor-card']//div[@class='card-controls__options']")
+	public WebElement cardController_DocumentEditor;
 	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")
+	@FindBy(xpath="//div[@class='editor-card']//button[1]")
+	public WebElement icon_Card_cardController_DocumentEditor;
+	
+	@FindBy(xpath="//div[@class='editor-card']//button[2]")
+	public WebElement icon_titleCard_cardController_DocumentEditor;
+	
+	@FindBy(xpath="//div[@class='editor-card']//div[@class='card-controls__handle']")
 	public WebElement icon_MoveCard_controlBarSeparator_DocumentEditor;
 	
 
