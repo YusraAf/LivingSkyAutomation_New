@@ -71,10 +71,10 @@ public class ProjectTest  extends TestBase {
 		
 		pro = new Project(das.getDriver());
 		pro.initElement();
-		//int number = com.randomNumber();
+		int number = com.randomNumber();
 		String  projectName = System.getProperty("projectName");
 				
-		pro.nav_startTypingProjectName.sendKeys(projectName);
+		pro.nav_startTypingProjectName.sendKeys(projectName+number);
 		Thread.sleep(1000);
 		
 		//driver.findElement(By.id("file")).click();
