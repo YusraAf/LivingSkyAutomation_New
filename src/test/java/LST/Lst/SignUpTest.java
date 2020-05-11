@@ -49,7 +49,7 @@ private CommonTask common;
 	
 	public void openBrowser() throws IOException, InterruptedException {
 	
-	//deleteRegisterData();
+	deleteRegisterData();
 	driver = Browser.getInstance();
 	
 	driver.get(baseUrl);
