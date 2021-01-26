@@ -13,12 +13,99 @@ public class DocumentEditor extends PageBase {
 		super(aDriver);
 		
 	}
+	               
+	
+	// Added new Web Elements
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")
+	public WebElement firstCardTopEdge_DocumentEditor;
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]")
+	public WebElement secomdCardTopEdge_DocumentEditor;
+	
+	//@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
+	@FindBy(xpath="//span[contains(text(),'Start typing...')]")
+	public WebElement txt_BlankPlaceHolderEnterTitle_DocumentEditor;
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")
+	public WebElement ObjHandle_Title_DocumentEditor;
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")
+	public WebElement ObjHandle_Body_DocumentEditor;
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
+	//@FindBy(xpath="//div[@class='object-container paragraph-object']//div[@class='object-container-content']")
+  	public WebElement txt_body_First_DocumentEditor;
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
+	public WebElement txt_Body_Second_DocumentEditor;
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/button[1]/div[1]/div[1]")
+	public WebElement mousehover_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
+	public WebElement txt_Body__First_SecondCard_DocumentEditor;
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[1]/div[2]/button[1]")
+	public WebElement tabForPreview;
+	
+	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]")
+	public WebElement tabForDocument;
+	
+	@FindBy(id="//body[1]/div[2]/div[1]/div[1]/div[1]/div[1]")
+	public WebElement panelLeft;
+	
+	@FindBy(id="//body/div[@id='root']/div[1]/div[1]/div[1]/div[4]")
+	public WebElement panelRight;
+	
+	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]")
+	public WebElement contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[1]/button[1]")
+	public WebElement edit_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[2]/button[1]")
+	public WebElement insertImage_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[3]/button[1]")
+	public WebElement insertList_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[4]/button[1]")
+	public WebElement convertToList_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[5]/button[1]")
+	public WebElement cut_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[6]/button[1]")
+	public WebElement copy_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[7]/button[1]")
+	public WebElement paste_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[8]/button[1]")
+	public WebElement duplicate_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[9]/button[1]")
+	public WebElement makeHeading_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[10]/button[1]")
+	public WebElement moveToIdeaboard_contextMenu_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[11]/button[1]")
+	public WebElement delete_contextMenu_DocumentEditor;
+	
+	
+	
+	
+	
+	
+	
+	/*
 	
 	@FindBy(xpath="//span[contains(text(),'Untitled Document')]")
 	public WebElement tab_documentName_DocumentEditor;
-	
-	@FindBy(xpath="//div[@class='object-container-content']")
-	public WebElement txt_BlankPlaceHolderEnterTitle_DocumentEditor;
 	
 	//@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--title selected']")
 	//public WebElement lbl_First_Card_Title_DocumentEditor;
@@ -26,30 +113,13 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--title selected']")
 	public WebElement lbl_First_Card_Title_DocumentEditor;
 	
-	@FindBy(xpath="//div[@class='object-handle object-handle--paragraph']//*[local-name()='svg']")
-	public WebElement ObjHandle_Title_DocumentEditor;
-	
-	@FindBy(xpath="//div[@class='object-container paragraph-object active']//div[@class='object-handle object-handle--paragraph']//*[local-name()='svg']")
-	public WebElement ObjHandle_Body_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/span[1]/span[1]/span[1]")
-	//@FindBy(xpath="//div[@class='object-container paragraph-object']//div[@class='object-container-content']")
-  	public WebElement txt_body_First_DocumentEditor;
-	
 	@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--body selected']")
 	public WebElement lbl_Body_DocumentEditor;
-	
-	@FindBy(xpath="//div[@class='object-container paragraph-object active']//div[@class='object-container-content']//div[2]")
-	public WebElement txt_Body_Second_DocumentEditor;
-	
-	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/section[1]/div[2]/div[2]/div[1]/div[1]")
-	public WebElement mousehover_SecondCard_DocumentEditor;
 	
 	@FindBy(xpath="//div[@class='doc-editor__card'][1]//div[@class='card-separator hide']")
 	public WebElement line_topOfCardSeparator_DocumentEditor;
 	
-	@FindBy(xpath="//div[@class='doc-editor__card'][1]//div[@class='card-separator']")
-	public WebElement line_topOfCardSeparator_DocumentEditorAfterHover;
+	
 	
 	@FindBy(xpath="//*[@class='control-bar-content']")
 	public WebElement controlBarSeparator_DocumentEditor;
@@ -96,18 +166,6 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//span[@class='dropdown-button__text']")
 	public WebElement btn_More_ObjectCreationControlBar_DocumentEditor;
 	
-	@FindBy(css="#Right-tab-1 p")
-	public WebElement tabForPreviewInIdeaBoard;
-	
-	@FindBy(xpath="//div[@id='Right-tab-1']//*[contains(@class,'icon-cancel')]")
-	public WebElement btnTabPreviewCloseButton;
-	
-	@FindBy(id="Left-panel-0")
-	public WebElement panelLeft;
-	
-	@FindBy(id="Right-panel-0")
-	public WebElement panelRight;
-	
 	@FindBy(xpath="//input[@id='input-title']")
 	public WebElement nav_imageTitle_imageEditorInDocumentEditor;
 
@@ -132,6 +190,18 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//div[@class='editor-card']//div[@class='card-controls__handle']")
 	public WebElement icon_MoveCard_controlBarSeparator_DocumentEditor;
 	
+	@FindBy(xpath="//div[@class='object-container paragraph-object active']//div[@class='object-content']")
+	public WebElement txt_Body_Third_DocumentEditor;
+	
+	@FindBy(xpath="//*[name()='circle' and @id='prefix__Ellipse_216']")
+	public WebElement objHandle_Image_DocumentEditor;
+	
+	@FindBy(xpath="//div[3]//div[1]//div[1]//div[1]//section[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]")
+	public WebElement objHandle_Body_Thrid_DocumentEditor;
+
+	@FindBy(xpath="//body/reach-portal/div/div[@class='ContextMenu']/div[@class='ContextMenu__menu-container']/ul[@class='ContextMenu__menu-list']/li[5]/div[1]")
+	public WebElement duplicate_ContextMenu__list_DocumentEditor;
+	*/
 
 
 }
