@@ -45,7 +45,7 @@ public class DocumentEditorTest extends TestBase {
 		driver.get(baseUrl);
 		
 		log =new LoginTest();
-		log.doSignin("test19@livingskytech.com", "asdF1234");
+		log.doSignin("niti+2@livingskytech.com", "asdf1234");
 		
 		Thread.sleep(1000);
 	}	
@@ -81,7 +81,7 @@ public class DocumentEditorTest extends TestBase {
 		doce = new DocumentEditor(pro.getDriver());
 		doce.initElement();
 			
-		System.out.println("Document Name is ----> " + doce.tab_documentName_DocumentEditor.getText());
+		//System.out.println("Document Name is ----> " + doce.tab_documentName_DocumentEditor.getText());
 		
 		WebElement title = doce.txt_BlankPlaceHolderEnterTitle_DocumentEditor;
 		//JavascriptExecutor executor = (JavascriptExecutor)driver;
@@ -366,10 +366,10 @@ public class DocumentEditorTest extends TestBase {
 		logger.info("Preview button Object Creation Control Bar is displayed at the bottom in the Document Editor");
 		Thread.sleep(3000);
 		
-		com.mouseHoverOnly(doce.tabForPreviewInIdeaBoard);
-		Assert.assertEquals(doce.tabForPreviewInIdeaBoard.getText(), "Preview");
+	//	com.mouseHoverOnly(doce.tabForPreviewInIdeaBoard);
+	//	Assert.assertEquals(doce.tabForPreviewInIdeaBoard.getText(), "Preview");
 		
-		com.moveMouseAndClick(doce.btnTabPreviewCloseButton);
+	//	com.moveMouseAndClick(doce.btnTabPreviewCloseButton);
 		
 	}
 	

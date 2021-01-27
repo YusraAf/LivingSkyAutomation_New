@@ -13,21 +13,23 @@ public class Dashboard extends PageBase {
 	
 	public Dashboard(WebDriver driver) { 
 		super(driver);
-		this.setUrl("dashboard");
+		this.setUrl("writer");
 	} 
 	
 @FindBy(xpath= "//input[@placeholder='Search for a project']")
 public WebElement nav_menuBar;
 
-@FindBy(xpath= "//*[@class='icon-rocket']") 
-//"//div[contains(text(),'Projects')]")
+//--update on jan 2021
+@FindBy(xpath= "//span[contains(text(),'My Projects')]") 
 public WebElement link_projects;
 
-@FindBy(xpath= "//div[contains(text(),'Collection')]")
-public WebElement link_collections;
+//@FindBy(xpath= "//div[contains(text(),'Collection')]")
+//public WebElement link_collections;
 
-@FindBy(xpath=("//button[@class='logout']"))
+//--update on jan 2021
+@FindBy(xpath=("//div[@id='option-2--menu--1']"))
 public WebElement btn_logout;
+
 
 @FindBy(xpath= "//div[contains(text(),'Favourites')]")
 public WebElement link_favourites;
@@ -35,8 +37,8 @@ public WebElement link_favourites;
 @FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/nav[1]/ul[1]/div[1]/li[3]/a[1]")
 public WebElement link_trash;
 
-
-@FindBy(xpath= "//div[contains(text(),'My Account')]")
+//--update on jan 2021
+@FindBy(xpath= "//span[@id='title']")
 public WebElement link_myAccount;
 
 @FindBy(xpath= "//div[contains(text(),'Settings')]")

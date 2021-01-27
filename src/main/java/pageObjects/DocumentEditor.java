@@ -97,12 +97,12 @@ public class DocumentEditor extends PageBase {
 	public WebElement delete_contextMenu_DocumentEditor;
 	
 	
+	//--------
 	
 	
 	
 	
 	
-	/*
 	
 	@FindBy(xpath="//span[contains(text(),'Untitled Document')]")
 	public WebElement tab_documentName_DocumentEditor;
@@ -201,7 +201,7 @@ public class DocumentEditor extends PageBase {
 
 	@FindBy(xpath="//body/reach-portal/div/div[@class='ContextMenu']/div[@class='ContextMenu__menu-container']/ul[@class='ContextMenu__menu-list']/li[5]/div[1]")
 	public WebElement duplicate_ContextMenu__list_DocumentEditor;
-	*/
+
 
 
 }
