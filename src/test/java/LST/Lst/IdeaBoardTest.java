@@ -20,9 +20,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import LST.core.TestBase;
-import pageObjects.Dashboard;
+import pageObjects.Workspace;
 import pageObjects.IdeaBoard;
-import pageObjects.Project;
+import pageObjects.ProjectDashboard;
 import resources.Browser;
 import resources.CommonTask;
 import resources.UploadFile;
@@ -32,8 +32,8 @@ public class IdeaBoardTest extends TestBase {
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 
 	private LoginTest log;
-	private Dashboard das = new Dashboard(driver);
-	private Project pro;
+	private Workspace das = new Workspace(driver);
+	private ProjectDashboard pro;
 	private IdeaBoard idb;
 	private CommonTask com = new CommonTask(driver);
 	
@@ -60,7 +60,7 @@ public class IdeaBoardTest extends TestBase {
 
 		das.btn_newProject.click();
 
-		pro = new Project(das.getDriver());
+		pro = new ProjectDashboard(das.getDriver());
 		pro.initElement();
 
 		String projectName = "Project_With_Idea_New";
@@ -149,7 +149,7 @@ public class IdeaBoardTest extends TestBase {
 		com.moveMouseAndClick(idb.btn_canvasSaveClose_Canvas);
 		// Thread.sleep(5000);
 
-		pro = new Project(das.getDriver());
+		pro = new ProjectDashboard(das.getDriver());
 
 		pro.initElement();
 		das.initElement();
@@ -264,7 +264,7 @@ public class IdeaBoardTest extends TestBase {
 	@Test(priority = 6)
 	public void dragIdeaTabToDocumentEditor() throws InterruptedException, AWTException {
 
-		pro = new Project(das.getDriver());
+		pro = new ProjectDashboard(das.getDriver());
 
 		pro.initElement();
 		das.initElement();

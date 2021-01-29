@@ -45,14 +45,6 @@ public class IdeaBoard extends PageBase{
 	
 	
 	
-	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[4]/div[1]/button[1]")
-	public WebElement tabForIdeaBoard;
-	
-	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[4]/div[2]/button[1]")
-	public WebElement tabForOutline;
-	
-	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[4]/div[3]/button[1]")
-	public WebElement tabForPublish;
 	
 	/*				
 	@FindBy(xpath="//div[@id='Right-tab-0']")

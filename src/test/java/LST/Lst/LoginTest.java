@@ -21,6 +21,8 @@ import pageObjects.LoginPage;
 import resources.Browser;
 import resources.CommonTask;
 
+//-- updated on January 2021
+
 public class LoginTest extends TestBase{
 	
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
@@ -39,11 +41,11 @@ public class LoginTest extends TestBase{
 @Test(priority=1)
 public void verifyLoginPageAttributes() throws InterruptedException {
 
-	landing= new LandingPage(driver);
-	landing.initElement();
-	landing.txt_login.click();
-	 Thread.sleep(500);
-	 log =new LoginPage(landing.getDriver());
+//	landing= new LandingPage(driver);
+//	landing.initElement();
+//	landing.txt_login.click();
+//	Thread.sleep(500);
+	 log =new LoginPage(driver);
 	 log.initElement();
 	 AssertJUnit.assertTrue(log.txt_userName.isDisplayed());
 	 logger.info("Email textbox is displayed.");
@@ -53,10 +55,10 @@ public void verifyLoginPageAttributes() throws InterruptedException {
 	 logger.info("Login Button is displayed.");
 	 AssertJUnit.assertTrue(log.radio_remember_me.isDisplayed());
 	 logger.info("Remember Me radio is displayed.");
-	 AssertJUnit.assertTrue(log.btn_signInFb.isDisplayed());
-	 logger.info("SigninFB button is displayed.");
-	 AssertJUnit.assertTrue(log.btn_signInGoogle.isDisplayed());
-	 logger.info("SigninGoogle button is displayed.");
+	// AssertJUnit.assertTrue(log.btn_signInFb.isDisplayed());
+	// logger.info("SigninFB button is displayed.");
+	// AssertJUnit.assertTrue(log.btn_signInGoogle.isDisplayed());
+	// logger.info("SigninGoogle button is displayed.");
 	 
 }
 
@@ -87,24 +89,24 @@ public void testLoginWithDifferentData(String username, String password, int tes
 @Test(priority=3)
 public void doSigninAssertion() { 
 	
-	 AssertJUnit.assertEquals(driver.getTitle(), "Write Way");
+	 AssertJUnit.assertEquals(driver.getTitle(), "WriteWay");
 	 logger.info("Write way title is displayed successfully.");
-	 //System.out.println("+++++++++++++++++++++++IN Assertion+++++++++++++++++");
+	 //System.out.println("+++++++++++++++++++++++IN Assertion+++++++++++++++++ "+driver.getTitle());
 }
 
 	@DataProvider
 	public Object[][] getLoginData(){
  
 	 Object[][] data= new Object[4][3];
-	 data[0][0]= "niti@livingskytech.com";
-	 data[0][1]= "asdF1234";
+	 data[0][0]= "niti+2@livingskytech.com";
+	 data[0][1]= "asdf1234";
 	 data[0][2]= 1;
  
-	 data[1][0]= "niti@livingskytech.com";
+	 data[1][0]= "niti+2@livingskytech.com";
 	 data[1][1]= "asd12934";
 	 data[1][2]= 2;
 	 
-	 data[2][0]= "niti@livingskytech.com";
+	 data[2][0]= "niti+2@livingskytech.com";
 	 data[2][1]= "";
 	 data[2][2]= 3;
 	 
@@ -119,13 +121,13 @@ public void doSigninAssertion() {
 		
 		Browser.pageRefresh(); 
 		System.out.println("UserName : "+ username);
-		 landing= new LandingPage(driver);
-		 landing.initElement(); 
-		 landing.txt_login.click();
+		// landing= new LandingPage(driver);
+		// landing.initElement(); 
+		// landing.txt_login.click();
 		 
 		 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		 
-		 log =new LoginPage(landing.getDriver());
+		 log =new LoginPage(driver);
 		 log.initElement();
 		  
 		 log.txt_userName.sendKeys(username);
@@ -140,48 +142,49 @@ public void testCase1(WebDriver driver) throws InterruptedException, IOException
 	Dashboard dash = new Dashboard(log.getDriver());
 	dash.initElement();
 	dash.verifyPageUrl();
-	WebElement element = dash.link_projects;
-		
-		 // Actions builder = new Actions(driver);
-		//  builder.moveToElement(element).click().build().perform();
-	 common = new CommonTask(driver);
-	 
-	 common.moveMouseAndClick(element);
+	//WebElement element = dash.link_projects;
+	//Actions builder = new Actions(driver);
+	//builder.moveToElement(element).click().build().perform();
 	
-	 AssertJUnit.assertEquals(dash.link_projects.getText(),"Projects");
+	common = new CommonTask(driver);
+	 
+	 //common.moveMouseAndClick(element);
+	
+	 AssertJUnit.assertEquals(dash.link_projects.getText(),"My Projects");
 	 logger.info("Projects is displayed in Dashboard.");
 	 
 	 System.out.println("++++++++In Side Testcase1++++++++++++");
 	 
 	// System.out.println("Screenshot captured.");
-	 WebElement element2 = dash.link_collections;
+	// WebElement element2 = dash.link_collections;
 
+	// common.moveMouseAndClick(element2);
 	
+	// AssertJUnit.assertEquals(dash.link_collections.getText(), "Collection");
+	 //logger.info("Collection is displayed in Dashboard.");
+	 Thread.sleep(2000);
+	 WebElement element2 = dash.link_myAccount;
+
 	 common.moveMouseAndClick(element2);
-
-	
-	 AssertJUnit.assertEquals(dash.link_collections.getText(), "Collection");
-	 logger.info("Collection is displayed in Dashboard.");
-	 Thread.sleep(200);
 	 dash.btn_logout.click();
 }
 
 public void testCase2(WebDriver driver) throws InterruptedException {
-	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Wrong email or password was provided."); 
+	 AssertJUnit.assertEquals(driver.findElement(By.cssSelector("ul[class='css-1vwjvr1'] li")).getText(), "Email or password is incorrect"); 
 	 logger.info("Wrong login message is showing successfully.");
 	 Thread.sleep(200);
 	 //Browser.pageRefresh();
 }
 
 public void testCase3(WebDriver driver) throws InterruptedException {
-	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Password is required."); 
+	 AssertJUnit.assertEquals(driver.findElement(By.cssSelector("ul[class='css-1vwjvr1'] li")).getText(), "Password required"); 
 	 logger.info("Password is required message is showing successfully.");
 	 Thread.sleep(200);
 	// Browser.pageRefresh();
 }
 
 public void testCase4(WebDriver driver) throws InterruptedException {
-	 AssertJUnit.assertEquals(driver.findElement(By.xpath("//p[@class='statusText error-msg']")).getText(), "Email address is required."); 
+	 AssertJUnit.assertEquals(driver.findElement(By.cssSelector("ul[class='css-1vwjvr1'] li")).getText(), "Email required"); 
 	 logger.info("Email address is required message is showing successfully.");
 	 Thread.sleep(200);
 	 //Browser.pageRefresh();

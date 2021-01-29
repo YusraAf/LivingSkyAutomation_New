@@ -16,21 +16,23 @@ public class LoginPage extends PageBase{
 		this.setUrl("login");
 	}
 //page factory
-
+	//--update on jan 2021
 @FindBy(name= "email")
 @CacheLookup
 public WebElement txt_userName;
 
+//--update on jan 2021
 @FindBy(name= "password")
 @CacheLookup
 public WebElement txt_password;
 
-@FindBy(css= ".continue > svg")
+//--update on jan 2021
+@FindBy(xpath= "//body/reach-portal[2]/div[3]/div[1]/div[1]/div[1]/div[1]/form[1]/div[2]/button[2]")
 @CacheLookup
 public WebElement btn_login;
 
-@FindBy(xpath= "//span[@class='check']")
-@CacheLookup
+//--update on jan 2021
+@FindBy(xpath="//span[@class='check']")
 public WebElement radio_remember_me;
 
 @FindBy(xpath= "//div[contains(text(),'Sign in with Facebook')]")

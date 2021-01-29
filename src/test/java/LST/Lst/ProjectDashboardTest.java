@@ -15,6 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,22 +27,22 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import LST.core.TestBase;
-import pageObjects.Dashboard;
+import pageObjects.Workspace;
 import pageObjects.LandingPage;
 import pageObjects.LoginPage;
-import pageObjects.Project;
+import pageObjects.ProjectDashboard;
 import pageObjects.Trash;
 import resources.Browser;
 import resources.CommonTask;
 
-public class ProjectTest  extends TestBase {
+public class ProjectDashboardTest  extends TestBase {
 	
 	//SoftAssert softassert5 = new SoftAssert();
 	public static Logger logger = LogManager.getLogger(TestBase.class.getName());
 	private LandingPage land;
 	private LoginTest log;
-	private Dashboard das = new Dashboard(driver);
-	private Project pro;
+	private Workspace das = new Workspace(driver);
+	private ProjectDashboard pro;
 	private Trash trs;
 	private CommonTask com  = new CommonTask(driver);;
 	
@@ -54,23 +55,78 @@ public class ProjectTest  extends TestBase {
 		
 		log =new LoginTest();
 
-		log.doSignin("test18@livingskytech.com", "asdF1234");
+		log.doSignin("chetan+19@livingskytech.com", "abcd1234");
 
 		
 		Thread.sleep(1000);
 
 	}	
-	 
+	
 	@Test(priority=1) 
-	public void createProject() throws IOException, InterruptedException, Exception {
+	public void createFolderUsingPlusBotton() throws IOException, InterruptedException, Exception {
 		
+		//das.initElement();
+		
+		//das.btn_newProject.click();
+		logger.info("This is inside in Project Dashboard Page =====> Verify Create a New Folder using Plus button from Left sidebar");
+		pro = new ProjectDashboard(driver);
+		pro.initElement();
+	
+		com.moveMouseAndClick(pro.btn_Plus_CreateNewFolder_Sidebar);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		//Thread.sleep(3000);
+		
+		pro.link_MyProjects_Sidebar.click();
+		
+		com.moveMouseAndClick(pro.thumbnail_first_Folder_from_Grid);
+		
+		String  folderName = System.getProperty("folderName");
+		
+		SoftAssert sa =new SoftAssert();
+		sa.assertEquals(pro.text_first_Folder_Title_from_grid.getText(),folderName);
+		Thread.sleep(3000);		
+		
+		System.out.println("Folder Name out: "+ pro.text_first_Folder_Title_from_grid.getText());
+		sa.assertAll();
+		
+		//pro.icon_ViewDetails_ProjectDashboard_UniversalMenu.click();
+		
+	}
+	
+	 
+	@Test(priority=2) 
+	public void createProjectUsingNewProjectButton() throws IOException, InterruptedException, Exception {
 		
 		das.initElement();
 		
-		das.btn_newProject.click();
-		
-		pro = new Project(das.getDriver());
+		//das.btn_newProject.click();
+		logger.info("This is inside in Project Dashboard Page =====> Verify Create a New Project using New Project button");
+		pro = new ProjectDashboard(das.getDriver());
 		pro.initElement();
+	
+		com.moveMouseAndClick(pro.btn_NewProject_ProjectsTopbar);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		//Thread.sleep(3000);
+		
+		com.moveMouseAndClick(das.icon_BackArrow_Workspace_UniversalMenu);
+		Thread.sleep(2000);
+		
+		pro.link_MyProjects_Sidebar.click();
+	
+		com.moveMouseAndClick(pro.thumbnail_first_Project_from_Grid);
+		
+		String  projectName = System.getProperty("projectName");
+		
+		SoftAssert sa =new SoftAssert();
+		sa.assertEquals(pro.text_first_Project_Title_from_grid.getText(),projectName);
+		Thread.sleep(3000);		
+		
+		System.out.println("Project Name out: "+ pro.text_first_Project_Title_from_grid.getText());
+		sa.assertAll();
+		
+		//pro.icon_ViewDetails_ProjectDashboard_UniversalMenu.click();
+		
+		/*
 		int number = com.randomNumber();
 		String  projectName = System.getProperty("projectName");
 				
@@ -90,27 +146,93 @@ public class ProjectTest  extends TestBase {
 		pro.nav_addprojectdescription.sendKeys("This is testing project");
 		
 		pro.btn_startProject.click();
-		
-		
+	
 		Thread.sleep(1000);
 		
-		das.link_projects.click();
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		*/
+	}
+	
+	//public boolean elementHasClass(WebElement element, String active) {
+//	    return element.getAttribute("class").contains(active);
+//	}
+	
+@Test(priority=3)
+	
+    public void verifyOpenProjectActionMenuAndAllOptions_from_GridView() throws IOException, InterruptedException, Exception {
+          
+		logger.info("This is inside in Project Dashboard Page =====> Verify Open Action Menu and All Action Menu Options of Project");
 		
+		pro.link_MyProjects_Sidebar.click();
+	
+		com.moveMouseAndClick(pro.thumbnail_first_Project_from_Grid);
+		
+		WebElement projectActionMenu = pro.thumbnail_first_Project_from_Grid;
+		
+		Actions action= new Actions(driver);
+		//action.contextClick(projectActionMenu).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
+		action.contextClick(projectActionMenu).build().perform();
+		
+		AssertJUnit.assertTrue(pro.actionMenu_Rename_Project.isDisplayed());
+		logger.info("Rename option is displayed for project inside the action menu.");
+		
+		AssertJUnit.assertTrue(pro.actionMenu_addToFavourites_Project.isDisplayed());
+		logger.info("Add to Favoutites link is displayed for project inside the action menu.");
+		
+		AssertJUnit.assertTrue(pro.actionMenu_viewDetails_Project.isDisplayed());
+		logger.info("View details link is displayed for project inside the action menu.");
+		
+		AssertJUnit.assertTrue(pro.actionMenu_trash_Project.isDisplayed());
+		logger.info("Trash link is displayed on for project inside the action menu.");
+		
+}
+
+@Test(priority=4)
+
+public void verifyRenameProject_Using_ActionMenu_GridView() throws IOException, InterruptedException, Exception {
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Renaming project name using Action Menu");
+	
+		pro.actionMenu_Rename_Project.click();
+		//pro.actionMenu_Rename_Project.clear();
+	    driver.findElement(By.xpath("//input[@value='Untitled Project']")).sendKeys("ProjectNameRenamed");
+		
+    }
+		
+@Test(priority=5)
+
+public void verifyaddToFavouritesProject_Using_ActionMenu_GridView() throws IOException, InterruptedException, Exception {
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Add To Favourites project using Action Menu");
+	
+		pro.link_MyProjects_Sidebar.click();
+		
+		com.moveMouseAndClick(pro.thumbnail_first_Project_from_Grid);
+		
+		WebElement projectActionMenu = pro.thumbnail_first_Project_from_Grid;
+		
+		Actions action= new Actions(driver);
+		//action.contextClick(projectActionMenu).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
+		action.contextClick(projectActionMenu).build().perform();
+		
+		pro.actionMenu_addToFavourites_Project.click();
+		Thread.sleep(1000);
+		
+		pro.link_Favorites_Sidebar.click();
+		
+		com.moveMouseAndClick(pro.thumbnail_first_Project_from_Favorites);
+		
+		String  renameProjectName = System.getProperty("renameProjectName");
 		
 		SoftAssert sa =new SoftAssert();
-		sa.assertEquals(pro.txt_first_Project_Title_frm_grid.getText(),projectName);
-				
+		sa.assertEquals(pro.text_first_Project_title_from_Favorites.getText(),renameProjectName);
+		Thread.sleep(3000);		
 		
-		System.out.println("Project NAme out: "+ pro.txt_first_Project_Title_frm_grid.getText());
+		System.out.println("Project Name out from Favorites: "+ pro.text_first_Project_title_from_Favorites.getText());
 		sa.assertAll();
 		
-	}
-	
-	public boolean elementHasClass(WebElement element, String active) {
-	    return element.getAttribute("class").contains(active);
-	}
-	
+    }
+
+	/*
 	@Test(priority=2)
 	public void verifyOpenProjectfrom_GridView() throws InterruptedException {
 		//das.link_projects.click();
@@ -424,11 +546,11 @@ public class ProjectTest  extends TestBase {
       /***
        * Creating multiple project
        */
-	  for(int i=0;i<3;i++) {
+/* 451	  for(int i=0;i<3;i++) {  
 		  createProject_from_ListView();
 	     
 	  	}
-  	}
+  	} 
 
   	@Test(priority=16)
 	public void verifyDeleteALLProjectFromTrash() throws IOException, InterruptedException, Exception {
@@ -437,7 +559,7 @@ public class ProjectTest  extends TestBase {
 	      /***
 	       * Creating multiple project
 	       */
-	       for(int i=0;i<3;i++) {
+/* 464	       for(int i=0;i<3;i++) {
 			 createProject_from_ListView();
 		     verifyDeleteProject_from_LISTView();
 	       }
@@ -513,7 +635,7 @@ for(int i=1;i<=5;i++) {
     System.out.println(proTitle);
      // verifyDeleteProject_from_GridView();
       }*/
-	Thread.sleep(3000);
+/* 540	Thread.sleep(3000);
 	
     driver.findElement(By.cssSelector(".dropdown-button__text")).click();
     Thread.sleep(600);
@@ -565,8 +687,8 @@ for(int i=1;i<=5;i++) {
    
     Thread.sleep(1000);
 	sa.assertEquals(pro.txt_first_Project_Title_frm_grid.getText(),"5WriteWayTest_Project");
-    sa.assertAll();
-	}
+    sa.assertAll(); 
+	} 593 */ 
 
 	@AfterClass
 	public void closeBrowser() {

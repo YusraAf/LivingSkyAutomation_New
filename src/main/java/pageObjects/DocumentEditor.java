@@ -2,7 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
+//import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
 import resources.PageBase;
@@ -45,18 +45,7 @@ public class DocumentEditor extends PageBase {
 	
 	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
 	public WebElement txt_Body__First_SecondCard_DocumentEditor;
-	
-	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[1]/div[2]/button[1]")
-	public WebElement tabForPreview;
-	
-	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]")
-	public WebElement tabForDocument;
-	
-	@FindBy(id="//body[1]/div[2]/div[1]/div[1]/div[1]/div[1]")
-	public WebElement panelLeft;
-	
-	@FindBy(id="//body/div[@id='root']/div[1]/div[1]/div[1]/div[4]")
-	public WebElement panelRight;
+
 	
 	
 	//All Context Menu options
@@ -157,12 +146,14 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]/li[4]/button[1]")
 	public WebElement indentCard_CardContextMenu_SecondCard_DocumentEditor;
 	
+
 	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]/li[4]/button[1]")
 	public WebElement outdentCard_CardContextMenu_SecondCard_DocumentEditor;
+
+	
 	
 	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]/li[5]/button[1]")
 	public WebElement deleteCard_CardContextMenu_SecondCard_DocumentEditor;
-	
 	
 	
 	
@@ -265,7 +256,7 @@ public class DocumentEditor extends PageBase {
 
 	@FindBy(xpath="//body/reach-portal/div/div[@class='ContextMenu']/div[@class='ContextMenu__menu-container']/ul[@class='ContextMenu__menu-list']/li[5]/div[1]")
 	public WebElement duplicate_ContextMenu__list_DocumentEditor;
-	*/
+*/
 
 
 }
