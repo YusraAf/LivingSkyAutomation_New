@@ -2,7 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
+//import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
 import resources.PageBase;
@@ -43,26 +43,16 @@ public class DocumentEditor extends PageBase {
 	
 	@FindBy(xpath="//div[@class='object-content object-content__paragraph sidebar card_body active']")
 	public WebElement txt_Body_Second_DocumentEditor;
-	
+	               //body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/button[1]/div[1]/div[1]
 	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/button[1]/div[1]/div[1]")
-	public WebElement mousehover_SecondCard_DocumentEditor;	
+	public WebElement mousehover_PlusIcon_AboveSecondCard_DocumentEditor;	
 	
 	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
 	public WebElement txt_Body__First_SecondCard_DocumentEditor;
-	
-	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[1]/div[2]/button[1]")
-	public WebElement tabForPreview;
-	
-	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]")
-	public WebElement tabForDocument;
-	
-	@FindBy(id="//body[1]/div[2]/div[1]/div[1]/div[1]/div[1]")
-	public WebElement panelLeft;
-	
-	@FindBy(id="//body/div[@id='root']/div[1]/div[1]/div[1]/div[4]")
-	public WebElement panelRight;
+
 	
 	
+	//All Context Menu options
 	
 	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]")
 	public WebElement contextMenu_DocumentEditor;
@@ -100,13 +90,78 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/ul[1]/li[11]/button[1]")
 	public WebElement delete_contextMenu_DocumentEditor;
 	
+
 	
-	//--------
+	// Card Index control menu options
+	
+	@FindBy(xpath="//button[@id='menu-button--menu--375']")
+	public WebElement cardIndex_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/div[2]/button[2]")
+	public WebElement indentCard_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/div[2]/button[1]")
+	public WebElement outdentCard_SecondCard_DocumentEditor;	
 	
 	
 	
+	// All card type options
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/div[1]/button[1]")
+	public WebElement icon_defaultCardType_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[2]/ul[1]/li[1]")
+	public WebElement card_CardType_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[2]/ul[1]/li[2]")
+	public WebElement title_CardType_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[2]/ul[1]/li[3]")
+	public WebElement abstract_CardType_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[2]/ul[1]/li[4]")
+	public WebElement introduction_CardType_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[2]/ul[1]/li[5]")
+	public WebElement conclusion_CardType_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[2]/ul[1]/li[6]")
+	public WebElement appendix_CardType_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[7]/div[1]/div[1]/div[1]/div[2]/button[1]")
+	public WebElement iconReset_CardType_SecondCard_DocumentEditor;	
 	
 	
+	
+	// Second card context menu options
+	
+	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]")
+	public WebElement cardContextMenu_SecondCard_DocumentEditor;	
+	
+	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]/li[1]/button[1]")
+	public WebElement insertCardAbove_CardContextMenu_SecondCard_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]/li[2]/button[1]")
+	public WebElement insertCardBelow_CardContextMenu_SecondCard_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]/li[3]/button[1]")
+	public WebElement insertChildCard_CardContextMenu_SecondCard_DocumentEditor;
+	
+	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]/li[4]/button[1]")
+	public WebElement indentCard_CardContextMenu_SecondCard_DocumentEditor;
+	
+
+	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]/li[4]/button[1]")
+	public WebElement outdentCard_CardContextMenu_SecondCard_DocumentEditor;
+
+	
+	
+	@FindBy(xpath="//body/reach-portal[9]/div[1]/div[1]/div[1]/ul[1]/li[5]/button[1]")
+	public WebElement deleteCard_CardContextMenu_SecondCard_DocumentEditor;
+	
+	
+	
+	/*
 	
 	@FindBy(xpath="//span[contains(text(),'Untitled Document')]")
 	public WebElement tab_documentName_DocumentEditor;
@@ -206,7 +261,7 @@ public class DocumentEditor extends PageBase {
 
 	@FindBy(xpath="//body/reach-portal/div/div[@class='ContextMenu']/div[@class='ContextMenu__menu-container']/ul[@class='ContextMenu__menu-list']/li[5]/div[1]")
 	public WebElement duplicate_ContextMenu__list_DocumentEditor;
-
+*/
 
 
 }

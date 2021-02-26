@@ -14,7 +14,39 @@ public class IdeaBoard extends PageBase{
 		
 	}
 
-					
+	// Idea board creation options
+	
+	@FindBy(xpath="/body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/section[1]/div[1]/header[1]/div[1]/div[1]/div[1]/span[1]")
+	public WebElement txt_Paragraph_IdeaBoard;
+	
+	@FindBy(xpath="//body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/section[1]/div[1]/header[1]/div[1]/div[1]/div[2]")
+	public WebElement objectCreationControlBar_IdeaBoard;
+	
+	@FindBy(xpath="//body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/section[1]/div[1]/header[1]/div[1]/div[1]/div[2]/div[1]")
+	public WebElement iconCamera_IdeaBoard;
+	
+	@FindBy(xpath="//body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/section[1]/div[1]/header[1]/div[1]/div[1]/div[2]/div[2]/button[1]")
+	public WebElement iconList_IdeaBoard;
+
+	@FindBy(xpath="//body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/section[1]/div[1]/header[1]/div[1]/div[2]/div[1]/button[1]/div[1]/div[1]")
+	public WebElement dropDown_Sort_IdeaBoard;
+	
+	@FindBy(xpath="//div[@id='option-0--menu--52']")
+	public WebElement dropDown_SortByLastModified_IdeaBoard;
+	
+	@FindBy(xpath="//div[@id='option-1--menu--52']")
+	public WebElement dropDown_SortByType_IdeaBoard;
+	
+	@FindBy(xpath="//div[@id='option-2--menu--52']")
+	public WebElement dropDown_SortByTitlteAZ_IdeaBoard;
+	
+	@FindBy(xpath="//div[@id='option-3--menu--52']")
+	public WebElement dropDown_SortByTitlteZA_IdeaBoard;
+	
+	
+	
+	
+	/*				
 	@FindBy(xpath="//div[@id='Right-tab-0']")
 	public WebElement tabFirstTabInIdeaBoard;
 	
@@ -153,5 +185,5 @@ public class IdeaBoard extends PageBase{
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/div[1]/div[2]/section[1]/section[1]/section[1]/div[1]/div[2]/div[1]/div[1]/span[1]/img[1]")
 	public WebElement ideaSecondInIdeaBoard;
-	
+	*/
 }
