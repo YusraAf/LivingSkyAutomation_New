@@ -122,22 +122,30 @@ public class ProjectDashboard extends PageBase{
     @FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[3]")
 	public WebElement sidebar_ProjectDetails;
     
-    //@FindBy(css="#editable-info-input-7j_GHt")
+    //@FindBy(id="editable-info-input-mk-ohQ")
     @FindBy(xpath="//input[@placeholder='Add Title']")
 	//@FindBy(xpath="/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/label[1]/div[1]/input[1]")
 	public WebElement txt_ProjectTitle_ProjectDetails;
 	
+    @FindBy(xpath="//input[@id='editable-info-input-mk-ohQ']")
+    //@FindBy(xpath="//input[@placeholder='Add Title']")
+	//@FindBy(xpath="/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/label[1]/div[1]/input[1]")
+	public WebElement txt_verifyProjectTitle_ProjectDetails;
+    
 	//@FindBy(xpath="//input[@type='file']")
 	@FindBy(xpath= "//span[contains(text(),'Upload Image')]")
 	public WebElement link_UploadImage_ProjectDetails;
 
-	@FindBy(xpath= "//input[@id='editable-info-input-GF7_UP']")
+	@FindBy(xpath= "//input[@placeholder='Add Author']")
 	public WebElement txt_addAuthor_ProjectDetails;
 
 	@FindBy(tagName= "textarea")
 	//@FindBy(xpath= "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[2]/div[4]/label[1]/textarea[1]")
 	public WebElement txt_addDescription_ProjectDetails;
 	
+	@FindBy(xpath= "//div[@class='close-button-container']")
+	//@FindBy(xpath= "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[2]/div[4]/label[1]/textarea[1]")
+	public WebElement btn_closeDetailsPane_ProjectDetails;
 	
 	
 	
@@ -256,7 +264,8 @@ public class ProjectDashboard extends PageBase{
     // All Folders and Projects container on the Project dashboard
     
     //@FindBy(xpath="/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/section[1]/div[1]/div[1]")
-    @FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/section[1]/div[1]/div[1]")
+    //@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/section[1]/div[1]/div[1]")
+    @FindBy(xpath="//div[contains(@class,'selectable-main')]")
     public WebElement container_ProjectDashboard_grid_view;
     
     //@FindBy(xpath="/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/section[1]/div[1]/div[1]")

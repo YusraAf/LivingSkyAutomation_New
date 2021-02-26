@@ -18,6 +18,7 @@ public class Trash extends PageBase{
 	
 	
 	@FindBy(xpath= "//body/div[@id='root']/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]")
+	//@FindBy(xpath= "//span[contains(text(),'Trash')]")
 	public WebElement link_Trash_Sidebar;
 	
 	@FindBy(xpath ="//header/div[1]/div[1]/span[1]")
@@ -49,6 +50,10 @@ public class Trash extends PageBase{
 					
 	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/section[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")
 	public WebElement thumbnail_first_Trash_Project_from_List;
+	
+	@FindBy(xpath="//div[@class='content-section__container']//div[1]//div[1]//div[2]//div[1]//div[1]//div[1]//span[1]//span[1]")
+	public WebElement txt_first_Trash_Project_from_Grid;
+	
 	
 	@FindBy(xpath= "//body/reach-portal[3]/div[1]/div[1]/div[1]/ul[1]")
     public WebElement actionMenu_Trash;

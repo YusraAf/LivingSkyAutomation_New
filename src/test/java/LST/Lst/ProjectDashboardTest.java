@@ -1,6 +1,7 @@
 package LST.Lst;
 
 import java.awt.AWTException;
+import java.awt.Desktop.Action;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.ClipboardOwner;
@@ -34,6 +35,7 @@ import pageObjects.ProjectDashboard;
 import pageObjects.Trash;
 import resources.Browser;
 import resources.CommonTask;
+import resources.UploadFile;
 
 public class ProjectDashboardTest  extends TestBase {
 	
@@ -43,13 +45,12 @@ public class ProjectDashboardTest  extends TestBase {
 	private LoginTest log;
 	private Workspace das = new Workspace(driver);
 	private ProjectDashboard pro;
-	private Trash trs;
+	private Trash trs = new Trash(driver);
 	private CommonTask com  = new CommonTask(driver);;
 	
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {	
 		
-	
 		driver = Browser.getInstance();
 		driver.get(baseUrl);
 		
@@ -57,13 +58,12 @@ public class ProjectDashboardTest  extends TestBase {
 
 		log.doSignin("chetan+19@livingskytech.com", "abcd1234");
 
-		
 		Thread.sleep(1000);
 
 	}	
 	
 	@Test(priority=1) 
-	public void createFolderUsingPlusBotton() throws IOException, InterruptedException, Exception {
+	public void verifyCreateNewFolderUsingPlusBottonTest() throws IOException, InterruptedException, Exception {
 		
 		//das.initElement();
 		
@@ -73,8 +73,8 @@ public class ProjectDashboardTest  extends TestBase {
 		pro.initElement();
 	
 		com.moveMouseAndClick(pro.btn_Plus_CreateNewFolder_Sidebar);
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		//Thread.sleep(3000);
+		//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		Thread.sleep(3000);
 		
 		pro.link_MyProjects_Sidebar.click();
 		
@@ -93,9 +93,66 @@ public class ProjectDashboardTest  extends TestBase {
 		
 	}
 	
-	 
-	@Test(priority=2) 
-	public void createProjectUsingNewProjectButton() throws IOException, InterruptedException, Exception {
+	@Test(priority=2)
+	
+    public void verifyFolderActionMenuOptions_GridViewTest() throws IOException, InterruptedException, Exception {
+          
+		logger.info("This is inside in Project Dashboard Page =====> Verify All Action Menu Options of Folder");
+		
+		pro.link_MyProjects_Sidebar.click();
+	
+		com.moveMouseAndClick(pro.thumbnail_first_Folder_from_Grid);
+		
+		WebElement folderActionMenu = pro.thumbnail_first_Folder_from_Grid;
+		
+		Actions action= new Actions(driver);
+		//action.contextClick(projectActionMenu).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
+		action.contextClick(folderActionMenu).build().perform();
+		
+		AssertJUnit.assertTrue(pro.actionMenu_Rename_Folder.isDisplayed());
+		logger.info("Rename option is displayed for folder inside the action menu.");
+		
+		AssertJUnit.assertTrue(pro.actionMenu_Trash_Folder.isDisplayed());
+		logger.info("Trash option is displayed for folder inside the action menu.");
+		Thread.sleep(2000);		
+	}
+
+	@Test(priority=3)
+
+	public void verifyRenameFolder_Using_ActionMenu_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Renaming folder name using Action Menu");
+		com.mouseHoverOnly(pro.actionMenu_Rename_Folder);
+		pro.actionMenu_Rename_Folder.click();
+		//pro.actionMenu_Rename_Project.clear();
+	    driver.findElement(By.xpath("//input[@value='Untitled Folder']")).sendKeys("FolderNameRenamed");
+	    Thread.sleep(2000);		
+    }
+		
+	@Test(priority=4)
+
+	public void verifyTrashFolder_Using_ActionMenu_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Trash Folder using Action Menu");
+	
+		pro.link_MyProjects_Sidebar.click();
+		
+		com.moveMouseAndClick(pro.thumbnail_first_Folder_from_Grid);
+		
+		WebElement folderActionMenu = pro.thumbnail_first_Folder_from_Grid;
+		
+		Actions action= new Actions(driver);
+		//action.contextClick(projectActionMenu).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
+		action.contextClick(folderActionMenu).build().perform();
+		Thread.sleep(2000);
+		com.mouseHoverOnly(pro.actionMenu_Trash_Folder);
+		pro.actionMenu_Trash_Folder.click();
+		Thread.sleep(2000);
+		
+    }
+
+	@Test(priority=5) 
+	public void verifyCreateProjectUsingNewProjectButtonTest() throws IOException, InterruptedException, Exception {
 		
 		das.initElement();
 		
@@ -123,7 +180,7 @@ public class ProjectDashboardTest  extends TestBase {
 		
 		System.out.println("Project Name out: "+ pro.text_first_Project_Title_from_grid.getText());
 		sa.assertAll();
-		
+	}	
 		//pro.icon_ViewDetails_ProjectDashboard_UniversalMenu.click();
 		
 		/*
@@ -149,18 +206,16 @@ public class ProjectDashboardTest  extends TestBase {
 	
 		Thread.sleep(1000);
 		
-		*/
-	}
 	
-	//public boolean elementHasClass(WebElement element, String active) {
-//	    return element.getAttribute("class").contains(active);
-//	}
+	public boolean elementHasClass(WebElement element, String active) {
+	    return element.getAttribute("class").contains(active);
+	}*/
 	
-@Test(priority=3)
+	@Test(priority=6)
 	
-    public void verifyOpenProjectActionMenuAndAllOptions_from_GridView() throws IOException, InterruptedException, Exception {
+    public void verifyProjectActionMenuOptions_GridViewTest() throws IOException, InterruptedException, Exception {
           
-		logger.info("This is inside in Project Dashboard Page =====> Verify Open Action Menu and All Action Menu Options of Project");
+		logger.info("This is inside in Project Dashboard Page =====> Verify All Action Menu Options of Project");
 		
 		pro.link_MyProjects_Sidebar.click();
 	
@@ -176,31 +231,33 @@ public class ProjectDashboardTest  extends TestBase {
 		logger.info("Rename option is displayed for project inside the action menu.");
 		
 		AssertJUnit.assertTrue(pro.actionMenu_addToFavourites_Project.isDisplayed());
-		logger.info("Add to Favoutites link is displayed for project inside the action menu.");
+		logger.info("Add to Favoutites option is displayed for project inside the action menu.");
 		
 		AssertJUnit.assertTrue(pro.actionMenu_viewDetails_Project.isDisplayed());
-		logger.info("View details link is displayed for project inside the action menu.");
+		logger.info("View details option is displayed for project inside the action menu.");
 		
 		AssertJUnit.assertTrue(pro.actionMenu_trash_Project.isDisplayed());
-		logger.info("Trash link is displayed on for project inside the action menu.");
+		logger.info("Trash option is displayed for project inside the action menu.");
 		
-}
+	}
 
-@Test(priority=4)
+	@Test(priority=7)
 
-public void verifyRenameProject_Using_ActionMenu_GridView() throws IOException, InterruptedException, Exception {
+	public void verifyRenameProject_Using_ActionMenu_GridViewTest() throws IOException, InterruptedException, Exception {
 		
 		logger.info("This is inside in Project Dashboard Page =====> Verify Renaming project name using Action Menu");
-	
+		
+		com.mouseHoverOnly(pro.actionMenu_Rename_Project);
+		
 		pro.actionMenu_Rename_Project.click();
 		//pro.actionMenu_Rename_Project.clear();
 	    driver.findElement(By.xpath("//input[@value='Untitled Project']")).sendKeys("ProjectNameRenamed");
 		
     }
 		
-@Test(priority=5)
+	@Test(priority=8)
 
-public void verifyaddToFavouritesProject_Using_ActionMenu_GridView() throws IOException, InterruptedException, Exception {
+	public void verifyAddToFavouritesProject_Using_ActionMenu_GridViewTest() throws IOException, InterruptedException, Exception {
 		
 		logger.info("This is inside in Project Dashboard Page =====> Verify Add To Favourites project using Action Menu");
 	
@@ -214,8 +271,17 @@ public void verifyaddToFavouritesProject_Using_ActionMenu_GridView() throws IOEx
 		//action.contextClick(projectActionMenu).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
 		action.contextClick(projectActionMenu).build().perform();
 		
+		com.mouseHoverOnly(pro.actionMenu_addToFavourites_Project);
+		
 		pro.actionMenu_addToFavourites_Project.click();
 		Thread.sleep(1000);
+	}
+		
+	@Test(priority=9)
+
+	public void verifyFavouritedProject_From_FavouriteTest() throws IOException, InterruptedException, Exception {
+			
+		logger.info("This is inside in Project Dashboard Page =====> Verify Favourited project from Favourite folder");
 		
 		pro.link_Favorites_Sidebar.click();
 		
@@ -232,6 +298,221 @@ public void verifyaddToFavouritesProject_Using_ActionMenu_GridView() throws IOEx
 		
     }
 
+	@Test(priority=10)
+
+	public void verifyOpeningViewDetails_Using_ActionMenu_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Opening Project View Details pane using Action Menu");
+	
+		pro.link_MyProjects_Sidebar.click();
+		
+		com.moveMouseAndClick(pro.thumbnail_first_Project_from_Grid);
+		
+		WebElement projectActionMenu = pro.thumbnail_first_Project_from_Grid;
+		
+		Actions action= new Actions(driver);
+		//action.contextClick(projectActionMenu).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
+		action.contextClick(projectActionMenu).build().perform();
+		
+		com.mouseHoverOnly(pro.actionMenu_viewDetails_Project);
+		
+		pro.actionMenu_viewDetails_Project.click();
+		Thread.sleep(1000);
+	}
+
+	@Test(priority=11)
+
+	public void verifyUploadingProjectImage_FromViewDetails_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Uploading Project Image from View Details pane");
+		
+		com.mouseHoverOnly(pro.sidebar_ProjectDetails);
+		
+		String filepath=System.getProperty("user.dir")+"/Images/MyImage3.jpeg";
+		com.moveMouseAndClick(pro.link_UploadImage_ProjectDetails);
+
+		UploadFile upfile = new UploadFile();
+		upfile.upload(filepath);
+
+		Thread.sleep(1000);
+		
+    }
+
+
+	@Test(priority=12)
+
+	public void verifyRenameProjectTitle_FromViewDetails_Using_ActionMenu_GridViewTest() throws IOException, InterruptedException, Exception {
+
+		com.mouseHoverOnly(pro.sidebar_ProjectDetails);
+		com.moveMouseAndClick(pro.txt_ProjectTitle_ProjectDetails);
+		
+		WebElement projectTitle = pro.txt_ProjectTitle_ProjectDetails;
+
+		Actions select = new Actions(driver);
+		select.doubleClick(projectTitle).build().perform();
+		
+		//pro.txt_ProjectTitle_ProjectDetails.sendKeys(Keys.CONTROL + "a");
+		pro.txt_ProjectTitle_ProjectDetails.sendKeys("WriteWay Project");
+		Thread.sleep(1000);
+			
+	}
+
+	@Test(priority=13)
+
+	public void verifyRenameAuthorName_FromViewDetails_Using_ActionMenu_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+		com.mouseHoverOnly(pro.sidebar_ProjectDetails);
+		com.moveMouseAndClick(pro.txt_addAuthor_ProjectDetails);
+	
+		pro.txt_addAuthor_ProjectDetails.clear();
+		//WebElement projectAuthor = pro.txt_addAuthor_ProjectDetails;
+	
+		//pro.txt_addAuthor_ProjectDetails.sendKeys(Keys.CONTROL + "a");
+
+		//Actions select = new Actions(driver);
+		//select.doubleClick(projectAuthor).build().perform();
+		
+		pro.txt_addAuthor_ProjectDetails.sendKeys("Living Sky Technologies");
+		Thread.sleep(1000);
+			
+	}
+
+	@Test(priority=14)
+
+	public void verifyAddProjectDescription_FromViewDetails_Using_ActionMenu_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+		com.mouseHoverOnly(pro.sidebar_ProjectDetails);
+		com.moveMouseAndClick(pro.txt_addDescription_ProjectDetails);
+		
+		pro.txt_addDescription_ProjectDetails.sendKeys("This is my first WriteWay Project.");
+		Thread.sleep(1000);
+		
+		pro.btn_closeDetailsPane_ProjectDetails.click();
+		
+	}
+
+	@Test(priority=15)
+	
+	public void verifyTrashProject_Using_ActionMenu_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Deleting project using Action Menu");
+	
+		pro.link_MyProjects_Sidebar.click();
+		
+		com.moveMouseAndClick(pro.thumbnail_first_Project_from_Grid);
+		
+		WebElement projectActionMenu = pro.thumbnail_first_Project_from_Grid;
+		
+		Actions action= new Actions(driver);
+		action.contextClick(projectActionMenu).build().perform();
+		
+		com.mouseHoverOnly(pro.actionMenu_trash_Project);
+		
+		pro.actionMenu_trash_Project.click();
+		Thread.sleep(1000);
+	}
+		
+	@Test(priority=16)
+		
+	public void verifyTrashedProject_From_TrashTest() throws IOException, InterruptedException, Exception {		
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Deleted project From Trash Folder");
+		
+		trs.initElement();
+		com.moveMouseAndClick(trs.link_Trash_Sidebar);
+		
+		com.moveMouseAndClick(trs.thumbnail_first_Trash_from_Grid);
+		
+		String  projectNamefrmTrash = System.getProperty("trashProjectName");
+		
+		SoftAssert sa =new SoftAssert();
+		sa.assertEquals(trs.txt_first_Trash_Project_from_Grid.getText(),projectNamefrmTrash);
+		Thread.sleep(3000);		
+		
+		System.out.println("Project Name out from Trash: "+ trs.txt_first_Trash_Project_from_Grid.getText());
+		sa.assertAll(); 
+
+  	}
+
+	@Test(priority=18)
+
+	public void verifyCreateNewFolder_Using_ContextMenu_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Creating a new folder using Context Menu");
+
+		//pro.link_MyProjects_Sidebar.click();
+
+		WebElement contextMenu = pro.container_ProjectDashboard_grid_view;
+
+		Actions action= new Actions(driver);
+		action.contextClick(contextMenu).build().perform();
+		Thread.sleep(1000);
+
+		com.moveMouseAndClick(pro.contextMenu_NewFolderCreation);
+		Thread.sleep(3000);
+
+	}
+
+	@Test(priority=17)
+
+	public void verifyCreateNewProject_Using_ContextMenu_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+		logger.info("This is inside in Project Dashboard Page =====> Verify Creating a new project using Context Menu");
+
+		pro.link_MyProjects_Sidebar.click();
+		WebElement contextMenu = pro.container_ProjectDashboard_grid_view;
+
+		Actions action= new Actions(driver);
+		action.contextClick(contextMenu).build().perform();
+		Thread.sleep(1000);
+
+		com.moveMouseAndClick(pro.contextMenu_NewProjectCreation);
+		Thread.sleep(2000);
+
+		com.moveMouseAndClick(das.icon_BackArrow_Workspace_UniversalMenu);
+		Thread.sleep(2000);
+
+		pro.link_MyProjects_Sidebar.click();
+
+	}
+	
+	@Test(priority=19)
+
+	public void verifyCreateNewProject_Using_Keyboard_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+	pro.link_MyProjects_Sidebar.click();
+		
+	com.moveMouseAndClick(pro.container_ProjectDashboard_grid_view);
+	
+	Actions action= new Actions(driver);
+	action.keyDown(Keys.SHIFT).sendKeys("p").keyUp(Keys.SHIFT).build().perform();
+	Thread.sleep(10000);
+	
+	/*WebElement ac = pro.container_ProjectDashboard_grid_view;
+	Actions action= new Actions(driver);
+	action.moveToElement(ac).click().keyDown(Keys.SHIFT).sendKeys("p").build().perform();
+	Thread.sleep(10000);*/
+	
+	}
+	
+	
+	@Test(priority=20)
+
+	public void verifyCreateNewFolder_Using_Keyboard_GridViewTest() throws IOException, InterruptedException, Exception {
+		
+	com.moveMouseAndClick(das.icon_BackArrow_Workspace_UniversalMenu);
+	Thread.sleep(2000);
+	
+	pro.link_MyProjects_Sidebar.click();
+		
+	com.moveMouseAndClick(pro.container_ProjectDashboard_grid_view);
+	
+	Actions action= new Actions(driver);
+	action.keyDown(Keys.SHIFT).sendKeys("f").keyUp(Keys.SHIFT).build().perform();
+	Thread.sleep(10000);
+
+	}
+	
 	/*
 	@Test(priority=2)
 	public void verifyOpenProjectfrom_GridView() throws InterruptedException {
