@@ -1,9 +1,0 @@
-[INFO ] 2021-01-25 17:52:00.479 [main] TestBase - Email textbox is displayed.
-[INFO ] 2021-01-25 17:52:00.512 [main] TestBase - Password textbox is displayed.
-[INFO ] 2021-01-25 17:52:00.538 [main] TestBase - Login Button is displayed.
-[INFO ] 2021-01-25 17:52:00.567 [main] TestBase - Remember Me radio is displayed.
-[INFO ] 2021-01-25 17:52:04.503 [main] TestBase - Projects is displayed in Dashboard.
-[INFO ] 2021-01-25 17:52:08.912 [main] TestBase - Wrong login message is showing successfully.
-[INFO ] 2021-01-25 17:52:10.711 [main] TestBase - Password is required message is showing successfully.
-[INFO ] 2021-01-25 17:52:12.473 [main] TestBase - Email address is required message is showing successfully.
-[INFO ] 2021-01-25 17:52:13.186 [main] TestBase - Write way title is displayed successfully.
