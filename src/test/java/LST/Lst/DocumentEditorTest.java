@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -51,17 +52,17 @@ public class DocumentEditorTest extends TestBase {
 	}	
 	
 	@Test(priority=1) 	
-	public void verifyAndCreateCardTitleAreaInDocumentEditorTest() throws IOException, InterruptedException, Exception {
+	public void verifyWritingOnEmptyCardDocumentEditorTest() throws IOException, InterruptedException, Exception {
 
 		das = new Dashboard(driver);
 		das.initElement();
-		
+		Thread.sleep(100);
 		das.btn_newProject.click();
 		
 		pro = new Project(das.getDriver());
 		pro.initElement();
 		
-		String  projectName = "Project_With_Document";
+	/*	String  projectName = "Project_With_Document";
 				
 		pro.nav_startTypingProjectName.sendKeys(projectName);
 		Thread.sleep(1000);
@@ -78,6 +79,7 @@ public class DocumentEditorTest extends TestBase {
 		Thread.sleep(100);
 		
 		logger.info("This is inside in Document Editor Page =====> Creating document on the Document Editor");
+		*/
 		doce = new DocumentEditor(pro.getDriver());
 		doce.initElement();
 			
@@ -88,7 +90,7 @@ public class DocumentEditorTest extends TestBase {
 		//executor.executeScript("arguments[0].click();", ele);
 		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		//com.moveMouseAndClick(ele);
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 			
 		Actions action = new Actions(driver);
 		com.moveMouseAndClick(title);
@@ -96,10 +98,7 @@ public class DocumentEditorTest extends TestBase {
 		action.click(title).sendKeys("Living Sky Technologies" + Keys.ENTER).perform();
 		Thread.sleep(1000);
 			
-	    Assert.assertTrue((doce.ObjHandle_Title_DocumentEditor).isDisplayed());
-		logger.info("Object Handle for Title is displayed in the Document Editor");
-		//System.out.println("Verifing Object Handle for Title in the Document Editor");
-			
+	   	
 		//System.out.println("Area Name is ---->  " + doce.lbl_First_Card_Title_DocumentEditor.getText());
 		//WebElement btn = doce.lbl_First_Card_Title_DocumentEditor;
 		//System.out.println("Area Name is ---->  " + btn.getAttribute("aria-label"));
@@ -141,36 +140,10 @@ public class DocumentEditorTest extends TestBase {
 			
 		Assert.assertTrue((doce.ObjHandle_Body_DocumentEditor).isDisplayed());
 		logger.info("Object Handle for Body is displayed in the Document Editor");
-		//System.out.println("Verifing Object Handle for Body in the Document Editor");
-			
-		//System.out.println("Area Name is ---->  " + doce.lbl_Body_DocumentEditor.getText());
-
-		//Assert.assertTrue((doce.lbl_Body_DocumentEditor).isDisplayed());
-		//logger.info("Label for Body card area is displayed in the Document Editor");
-		//Thread.sleep(500);
-		/*		
-		String filepath=System.getProperty("user.dir")+"/Images/MyImage5.jpg";
-		doce.iconCamera_ObjectCreationControlBar_DocumentEditor.click();
-
-		UploadFile upfile = new UploadFile();
-		upfile.upload(filepath);
-
-		Thread.sleep(1000);
 		
-		//doce.nav_imageTitle_imageEditorInDocumentEditor.sendKeys("Image added in Document Editor ");
-		doce.nav_imageCaption_imageEditorInDocumentEditor.sendKeys("Image Caption added in Document Editor");
-		doce.nav_imageCitation_imageEditorInDocumentEditor.sendKeys("Image Citation added in Document Editor");*/
-		//Thread.sleep(1000);
-		//com.mouseHoverOnly(doce.btn_imageSaveClose_imageEditorInDocumentEditor);
-		//doce.btn_imageSaveClose_imageEditorInDocumentEditor.click();
-
-	}
-
-	@Test(priority=4) 	
-	public void verifyEnterKeyFromKeyboardWithCardAreaInDocument() throws IOException, InterruptedException, Exception {
-			
-		Actions action = new Actions(driver);
-	
+		
+		Actions actions = new Actions(driver);
+		
 		WebElement secondTitle = doce.txt_Body_Second_DocumentEditor;
 		//com.moveMouseAndClick(secondTitle);
 		Thread.sleep(1000);
@@ -178,66 +151,67 @@ public class DocumentEditorTest extends TestBase {
 		action.click(secondTitle).sendKeys("About Living Sky Technologies" + Keys.ENTER).perform();
 		Thread.sleep(1000);
 				
-		WebElement body = doce.txt_Body_Second_DocumentEditor;
-		action.click(body).sendKeys("Empowering creators everywhere. What if an idea could exist interrupted, flowing freely from the imagination to the page? What if the research didn’t draw you away from the page, or formatting didn’t drag out the process? Answering these questions has led the Living Sky Technologies team to discover a way to simplify the creativity process by building a platform from which any content creator can be launched." ).perform();
+		WebElement bodySecond = doce.txt_Body_Second_DocumentEditor;
+		action.click(bodySecond).sendKeys("Empowering creators everywhere. What if an idea could exist interrupted, flowing freely from the imagination to the page? What if the research didn’t draw you away from the page, or formatting didn’t drag out the process? Answering these questions has led the Living Sky Technologies team to discover a way to simplify the creativity process by building a platform from which any content creator can be launched." + Keys.ENTER).perform();
 		Thread.sleep(1000);	
 		
+		
+		//Select the empty paragraph to open the context menu by mouse right click 
+		WebElement elementLocator = driver.findElement(By.xpath("//div[@class='object-content object-content__paragraph sidebar card_body active']"));
+		actions.contextClick(elementLocator).perform();
+		Thread.sleep(1000);
+	
+
+	}
+	@Test(priority=4) 	
+	public void verifyContextMenu() throws IOException, InterruptedException, Exception{
+		
+		WebElement cardContextMenu = doce.cardContextMenu;
+		List<WebElement> allFromContextMenu = cardContextMenu.findElements(By.tagName("li"));
+		    
+		    
+		    System.out.println("All Menu=======>" + allFromContextMenu.size());
+		    Assert.assertEquals(allFromContextMenu.size(), 6);
+		    
+		    for(WebElement element:allFromContextMenu) {
+		    	int i=1;
+		    	System.out.println(element.getText());
+		    	if (i==1)
+		    		Assert.assertEquals(element.getText(), "Edit");
+		    	if (i==2)
+		    		Assert.assertEquals(element.getText(), "Edit");
+		    	i++;
+		    }
+		
+		    Thread.sleep(1000);
+	}
+
+	//@Test(priority=5) 	
+	public void verifyInsertImageFromContextMenuInCard() throws IOException, InterruptedException, Exception {
+			
+		
+		
 		String filepath=System.getProperty("user.dir")+"/Images/MyImage5.jpg";
-		doce.iconCamera_ObjectCreationControlBar_DocumentEditor.click();
+		//Actions actions = new Actions(driver);
+		
+		//Select insert image option by using context menu
+		WebElement insertImage =driver.findElement(By.xpath("//button[@aria-label='Insert Image']//div[@class='left-side']"));
+		com.moveMouseAndClick(insertImage);
+		//doce.iconCamera_ObjectCreationControlBar_DocumentEditor.click();
 
 		UploadFile upfile = new UploadFile();
 		upfile.upload(filepath);
 
 		Thread.sleep(1000);
 		
-		//doce.nav_imageTitle_imageEditorInDocumentEditor.sendKeys("Image added in Document Editor ");
-		doce.nav_imageCaption_imageEditorInDocumentEditor.sendKeys("Image Caption added in Document Editor");
-		doce.nav_imageCitation_imageEditorInDocumentEditor.sendKeys("Image Citation added in Document Editor");
-	/*	
-		String imagepath=System.getProperty("user.dir")+"/Images/MyImage5.jpg";
-		doce.iconCamera_ObjectCreationControlBar_DocumentEditor.click();
-		Thread.sleep(700);
 		
-		UploadFile upfile = new UploadFile();
-		if (System.getProperty("os").equals("mac")) {
-			driver.switchTo().window(driver.getWindowHandle());
-
-			upfile.setClipboardData(imagepath);
-			upfile.uploadFileInMac();
-		} else {
-			upfile.upload(imagepath);
-
-		}
-		Thread.sleep(1000);
-
-		//doce.nav_imageTitle_imageEditorInDocumentEditor.sendKeys("Image added in Document Editor ");
-		//doce.nav_imageCaption_imageEditorInDocumentEditor.sendKeys("Image Caption added in Document Editor");
-		//doce.nav_imageAttribution_imageEditorInDocumentEditor.sendKeys("Image Object attribute in Document Editor");
-		//Thread.sleep(1000);
-		//com.mouseHoverOnly(doce.btn_imageSaveClose_imageEditorInDocumentEditor);
-		//doce.btn_imageSaveClose_imageEditorInDocumentEditor.click();
-		
-		WebElement addSubtitleAfterBody = doce.txt_AddSubTitle_AfterBody_DocumentEditor;
-			
-		action.click(addSubtitleAfterBody).sendKeys("About Living Sky Technologies" + Keys.ENTER).perform();
+		doce.nav_imageCaption_imageEditorInDocumentEditor.sendKeys("Image Caption added in Document Editor"+ Keys.ENTER);
 		Thread.sleep(1000);
 		
-		String imagepath2=System.getProperty("user.dir")+"/Images/MyImage3.jpeg";
-		doce.iconCamera_ObjectCreationControlBar_DocumentEditor.click();
-		Thread.sleep(700);
 		
-		UploadFile upfile2 = new UploadFile();
-		if (System.getProperty("os").equals("mac")) {
-			driver.switchTo().window(driver.getWindowHandle());
-
-			upfile2.setClipboardData(imagepath2);
-			upfile2.uploadFileInMac();
-		} else {
-			upfile.upload(imagepath);
-		}*/
 	}
 	
-	@Test(priority=5) 	
+	@Test(priority=6) 	
 	public void verifyPageScrollingTest() throws IOException, InterruptedException, Exception {
 		
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
@@ -343,7 +317,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	*/
-	@Test(priority=15) 	
+	//@Test(priority=15) 	
 	public void verifyObjectCreationControlBarContainerTest() throws IOException, InterruptedException, Exception {
 		
 		WebElement objectContainer = doce.container_ObjectCreationControlBar_DocumentEditor;
@@ -356,7 +330,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	@Test(priority=16) 	
+	//@Test(priority=16) 	
 	public void verifyPreviewObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		com.moveMouseAndClick(doce.btn_More_ObjectCreationControlBar_DocumentEditor);
@@ -373,7 +347,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	@Test(priority=17) 	
+//	@Test(priority=17) 	
 	public void verifyQuoteObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		Assert.assertTrue((doce.iconQuote_ObjectCreationControlBar_DocumentEditor).isDisplayed());
@@ -382,7 +356,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	@Test(priority=18) 	
+//	@Test(priority=18) 	
 	public void verifyCameraObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		Assert.assertTrue((doce.iconCamera_ObjectCreationControlBar_DocumentEditor).isDisplayed());
@@ -391,7 +365,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	@Test(priority=19) 	
+	//@Test(priority=19) 	
 	public void verifyListObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		Assert.assertTrue((doce.iconList_ObjectCreationControlBar_DocumentEditor).isDisplayed());
@@ -400,7 +374,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	@Test(priority=20) 	
+	//@Test(priority=20) 	
 	public void verifyTableObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		Assert.assertTrue((doce.iconTable_ObjectCreationControlBar_DocumentEditor).isDisplayed());
@@ -409,7 +383,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	@Test(priority=21) 	
+	//@Test(priority=21) 	
 	public void verifyMicrophoneObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		Assert.assertTrue((doce.iconMicrophone_ObjectCreationControlBar_DocumentEditor).isDisplayed());
@@ -418,7 +392,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 	
-	@Test(priority=22) 	
+	//@Test(priority=22) 	
 	public void verifyFormulaObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		Assert.assertTrue((doce.iconFormula_ObjectCreationControlBar_DocumentEditor).isDisplayed());
@@ -427,7 +401,7 @@ public class DocumentEditorTest extends TestBase {
 		
 	}
 
-	@Test(priority=23) 	
+	//@Test(priority=23) 	
 	public void verifyMoreObjectCreationControlBarTest() throws IOException, InterruptedException, Exception {
 		
 		Assert.assertTrue((doce.iconFormula_ObjectCreationControlBar_DocumentEditor).isDisplayed());

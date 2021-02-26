@@ -47,7 +47,9 @@ public WebElement link_settings;
 @FindBy(xpath= "//div[contains(text(),'Help')]")
 public WebElement link_help;
 
-@FindBy(xpath= "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/div[2]/button[2]")
+//updated on Jan 2021
+@FindBy(xpath= "//div[@class='button-general btn-transparent']")
+
 public WebElement btn_newProject;
 
 

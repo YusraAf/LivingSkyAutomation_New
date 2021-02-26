@@ -23,9 +23,13 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]")
 	public WebElement secomdCardTopEdge_DocumentEditor;
 	
-	//@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
-	@FindBy(xpath="//span[contains(text(),'Start typing...')]")
+	//updated on Jan 2021
+	@FindBy(xpath=" //div[@class='drop-text-node']")
 	public WebElement txt_BlankPlaceHolderEnterTitle_DocumentEditor;
+	
+	//added on Jan 2021
+	@FindBy(xpath="/html[1]/body[1]/reach-portal[8]/div[1]/div[1]/div[1]/ul[1]")
+	public WebElement cardContextMenu;
 	
 	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]")
 	public WebElement ObjHandle_Title_DocumentEditor;
@@ -37,7 +41,7 @@ public class DocumentEditor extends PageBase {
 	//@FindBy(xpath="//div[@class='object-container paragraph-object']//div[@class='object-container-content']")
   	public WebElement txt_body_First_DocumentEditor;
 	
-	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
+	@FindBy(xpath="//div[@class='object-content object-content__paragraph sidebar card_body active']")
 	public WebElement txt_Body_Second_DocumentEditor;
 	
 	@FindBy(xpath="//body/div[@id='root']/div[1]/div[1]/div[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/button[1]/div[1]/div[1]")
@@ -169,7 +173,8 @@ public class DocumentEditor extends PageBase {
 	@FindBy(xpath="//input[@id='input-title']")
 	public WebElement nav_imageTitle_imageEditorInDocumentEditor;
 
-	@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--caption']//div[@class='object-container-content']")
+	//updated in Jan 2021
+	@FindBy(xpath="//div[@class='object-content object-content__paragraph sidebar image_caption active']")
 	public WebElement nav_imageCaption_imageEditorInDocumentEditor;
 
 	@FindBy(xpath="//section[@class='area-wrapper area-wrapper-type--citation']//div[@class='object-content']")
